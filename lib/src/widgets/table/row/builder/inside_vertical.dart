@@ -21,7 +21,11 @@ class InsideVerticalBorderRowBuilder extends AnsiRowBuilder {
     final StringBuffer buffer = StringBuffer();
 
     buffer
-      ..writeColored(data.join(border.boxDrawingSet.verticalLine.colored(foreground: border.color)), border.color)
+      ..writeColored(
+          data.join(border.boxDrawingSet.verticalLine.colored(
+            foreground: border.color,
+          )),
+          border.color)
       ..writeNewLine();
 
     return buffer.toString();

@@ -15,7 +15,9 @@ class AnsiText {
     final int? fixedWidth,
   }) {
     final int minWidth = text.length + padding.left + padding.right;
-    width = (fixedWidth == null || fixedWidth == 0 || fixedWidth < minWidth) ? minWidth : fixedWidth;
+    width = (fixedWidth == null || fixedWidth == 0 || fixedWidth < minWidth) //
+        ? minWidth
+        : fixedWidth;
     topPadding = padding.top;
     bottomPadding = padding.bottom;
 

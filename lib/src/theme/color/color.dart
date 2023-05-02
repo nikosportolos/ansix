@@ -1576,17 +1576,13 @@ class AnsiColor {
   /// Foreground 24 bit rgb color code
   @pragma('vm:prefer-inline')
   String get foregroundRgb {
-    return rgb == null
-        ? ''
-        : '$foregroundRgbColorStartCode${rgb!.toAnsiString()}$colorEndCode';
+    return rgb == null ? '' : '$foregroundRgbColorStartCode${rgb!.toAnsiString()}$colorEndCode';
   }
 
   /// Background 24 bit rgb color code
   @pragma('vm:prefer-inline')
   String get backgroundRgb {
-    return rgb == null
-        ? ''
-        : '$backgroundRgbColorStartCode${rgb!.toAnsiString()}$colorEndCode';
+    return rgb == null ? '' : '$backgroundRgbColorStartCode${rgb!.toAnsiString()}$colorEndCode';
   }
 
   @override

@@ -106,18 +106,14 @@ class _$AnsiTextThemeCopyWithProxy {
     final Object? fixedWidth = const Object(),
   }) {
     return _$AnsiTextThemeImpl(
-      foregroundColor: identical(foregroundColor, const Object())
-          ? _value.foregroundColor
-          : (foregroundColor as AnsiColor?),
-      backgroundColor: identical(backgroundColor, const Object())
-          ? _value.backgroundColor
-          : (backgroundColor as AnsiColor?),
-      textStyle:
-          identical(textStyle, const Object()) ? _value.textStyle : (textStyle as AnsiTextStyle?),
+      foregroundColor:
+          identical(foregroundColor, const Object()) ? _value.foregroundColor : (foregroundColor as AnsiColor?),
+      backgroundColor:
+          identical(backgroundColor, const Object()) ? _value.backgroundColor : (backgroundColor as AnsiColor?),
+      textStyle: identical(textStyle, const Object()) ? _value.textStyle : (textStyle as AnsiTextStyle?),
       padding: identical(padding, const Object()) ? _value.padding : (padding as AnsiPadding?),
-      textAlignment: identical(textAlignment, const Object())
-          ? _value.textAlignment
-          : (textAlignment as AnsiTextAlignment?),
+      textAlignment:
+          identical(textAlignment, const Object()) ? _value.textAlignment : (textAlignment as AnsiTextAlignment?),
       fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
     );
   }
@@ -157,18 +153,14 @@ class $AnsiTextThemeCopyWithProxyChain<$Result> {
     final Object? fixedWidth = const Object(),
   }) {
     return _chain(_$AnsiTextThemeImpl(
-      foregroundColor: identical(foregroundColor, const Object())
-          ? _value.foregroundColor
-          : (foregroundColor as AnsiColor?),
-      backgroundColor: identical(backgroundColor, const Object())
-          ? _value.backgroundColor
-          : (backgroundColor as AnsiColor?),
-      textStyle:
-          identical(textStyle, const Object()) ? _value.textStyle : (textStyle as AnsiTextStyle?),
+      foregroundColor:
+          identical(foregroundColor, const Object()) ? _value.foregroundColor : (foregroundColor as AnsiColor?),
+      backgroundColor:
+          identical(backgroundColor, const Object()) ? _value.backgroundColor : (backgroundColor as AnsiColor?),
+      textStyle: identical(textStyle, const Object()) ? _value.textStyle : (textStyle as AnsiTextStyle?),
       padding: identical(padding, const Object()) ? _value.padding : (padding as AnsiPadding?),
-      textAlignment: identical(textAlignment, const Object())
-          ? _value.textAlignment
-          : (textAlignment as AnsiTextAlignment?),
+      textAlignment:
+          identical(textAlignment, const Object()) ? _value.textAlignment : (textAlignment as AnsiTextAlignment?),
       fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
     ));
   }

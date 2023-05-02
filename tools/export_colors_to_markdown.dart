@@ -38,8 +38,7 @@ void printColorSet(
     if (color == AnsiColor.none) {
       continue;
     }
-    final String sampleText =
-        'This is a sample text in **[${color.name}]** color';
+    final String sampleText = 'This is a sample text in **[${color.name}]** color';
 
     buffer.writeln(
       '$separator'

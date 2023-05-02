@@ -45,7 +45,7 @@ jobs:
         run: dart pub get
 
       - name: ✨ Check Formatting
-        run: dart format --output none --set-exit-if-changed -l 100 .
+        run: dart format --output none --set-exit-if-changed -l 120 .
 
       - name: 🕵️ Analyze
         run: dart analyze --fatal-infos --fatal-warnings ${{inputs.analyze_directories}}

@@ -3,6 +3,11 @@ description: AnsiX is an extended ANSI library that provides tools and extension
 version: 0.0.1+1
 publish_to: 'none'
 
+homepage: https://github.com/nikosportolos/ansix
+repository: https://github.com/nikosportolos/ansix
+documentation: https://github.com/nikosportolos/ansix
+issue_tracker: https://github.com/nikosportolos/ansix/issues
+
 environment:
   sdk: ">=2.19.6 <3.0.0"
 

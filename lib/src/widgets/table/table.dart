@@ -1,0 +1,3 @@
+class AnsiTableColumn {
+  const AnsiTableColumn();
+}

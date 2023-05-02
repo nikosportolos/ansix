@@ -1,4 +1,5 @@
 import 'package:ansix/src/core/constants.dart';
+import 'package:ansix/src/theme/color/hsl.dart';
 import 'package:ansix/src/theme/color/rgb.dart';
 
 /// Extended Ansi colors
@@ -11,6 +12,7 @@ class AnsiColor {
     name: 'none',
     hex: '',
     rgb: null,
+    hsl: null,
   );
   static const AnsiColor black = AnsiColor._(
     value: 0,
@@ -1554,12 +1556,14 @@ class AnsiColor {
     required this.name,
     required this.hex,
     this.rgb,
+    this.hsl,
   });
 
   final int value;
   final String name;
   final String hex;
   final Rgb? rgb;
+  final Hsl? hsl;
 
   /// Foreground 8 bit 256 color code
   @pragma('vm:prefer-inline')
@@ -1583,6 +1587,19 @@ class AnsiColor {
   @pragma('vm:prefer-inline')
   String get backgroundRgb {
     return rgb == null ? '' : '$backgroundRgbColorStartCode${rgb!.toAnsiString()}$colorEndCode';
+  }
+
+  /// Returns the relative luminance of the [AnsiColor]
+  /// https://en.wikipedia.org/wiki/Relative_luminance
+  @pragma('vm:prefer-inline')
+  int? get lightness {
+    if (hsl != null) {
+      return hsl!.lightness;
+    }
+    if (rgb != null) {
+      return (0.2126 * rgb!.red + 0.7152 * rgb!.green + 0.0722 * rgb!.blue).floor();
+    }
+    return null;
   }
 
   @override

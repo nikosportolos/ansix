@@ -10,10 +10,20 @@ enum AnsiStyle {
     endEscapeCode: boldEndCode,
   ),
 
+  boldUnderline(
+    startEscapeCode: boldUnderlineStartCode,
+    endEscapeCode: boldUnderlineEndCode,
+  ),
+
   /// Faint, decreased intensity, or dim
   dim(
     startEscapeCode: dimStartCode,
     endEscapeCode: dimEndCode,
+  ),
+
+  inverse(
+    startEscapeCode: inverseStartCode,
+    endEscapeCode: inverseEndCode,
   ),
 
   italic(
@@ -21,14 +31,9 @@ enum AnsiStyle {
     endEscapeCode: italicEndCode,
   ),
 
-  underline(
-    startEscapeCode: underlineStartCode,
-    endEscapeCode: underlineEndCode,
-  ),
-
-  boldUnderline(
-    startEscapeCode: boldUnderlineStartCode,
-    endEscapeCode: boldUnderlineEndCode,
+  normal(
+    startEscapeCode: '',
+    endEscapeCode: '',
   ),
 
   strikethrough(
@@ -36,14 +41,9 @@ enum AnsiStyle {
     endEscapeCode: strikethroughEndCode,
   ),
 
-  normal(
-    startEscapeCode: '',
-    endEscapeCode: '',
-  ),
-
-  inverse(
-    startEscapeCode: inverseStartCode,
-    endEscapeCode: inverseEndCode,
+  underline(
+    startEscapeCode: underlineStartCode,
+    endEscapeCode: underlineEndCode,
   );
 
   const AnsiStyle({

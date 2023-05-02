@@ -35,9 +35,25 @@ class AnsiText {
         rightPadding = padding.right;
         break;
     }
+
+    formattedText = (StringBuffer()
+          ..writeLines(topPadding)
+          ..writeSpaces(leftPadding, backgroundColor)
+          ..writeStyled(
+            text,
+            styles: textStyle.styles,
+            foregroundColor: foregroundColor,
+            backgroundColor: backgroundColor,
+          )
+          ..writeSpaces(rightPadding, backgroundColor)
+          ..writeLines(bottomPadding))
+        .toString();
   }
 
-  factory AnsiText.fromTheme(final String text, final AnsiTextTheme theme) {
+  factory AnsiText.withTheme(
+    final String text,
+    final AnsiTextTheme theme,
+  ) {
     return AnsiText(
       text,
       foregroundColor: theme.foregroundColor!,
@@ -61,20 +77,10 @@ class AnsiText {
   late final int bottomPadding;
   late final int leftPadding;
   late final int rightPadding;
+  late final String formattedText;
 
   @override
   String toString() {
-    return (StringBuffer()
-          ..writeLines(topPadding)
-          ..writeSpaces(leftPadding, backgroundColor)
-          ..writeStyled(
-            text,
-            styles: textStyle.styles,
-            foregroundColor: foregroundColor,
-            backgroundColor: backgroundColor,
-          )
-          ..writeSpaces(rightPadding, backgroundColor)
-          ..writeLines(bottomPadding))
-        .toString();
+    return formattedText;
   }
 }

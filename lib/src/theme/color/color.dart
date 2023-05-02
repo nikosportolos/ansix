@@ -1576,13 +1576,17 @@ class AnsiColor {
   /// Foreground 24 bit rgb color code
   @pragma('vm:prefer-inline')
   String get foregroundRgb {
-    return rgb == null ? '' : '$foregroundRgbColorStartCode${rgb!.toAnsiString()}$colorEndCode';
+    return rgb == null
+        ? ''
+        : '$foregroundRgbColorStartCode${rgb!.toAnsiString()}$colorEndCode';
   }
 
   /// Background 24 bit rgb color code
   @pragma('vm:prefer-inline')
   String get backgroundRgb {
-    return rgb == null ? '' : '$backgroundRgbColorStartCode${rgb!.toAnsiString()}$colorEndCode';
+    return rgb == null
+        ? ''
+        : '$backgroundRgbColorStartCode${rgb!.toAnsiString()}$colorEndCode';
   }
 
   @override
@@ -1611,13 +1615,13 @@ class AnsiColor {
 
   static const List<AnsiColor> greyscale = <AnsiColor>[
     grey0,
-    grey100,
+    grey3,
+    grey7,
     grey11,
     grey15,
     grey19,
     grey23,
     grey27,
-    grey3,
     grey30,
     grey35,
     grey37,
@@ -1632,7 +1636,6 @@ class AnsiColor {
     grey63,
     grey66,
     grey69,
-    grey7,
     grey70,
     grey74,
     grey78,
@@ -1641,6 +1644,7 @@ class AnsiColor {
     grey85,
     grey89,
     grey93,
+    grey100,
   ];
 
   static const List<AnsiColor> extended = <AnsiColor>[

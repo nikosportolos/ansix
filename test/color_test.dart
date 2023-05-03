@@ -6,27 +6,27 @@ import 'package:test/test.dart';
 void main() {
   group('Validate color sets', () {
     validateColorSet(
-      name: 'System colors',
+      colorSetName: 'System colors',
       colorSet: AnsiColor.system,
       expectedCount: 16,
       testRgb: false,
     );
 
     validateColorSet(
-      name: 'Extended colors',
+      colorSetName: 'Extended colors',
       colorSet: AnsiColor.extended,
       expectedCount: 209,
     );
 
     validateColorSet(
-      name: 'Greyscale colors',
+      colorSetName: 'Greyscale colors',
       colorSet: AnsiColor.greyscale,
       expectedCount: 31,
       testRgb: false,
     );
 
     validateColorSet(
-      name: 'All colors',
+      colorSetName: 'All colors',
       colorSet: AnsiColor.all,
       expectedCount: 257,
       testRgb: false,
@@ -35,12 +35,12 @@ void main() {
 }
 
 void validateColorSet({
-  required final String name,
+  required final String colorSetName,
   required final List<AnsiColor> colorSet,
   required final int expectedCount,
   final bool testRgb = true,
 }) {
-  group(name, () {
+  group(colorSetName, () {
     test('Valid color set count', () {
       expect(colorSet.length, expectedCount);
     });

@@ -1,5 +1,7 @@
 import 'package:ansix/src/theme/theme.dart';
+import 'package:ansix/src/widgets/text/padding.dart';
 import 'package:ansix/src/widgets/text/text.dart';
+import 'package:ansix/src/widgets/text/text_style.dart';
 
 class AnsiTableCell extends AnsiText {
   AnsiTableCell(

@@ -6,7 +6,7 @@ import 'package:ansix/ansix.dart';
 /// Sources:
 /// - https://en.wikipedia.org/wiki/Box-drawing_character
 /// - https://en.wikipedia.org/wiki/Alt_code
-/// - https://theasciicode.com.ar/extended-ascii-code/box-drawing-character-single-line-lower-left-corner-ascii-code-192.html
+/// - https://theasciicode.com.ar
 class BoxDrawingSet {
   const BoxDrawingSet._({
     this.horizontalLine = '',

@@ -1,5 +1,7 @@
 import 'package:ansix/src/core/core.dart';
 import 'package:ansix/src/theme/theme.dart';
+import 'package:ansix/src/widgets/text/padding.dart';
+import 'package:ansix/src/widgets/text/text_style.dart';
 import 'package:ansix/src/widgets/text/text_theme.dart';
 
 export 'text_theme.dart';

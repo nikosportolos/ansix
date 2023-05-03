@@ -22,20 +22,6 @@ class BoxDrawingSet {
     this.crossRight = '',
   });
 
-  static const BoxDrawingSet none = BoxDrawingSet._(
-    horizontalLine: '',
-    verticalLine: '',
-    topLeftCorner: '',
-    topRightCorner: '',
-    bottomLeftCorner: '',
-    bottomRightCorner: '',
-    cross: '',
-    crossUp: '',
-    crossDown: '',
-    crossLeft: '',
-    crossRight: '',
-  );
-
   static const BoxDrawingSet ascii = BoxDrawingSet._(
     horizontalLine: '-',
     verticalLine: '|',
@@ -48,34 +34,6 @@ class BoxDrawingSet {
     crossDown: '-',
     crossLeft: '|',
     crossRight: '|',
-  );
-
-  static const BoxDrawingSet square = BoxDrawingSet._(
-    horizontalLine: '─',
-    verticalLine: '│',
-    topLeftCorner: '┌',
-    topRightCorner: '┐',
-    bottomLeftCorner: '└',
-    bottomRightCorner: '┘',
-    cross: '┼',
-    crossUp: '┴',
-    crossDown: '┬',
-    crossLeft: '┤',
-    crossRight: '├',
-  );
-
-  static const BoxDrawingSet rounded = BoxDrawingSet._(
-    horizontalLine: '─',
-    verticalLine: '│',
-    topLeftCorner: '╭',
-    topRightCorner: '╮',
-    bottomLeftCorner: '╰',
-    bottomRightCorner: '╯',
-    cross: '┼',
-    crossUp: '┴',
-    crossDown: '┬',
-    crossLeft: '┤',
-    crossRight: '├',
   );
 
   static const BoxDrawingSet bold = BoxDrawingSet._(
@@ -106,6 +64,48 @@ class BoxDrawingSet {
     crossRight: '╠',
   );
 
+  static const BoxDrawingSet none = BoxDrawingSet._(
+    horizontalLine: '',
+    verticalLine: '',
+    topLeftCorner: '',
+    topRightCorner: '',
+    bottomLeftCorner: '',
+    bottomRightCorner: '',
+    cross: '',
+    crossUp: '',
+    crossDown: '',
+    crossLeft: '',
+    crossRight: '',
+  );
+
+  static const BoxDrawingSet rounded = BoxDrawingSet._(
+    horizontalLine: '─',
+    verticalLine: '│',
+    topLeftCorner: '╭',
+    topRightCorner: '╮',
+    bottomLeftCorner: '╰',
+    bottomRightCorner: '╯',
+    cross: '┼',
+    crossUp: '┴',
+    crossDown: '┬',
+    crossLeft: '┤',
+    crossRight: '├',
+  );
+
+  static const BoxDrawingSet square = BoxDrawingSet._(
+    horizontalLine: '─',
+    verticalLine: '│',
+    topLeftCorner: '┌',
+    topRightCorner: '┐',
+    bottomLeftCorner: '└',
+    bottomRightCorner: '┘',
+    cross: '┼',
+    crossUp: '┴',
+    crossDown: '┬',
+    crossLeft: '┤',
+    crossRight: '├',
+  );
+
   factory BoxDrawingSet.fromBorderStyle(final AnsiBorderStyle style) {
     switch (style) {
       case AnsiBorderStyle.ascii:
@@ -134,4 +134,13 @@ class BoxDrawingSet {
   final String crossDown;
   final String crossLeft;
   final String crossRight;
+
+  static const List<BoxDrawingSet> values = <BoxDrawingSet>[
+    ascii,
+    bold,
+    double,
+    none,
+    rounded,
+    square,
+  ];
 }

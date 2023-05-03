@@ -1,5 +1,5 @@
 import 'package:ansix/ansix.dart';
-import 'package:ansix/src/theme/border/box_drawing.dart';
+import 'package:ansix/src/theme/drawing/box_drawing.dart';
 
 part 'enums.dart';
 

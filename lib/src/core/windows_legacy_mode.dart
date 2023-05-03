@@ -26,6 +26,7 @@ enum WindowsLegacyMode {
   @visibleForTesting
   static final RegExp disabledLegacyModeMatcher = RegExp('ForceV2( )*REG_DWORD( )*0x1');
 
+  /// Return legacy console mode as found in Windows Registry
   factory WindowsLegacyMode.fromWindowsRegistry() {
     if (!Platform.isWindows) {
       return WindowsLegacyMode.unknown;

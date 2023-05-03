@@ -1,10 +1,16 @@
 // ignore_for_file: avoid_print
 
 import 'package:ansix/ansix.dart';
+import 'package:ansix/src/core/exceptions/exceptions.dart';
 
 const int fixedWidth = 30;
 
 void main() {
+  try {
+    AnsiX.ensureSupportsAnsi();
+  } on AnsiXException catch (e) {
+    print(e);
+  }
   printColorSet(AnsiColor.all);
 }
 

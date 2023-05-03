@@ -1,8 +1,8 @@
-import 'package:ansix/src/core/core.dart';
+import 'package:ansix/src/ansix.dart';
 import 'package:ansix/src/theme/color/color.dart';
 import 'package:ansix/src/theme/style.dart';
 
-extension AnsiTextX on String {
+extension AnsiString on String {
   String bold() => addStyle(AnsiStyle.bold);
 
   String italic() => addStyle(AnsiStyle.italic);
@@ -12,7 +12,7 @@ extension AnsiTextX on String {
   String strikethrough() => addStyle(AnsiStyle.strikethrough);
 
   String addStyle(final AnsiStyle style) {
-    return '${style.startEscapeCode}$this${style.endEscapeCode}';
+    return AnsiX.formatter.addStyle(this, style);
   }
 
   String styled(
@@ -46,31 +46,19 @@ extension AnsiTextX on String {
 
   String white() => colored(foreground: AnsiColor.white);
 
-  String colored({
-    final AnsiColor? foreground,
-    final AnsiColor? background,
-  }) {
-    if (foreground == AnsiColor.none && background == AnsiColor.none) {
-      return this;
-    }
-
-    final String foregroundString = foreground?.foreground ?? AnsiColor.none.foreground;
-    final String backgroundString = background?.background ?? AnsiColor.none.background;
-
-    return '$foregroundString$backgroundString$this$reset';
+  String colored({final AnsiColor? foreground, final AnsiColor? background}) {
+    return AnsiX.formatter.addColor(
+      this,
+      foreground: foreground,
+      background: background,
+    );
   }
 
-  String coloredRgb({
-    final AnsiColor? foreground,
-    final AnsiColor? background,
-  }) {
-    if (foreground == AnsiColor.none && background == AnsiColor.none) {
-      return this;
-    }
-
-    final String foregroundString = foreground?.foregroundRgb ?? AnsiColor.none.foregroundRgb;
-    final String backgroundString = background?.backgroundRgb ?? AnsiColor.none.backgroundRgb;
-
-    return '$foregroundString$backgroundString$this$reset';
+  String coloredRgb({final AnsiColor? foreground, final AnsiColor? background}) {
+    return AnsiX.formatter.addColorRgb(
+      this,
+      foreground: foreground,
+      background: background,
+    );
   }
 }

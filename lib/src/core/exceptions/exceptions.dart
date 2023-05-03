@@ -1,15 +1,18 @@
 import 'package:data_class_plugin/data_class_plugin.dart';
 
+part 'exceptions.gen.dart';
+
 /// Base class for [AnsiX] exceptions
 @Union()
 abstract class AnsiXException implements Exception {
-  const AnsiXException(this.message);
-  final String message;
-}
+  const AnsiXException._();
 
-class AnsiNotSupported implements AnsiXException {
-  const AnsiNotSupported(this.message);
+  const factory AnsiXException.ansiNotSupported(
+    final String message,
+  ) = AnsiNotSupported;
 
-  @override
-  final String message;
+  const factory AnsiXException.windowsLegacyModeError(
+    final String message,
+    final Object? innerException,
+  ) = WindowsLegacyModeError;
 }

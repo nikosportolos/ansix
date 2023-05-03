@@ -1,8 +1,8 @@
 import 'package:ansix/src/core/core.dart';
 import 'package:ansix/src/theme/theme.dart';
-import 'package:ansix/src/widgets/text/theme.dart';
+import 'package:ansix/src/widgets/text/text_theme.dart';
 
-export 'theme.dart';
+export 'text_theme.dart';
 
 class AnsiText {
   AnsiText(

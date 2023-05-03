@@ -4,7 +4,7 @@ import 'package:ansix/src/theme/padding.dart';
 import 'package:ansix/src/theme/text_style.dart';
 import 'package:data_class_plugin/data_class_plugin.dart';
 
-part 'theme.gen.dart';
+part 'text_theme.gen.dart';
 
 @DataClass()
 abstract class AnsiTextTheme {

@@ -11,7 +11,13 @@ class AnsiBorder {
   }) : boxDrawingSet = BoxDrawingSet.fromBorderStyle(style);
 
   final AnsiBorderType type;
+
+  /// [BoxDrawingSet] of the border
   final BoxDrawingSet boxDrawingSet;
+
+  /// Style of the border
   final AnsiBorderStyle style;
+
+  /// Color of the border
   final AnsiColor color;
 }

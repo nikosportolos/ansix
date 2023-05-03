@@ -1,5 +1,12 @@
 import 'package:ansix/ansix.dart';
 
+/// Box-drawing characters, also known as line-drawing characters, are a form of semigraphics
+/// widely used in text user interfaces to draw various geometric frames and boxes.
+///
+/// Sources:
+/// - https://en.wikipedia.org/wiki/Box-drawing_character
+/// - https://en.wikipedia.org/wiki/Alt_code
+/// - https://theasciicode.com.ar/extended-ascii-code/box-drawing-character-single-line-lower-left-corner-ascii-code-192.html
 class BoxDrawingSet {
   const BoxDrawingSet._({
     this.horizontalLine = '',

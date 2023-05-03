@@ -1,4 +1,4 @@
-import 'package:ansix/src/core/constants.dart';
+import 'package:ansix/src/core/escape_codes.dart';
 import 'package:ansix/src/theme/color/hsl.dart';
 import 'package:ansix/src/theme/color/rgb.dart';
 

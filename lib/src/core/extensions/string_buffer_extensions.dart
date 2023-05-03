@@ -4,7 +4,7 @@ import 'package:ansix/src/theme/style.dart';
 
 extension StringBufferX on StringBuffer {
   void writeNewLine() {
-    write(newLine);
+    writeln();
   }
 
   void writeLines(final int lines) {

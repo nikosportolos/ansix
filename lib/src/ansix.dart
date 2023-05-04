@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:ansix/ansix.dart';
+import 'package:ansix/src/core/core.dart';
 import 'package:ansix/src/formatter/ansi.dart';
 import 'package:ansix/src/formatter/formatter.dart';
 import 'package:ansix/src/formatter/standard.dart';
@@ -15,37 +15,13 @@ abstract class AnsiX {
   /// Returns true if the standard output stream is attached to a pipe.
   static bool get attachedToPipe => stdioType(stdout) == StdioType.pipe;
 
-  static void ensureSupportsAnsi({final bool silent = false}) {
-    try {
-      final bool attachedToValidStream = attachedToTerminal || attachedToPipe;
-      bool isSupported = supportsAnsi && attachedToValidStream;
-
-      if (Platform.isWindows && !isSupported) {
-        final WindowsLegacyMode legacyMode = WindowsLegacyMode.fromWindowsRegistry();
-        isSupported = attachedToValidStream && legacyMode == WindowsLegacyMode.disabled;
-
-        if (legacyMode == WindowsLegacyMode.enabled) {
-          throw const AnsiXException.ansiNotSupported(
-              'Legacy console mode is enabled. ANSI escape characters are not supported');
-        }
-      }
-
-      if (!isSupported) {
-        throw const AnsiXException.ansiNotSupported('ANSI escape characters are not supported.');
-      }
-    } on AnsiXException catch (e) {
-      disable();
-      if (silent) {
-        _handleException(e);
-        return;
-      }
-      rethrow;
-    }
-  }
-
   /// Returns true if ANSI formatting is supported and enabled
   static bool get isEnabled => _isEnabled;
   static bool _isEnabled = true;
+
+  static TextFormatter _formatter = AnsiTextFormatter();
+
+  static TextFormatter get formatter => _formatter;
 
   /// Enables ANSI formatting (if supported by the system).
   static void enable() {
@@ -59,9 +35,40 @@ abstract class AnsiX {
     _formatter = StandardTextFormatter();
   }
 
-  static TextFormatter _formatter = AnsiTextFormatter();
+  /// Ensure that ANSI formatting is supported
+  ///
+  /// If [silent] = false, no exceptions will be thrown
+  static void ensureSupportsAnsi({final bool silent = false}) {
+    try {
+      final bool attachedToValidStream = attachedToTerminal || attachedToPipe;
+      bool isSupported = supportsAnsi && attachedToValidStream;
 
-  static TextFormatter get formatter => _formatter;
+      if (Platform.isWindows && !isSupported) {
+        final LegacyConsoleMode legacyMode = LegacyConsoleMode.fromWindowsRegistry();
+        isSupported = attachedToValidStream && legacyMode == LegacyConsoleMode.disabled;
+
+        if (legacyMode == LegacyConsoleMode.enabled) {
+          throw const AnsiXException.ansiNotSupported(
+            'Legacy console mode is enabled. '
+            'ANSI escape characters are not supported',
+          );
+        }
+      }
+
+      if (!isSupported) {
+        throw const AnsiXException.ansiNotSupported(
+          'ANSI escape characters are not supported.',
+        );
+      }
+    } on AnsiXException catch (e) {
+      disable();
+      if (silent) {
+        _handleException(e);
+        return;
+      }
+      rethrow;
+    }
+  }
 
   static void _handleException(final AnsiXException exception) {
     final StringBuffer buffer = StringBuffer()

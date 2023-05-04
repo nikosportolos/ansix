@@ -10,7 +10,7 @@ import 'package:meta/meta.dart';
 /// Read more:
 /// - https://learn.microsoft.com/en-us/windows/console/legacymode
 /// - https://techcult.com/enable-or-disable-legacy-console-for-command-prompt-and-powershell-in-windows-10/
-enum WindowsLegacyMode {
+enum LegacyConsoleMode {
   /// Legacy console mode is enabled
   enabled,
 
@@ -20,41 +20,39 @@ enum WindowsLegacyMode {
   /// Unknown status of legacy console mode
   unknown;
 
+  /// 0 = Enable 'Use legacy console'
   @visibleForTesting
   static final RegExp enabledLegacyModeMatcher = RegExp('ForceV2( )*REG_DWORD( )*0x0');
 
+  /// 1 = Disable 'Use legacy console'
   @visibleForTesting
   static final RegExp disabledLegacyModeMatcher = RegExp('ForceV2( )*REG_DWORD( )*0x1');
 
-  /// Return legacy console mode as found in Windows Registry
-  factory WindowsLegacyMode.fromWindowsRegistry() {
-    if (!Platform.isWindows) {
-      return WindowsLegacyMode.unknown;
-    }
+  @visibleForTesting
+  static const String registryKey = r'HKEY_CURRENT_USER\Console';
 
+  /// Return legacy console mode as found in Windows Registry
+  factory LegacyConsoleMode.fromWindowsRegistry() {
     try {
       final ProcessResult result = Process.runSync(
         'REG',
-        <String>[
-          'QUERY',
-          r'HKEY_CURRENT_USER\Console',
-        ],
+        <String>['QUERY', registryKey],
       );
 
-      return WindowsLegacyMode.fromProcessResult(result);
+      return LegacyConsoleMode.fromProcessResult('${result.stdout}');
     } on Exception catch (e) {
       throw AnsiXException.windowsLegacyModeError('Failed to get Legacy Console Mode from Windows Registry', e);
     }
   }
 
   @visibleForTesting
-  factory WindowsLegacyMode.fromProcessResult(final ProcessResult result) {
-    if (enabledLegacyModeMatcher.hasMatch(result.stdout)) {
-      return WindowsLegacyMode.enabled;
+  factory LegacyConsoleMode.fromProcessResult(final String result) {
+    if (enabledLegacyModeMatcher.hasMatch(result)) {
+      return LegacyConsoleMode.enabled;
     }
-    if (disabledLegacyModeMatcher.hasMatch(result.stdout)) {
-      return WindowsLegacyMode.disabled;
+    if (disabledLegacyModeMatcher.hasMatch(result)) {
+      return LegacyConsoleMode.disabled;
     }
-    return WindowsLegacyMode.unknown;
+    return LegacyConsoleMode.unknown;
   }
 }

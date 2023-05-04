@@ -21,6 +21,6 @@ class Hsl {
 
   @override
   String toString() {
-    return 'Hue: $hueString, Saturation: $saturationString, Lightness: $lightnessString';
+    return '($hueString, $saturationString, $lightnessString)';
   }
 }

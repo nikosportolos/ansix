@@ -1,0 +1,16 @@
+name: export_docs
+version: 0.0.1+1
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.19.6 <3.0.0"
+
+dependencies:
+  ansix:
+    path: ../..
+  image: ^4.0.16
+  path: ^1.8.3
+
+dev_dependencies:
+  lints: ^2.0.1
+  test: ^1.22.1

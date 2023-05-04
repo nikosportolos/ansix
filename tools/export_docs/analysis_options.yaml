@@ -1,0 +1,25 @@
+include: package:lints/recommended.yaml
+
+analyzer:
+  plugins:
+    - data_class_plugin
+  exclude:
+    - lib/**/*.gen.dart
+    - lib/generated/**.dart
+
+linter:
+  rules:
+    always_specify_types: true
+    always_use_package_imports: true
+    avoid_print: true
+    cancel_subscriptions: true
+    directives_ordering: true
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    prefer_final_fields: true
+    prefer_final_locals: true
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+    prefer_single_quotes: true
+    sized_box_for_whitespace: true
+    unawaited_futures: true

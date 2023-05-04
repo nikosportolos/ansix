@@ -1,10 +1,17 @@
 part of 'color.dart';
 
 abstract class AnsiColorSet {
+  static const Map<String, List<AnsiColor>> map = <String, List<AnsiColor>>{
+    'All': all,
+    'System': system,
+    'Extended': extended,
+    'Greyscale': greyscale,
+  };
+
   static const List<AnsiColor> all = <AnsiColor>[
     ...system,
-    ...greyscale,
     ...extended,
+    ...greyscale,
   ];
 
   static const List<AnsiColor> system = <AnsiColor>[

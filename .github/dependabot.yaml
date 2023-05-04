@@ -12,3 +12,9 @@ updates:
     schedule:
       interval: "weekly"
     versioning-strategy: increase
+
+  - package-ecosystem: "pub"
+    directory: "./tools"
+    schedule:
+      interval: "weekly"
+    versioning-strategy: increase

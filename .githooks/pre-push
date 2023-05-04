@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# expose environment variables
+source .githooks/.env
+
+# expose $FLUTTER_PATH to global so we can call
+# dart, flutter commands in processes that don't have access
+# like a GIT (GUI) CLIENT 
+export PATH="$FLUTTER_PATH:$PATH"
+
+cd ..
+sh validate.sh

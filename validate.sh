@@ -38,7 +38,7 @@ action="${BLUE}Run Tests${NC}"
 echo "┌───────────────────────────────────────┐"
 echo -e "│ ${action}                             │"
 echo "└───────────────────────────────────────┘"
-dart test --color -r expanded
+dart test --color -r expanded || { echo 'tests failed' ; exit 1; }
 echo ""
 
 

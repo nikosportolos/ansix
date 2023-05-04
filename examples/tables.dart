@@ -6,6 +6,8 @@ import 'package:ansix/src/widgets/table/fixed_table.dart';
 import 'package:ansix/src/widgets/table/row/row.dart';
 
 void main() {
+  AnsiX.ensureSupportsAnsi();
+
   const int fixedWidth = 35;
 
   final List<AnsiTableCell> headerData = <AnsiTableCell>[

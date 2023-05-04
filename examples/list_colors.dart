@@ -5,6 +5,8 @@ import 'package:ansix/ansix.dart';
 const int fixedWidth = 30;
 
 void main() {
+  AnsiX.ensureSupportsAnsi();
+
   void printColorSet(List<AnsiColor> colors) {
     for (final AnsiColor color in AnsiColorSet.all) {
       print(

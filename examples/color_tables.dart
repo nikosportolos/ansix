@@ -3,6 +3,8 @@
 import 'package:ansix/ansix.dart';
 
 void main() {
+  AnsiX.ensureSupportsAnsi();
+
   void printColorSetTable(
     final List<AnsiColor> colors,
     final String colorSetName,

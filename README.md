@@ -13,13 +13,20 @@
 ## Table of contents
 
 - [Introduction](#introduction)
-- [Core](#core)
+  - [How to use](#how-to-use)
+- [Features](#ansix-features)
   - [Styles](#styles)
   - [Colors](#colors)
+  - [Alignment](#alignment)
+  - [Padding](#padding)
   - [Extensions](#extensions)
-- [Widgets](#widgets)
-  - [AnsiText](#ansitext) 
-  - [AnsiTable](#ansitable) 
+    - [String](#string) 
+    - [StringBuffer](#stringbuffer) 
+  - [Widgets](#widgets)
+    - [AnsiText](#ansitext) 
+      - [AnsiTextStyle](#ansitextstyle)
+    - [AnsiTable](#ansitable) 
+      - [AnsiBorder](#ansiborder) 
 - [Examples](#examples)
 
 
@@ -30,7 +37,14 @@ The commands were preceded with an escape character (ANSI escape codes), and alt
 
 [Source](https://www.pcmag.com/encyclopedia/term/ansi-terminal)
 
-## Styles
+
+## How to use
+
+
+## AnsiX Features
+
+
+### Styles
 
 AnsiX supports the following text styles:
 
@@ -46,7 +60,7 @@ AnsiX supports the following text styles:
 <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/text-styles.png" width="400">
 
 
-## Colors
+### Colors
 
 Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors.
 
@@ -60,9 +74,27 @@ Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors.
 
 Source: https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797#color-codes
 
-## Widgets
+### Alignment
 
-### AnsiText
+
+### Padding
+
+
+## Extensions
+
+### String
+```dart
+```
+
+### StringBuffer
+
+```dart
+```
+
+### Widgets
+
+
+#### AnsiText
 
 ```dart
 AnsiText(
@@ -76,8 +108,6 @@ AnsiText(
   ),
 );
 ```
-
-
 
 
 #### AnsiTextStyle
@@ -95,7 +125,11 @@ AnsiTextStyle(
 ```
 
 
-### AnsiTable
+#### AnsiTable
+
+
+#### AnsiBorder
+
 
 ## Examples
 

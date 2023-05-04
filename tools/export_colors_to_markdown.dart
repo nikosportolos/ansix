@@ -5,11 +5,7 @@ import 'package:path/path.dart';
 
 const String separator = '|';
 
-final String basePath = join(
-  Directory.current.path,
-  'docs',
-  'colors',
-);
+final String basePath = join(Directory.current.path, 'docs', 'colors');
 
 void main() {
   final Directory directory = Directory(basePath);
@@ -17,10 +13,10 @@ void main() {
     directory.deleteSync(recursive: true);
   }
 
-  printColorSet(AnsiColor.all, 'All');
-  printColorSet(AnsiColor.system, 'System');
-  printColorSet(AnsiColor.extended, 'Extended');
-  printColorSet(AnsiColor.greyscale, 'Greyscale');
+  printColorSet(AnsiColorSet.all, 'All');
+  printColorSet(AnsiColorSet.system, 'System');
+  printColorSet(AnsiColorSet.extended, 'Extended');
+  printColorSet(AnsiColorSet.greyscale, 'Greyscale');
 }
 
 void printColorSet(

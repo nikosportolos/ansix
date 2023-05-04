@@ -7,59 +7,56 @@ void main() {
   group('Validate color sets', () {
     validateColorSet(
       colorSetName: 'System colors',
-      colorSet: AnsiColor.system,
+      colorSet: AnsiColorSet.system,
       expectedCount: 16,
-      testRgb: false,
     );
 
     validateColorSet(
       colorSetName: 'Extended colors',
-      colorSet: AnsiColor.extended,
-      expectedCount: 209,
+      colorSet: AnsiColorSet.extended,
+      expectedCount: 216,
     );
 
     validateColorSet(
       colorSetName: 'Greyscale colors',
-      colorSet: AnsiColor.greyscale,
-      expectedCount: 31,
-      testRgb: false,
+      colorSet: AnsiColorSet.greyscale,
+      expectedCount: 24,
     );
 
     validateColorSet(
       colorSetName: 'All colors',
-      colorSet: AnsiColor.all,
-      expectedCount: 257,
-      testRgb: false,
+      colorSet: AnsiColorSet.all,
+      expectedCount: 256,
     );
   });
+
+  group('Calculate RGB value', () {
+    for (final AnsiColor color in AnsiColorSet.extended) {
+      test('$color', () {
+        print('$color - ${color.rgb} - ${color.value}'.colored(foreground: color));
+        expect(color.value, color.rgb?.value);
+      });
+    }
+  });
+
+  // group('Calculate lightness', () {
+  //   for (final AnsiColor color in [AnsiColor.red]) {
+  //     test('$color', () {
+  //       print('#${color.value} $color - ${color.rgb} - ${color.hsl}'.colored(foreground: color));
+  //       expect(color.rgb?.lightness, color.hsl?.lightness);
+  //     });
+  //   }
+  // });
 }
 
 void validateColorSet({
   required final String colorSetName,
   required final List<AnsiColor> colorSet,
   required final int expectedCount,
-  final bool testRgb = true,
 }) {
   group(colorSetName, () {
     test('Valid color set count', () {
       expect(colorSet.length, expectedCount);
     });
-    if (testRgb) {
-      group('Calculate RGB value', () {
-        for (final AnsiColor color in colorSet) {
-          test('$color', () {
-            print(AnsiText(
-              '$color - ${color.rgb} - ${color.value}',
-              foregroundColor: color,
-            ));
-
-            expect(
-              color.value,
-              color.rgb?.value,
-            );
-          });
-        }
-      });
-    }
   });
 }

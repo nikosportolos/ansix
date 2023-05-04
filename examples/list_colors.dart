@@ -1,13 +1,12 @@
 // ignore_for_file: avoid_print
 
 import 'package:ansix/ansix.dart';
-import 'package:ansix/src/core/exceptions/exceptions.dart';
 
 const int fixedWidth = 30;
 
 void main() {
   void printColorSet(List<AnsiColor> colors) {
-    for (final AnsiColor color in AnsiColor.all) {
+    for (final AnsiColor color in AnsiColorSet.all) {
       print(
         '|'
         '${AnsiText(
@@ -41,5 +40,5 @@ void main() {
     }
   }
 
-  printColorSet(AnsiColor.all);
+  printColorSet(AnsiColorSet.all);
 }

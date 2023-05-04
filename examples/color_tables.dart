@@ -6,7 +6,8 @@ void main() {
   void printColorSetTable(
     final List<AnsiColor> colors,
     final String colorSetName,
-    final int splitLinesEvery,
+    final int maxColumns,
+    final int size,
   ) {
     final StringBuffer buffer = StringBuffer()
       ..writeln(
@@ -22,16 +23,16 @@ void main() {
       ..writeln();
 
     for (int i = 0; i < colors.length; i++) {
-      if (i != 0 && i % splitLinesEvery == 0) {
+      if (i != 0 && i % maxColumns == 0) {
         buffer.writeln();
       }
       buffer.write(AnsiText(
         '${colors[i].value}',
-        foregroundColor: colors[i].lightness != null && colors[i].lightness! > 50 //
+        foregroundColor: colors[i].lightness != null && colors[i].lightness! >= 50 //
             ? AnsiColor.black
             : AnsiColor.white,
         backgroundColor: colors[i],
-        fixedWidth: 10,
+        fixedWidth: size,
         textAlignment: AnsiTextAlignment.center,
       ));
     }
@@ -43,7 +44,7 @@ void main() {
   }
 
   print('');
-  printColorSetTable(AnsiColor.system, 'System colors', 8);
-  printColorSetTable(AnsiColor.extended, 'Extended colors', 18);
-  printColorSetTable(AnsiColor.greyscale, 'Greyscale colors', 12);
+  printColorSetTable(AnsiColorSet.system, 'System colors', 8, 12);
+  printColorSetTable(AnsiColorSet.extended, 'Extended colors', 36, 6);
+  printColorSetTable(AnsiColorSet.greyscale, 'Greyscale colors', 12, 12);
 }

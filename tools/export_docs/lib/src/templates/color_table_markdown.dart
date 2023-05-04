@@ -1,5 +1,4 @@
-import 'package:ansix/src/core/extensions/string_buffer_extensions.dart';
-import 'package:ansix/src/theme/color/color.dart';
+import 'package:ansix/ansix.dart';
 
 const String _separator = '|';
 

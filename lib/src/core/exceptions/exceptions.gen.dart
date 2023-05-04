@@ -97,8 +97,7 @@ class WindowsLegacyModeError extends AnsiXException {
   String toString() {
     String toStringOutput = 'WindowsLegacyModeError{<optimized out>}';
     assert(() {
-      toStringOutput =
-          'WindowsLegacyModeError@<$hexIdentity>{message: $message, innerException: $innerException}';
+      toStringOutput = 'WindowsLegacyModeError@<$hexIdentity>{message: $message, innerException: $innerException}';
       return true;
     }());
     return toStringOutput;

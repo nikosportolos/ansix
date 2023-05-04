@@ -5,10 +5,18 @@ import 'package:path/path.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Validate generated docs & assets', () {
-    group('color images', () {
-      final String basePath = join('assets', 'images', 'colors');
+  group('Validate generated color images', () {
+    final String basePath = join('assets', 'images', 'colors');
 
+    test(basePath, () {
+      final Directory dir = Directory(join(Directory.current.path, basePath));
+      expect(
+        dir.listSync(recursive: true).length,
+        AnsiColorSet.all.length,
+      );
+    });
+
+    group('colors', () {
       for (final AnsiColor color in AnsiColorSet.all) {
         final String filename = '${color.name.toLowerCase().replaceAll(' ', '_')}.png';
         final String filepath = join(
@@ -22,10 +30,20 @@ void main() {
         });
       }
     });
+  });
 
-    group('color markdown files', () {
-      final String basePath = join('docs', 'colors');
+  group('Validate generated color markdown files', () {
+    final String basePath = join('docs', 'colors');
 
+    test(basePath, () {
+      final Directory dir = Directory(join(Directory.current.path, basePath));
+      expect(
+        dir.listSync(recursive: true).length,
+        AnsiColorSet.map.entries.length,
+      );
+    });
+
+    group('color sets', () {
       for (final MapEntry<String, List<AnsiColor>> set in AnsiColorSet.map.entries) {
         final String filename = '${set.key.toLowerCase()}.md';
         test(filename, () {

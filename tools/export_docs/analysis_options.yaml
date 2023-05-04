@@ -1,12 +1,5 @@
 include: package:lints/recommended.yaml
 
-analyzer:
-  plugins:
-    - data_class_plugin
-  exclude:
-    - lib/**/*.gen.dart
-    - lib/generated/**.dart
-
 linter:
   rules:
     always_specify_types: true

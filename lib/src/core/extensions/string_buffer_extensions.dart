@@ -1,6 +1,4 @@
-import 'package:ansix/src/core/core.dart';
-import 'package:ansix/src/theme/color/color.dart';
-import 'package:ansix/src/theme/style.dart';
+import 'package:ansix/ansix.dart';
 
 extension StringBufferX on StringBuffer {
   void writeNewLine() {
@@ -16,7 +14,7 @@ extension StringBufferX on StringBuffer {
     final AnsiColor backgroundColor = AnsiColor.none,
   ]) {
     write((' ' * length).styled(
-      <AnsiStyle>[],
+      const AnsiTextStyle(),
       AnsiColor.none,
       backgroundColor,
     ));
@@ -28,21 +26,19 @@ extension StringBufferX on StringBuffer {
   ) {
     writeStyled(
       text,
-      styles: <AnsiStyle>[],
+      textStyle: const AnsiTextStyle(),
       foregroundColor: color,
     );
   }
 
   void writeStyled(
     final String text, {
-    final List<AnsiStyle> styles = const <AnsiStyle>[],
+    required final AnsiTextStyle textStyle,
     final AnsiColor foregroundColor = AnsiColor.none,
     final AnsiColor backgroundColor = AnsiColor.none,
   }) {
-    write(text.styled(
-      styles,
-      foregroundColor,
-      backgroundColor,
-    ));
+    write(
+      text.styled(textStyle, foregroundColor, backgroundColor),
+    );
   }
 }

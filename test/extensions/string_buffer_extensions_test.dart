@@ -42,13 +42,13 @@ void main() {
       );
       buffer.writeStyled(
         color.name,
-        styles: style.styles,
+        textStyle: style,
         foregroundColor: color,
         backgroundColor: color1,
       );
       expect(
         buffer.toString(),
-        color.name.styled(style.styles, color, color1),
+        color.name.styled(style, color, color1),
       );
     });
   });

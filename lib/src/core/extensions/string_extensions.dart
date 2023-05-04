@@ -1,5 +1,4 @@
-import 'package:ansix/src/ansix.dart';
-import 'package:ansix/src/theme/color/color.dart';
+import 'package:ansix/ansix.dart';
 import 'package:ansix/src/theme/style.dart';
 
 extension AnsiString on String {
@@ -16,12 +15,12 @@ extension AnsiString on String {
   }
 
   String styled(
-    final List<AnsiStyle> styles, [
+    final AnsiTextStyle textStyle, [
     final AnsiColor? foregroundColor,
     final AnsiColor? backgroundColor,
   ]) {
     String text = this;
-    for (final AnsiStyle style in styles) {
+    for (final AnsiStyle style in textStyle.styles) {
       text = text.addStyle(style);
     }
     return text.colored(

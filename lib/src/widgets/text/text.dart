@@ -43,7 +43,7 @@ class AnsiText {
           ..writeSpaces(leftPadding, backgroundColor)
           ..writeStyled(
             text,
-            styles: textStyle.styles,
+            textStyle: textStyle,
             foregroundColor: foregroundColor,
             backgroundColor: backgroundColor,
           )

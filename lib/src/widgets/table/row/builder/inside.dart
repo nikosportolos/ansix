@@ -25,7 +25,7 @@ class InsideBorderRowBuilder extends AnsiRowBuilder {
         data.join(border.boxDrawingSet.verticalLine.colored(foreground: border.color)),
         border.color,
       )
-      ..writeNewLine();
+      ..writeln();
 
     return buffer.toString();
   }
@@ -50,7 +50,7 @@ class InsideBorderRowBuilder extends AnsiRowBuilder {
       }
     }
 
-    buffer.writeNewLine();
+    buffer.writeln();
 
     return buffer.toString();
   }

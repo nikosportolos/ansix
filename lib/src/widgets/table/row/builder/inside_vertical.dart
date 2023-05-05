@@ -26,7 +26,7 @@ class InsideVerticalBorderRowBuilder extends AnsiRowBuilder {
             foreground: border.color,
           )),
           border.color)
-      ..writeNewLine();
+      ..writeln();
 
     return buffer.toString();
   }

@@ -25,7 +25,7 @@ class OutsideBorderRowBuilder extends AnsiRowBuilder {
 
     buffer
       ..writeColored(border.boxDrawingSet.topRightCorner, border.color)
-      ..writeNewLine();
+      ..writeln();
 
     return buffer.toString();
   }
@@ -39,7 +39,7 @@ class OutsideBorderRowBuilder extends AnsiRowBuilder {
       ..writeColored(border.boxDrawingSet.verticalLine, border.color)
       ..writeColored(data.join(''), border.color)
       ..writeColored(border.boxDrawingSet.verticalLine, border.color)
-      ..writeNewLine();
+      ..writeln();
 
     return buffer.toString();
   }

@@ -30,7 +30,7 @@ class HeaderBorderRowBuilder extends AnsiRowBuilder {
 
     buffer
       ..write(border.boxDrawingSet.topRightCorner)
-      ..writeNewLine();
+      ..writeln();
 
     return buffer.toString().colored(foreground: border.color);
   }
@@ -47,7 +47,7 @@ class HeaderBorderRowBuilder extends AnsiRowBuilder {
       ..write(separator)
       ..writeColored(data.join(separator), border.color)
       ..write(separator)
-      ..writeNewLine();
+      ..writeln();
 
     return buffer.toString();
   }
@@ -73,7 +73,7 @@ class HeaderBorderRowBuilder extends AnsiRowBuilder {
 
     buffer
       ..write(border.boxDrawingSet.bottomRightCorner)
-      ..writeNewLine();
+      ..writeln();
 
     return buffer.toString().colored(foreground: border.color);
   }

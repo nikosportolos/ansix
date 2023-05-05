@@ -1,10 +1,6 @@
 import 'package:ansix/ansix.dart';
 
 extension StringBufferX on StringBuffer {
-  void writeNewLine() {
-    writeln();
-  }
-
   void writeLines(final int lines) {
     write(newLine * lines);
   }

@@ -7,11 +7,6 @@ void main() {
   tearDown(() => buffer.clear());
 
   group('StringBuffer', () {
-    test('writeNewLine', () {
-      buffer.writeNewLine();
-      expect(buffer.toString(), newLine);
-    });
-
     test('writeSpaces', () {
       buffer.writeSpaces(10);
       expect(buffer.toString(), ' ' * 10);

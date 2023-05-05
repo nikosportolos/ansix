@@ -22,7 +22,7 @@ class InsideHorizontalBorderRowBuilder extends AnsiRowBuilder {
 
     buffer
       ..writeColored(data.join(' '), border.color)
-      ..writeNewLine();
+      ..writeln();
 
     return buffer.toString();
   }
@@ -47,7 +47,7 @@ class InsideHorizontalBorderRowBuilder extends AnsiRowBuilder {
       }
     }
 
-    buffer.writeNewLine();
+    buffer.writeln();
 
     return buffer.toString();
   }

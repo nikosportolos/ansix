@@ -1,10 +1,8 @@
-// ignore_for_file: avoid_print
-
 import 'package:ansix/ansix.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Validate color sets', () {
+  group('Validate color', () {
     validateColorSet(
       colorSetName: 'System colors',
       colorSet: AnsiColorSet.system,
@@ -33,20 +31,12 @@ void main() {
   group('Calculate RGB value', () {
     for (final AnsiColor color in AnsiColorSet.extended) {
       test('$color', () {
+        // ignore: avoid_print
         print('$color - ${color.rgb} - ${color.value}'.colored(foreground: color));
         expect(color.value, color.rgb?.value);
       });
     }
   });
-
-  // group('Calculate lightness', () {
-  //   for (final AnsiColor color in [AnsiColor.red]) {
-  //     test('$color', () {
-  //       print('#${color.value} $color - ${color.rgb} - ${color.hsl}'.colored(foreground: color));
-  //       expect(color.rgb?.lightness, color.hsl?.lightness);
-  //     });
-  //   }
-  // });
 }
 
 void validateColorSet({

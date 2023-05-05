@@ -1,7 +1,7 @@
 import 'package:ansix/ansix.dart';
 
 void main() {
-  AnsiX.ensureSupportsAnsi();
+  AnsiX.ensureSupportsAnsi(silent: true);
 
   final StringBuffer buffer = StringBuffer()..writeLines(2);
   const int width = 60;

@@ -23,6 +23,8 @@ abstract class AnsiX {
 
   static TextFormatter get formatter => _formatter;
 
+  static final ProcessManager _processManager = ProcessManager();
+
   /// Enables ANSI formatting (if supported by the system).
   static void enable() {
     _isEnabled = true;
@@ -38,29 +40,24 @@ abstract class AnsiX {
   /// Ensure that ANSI formatting is supported
   ///
   /// If [silent] = false, no exceptions will be thrown
-  static void ensureSupportsAnsi({final bool silent = false}) {
+  static void ensureSupportsAnsi({
+    final bool silent = false,
+    final bool force = false,
+  }) {
     try {
-      final bool attachedToValidStream = attachedToTerminal || attachedToPipe;
-      bool isSupported = supportsAnsi && attachedToValidStream;
-
-      if (Platform.isWindows && !isSupported) {
-        final LegacyConsoleMode legacyMode = LegacyConsoleMode.fromWindowsRegistry();
-        isSupported = attachedToValidStream && legacyMode == LegacyConsoleMode.disabled;
-
-        if (legacyMode == LegacyConsoleMode.enabled) {
-          throw const AnsiXException.ansiNotSupported(
-            'Legacy console mode is enabled. '
-            'ANSI escape characters are not supported',
-          );
-        }
-      }
-
-      if (!isSupported) {
+      if (!_checkAnsiSupport()) {
         throw const AnsiXException.ansiNotSupported(
           'ANSI escape characters are not supported.',
         );
       }
+
+      enable();
     } on AnsiXException catch (e) {
+      if (force) {
+        enable();
+        return;
+      }
+
       disable();
       if (silent) {
         _handleException(e);
@@ -68,6 +65,16 @@ abstract class AnsiX {
       }
       rethrow;
     }
+  }
+
+  static bool _checkAnsiSupport() {
+    final bool attachedToValidStream = attachedToTerminal || attachedToPipe;
+    final bool isSupported = attachedToValidStream && supportsAnsi;
+    if (!isSupported && Platform.isWindows) {
+      return attachedToValidStream && _processManager.detectWindowsAnsiSupport();
+    }
+
+    return isSupported;
   }
 
   static void _handleException(final AnsiXException exception) {

@@ -4,6 +4,7 @@ import 'package:ansix/src/core/core.dart';
 import 'package:ansix/src/formatter/ansi.dart';
 import 'package:ansix/src/formatter/formatter.dart';
 import 'package:ansix/src/formatter/standard.dart';
+import 'package:ansix/src/system/system.dart';
 
 abstract class AnsiX {
   /// Returns true if connected to a terminal that supports ANSI escape sequences.
@@ -21,6 +22,7 @@ abstract class AnsiX {
 
   static TextFormatter _formatter = AnsiTextFormatter();
 
+  /// Returns the active text formatter
   static TextFormatter get formatter => _formatter;
 
   static final ProcessManager _processManager = ProcessManager();

@@ -1,5 +1,5 @@
 import 'package:ansix/src/core/exceptions/exceptions.dart';
-import 'package:ansix/src/core/system/system.dart';
+import 'package:ansix/src/system/system.dart';
 import 'package:meta/meta.dart';
 
 class ProcessManager {

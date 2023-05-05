@@ -1,4 +1,5 @@
-import 'package:ansix/src/core/system/system.dart';
+import 'package:ansix/ansix.dart';
+import 'package:ansix/src/system/system.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -20,7 +21,7 @@ void main() {
       when(() {
         return mockShell.runCommand(ProcessManager.detectTerminalColorsCommand);
       }).thenThrow(Exception(''));
-      expect(() => manager.detectWindowsAnsiSupport(), throwsException);
+      expect(() => manager.detectWindowsAnsiSupport(), throwsA(isA<AnsiXException>()));
     });
 
     test('supported', () {
@@ -38,7 +39,7 @@ void main() {
       }).thenReturn(enabledResult);
 
       expect(manager.determineLegacyConsoleMode(), LegacyConsoleMode.enabled);
-      expect(() => manager.detectWindowsAnsiSupport(), throwsException);
+      expect(() => manager.detectWindowsAnsiSupport(), throwsA(isA<AnsiXException>()));
     });
   });
 
@@ -47,7 +48,7 @@ void main() {
       when(() {
         return mockShell.runCommand(ProcessManager.detectLegacyConsoleModeCommand);
       }).thenThrow(Exception(''));
-      expect(() => manager.determineLegacyConsoleMode(), throwsException);
+      expect(() => manager.detectWindowsAnsiSupport(), throwsA(isA<AnsiXException>()));
     });
 
     test('unknown', () {

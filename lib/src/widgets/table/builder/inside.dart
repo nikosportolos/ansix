@@ -1,8 +1,8 @@
 import 'package:ansix/ansix.dart';
-import 'package:ansix/src/widgets/table/row/builder/builder.dart';
+import 'package:ansix/src/widgets/table/builder/builder.dart';
 
-class InsideBorderRowBuilder extends AnsiRowBuilder {
-  InsideBorderRowBuilder({
+class InsideBorderTableBuilder extends AnsiTableBuilder {
+  InsideBorderTableBuilder({
     required super.data,
     required super.border,
     required super.isFirstLine,
@@ -22,7 +22,7 @@ class InsideBorderRowBuilder extends AnsiRowBuilder {
 
     buffer
       ..writeColored(
-        data.join(border.boxDrawingSet.verticalLine.colored(foreground: border.color)),
+        data.join(border.style.boxDrawingSet.verticalLine.colored(foreground: border.color)),
         border.color,
       )
       ..writeln();
@@ -41,12 +41,12 @@ class InsideBorderRowBuilder extends AnsiRowBuilder {
 
     for (int i = 0; i < data.length; i++) {
       buffer.writeColored(
-        border.boxDrawingSet.horizontalLine * (data[i].width),
+        border.style.boxDrawingSet.horizontalLine * (data[i].width),
         border.color,
       );
 
       if (i != data.length - 1) {
-        buffer.writeColored(border.boxDrawingSet.cross, border.color);
+        buffer.writeColored(border.style.boxDrawingSet.cross, border.color);
       }
     }
 

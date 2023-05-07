@@ -8,32 +8,35 @@ export 'text_theme.dart';
 
 class AnsiText {
   AnsiText(
-    this.text, {
+    final String text, {
     this.textAlignment = AnsiTextAlignment.left,
     this.textStyle = const AnsiTextStyle(),
     this.foregroundColor = AnsiColor.none,
     this.backgroundColor = AnsiColor.none,
     this.padding = AnsiPadding.none,
     final int? fixedWidth,
-  }) {
-    final int minWidth = text.length + padding.left + padding.right;
-    width = (fixedWidth == null || fixedWidth == 0 || fixedWidth < minWidth) //
-        ? minWidth
-        : fixedWidth;
-    topPadding = padding.top;
-    bottomPadding = padding.bottom;
+  }) : text = text.replaceAll(RegExp(r'\[(.*?)m'), '') {
+    final int minWidth = this.text.length + padding.left + padding.right;
+    // width = (fixedWidth == null || fixedWidth == 0 || fixedWidth < minWidth) ? minWidth : fixedWidth;
+    width = fixedWidth ?? minWidth;
+
+    final int topPadding = padding.top;
+    final int bottomPadding = padding.bottom;
+    late final int leftPadding;
+    late final int rightPadding;
 
     switch (textAlignment) {
       case AnsiTextAlignment.left:
         leftPadding = padding.left;
-        rightPadding = width - padding.left - text.length;
+        rightPadding = width - padding.left - this.text.length;
         break;
       case AnsiTextAlignment.center:
-        leftPadding = width ~/ 2 - text.length ~/ 2 + padding.left;
-        rightPadding = width - leftPadding - text.length + padding.right;
+        final int paddedWidth = width + padding.left + padding.right;
+        leftPadding = (paddedWidth / 2 - this.text.length / 2 - padding.left).floor();
+        rightPadding = width - this.text.length - leftPadding;
         break;
       case AnsiTextAlignment.right:
-        leftPadding = width - padding.right - text.length;
+        leftPadding = width - padding.right - this.text.length;
         rightPadding = padding.right;
         break;
     }
@@ -52,21 +55,6 @@ class AnsiText {
         .toString();
   }
 
-  factory AnsiText.withTheme(
-    final String text,
-    final AnsiTextTheme theme,
-  ) {
-    return AnsiText(
-      text,
-      foregroundColor: theme.foregroundColor!,
-      backgroundColor: theme.backgroundColor!,
-      textStyle: theme.textStyle!,
-      textAlignment: theme.textAlignment!,
-      padding: theme.padding!,
-      fixedWidth: theme.fixedWidth,
-    );
-  }
-
   final String text;
   final AnsiColor foregroundColor;
   final AnsiColor backgroundColor;
@@ -75,11 +63,19 @@ class AnsiText {
   final AnsiTextAlignment textAlignment;
 
   late final int width;
-  late final int topPadding;
-  late final int bottomPadding;
-  late final int leftPadding;
-  late final int rightPadding;
   late final String formattedText;
+
+  factory AnsiText.withTheme(final String text, final AnsiTextTheme theme) {
+    return AnsiText(
+      text,
+      foregroundColor: theme.foregroundColor,
+      backgroundColor: theme.backgroundColor,
+      textStyle: theme.textStyle,
+      textAlignment: theme.textAlignment,
+      padding: theme.padding,
+      fixedWidth: theme.fixedWidth,
+    );
+  }
 
   @override
   String toString() {

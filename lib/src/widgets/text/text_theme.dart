@@ -12,28 +12,28 @@ abstract class AnsiTextTheme {
 
   /// Default constructor
   const factory AnsiTextTheme({
-    AnsiColor? foregroundColor,
-    AnsiColor? backgroundColor,
-    AnsiTextStyle? textStyle,
-    AnsiPadding? padding,
-    AnsiTextAlignment? textAlignment,
+    AnsiColor foregroundColor,
+    AnsiColor backgroundColor,
+    AnsiTextStyle textStyle,
+    AnsiPadding padding,
+    AnsiTextAlignment textAlignment,
     int? fixedWidth,
   }) = _$AnsiTextThemeImpl;
 
   @DefaultValue(AnsiColor.none)
-  AnsiColor? get foregroundColor;
+  AnsiColor get foregroundColor;
 
   @DefaultValue(AnsiColor.none)
-  AnsiColor? get backgroundColor;
+  AnsiColor get backgroundColor;
 
   @DefaultValue(AnsiTextStyle())
-  AnsiTextStyle? get textStyle;
+  AnsiTextStyle get textStyle;
 
   @DefaultValue(AnsiPadding.none)
-  AnsiPadding? get padding;
+  AnsiPadding get padding;
 
   @DefaultValue(AnsiTextAlignment.left)
-  AnsiTextAlignment? get textAlignment;
+  AnsiTextAlignment get textAlignment;
 
   int? get fixedWidth;
 }

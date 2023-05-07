@@ -2,8 +2,7 @@
 
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/widgets/table/cell.dart';
-import 'package:ansix/src/widgets/table/fixed_table.dart';
-import 'package:ansix/src/widgets/table/row/row.dart';
+import 'package:ansix/src/widgets/table/row.dart';
 
 void main() {
   AnsiX.ensureSupportsAnsi();
@@ -83,15 +82,19 @@ void main() {
   for (final AnsiBorderType type in AnsiBorderType.values) {
     print('');
     print(type.name.bold());
+
     final AnsiBorder border = AnsiBorder(
       style: AnsiBorderStyle.double,
       type: type,
       color: AnsiColor.deepSkyBlue4,
     );
-    final AnsiFixedTable table = AnsiFixedTable(
+
+    final AnsiTable table = AnsiTable(
       border: border,
-      header: AnsiTableRow(data: headerData),
-      data: data,
+      data: <AnsiTableRow>[
+        AnsiTableRow(data: headerData),
+        ...data,
+      ],
     );
     print(table.toString());
   }

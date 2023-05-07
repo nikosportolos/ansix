@@ -1,8 +1,8 @@
 import 'package:ansix/ansix.dart';
-import 'package:ansix/src/widgets/table/row/builder/builder.dart';
+import 'package:ansix/src/widgets/table/builder/builder.dart';
 
-class HeaderBorderRowBuilder extends AnsiRowBuilder {
-  HeaderBorderRowBuilder({
+class HeaderBorderTableBuilder extends AnsiTableBuilder {
+  HeaderBorderTableBuilder({
     required super.data,
     required super.border,
     required super.isFirstLine,
@@ -17,19 +17,19 @@ class HeaderBorderRowBuilder extends AnsiRowBuilder {
     }
 
     final StringBuffer buffer = StringBuffer();
-    buffer.write(border.boxDrawingSet.topLeftCorner);
+    buffer.write(border.style.boxDrawingSet.topLeftCorner);
 
     for (int i = 0; i < data.length; i++) {
-      buffer.write(border.boxDrawingSet.horizontalLine * data[i].width);
+      buffer.write(border.style.boxDrawingSet.horizontalLine * data[i].width);
       if (i != data.length - 1) {
         buffer.write(
-          border.boxDrawingSet.crossDown,
+          border.style.boxDrawingSet.crossDown,
         );
       }
     }
 
     buffer
-      ..write(border.boxDrawingSet.topRightCorner)
+      ..write(border.style.boxDrawingSet.topRightCorner)
       ..writeln();
 
     return buffer.toString().colored(foreground: border.color);
@@ -40,7 +40,7 @@ class HeaderBorderRowBuilder extends AnsiRowBuilder {
   String getTextLineBorder() {
     final StringBuffer buffer = StringBuffer();
     final String separator = isFirstLine //
-        ? border.boxDrawingSet.verticalLine.colored(foreground: border.color)
+        ? border.style.boxDrawingSet.verticalLine.colored(foreground: border.color)
         : ' ';
 
     buffer
@@ -61,18 +61,18 @@ class HeaderBorderRowBuilder extends AnsiRowBuilder {
 
     final StringBuffer buffer = StringBuffer();
 
-    buffer.write(border.boxDrawingSet.bottomLeftCorner);
+    buffer.write(border.style.boxDrawingSet.bottomLeftCorner);
 
     for (int i = 0; i < data.length; i++) {
-      buffer.write(border.boxDrawingSet.horizontalLine * (data[i].width));
+      buffer.write(border.style.boxDrawingSet.horizontalLine * (data[i].width));
 
       if (i != data.length - 1) {
-        buffer.write(border.boxDrawingSet.crossUp);
+        buffer.write(border.style.boxDrawingSet.crossUp);
       }
     }
 
     buffer
-      ..write(border.boxDrawingSet.bottomRightCorner)
+      ..write(border.style.boxDrawingSet.bottomRightCorner)
       ..writeln();
 
     return buffer.toString().colored(foreground: border.color);

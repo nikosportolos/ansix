@@ -1,8 +1,8 @@
 import 'package:ansix/ansix.dart';
-import 'package:ansix/src/widgets/table/row/builder/builder.dart';
+import 'package:ansix/src/widgets/table/builder/builder.dart';
 
-class InsideHorizontalBorderRowBuilder extends AnsiRowBuilder {
-  InsideHorizontalBorderRowBuilder({
+class InsideVerticalBorderRowBuilder extends AnsiTableBuilder {
+  InsideVerticalBorderRowBuilder({
     required super.data,
     required super.border,
     required super.isFirstLine,
@@ -21,7 +21,11 @@ class InsideHorizontalBorderRowBuilder extends AnsiRowBuilder {
     final StringBuffer buffer = StringBuffer();
 
     buffer
-      ..writeColored(data.join(' '), border.color)
+      ..writeColored(
+          data.join(border.style.boxDrawingSet.verticalLine.colored(
+            foreground: border.color,
+          )),
+          border.color)
       ..writeln();
 
     return buffer.toString();
@@ -30,26 +34,7 @@ class InsideHorizontalBorderRowBuilder extends AnsiRowBuilder {
   /// Returns the inline horizontal border for each row
   @override
   String getMiddleBorder() {
-    if (border.style == AnsiBorderStyle.none) {
-      return '';
-    }
-
-    final StringBuffer buffer = StringBuffer();
-
-    for (int i = 0; i < data.length; i++) {
-      buffer.writeColored(
-        border.boxDrawingSet.horizontalLine * (data[i].width),
-        border.color,
-      );
-
-      if (i != data.length - 1) {
-        buffer.writeColored(border.boxDrawingSet.horizontalLine, border.color);
-      }
-    }
-
-    buffer.writeln();
-
-    return buffer.toString();
+    return '';
   }
 
   /// Returns the bottom border for the last row

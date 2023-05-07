@@ -15,19 +15,19 @@ class _$AnsiTextThemeImpl extends AnsiTextTheme {
   }) : super.ctor();
 
   @override
-  final AnsiColor? foregroundColor;
+  final AnsiColor foregroundColor;
 
   @override
-  final AnsiColor? backgroundColor;
+  final AnsiColor backgroundColor;
 
   @override
-  final AnsiTextStyle? textStyle;
+  final AnsiTextStyle textStyle;
 
   @override
-  final AnsiPadding? padding;
+  final AnsiPadding padding;
 
   @override
-  final AnsiTextAlignment? textAlignment;
+  final AnsiTextAlignment textAlignment;
 
   @override
   final int? fixedWidth;
@@ -79,41 +79,38 @@ class _$AnsiTextThemeCopyWithProxy {
   final AnsiTextTheme _value;
 
   @pragma('vm:prefer-inline')
-  AnsiTextTheme foregroundColor(AnsiColor? newValue) => this(foregroundColor: newValue);
+  AnsiTextTheme foregroundColor(AnsiColor newValue) => this(foregroundColor: newValue);
 
   @pragma('vm:prefer-inline')
-  AnsiTextTheme backgroundColor(AnsiColor? newValue) => this(backgroundColor: newValue);
+  AnsiTextTheme backgroundColor(AnsiColor newValue) => this(backgroundColor: newValue);
 
   @pragma('vm:prefer-inline')
-  AnsiTextTheme textStyle(AnsiTextStyle? newValue) => this(textStyle: newValue);
+  AnsiTextTheme textStyle(AnsiTextStyle newValue) => this(textStyle: newValue);
 
   @pragma('vm:prefer-inline')
-  AnsiTextTheme padding(AnsiPadding? newValue) => this(padding: newValue);
+  AnsiTextTheme padding(AnsiPadding newValue) => this(padding: newValue);
 
   @pragma('vm:prefer-inline')
-  AnsiTextTheme textAlignment(AnsiTextAlignment? newValue) => this(textAlignment: newValue);
+  AnsiTextTheme textAlignment(AnsiTextAlignment newValue) => this(textAlignment: newValue);
 
   @pragma('vm:prefer-inline')
   AnsiTextTheme fixedWidth(int? newValue) => this(fixedWidth: newValue);
 
   @pragma('vm:prefer-inline')
   AnsiTextTheme call({
-    final Object? foregroundColor = const Object(),
-    final Object? backgroundColor = const Object(),
-    final Object? textStyle = const Object(),
-    final Object? padding = const Object(),
-    final Object? textAlignment = const Object(),
+    final AnsiColor? foregroundColor,
+    final AnsiColor? backgroundColor,
+    final AnsiTextStyle? textStyle,
+    final AnsiPadding? padding,
+    final AnsiTextAlignment? textAlignment,
     final Object? fixedWidth = const Object(),
   }) {
     return _$AnsiTextThemeImpl(
-      foregroundColor:
-          identical(foregroundColor, const Object()) ? _value.foregroundColor : (foregroundColor as AnsiColor?),
-      backgroundColor:
-          identical(backgroundColor, const Object()) ? _value.backgroundColor : (backgroundColor as AnsiColor?),
-      textStyle: identical(textStyle, const Object()) ? _value.textStyle : (textStyle as AnsiTextStyle?),
-      padding: identical(padding, const Object()) ? _value.padding : (padding as AnsiPadding?),
-      textAlignment:
-          identical(textAlignment, const Object()) ? _value.textAlignment : (textAlignment as AnsiTextAlignment?),
+      foregroundColor: foregroundColor ?? _value.foregroundColor,
+      backgroundColor: backgroundColor ?? _value.backgroundColor,
+      textStyle: textStyle ?? _value.textStyle,
+      padding: padding ?? _value.padding,
+      textAlignment: textAlignment ?? _value.textAlignment,
       fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
     );
   }
@@ -126,41 +123,38 @@ class $AnsiTextThemeCopyWithProxyChain<$Result> {
   final $Result Function(AnsiTextTheme update) _chain;
 
   @pragma('vm:prefer-inline')
-  $Result foregroundColor(AnsiColor? newValue) => this(foregroundColor: newValue);
+  $Result foregroundColor(AnsiColor newValue) => this(foregroundColor: newValue);
 
   @pragma('vm:prefer-inline')
-  $Result backgroundColor(AnsiColor? newValue) => this(backgroundColor: newValue);
+  $Result backgroundColor(AnsiColor newValue) => this(backgroundColor: newValue);
 
   @pragma('vm:prefer-inline')
-  $Result textStyle(AnsiTextStyle? newValue) => this(textStyle: newValue);
+  $Result textStyle(AnsiTextStyle newValue) => this(textStyle: newValue);
 
   @pragma('vm:prefer-inline')
-  $Result padding(AnsiPadding? newValue) => this(padding: newValue);
+  $Result padding(AnsiPadding newValue) => this(padding: newValue);
 
   @pragma('vm:prefer-inline')
-  $Result textAlignment(AnsiTextAlignment? newValue) => this(textAlignment: newValue);
+  $Result textAlignment(AnsiTextAlignment newValue) => this(textAlignment: newValue);
 
   @pragma('vm:prefer-inline')
   $Result fixedWidth(int? newValue) => this(fixedWidth: newValue);
 
   @pragma('vm:prefer-inline')
   $Result call({
-    final Object? foregroundColor = const Object(),
-    final Object? backgroundColor = const Object(),
-    final Object? textStyle = const Object(),
-    final Object? padding = const Object(),
-    final Object? textAlignment = const Object(),
+    final AnsiColor? foregroundColor,
+    final AnsiColor? backgroundColor,
+    final AnsiTextStyle? textStyle,
+    final AnsiPadding? padding,
+    final AnsiTextAlignment? textAlignment,
     final Object? fixedWidth = const Object(),
   }) {
     return _chain(_$AnsiTextThemeImpl(
-      foregroundColor:
-          identical(foregroundColor, const Object()) ? _value.foregroundColor : (foregroundColor as AnsiColor?),
-      backgroundColor:
-          identical(backgroundColor, const Object()) ? _value.backgroundColor : (backgroundColor as AnsiColor?),
-      textStyle: identical(textStyle, const Object()) ? _value.textStyle : (textStyle as AnsiTextStyle?),
-      padding: identical(padding, const Object()) ? _value.padding : (padding as AnsiPadding?),
-      textAlignment:
-          identical(textAlignment, const Object()) ? _value.textAlignment : (textAlignment as AnsiTextAlignment?),
+      foregroundColor: foregroundColor ?? _value.foregroundColor,
+      backgroundColor: backgroundColor ?? _value.backgroundColor,
+      textStyle: textStyle ?? _value.textStyle,
+      padding: padding ?? _value.padding,
+      textAlignment: textAlignment ?? _value.textAlignment,
       fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
     ));
   }

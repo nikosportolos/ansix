@@ -1,8 +1,8 @@
 import 'package:ansix/ansix.dart';
-import 'package:ansix/src/widgets/table/row/builder/builder.dart';
+import 'package:ansix/src/widgets/table/builder/builder.dart';
 
-class AllBorderRowBuilder extends AnsiRowBuilder {
-  AllBorderRowBuilder({
+class AllBorderTableBuilder extends AnsiTableBuilder {
+  AllBorderTableBuilder({
     required super.data,
     required super.border,
     required super.isFirstLine,
@@ -17,17 +17,17 @@ class AllBorderRowBuilder extends AnsiRowBuilder {
     }
 
     final StringBuffer buffer = StringBuffer();
-    buffer.writeColored(border.boxDrawingSet.topLeftCorner, border.color);
+    buffer.writeColored(border.style.boxDrawingSet.topLeftCorner, border.color);
 
     for (int i = 0; i < data.length; i++) {
-      buffer.writeColored(border.boxDrawingSet.horizontalLine * data[i].width, border.color);
+      buffer.writeColored(border.style.boxDrawingSet.horizontalLine * data[i].width, border.color);
       if (i != data.length - 1) {
-        buffer.writeColored(border.boxDrawingSet.crossDown, border.color);
+        buffer.writeColored(border.style.boxDrawingSet.crossDown, border.color);
       }
     }
 
     buffer
-      ..writeColored(border.boxDrawingSet.topRightCorner, border.color)
+      ..writeColored(border.style.boxDrawingSet.topRightCorner, border.color)
       ..writeln();
 
     return buffer.toString();
@@ -39,12 +39,12 @@ class AllBorderRowBuilder extends AnsiRowBuilder {
     final StringBuffer buffer = StringBuffer();
 
     buffer
-      ..writeColored(border.boxDrawingSet.verticalLine, border.color)
+      ..writeColored(border.style.boxDrawingSet.verticalLine, border.color)
       ..writeColored(
-        data.join(border.boxDrawingSet.verticalLine.colored(foreground: border.color)),
+        data.join(border.style.boxDrawingSet.verticalLine.colored(foreground: border.color)),
         border.color,
       )
-      ..writeColored(border.boxDrawingSet.verticalLine, border.color)
+      ..writeColored(border.style.boxDrawingSet.verticalLine, border.color)
       ..writeln();
 
     return buffer.toString();
@@ -57,23 +57,25 @@ class AllBorderRowBuilder extends AnsiRowBuilder {
       return '';
     }
 
-    final StringBuffer buffer = StringBuffer();
-
-    buffer.writeColored(border.boxDrawingSet.crossRight, border.color);
+    final StringBuffer buffer = StringBuffer()
+      ..writeColored(
+        border.style.boxDrawingSet.crossRight,
+        border.color,
+      );
 
     for (int i = 0; i < data.length; i++) {
       buffer.writeColored(
-        border.boxDrawingSet.horizontalLine * (data[i].width),
+        border.style.boxDrawingSet.horizontalLine * (data[i].width),
         border.color,
       );
 
       if (i != data.length - 1) {
-        buffer.writeColored(border.boxDrawingSet.cross, border.color);
+        buffer.writeColored(border.style.boxDrawingSet.cross, border.color);
       }
     }
 
     buffer
-      ..writeColored(border.boxDrawingSet.crossLeft, border.color)
+      ..writeColored(border.style.boxDrawingSet.crossLeft, border.color)
       ..writeln();
 
     return buffer.toString();
@@ -87,18 +89,18 @@ class AllBorderRowBuilder extends AnsiRowBuilder {
     }
 
     final StringBuffer buffer = StringBuffer();
-    buffer.writeColored(border.boxDrawingSet.bottomLeftCorner, border.color);
+    buffer.writeColored(border.style.boxDrawingSet.bottomLeftCorner, border.color);
     for (int i = 0; i < data.length; i++) {
       buffer.writeColored(
-        border.boxDrawingSet.horizontalLine * (data[i].width),
+        border.style.boxDrawingSet.horizontalLine * (data[i].width),
         border.color,
       );
       if (i != data.length - 1) {
-        buffer.writeColored(border.boxDrawingSet.crossUp, border.color);
+        buffer.writeColored(border.style.boxDrawingSet.crossUp, border.color);
       }
     }
 
-    buffer.writeColored(border.boxDrawingSet.bottomRightCorner, border.color);
+    buffer.writeColored(border.style.boxDrawingSet.bottomRightCorner, border.color);
 
     return buffer.toString();
   }

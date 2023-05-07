@@ -1,8 +1,7 @@
-import 'package:ansix/ansix.dart';
-import 'package:ansix/src/widgets/table/row/builder/builder.dart';
+import 'package:ansix/src/widgets/table/builder/builder.dart';
 
-class InsideVerticalBorderRowBuilder extends AnsiRowBuilder {
-  InsideVerticalBorderRowBuilder({
+class NoneBorderRowBuilder extends AnsiTableBuilder {
+  NoneBorderRowBuilder({
     required super.data,
     required super.border,
     required super.isFirstLine,
@@ -18,17 +17,7 @@ class InsideVerticalBorderRowBuilder extends AnsiRowBuilder {
   /// Returns a row formatted with vertical borders
   @override
   String getTextLineBorder() {
-    final StringBuffer buffer = StringBuffer();
-
-    buffer
-      ..writeColored(
-          data.join(border.boxDrawingSet.verticalLine.colored(
-            foreground: border.color,
-          )),
-          border.color)
-      ..writeln();
-
-    return buffer.toString();
+    return '${data.join('')}\n';
   }
 
   /// Returns the inline horizontal border for each row

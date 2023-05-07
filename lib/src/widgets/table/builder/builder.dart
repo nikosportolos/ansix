@@ -1,5 +1,5 @@
 import 'package:ansix/src/theme/border/border.dart';
-import 'package:ansix/src/widgets/table/cell.dart';
+import 'package:ansix/src/widgets/text/text.dart';
 
 export 'all.dart';
 export 'header.dart';
@@ -9,8 +9,8 @@ export 'inside_vertical.dart';
 export 'none.dart';
 export 'outside.dart';
 
-abstract class AnsiRowBuilder {
-  AnsiRowBuilder({
+abstract class AnsiTableBuilder {
+  AnsiTableBuilder({
     required this.data,
     required this.border,
     required this.isFirstLine,
@@ -18,7 +18,7 @@ abstract class AnsiRowBuilder {
   });
 
   final StringBuffer buffer = StringBuffer();
-  final List<AnsiTableCell> data;
+  final List<AnsiText> data;
   final AnsiBorder border;
   final bool isFirstLine;
   final bool isLastLine;

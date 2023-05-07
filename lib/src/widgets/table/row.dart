@@ -1,13 +1,13 @@
 import 'package:ansix/src/theme/theme.dart';
-import 'package:ansix/src/widgets/table/cell.dart';
-import 'package:ansix/src/widgets/table/row/builder/builder.dart';
+import 'package:ansix/src/widgets/table/builder/builder.dart';
+import 'package:ansix/src/widgets/text/text.dart';
 
 class AnsiTableRow {
   AnsiTableRow({
-    this.data = const <AnsiTableCell>[],
+    this.data = const <AnsiText>[],
   });
 
-  final List<AnsiTableCell> data;
+  final List<AnsiText> data;
 
   String print({
     required final AnsiBorder border,
@@ -16,7 +16,7 @@ class AnsiTableRow {
   }) {
     switch (border.type) {
       case AnsiBorderType.all:
-        return AllBorderRowBuilder(
+        return AllBorderTableBuilder(
           data: data,
           border: border,
           isFirstLine: isFirstLine,
@@ -24,7 +24,7 @@ class AnsiTableRow {
         ).toString();
 
       case AnsiBorderType.header:
-        return HeaderBorderRowBuilder(
+        return HeaderBorderTableBuilder(
           data: data,
           border: border,
           isFirstLine: isFirstLine,
@@ -32,7 +32,7 @@ class AnsiTableRow {
         ).toString();
 
       case AnsiBorderType.inside:
-        return InsideBorderRowBuilder(
+        return InsideBorderTableBuilder(
           data: data,
           border: border,
           isFirstLine: isFirstLine,
@@ -40,7 +40,7 @@ class AnsiTableRow {
         ).toString();
 
       case AnsiBorderType.insideHorizontal:
-        return InsideHorizontalBorderRowBuilder(
+        return InsideHorizontalBorderTableBuilder(
           data: data,
           border: border,
           isFirstLine: isFirstLine,

@@ -11,32 +11,26 @@ class AnsiTextFormatter implements TextFormatter {
   @override
   String addColor(
     final String text, {
-    final AnsiColor? foreground,
-    final AnsiColor? background,
+    final AnsiColor foreground = AnsiColor.none,
+    final AnsiColor background = AnsiColor.none,
   }) {
     if (foreground == AnsiColor.none && background == AnsiColor.none) {
       return text;
     }
 
-    final String foregroundString = foreground?.foreground ?? AnsiColor.none.foreground;
-    final String backgroundString = background?.background ?? AnsiColor.none.background;
-
-    return '$foregroundString$backgroundString$text$reset';
+    return '${foreground.foreground}${background.background}$text$reset';
   }
 
   @override
   String addColorRgb(
     final String text, {
-    final AnsiColor? foreground,
-    final AnsiColor? background,
+    final AnsiColor foreground = AnsiColor.none,
+    final AnsiColor background = AnsiColor.none,
   }) {
     if (foreground == AnsiColor.none && background == AnsiColor.none) {
       return text;
     }
 
-    final String foregroundString = foreground?.foregroundRgb ?? AnsiColor.none.foregroundRgb;
-    final String backgroundString = background?.backgroundRgb ?? AnsiColor.none.backgroundRgb;
-
-    return '$foregroundString$backgroundString$text$reset';
+    return '${foreground.foregroundRgb}${background.backgroundRgb}$text$reset';
   }
 }

@@ -11,8 +11,8 @@ class StandardTextFormatter extends TextFormatter {
   @override
   String addColor(
     final String text, {
-    final AnsiColor? foreground,
-    final AnsiColor? background,
+    final AnsiColor foreground = AnsiColor.none,
+    final AnsiColor background = AnsiColor.none,
   }) {
     return text;
   }
@@ -20,8 +20,8 @@ class StandardTextFormatter extends TextFormatter {
   @override
   String addColorRgb(
     final String text, {
-    final AnsiColor? foreground,
-    final AnsiColor? background,
+    final AnsiColor foreground = AnsiColor.none,
+    final AnsiColor background = AnsiColor.none,
   }) {
     return text;
   }

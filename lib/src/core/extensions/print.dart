@@ -5,23 +5,23 @@ import 'package:ansix/ansix.dart';
 printStyled(
   final Object? object, {
   required final AnsiTextStyle textStyle,
-  final AnsiColor? foregroundColor,
-  final AnsiColor? backgroundColor,
+  final AnsiColor foreground = AnsiColor.none,
+  final AnsiColor background = AnsiColor.none,
 }) {
   print('$object'.styled(
     textStyle,
-    foregroundColor,
-    backgroundColor,
+    foreground,
+    background,
   ));
 }
 
 printColored(
   final Object? object, {
-  final AnsiColor? foregroundColor,
-  final AnsiColor? backgroundColor,
+  final AnsiColor foreground = AnsiColor.none,
+  final AnsiColor background = AnsiColor.none,
 }) {
   print('$object'.colored(
-    foreground: foregroundColor,
-    background: backgroundColor,
+    foreground: foreground,
+    background: background,
   ));
 }

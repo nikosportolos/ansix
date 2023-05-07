@@ -17,8 +17,8 @@ class AnsiText {
     final int? fixedWidth,
   }) : text = text.replaceAll(RegExp(r'\[(.*?)m'), '') {
     final int minWidth = this.text.length + padding.left + padding.right;
-    // width = (fixedWidth == null || fixedWidth == 0 || fixedWidth < minWidth) ? minWidth : fixedWidth;
-    width = fixedWidth ?? minWidth;
+    width = (fixedWidth == null || fixedWidth == 0 || fixedWidth < minWidth) ? minWidth : fixedWidth;
+    // width = fixedWidth ?? minWidth;
 
     final int topPadding = padding.top;
     final int bottomPadding = padding.bottom;

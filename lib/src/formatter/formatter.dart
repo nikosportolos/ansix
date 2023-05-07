@@ -9,13 +9,13 @@ abstract class TextFormatter {
 
   String addColor(
     final String text, {
-    final AnsiColor? foreground,
-    final AnsiColor? background,
+    final AnsiColor foreground = AnsiColor.none,
+    final AnsiColor background = AnsiColor.none,
   });
 
   String addColorRgb(
     final String text, {
-    final AnsiColor? foreground,
-    final AnsiColor? background,
+    final AnsiColor foreground = AnsiColor.none,
+    final AnsiColor background = AnsiColor.none,
   });
 }

@@ -33,8 +33,10 @@ extension StringBufferX on StringBuffer {
     final AnsiColor foregroundColor = AnsiColor.none,
     final AnsiColor backgroundColor = AnsiColor.none,
   }) {
-    write(
-      text.styled(textStyle, foregroundColor, backgroundColor),
-    );
+    write(text.styled(
+      textStyle,
+      foregroundColor,
+      backgroundColor,
+    ));
   }
 }

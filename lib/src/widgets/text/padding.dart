@@ -57,4 +57,9 @@ class AnsiPadding {
       horizontal: spaces,
     );
   }
+
+  @override
+  String toString() {
+    return '$top;$bottom;$left;$right';
+  }
 }

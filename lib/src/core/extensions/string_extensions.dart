@@ -16,16 +16,16 @@ extension AnsiString on String {
 
   String styled(
     final AnsiTextStyle textStyle, [
-    final AnsiColor? foregroundColor,
-    final AnsiColor? backgroundColor,
+    final AnsiColor foreground = AnsiColor.none,
+    final AnsiColor background = AnsiColor.none,
   ]) {
     String text = this;
     for (final AnsiStyle style in textStyle.styles) {
       text = text.addStyle(style);
     }
     return text.colored(
-      foreground: foregroundColor,
-      background: backgroundColor,
+      foreground: foreground,
+      background: background,
     );
   }
 
@@ -45,7 +45,10 @@ extension AnsiString on String {
 
   String white() => colored(foreground: AnsiColor.white);
 
-  String colored({final AnsiColor? foreground, final AnsiColor? background}) {
+  String colored({
+    final AnsiColor foreground = AnsiColor.none,
+    final AnsiColor background = AnsiColor.none,
+  }) {
     return AnsiX.formatter.addColor(
       this,
       foreground: foreground,
@@ -53,7 +56,10 @@ extension AnsiString on String {
     );
   }
 
-  String coloredRgb({final AnsiColor? foreground, final AnsiColor? background}) {
+  String coloredRgb({
+    final AnsiColor foreground = AnsiColor.none,
+    final AnsiColor background = AnsiColor.none,
+  }) {
     return AnsiX.formatter.addColorRgb(
       this,
       foreground: foreground,

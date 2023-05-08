@@ -48,7 +48,7 @@ class AnsiTableRow {
         ).toString();
 
       case AnsiBorderType.insideVertical:
-        return InsideVerticalBorderRowBuilder(
+        return InsideVerticalBorderTableBuilder(
           data: data,
           border: border,
           isFirstLine: isFirstLine,
@@ -56,7 +56,7 @@ class AnsiTableRow {
         ).toString();
 
       case AnsiBorderType.none:
-        return NoneBorderRowBuilder(
+        return NoBorderTableBuilder(
           data: data,
           border: border,
           isFirstLine: isFirstLine,
@@ -64,7 +64,7 @@ class AnsiTableRow {
         ).toString();
 
       case AnsiBorderType.outside:
-        return OutsideBorderRowBuilder(
+        return OutsideBorderTableBuilder(
           data: data,
           border: border,
           isFirstLine: isFirstLine,

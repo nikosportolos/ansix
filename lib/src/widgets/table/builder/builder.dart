@@ -6,7 +6,7 @@ export 'header.dart';
 export 'inside.dart';
 export 'inside_horizontal.dart';
 export 'inside_vertical.dart';
-export 'none.dart';
+export 'no_border.dart';
 export 'outside.dart';
 
 abstract class AnsiTableBuilder {
@@ -24,25 +24,25 @@ abstract class AnsiTableBuilder {
   final bool isLastLine;
 
   /// Returns the top horizontal border for the first row
-  String getTopBorder();
+  String get topBorder;
 
   /// Returns a row formatted with vertical borders
-  String getTextLineBorder();
+  String get textLineBorder;
 
   /// Returns the inline horizontal border for each row
-  String getMiddleBorder();
+  String get middleBorder;
 
   /// Returns the bottom border for the last row
-  String getBottomBorder();
+  String get bottomBorder;
 
   @override
   String toString() {
     return (StringBuffer()
-          ..write(isFirstLine ? getTopBorder() : '')
-          ..write(getTextLineBorder())
+          ..write(isFirstLine ? topBorder : '')
+          ..write(textLineBorder)
           ..write(isLastLine //
-              ? getBottomBorder()
-              : getMiddleBorder()))
+              ? bottomBorder
+              : middleBorder))
         .toString();
   }
 }

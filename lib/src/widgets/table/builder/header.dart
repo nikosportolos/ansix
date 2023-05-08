@@ -1,6 +1,19 @@
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/widgets/table/builder/builder.dart';
 
+/// **HeaderBorderTableBuilder**
+///
+/// Builds a table with borders only on the first row.
+///
+/// Example:
+/// ```dart
+/// ┌───────────────┬───────────────┬───────────────┐
+/// │Name           │Hex            │RGB            │
+/// └───────────────┴───────────────┴───────────────┘
+///  Red             #ff0000         (255, 0, 0)
+///  Green           #008000         (0, 128, 0)
+///  Blue            #0000ff         (0, 0, 255)
+/// ```
 class HeaderBorderTableBuilder extends AnsiTableBuilder {
   HeaderBorderTableBuilder({
     required super.data,
@@ -9,9 +22,8 @@ class HeaderBorderTableBuilder extends AnsiTableBuilder {
     required super.isLastLine,
   });
 
-  /// Returns the top horizontal border for the first row
   @override
-  String getTopBorder() {
+  String get topBorder {
     if (border.style == AnsiBorderStyle.none) {
       return '';
     }
@@ -35,9 +47,8 @@ class HeaderBorderTableBuilder extends AnsiTableBuilder {
     return buffer.toString().colored(foreground: border.color);
   }
 
-  /// Returns a row formatted with vertical borders
   @override
-  String getTextLineBorder() {
+  String get textLineBorder {
     final StringBuffer buffer = StringBuffer();
     final String separator = isFirstLine //
         ? border.style.boxDrawingSet.verticalLine.colored(foreground: border.color)
@@ -52,9 +63,8 @@ class HeaderBorderTableBuilder extends AnsiTableBuilder {
     return buffer.toString();
   }
 
-  /// Returns the inline horizontal border for each row
   @override
-  String getMiddleBorder() {
+  String get middleBorder {
     if (border.style == AnsiBorderStyle.none || !isFirstLine) {
       return '';
     }
@@ -78,20 +88,17 @@ class HeaderBorderTableBuilder extends AnsiTableBuilder {
     return buffer.toString().colored(foreground: border.color);
   }
 
-  /// Returns the bottom border for the last row
   @override
-  String getBottomBorder() {
-    return '';
-  }
+  String get bottomBorder => '';
 
   @override
   String toString() {
     return (StringBuffer()
-          ..write(isFirstLine ? getTopBorder() : '')
-          ..write(getTextLineBorder())
+          ..write(isFirstLine ? topBorder : '')
+          ..write(textLineBorder)
           ..write(isLastLine //
               ? ''
-              : getMiddleBorder()))
+              : middleBorder))
         .toString();
   }
 }

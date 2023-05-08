@@ -1,23 +1,30 @@
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/widgets/table/builder/builder.dart';
 
-class InsideVerticalBorderRowBuilder extends AnsiTableBuilder {
-  InsideVerticalBorderRowBuilder({
+/// **InsideVerticalBorderTableBuilder**
+///
+/// Builds a table with inside vertical borders.
+///
+/// Example:
+/// ```dart
+/// Name           │Hex            │RGB
+/// Red            │#ff0000        │(255, 0, 0)
+/// Green          │#008000        │(0, 128, 0)
+/// Blue           │#0000ff        │(0, 0, 255)
+/// ```
+class InsideVerticalBorderTableBuilder extends AnsiTableBuilder {
+  InsideVerticalBorderTableBuilder({
     required super.data,
     required super.border,
     required super.isFirstLine,
     required super.isLastLine,
   });
 
-  /// Returns the top horizontal border for the first row
   @override
-  String getTopBorder() {
-    return '';
-  }
+  String get topBorder => '';
 
-  /// Returns a row formatted with vertical borders
   @override
-  String getTextLineBorder() {
+  String get textLineBorder {
     final StringBuffer buffer = StringBuffer();
 
     buffer
@@ -31,15 +38,9 @@ class InsideVerticalBorderRowBuilder extends AnsiTableBuilder {
     return buffer.toString();
   }
 
-  /// Returns the inline horizontal border for each row
   @override
-  String getMiddleBorder() {
-    return '';
-  }
+  String get middleBorder => '';
 
-  /// Returns the bottom border for the last row
   @override
-  String getBottomBorder() {
-    return '';
-  }
+  String get bottomBorder => '';
 }

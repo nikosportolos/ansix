@@ -1,17 +1,29 @@
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/widgets/table/builder/builder.dart';
 
-class OutsideBorderRowBuilder extends AnsiTableBuilder {
-  OutsideBorderRowBuilder({
+/// **OutsideBorderTableBuilder**
+///
+/// Builds a table with outside borders only.
+///
+/// Example:
+/// ```dart
+/// ┌─────────────────────────────────────────────┐
+/// │Name           Hex            RGB            │
+/// │Red            #ff0000        (255, 0, 0)    │
+/// │Green          #008000        (0, 128, 0)    │
+/// │Blue           #0000ff        (0, 0, 255)    │
+/// └─────────────────────────────────────────────┘
+/// ```
+class OutsideBorderTableBuilder extends AnsiTableBuilder {
+  OutsideBorderTableBuilder({
     required super.data,
     required super.border,
     required super.isFirstLine,
     required super.isLastLine,
   });
 
-  /// Returns the top horizontal border for the first row
   @override
-  String getTopBorder() {
+  String get topBorder {
     if (border.style == AnsiBorderStyle.none) {
       return '';
     }
@@ -30,9 +42,8 @@ class OutsideBorderRowBuilder extends AnsiTableBuilder {
     return buffer.toString();
   }
 
-  /// Returns a row formatted with vertical borders
   @override
-  String getTextLineBorder() {
+  String get textLineBorder {
     final StringBuffer buffer = StringBuffer();
 
     buffer
@@ -44,15 +55,11 @@ class OutsideBorderRowBuilder extends AnsiTableBuilder {
     return buffer.toString();
   }
 
-  /// Returns the inline horizontal border for each row
   @override
-  String getMiddleBorder() {
-    return '';
-  }
+  String get middleBorder => '';
 
-  /// Returns the bottom border for the last row
   @override
-  String getBottomBorder() {
+  String get bottomBorder {
     if (border.style == AnsiBorderStyle.none) {
       return '';
     }

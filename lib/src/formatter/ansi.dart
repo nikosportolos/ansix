@@ -2,9 +2,15 @@ import 'package:ansix/ansix.dart';
 import 'package:ansix/src/formatter/formatter.dart';
 import 'package:ansix/src/theme/style.dart';
 
+/// **AnsiTextFormatter**
+///
+/// Returns the given text with the specified styles and colors.
 class AnsiTextFormatter implements TextFormatter {
   @override
-  String addStyle(final String text, final AnsiStyle style) {
+  String addStyle(
+    final String text,
+    final AnsiStyle style,
+  ) {
     return '${style.startEscapeCode}$text${style.endEscapeCode}';
   }
 

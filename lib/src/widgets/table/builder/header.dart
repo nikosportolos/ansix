@@ -23,7 +23,7 @@ class HeaderBorderTableBuilder extends AnsiTableBuilder {
       buffer.write(border.style.boxDrawingSet.horizontalLine * data[i].width);
       if (i != data.length - 1) {
         buffer.write(
-          border.style.boxDrawingSet.crossDown,
+          border.style.boxDrawingSet.middleTopEdge,
         );
       }
     }
@@ -67,7 +67,7 @@ class HeaderBorderTableBuilder extends AnsiTableBuilder {
       buffer.write(border.style.boxDrawingSet.horizontalLine * (data[i].width));
 
       if (i != data.length - 1) {
-        buffer.write(border.style.boxDrawingSet.crossUp);
+        buffer.write(border.style.boxDrawingSet.middleBottomEdge);
       }
     }
 

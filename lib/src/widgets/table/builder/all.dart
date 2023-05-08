@@ -22,7 +22,7 @@ class AllBorderTableBuilder extends AnsiTableBuilder {
     for (int i = 0; i < data.length; i++) {
       buffer.writeColored(border.style.boxDrawingSet.horizontalLine * data[i].width, border.color);
       if (i != data.length - 1) {
-        buffer.writeColored(border.style.boxDrawingSet.crossDown, border.color);
+        buffer.writeColored(border.style.boxDrawingSet.middleTopEdge, border.color);
       }
     }
 
@@ -59,7 +59,7 @@ class AllBorderTableBuilder extends AnsiTableBuilder {
 
     final StringBuffer buffer = StringBuffer()
       ..writeColored(
-        border.style.boxDrawingSet.crossRight,
+        border.style.boxDrawingSet.middleLeftEdge,
         border.color,
       );
 
@@ -70,12 +70,12 @@ class AllBorderTableBuilder extends AnsiTableBuilder {
       );
 
       if (i != data.length - 1) {
-        buffer.writeColored(border.style.boxDrawingSet.cross, border.color);
+        buffer.writeColored(border.style.boxDrawingSet.intersection, border.color);
       }
     }
 
     buffer
-      ..writeColored(border.style.boxDrawingSet.crossLeft, border.color)
+      ..writeColored(border.style.boxDrawingSet.middleRightEdge, border.color)
       ..writeln();
 
     return buffer.toString();
@@ -96,7 +96,7 @@ class AllBorderTableBuilder extends AnsiTableBuilder {
         border.color,
       );
       if (i != data.length - 1) {
-        buffer.writeColored(border.style.boxDrawingSet.crossUp, border.color);
+        buffer.writeColored(border.style.boxDrawingSet.middleBottomEdge, border.color);
       }
     }
 

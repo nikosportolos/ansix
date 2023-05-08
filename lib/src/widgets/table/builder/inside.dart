@@ -46,7 +46,7 @@ class InsideBorderTableBuilder extends AnsiTableBuilder {
       );
 
       if (i != data.length - 1) {
-        buffer.writeColored(border.style.boxDrawingSet.cross, border.color);
+        buffer.writeColored(border.style.boxDrawingSet.intersection, border.color);
       }
     }
 

@@ -1,12 +1,17 @@
 import 'package:ansix/ansix.dart';
 
-/// Box-drawing characters, also known as line-drawing characters, are a form of semigraphics
-/// widely used in text user interfaces to draw various geometric frames and boxes.
+/// **BoxDrawingSet**
 ///
-/// Sources:
-/// - https://en.wikipedia.org/wiki/Box-drawing_character
-/// - https://en.wikipedia.org/wiki/Alt_code
-/// - https://theasciicode.com.ar
+/// The box drawing set is a collection of characters that can be used to
+/// create various box and border designs in text-based interfaces.
+/// These characters are typically displayed using the ASCII code page,
+/// and are available in many terminal emulators and command-line interfaces.
+///
+/// The box drawing set includes a variety of characters that can be used to create different box shapes,
+/// such as vertical and horizontal lines, corners, and intersections.
+///
+/// For example, the character '─' is used to draw horizontal lines,
+/// while '│' is used for vertical lines, and '+' is used to represent intersections.
 class BoxDrawingSet {
   const BoxDrawingSet._({
     this.horizontalLine = '',
@@ -15,11 +20,11 @@ class BoxDrawingSet {
     this.topRightCorner = '',
     this.bottomLeftCorner = '',
     this.bottomRightCorner = '',
-    this.cross = '',
-    this.crossUp = '',
-    this.crossDown = '',
-    this.crossLeft = '',
-    this.crossRight = '',
+    this.intersection = '',
+    this.middleBottomEdge = '',
+    this.middleTopEdge = '',
+    this.middleRightEdge = '',
+    this.middleLeftEdge = '',
   });
 
   static const BoxDrawingSet ascii = BoxDrawingSet._(
@@ -29,11 +34,11 @@ class BoxDrawingSet {
     topRightCorner: '-',
     bottomLeftCorner: '-',
     bottomRightCorner: '-',
-    cross: '+',
-    crossUp: '-',
-    crossDown: '-',
-    crossLeft: '|',
-    crossRight: '|',
+    intersection: '+',
+    middleBottomEdge: '-',
+    middleTopEdge: '-',
+    middleRightEdge: '|',
+    middleLeftEdge: '|',
   );
 
   static const BoxDrawingSet bold = BoxDrawingSet._(
@@ -43,11 +48,11 @@ class BoxDrawingSet {
     topRightCorner: '┓',
     bottomLeftCorner: '┗',
     bottomRightCorner: '┛',
-    cross: '╋',
-    crossUp: '┻',
-    crossDown: '┳',
-    crossLeft: '┫',
-    crossRight: '┣',
+    intersection: '╋',
+    middleBottomEdge: '┻',
+    middleTopEdge: '┳',
+    middleRightEdge: '┫',
+    middleLeftEdge: '┣',
   );
 
   static const BoxDrawingSet double = BoxDrawingSet._(
@@ -57,11 +62,11 @@ class BoxDrawingSet {
     topRightCorner: '╗',
     bottomLeftCorner: '╚',
     bottomRightCorner: '╝',
-    cross: '╬',
-    crossUp: '╩',
-    crossDown: '╦',
-    crossLeft: '╣',
-    crossRight: '╠',
+    intersection: '╬',
+    middleBottomEdge: '╩',
+    middleTopEdge: '╦',
+    middleRightEdge: '╣',
+    middleLeftEdge: '╠',
   );
 
   static const BoxDrawingSet markdown = BoxDrawingSet._(
@@ -71,11 +76,11 @@ class BoxDrawingSet {
     topRightCorner: '|',
     bottomLeftCorner: '|',
     bottomRightCorner: '|',
-    cross: '-',
-    crossUp: '-',
-    crossDown: '-',
-    crossLeft: '|',
-    crossRight: '|',
+    intersection: '-',
+    middleBottomEdge: '-',
+    middleTopEdge: '-',
+    middleRightEdge: '|',
+    middleLeftEdge: '|',
   );
 
   static const BoxDrawingSet none = BoxDrawingSet._(
@@ -85,11 +90,11 @@ class BoxDrawingSet {
     topRightCorner: '',
     bottomLeftCorner: '',
     bottomRightCorner: '',
-    cross: '',
-    crossUp: '',
-    crossDown: '',
-    crossLeft: '',
-    crossRight: '',
+    intersection: '',
+    middleBottomEdge: '',
+    middleTopEdge: '',
+    middleRightEdge: '',
+    middleLeftEdge: '',
   );
 
   static const BoxDrawingSet rounded = BoxDrawingSet._(
@@ -99,11 +104,11 @@ class BoxDrawingSet {
     topRightCorner: '╮',
     bottomLeftCorner: '╰',
     bottomRightCorner: '╯',
-    cross: '┼',
-    crossUp: '┴',
-    crossDown: '┬',
-    crossLeft: '┤',
-    crossRight: '├',
+    intersection: '┼',
+    middleBottomEdge: '┴',
+    middleTopEdge: '┬',
+    middleRightEdge: '┤',
+    middleLeftEdge: '├',
   );
 
   static const BoxDrawingSet square = BoxDrawingSet._(
@@ -113,11 +118,11 @@ class BoxDrawingSet {
     topRightCorner: '┐',
     bottomLeftCorner: '└',
     bottomRightCorner: '┘',
-    cross: '┼',
-    crossUp: '┴',
-    crossDown: '┬',
-    crossLeft: '┤',
-    crossRight: '├',
+    intersection: '┼',
+    middleBottomEdge: '┴',
+    middleTopEdge: '┬',
+    middleRightEdge: '┤',
+    middleLeftEdge: '├',
   );
 
   factory BoxDrawingSet.fromBorderStyle(final AnsiBorderStyle style) {
@@ -145,11 +150,11 @@ class BoxDrawingSet {
   final String topRightCorner;
   final String bottomLeftCorner;
   final String bottomRightCorner;
-  final String cross;
-  final String crossUp;
-  final String crossDown;
-  final String crossLeft;
-  final String crossRight;
+  final String intersection;
+  final String middleBottomEdge;
+  final String middleTopEdge;
+  final String middleRightEdge;
+  final String middleLeftEdge;
 
   static const List<BoxDrawingSet> values = <BoxDrawingSet>[
     ascii,

@@ -1,31 +1,15 @@
-import 'dart:io';
-
 import 'package:ansix/src/core/core.dart';
-import 'package:ansix/src/formatter/ansi.dart';
-import 'package:ansix/src/formatter/formatter.dart';
-import 'package:ansix/src/formatter/standard.dart';
-import 'package:ansix/src/system/system.dart';
+import 'package:ansix/src/formatter/formatters.dart';
+import 'package:ansix/src/system/ansi_support_detection.dart';
 
 abstract class AnsiX {
-  /// Returns true if connected to a terminal that supports ANSI escape sequences.
-  static bool get supportsAnsi => stdout.supportsAnsiEscapes;
-
-  /// Returns true if the standard output stream is attached to a terminal.
-  static bool get attachedToTerminal => stdioType(stdout) == StdioType.terminal;
-
-  /// Returns true if the standard output stream is attached to a pipe.
-  static bool get attachedToPipe => stdioType(stdout) == StdioType.pipe;
-
-  /// Returns true if ANSI formatting is supported and enabled
+  /// Returns true if ANSI formatting is supported and enabled.
   static bool get isEnabled => _isEnabled;
   static bool _isEnabled = true;
 
-  static TextFormatter _formatter = AnsiTextFormatter();
-
-  /// Returns the active text formatter
+  /// Returns the active text formatter.
   static TextFormatter get formatter => _formatter;
-
-  static final ProcessManager _processManager = ProcessManager();
+  static TextFormatter _formatter = AnsiTextFormatter();
 
   /// Enables ANSI formatting (if supported by the system).
   static void enable() {
@@ -39,15 +23,18 @@ abstract class AnsiX {
     _formatter = StandardTextFormatter();
   }
 
-  /// Ensure that ANSI formatting is supported
+  /// **Ensure that ANSI formatting is supported.**
   ///
-  /// If [silent] = false, no exceptions will be thrown
+  /// If [silent] = false, no exceptions will be thrown.
+  ///
+  /// If [force] = true, ANSI formatting will be enabled even if ANSI support detection failed.
+  /// Use with caution, as it may lead to printing wrongly-formatted text.
   static void ensureSupportsAnsi({
     final bool silent = false,
     final bool force = false,
   }) {
     try {
-      if (!_checkAnsiSupport()) {
+      if (!AnsiSupportDetection.checkAnsiSupport()) {
         throw const AnsiXException.ansiNotSupported(
           'ANSI escape characters are not supported.',
         );
@@ -62,40 +49,10 @@ abstract class AnsiX {
 
       disable();
       if (silent) {
-        _handleException(e);
+        handleException(e);
         return;
       }
       rethrow;
     }
-  }
-
-  static bool _checkAnsiSupport() {
-    final bool attachedToValidStream = attachedToTerminal || attachedToPipe;
-    final bool isSupported = attachedToValidStream && supportsAnsi;
-    if (!isSupported && Platform.isWindows) {
-      return attachedToValidStream && _processManager.detectWindowsAnsiSupport();
-    }
-
-    return isSupported;
-  }
-
-  static void _handleException(final AnsiXException exception) {
-    final StringBuffer buffer = StringBuffer()
-      ..writeln()
-      ..write('AnsiX Exception: ');
-
-    exception.when(
-      ansiNotSupported: (AnsiNotSupported e) {
-        buffer.write(e.message);
-      },
-      windowsLegacyModeError: (WindowsLegacyModeError e) {
-        buffer.write(e.message);
-        buffer.writeln(e.innerException.toString());
-      },
-    );
-
-    buffer.writeln();
-    // ignore: avoid_print
-    print(buffer.toString());
   }
 }

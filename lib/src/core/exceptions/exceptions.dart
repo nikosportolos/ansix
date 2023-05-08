@@ -16,3 +16,23 @@ abstract class AnsiXException implements Exception {
     final Object? innerException,
   ) = WindowsLegacyModeError;
 }
+
+void handleException(final AnsiXException exception) {
+  final StringBuffer buffer = StringBuffer()
+    ..writeln()
+    ..write('AnsiX Exception: ');
+
+  exception.when(
+    ansiNotSupported: (AnsiNotSupported e) {
+      buffer.write(e.message);
+    },
+    windowsLegacyModeError: (WindowsLegacyModeError e) {
+      buffer.write(e.message);
+      buffer.writeln(e.innerException.toString());
+    },
+  );
+
+  buffer.writeln();
+// ignore: avoid_print
+  print(buffer.toString());
+}

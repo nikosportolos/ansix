@@ -2,6 +2,8 @@
 
 import 'package:ansix/ansix.dart';
 
+/// Prints a string representation of the object to the console
+/// with the given styles and ANSI colors.
 printStyled(
   final Object? object, {
   required final AnsiTextStyle textStyle,
@@ -12,16 +14,5 @@ printStyled(
     textStyle,
     foreground,
     background,
-  ));
-}
-
-printColored(
-  final Object? object, {
-  final AnsiColor foreground = AnsiColor.none,
-  final AnsiColor background = AnsiColor.none,
-}) {
-  print('$object'.colored(
-    foreground: foreground,
-    background: background,
   ));
 }

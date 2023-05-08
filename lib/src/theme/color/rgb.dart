@@ -1,3 +1,5 @@
+import 'package:ansix/src/theme/color/utils.dart';
+
 class Rgb {
   const Rgb(
     this.red,
@@ -10,12 +12,7 @@ class Rgb {
   final int blue;
 
   @pragma('vm:prefer-inline')
-  int get value {
-    return 16 + //
-        (36 * (red / 255 * 5).floor()) +
-        (6 * (green / 255 * 5).floor()) +
-        (blue / 255 * 5).floor();
-  }
+  int get value => ColorUtils.rgbTo8BitColor(red, green, blue);
 
   /// Returns the relative luminance of the [RGB] color
   /// https://en.wikipedia.org/wiki/Relative_luminance

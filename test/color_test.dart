@@ -1,4 +1,5 @@
 import 'package:ansix/ansix.dart';
+import 'package:ansix/src/theme/color/utils.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -31,9 +32,18 @@ void main() {
   group('Calculate RGB value', () {
     for (final AnsiColor color in AnsiColorSet.extended) {
       test('$color', () {
-        // ignore: avoid_print
-        print('$color - ${color.rgb} - ${color.value}'.colored(foreground: color));
         expect(color.value, color.rgb?.value);
+      });
+    }
+  });
+
+  group('Calculate greyscale RGB value', () {
+    for (final AnsiColor color in AnsiColorSet.greyscale) {
+      test('$color', () {
+        expect(
+          ColorUtils.greyscaleRgbTo8BitColor(color.rgb!.red),
+          color.value,
+        );
       });
     }
   });

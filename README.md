@@ -84,12 +84,67 @@ Source: https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797#color-code
 ## Extensions
 
 ### String
-```dart
-```
+
+#### Styles
+  - bold
+  - italic
+  - underline
+  - strikethrough
+
+#### Colors
+  - black
+  - red
+  - green
+  - yellow
+  - blue
+  - fuchsia
+  - aqua
+  - white
+
 
 ### StringBuffer
 
+#### writeLines
+
+Writes empty lines in buffer:
+
 ```dart
+void writeLines(final int lines)
+```
+
+#### writeSpaces
+
+Writes spaces in buffer with optional background color:
+
+```dart
+void writeSpaces(
+  final int length, [
+  final AnsiColor backgroundColor = AnsiColor.none,
+]) 
+```
+
+#### writeColored
+
+Writes a text in buffer with foreground color:
+
+```dart
+void writeColored(
+  final String text,
+  final AnsiColor color,
+)
+```
+
+#### writeStyled
+
+Writes a styled text in buffer with optional colors:
+
+```dart
+void writeStyled(
+  final String text, {
+  required final AnsiTextStyle textStyle,
+  final AnsiColor foregroundColor = AnsiColor.none,
+  final AnsiColor backgroundColor = AnsiColor.none,
+}) 
 ```
 
 ### Widgets
@@ -115,13 +170,13 @@ AnsiText(
 
 ```dart
 AnsiTextStyle(
-  bold: true,
-  underline: false,
-  italic: true,
-  strikethrough: false,
+  bold: false,
   boldUnderline: false,
   dim: false,
   inverse: false,
+  italic: false,
+  strikethrough: false,
+  underline: false,
 )
 ```
 

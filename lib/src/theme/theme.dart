@@ -1,3 +1,3 @@
 export 'alignment.dart';
-export 'border/border.dart';
+export 'border.dart';
 export 'color/color.dart';

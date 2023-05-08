@@ -64,6 +64,20 @@ class BoxDrawingSet {
     crossRight: '╠',
   );
 
+  static const BoxDrawingSet markdown = BoxDrawingSet._(
+    horizontalLine: '-',
+    verticalLine: '|',
+    topLeftCorner: '|',
+    topRightCorner: '|',
+    bottomLeftCorner: '|',
+    bottomRightCorner: '|',
+    cross: '-',
+    crossUp: '-',
+    crossDown: '-',
+    crossLeft: '|',
+    crossRight: '|',
+  );
+
   static const BoxDrawingSet none = BoxDrawingSet._(
     horizontalLine: '',
     verticalLine: '',
@@ -114,6 +128,8 @@ class BoxDrawingSet {
         return BoxDrawingSet.bold;
       case AnsiBorderStyle.double:
         return BoxDrawingSet.double;
+      case AnsiBorderStyle.markdown:
+        return BoxDrawingSet.markdown;
       case AnsiBorderStyle.none:
         return BoxDrawingSet.none;
       case AnsiBorderStyle.rounded:
@@ -139,6 +155,7 @@ class BoxDrawingSet {
     ascii,
     bold,
     double,
+    markdown,
     none,
     rounded,
     square,

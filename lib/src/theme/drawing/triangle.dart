@@ -1,4 +1,4 @@
-enum AsciiTriangleSet {
+enum TriangleSet {
   /// Black **up**-pointing triangle (▲)
   up('▲'),
 
@@ -11,7 +11,7 @@ enum AsciiTriangleSet {
   /// Black **right**-pointing pointer (►)
   right('►');
 
-  const AsciiTriangleSet(this.value);
+  const TriangleSet(this.value);
 
   final String value;
 }

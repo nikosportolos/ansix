@@ -36,6 +36,16 @@
 _An early character-based display terminal that executed standard ANSI commands to control the cursor, clear the screen and set colors. 
 The commands were preceded with an escape character (ANSI escape codes), and although widely used in the 1980s, ANSI commands still exist in various communications programs._
 
+ANSI escape codes, also known as ANSI color codes or ANSI escape sequences, are a set of standardized sequences of characters used in computing to control text formatting, color, and other visual aspects of terminal output.
+
+The ANSI escape codes consist of a special sequence of characters that begins with the escape character (ESC, ASCII code 27) followed by one or more control characters. These control characters can include commands to change the color or background of text, move the cursor to a specific location on the screen, erase part of the screen, and more.
+
+For example, the ANSI escape code "\e[31m" changes the text color to red, while "\e[42m" changes the background color to green. The code "\e[2J" clears the entire screen, and "\e[;H" moves the cursor to the top-left corner of the screen.
+
+ANSI escape codes are widely used in command-line interfaces, terminal emulators, and other text-based applications to provide a richer and more interactive user experience.
+
+
+
 [Source](https://www.pcmag.com/encyclopedia/term/ansi-terminal)
 
 

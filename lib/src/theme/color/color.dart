@@ -7,7 +7,19 @@ export 'rgb.dart';
 
 part 'set.dart';
 
-/// Extended Ansi colors
+/// **AnsiColor**
+///
+/// ANSI colors are a set of standardized color codes that can be used
+/// in text-based interfaces to add color and emphasis to text.
+///
+/// The ANSI color codes are typically supported by terminal emulators and command-line interfaces,
+/// and can be used to change the foreground and background colors of text.
+///
+/// The ANSI color codes consist of a special sequence of characters that starts with the
+/// escape character (ASCII code 27), followed by the characters '[', the color code, and the letter 'm'.
+///
+/// The color code can be a number between 0 and 255, and is used to specify
+/// a specific color in the terminal's color palette.
 ///
 /// https://en.wikipedia.org/wiki/X11_color_names
 /// https://tintin.mudhalla.net/info/256color/
@@ -1821,6 +1833,7 @@ class AnsiColor {
     this.hsl,
   });
 
+  /// 8-bit color value
   final int value;
   final String name;
   final String hex;

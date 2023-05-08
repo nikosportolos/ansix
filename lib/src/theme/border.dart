@@ -1,6 +1,7 @@
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/theme/drawing/box_drawing.dart';
 
+/// **AnsiBorder**
 class AnsiBorder {
   const AnsiBorder({
     this.type = AnsiBorderType.none,
@@ -17,7 +18,11 @@ class AnsiBorder {
   final AnsiColor color;
 }
 
-/// Style of the border
+/// **AnsiBorderStyle**
+///
+/// ANSI border styles are a set of characters and escape codes
+/// that can be used to draw borders and frames around text
+/// or other content in terminal-based applications.
 enum AnsiBorderStyle {
   ascii(BoxDrawingSet.ascii),
   bold(BoxDrawingSet.bold),
@@ -34,6 +39,7 @@ enum AnsiBorderStyle {
   final BoxDrawingSet boxDrawingSet;
 }
 
+/// **AnsiBorderType**
 enum AnsiBorderType {
   all,
   header,

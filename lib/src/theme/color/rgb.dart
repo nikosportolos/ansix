@@ -1,5 +1,15 @@
 import 'package:ansix/src/theme/color/utils.dart';
 
+/// **RGB**
+///
+/// RGB stands for Red, Green, and Blue.
+///
+/// It is a color model used in digital imaging and
+/// computer graphics to create colors by mixing different intensities of these three primary colors.
+///
+/// In the RGB model, each color is represented by a combination of red, green,
+/// and blue values ranging from 0 to 255, where 0 represents the absence of
+/// that color and 255 represents its maximum intensity.
 class Rgb {
   const Rgb(
     this.red,

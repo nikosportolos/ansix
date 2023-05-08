@@ -8,12 +8,21 @@ abstract class AnsiColorSet {
     'Greyscale': greyscale,
   };
 
+  /// **All colors**
+  ///
+  /// Includes all 256 available terminal ANSI colors.
   static const List<AnsiColor> all = <AnsiColor>[
     ...system,
     ...extended,
     ...greyscale,
   ];
 
+  /// **System color set**
+  ///
+  /// The 16 ANSI colors are a set of standardized colors used by early computer terminals,
+  /// and are still commonly used today in various terminal applications.
+  ///
+  /// They consist of eight basic colors and their corresponding "bright" versions.
   static const List<AnsiColor> system = <AnsiColor>[
     AnsiColor.black,
     AnsiColor.maroon,
@@ -33,6 +42,8 @@ abstract class AnsiColorSet {
     AnsiColor.white,
   ];
 
+  /// **Greyscale color set**
+  ///
   static const List<AnsiColor> greyscale = <AnsiColor>[
     AnsiColor.grey3,
     AnsiColor.grey7,
@@ -60,6 +71,8 @@ abstract class AnsiColorSet {
     AnsiColor.grey93,
   ];
 
+  /// **Extended color set**
+  ///
   static const List<AnsiColor> extended = <AnsiColor>[
     AnsiColor.grey0,
     AnsiColor.navyBlue,

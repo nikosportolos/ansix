@@ -55,8 +55,16 @@ ANSI escape codes are widely used in command-line interfaces, terminal emulators
 
 ## AnsiX Features
 
-
 ### Styles
+
+ANSI style is a set of formatting codes that can be used to change the appearance of text in a terminal.
+
+These codes include things like bold, italic, underline, and strikethrough, as well as
+control codes for things like cursor movement and clearing the screen.
+
+ANSI style codes are supported by most terminal emulators
+and are commonly used in command-line interfaces and text-based programs.
+
 
 AnsiX supports the following text styles:
 

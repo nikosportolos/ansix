@@ -28,7 +28,6 @@ void main() {
       when(() {
         return mockShell.runCommand(ProcessManager.detectLegacyConsoleModeCommand);
       }).thenReturn(disabledResult);
-
       expect(manager.determineLegacyConsoleMode(), LegacyConsoleMode.disabled);
       expect(manager.detectWindowsAnsiSupport(), true);
     });
@@ -37,7 +36,6 @@ void main() {
       when(() {
         return mockShell.runCommand(ProcessManager.detectLegacyConsoleModeCommand);
       }).thenReturn(enabledResult);
-
       expect(manager.determineLegacyConsoleMode(), LegacyConsoleMode.enabled);
       expect(() => manager.detectWindowsAnsiSupport(), throwsA(isA<AnsiXException>()));
     });

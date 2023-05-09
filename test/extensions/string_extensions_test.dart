@@ -15,6 +15,34 @@ void main() {
     }
   });
 
+  group('colored', () {
+    const String testMessage = 'This is a test message.';
+    const AnsiColor foregroundColor = AnsiColor.deepSkyBlue4;
+    const AnsiColor backgroundColor = AnsiColor.cyan3;
+
+    test('colored', () {
+      final String output = testMessage.colored(
+        foreground: foregroundColor,
+        background: backgroundColor,
+      );
+      expect(
+        output,
+        '\x1B[38;5;25m\x1B[48;5;43m$testMessage\x1B[0m',
+      );
+    });
+
+    test('coloredRgb', () {
+      final String output = testMessage.coloredRgb(
+        foreground: foregroundColor,
+        background: backgroundColor,
+      );
+      expect(
+        output,
+        '\x1B[38;2;0;95;175m\x1B[48;2;0;215;175m$testMessage\x1B[0m',
+      );
+    });
+  });
+
   group('shortcuts', () {
     const String testMessage = 'This is a test message';
     group('styles', () {

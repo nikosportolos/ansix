@@ -47,6 +47,16 @@ void main() {
       });
     }
   });
+
+  group('HSL', () {
+    const Hsl hsl = Hsl(100, 100, 100);
+    test('test string representations', () {
+      expect(hsl.toString(), '(100.0°, 100%, 100%)');
+      expect(hsl.hueString, '100.0°');
+      expect(hsl.lightnessString, '100%');
+      expect(hsl.saturationString, '100%');
+    });
+  });
 }
 
 void validateColorSet({

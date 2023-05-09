@@ -1,4 +1,5 @@
 import 'package:data_class_plugin/data_class_plugin.dart';
+import 'package:meta/meta.dart';
 
 part 'exceptions.gen.dart';
 
@@ -18,6 +19,12 @@ abstract class AnsiXException implements Exception {
 }
 
 void handleException(final AnsiXException exception) {
+// ignore: avoid_print
+  print(buildExceptionMessage(exception));
+}
+
+@visibleForTesting
+String buildExceptionMessage(final AnsiXException exception) {
   final StringBuffer buffer = StringBuffer()
     ..writeln()
     ..write('AnsiX Exception: ');
@@ -33,6 +40,6 @@ void handleException(final AnsiXException exception) {
   );
 
   buffer.writeln();
-// ignore: avoid_print
-  print(buffer.toString());
+
+  return buffer.toString();
 }

@@ -4,6 +4,7 @@
 
 ![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
 [![CI Workflow](https://github.com/nikosportolos/ansix/actions/workflows/ci.yml/badge.svg)](https://github.com/nikosportolos/ansix/actions/workflows/ci.yml)
+<img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/coverage_badge.svg" alt="coverage">
 
 <!--
 [![Pub Version](https://img.shields.io/pub/v/ansix?color=blue&logo=dart)](https://pub.dev/packages/ansix)
@@ -37,14 +38,16 @@
 _An early character-based display terminal that executed standard ANSI commands to control the cursor, clear the screen and set colors. 
 The commands were preceded with an escape character (ANSI escape codes), and although widely used in the 1980s, ANSI commands still exist in various communications programs._
 
-ANSI escape codes, also known as ANSI color codes or ANSI escape sequences, are a set of standardized sequences of characters used in computing to control text formatting, color, and other visual aspects of terminal output.
+ANSI escape codes, also known as ANSI color codes or ANSI escape sequences, are a set of standardized sequences of 
+characters used in computing to control text formatting, color, and other visual aspects of terminal output.
 
-The ANSI escape codes consist of a special sequence of characters that begins with the escape character (ESC, ASCII code 27) followed by one or more control characters. These control characters can include commands to change the color or background of text, move the cursor to a specific location on the screen, erase part of the screen, and more.
+The ANSI escape codes consist of a special sequence of characters that begins with the escape character (ESC, ASCII code 27) followed by one or more control characters. 
+These control characters can include commands to change the color or background of text, move the cursor to a specific location on the screen, erase part of the screen, and more.
 
-For example, the ANSI escape code "\e[31m" changes the text color to red, while "\e[42m" changes the background color to green. The code "\e[2J" clears the entire screen, and "\e[;H" moves the cursor to the top-left corner of the screen.
+For example, the ANSI escape code `"\e[31m"` changes the text color to red, while `"\e[42m"` changes the background color to green. 
+The code `"\e[2J"` clears the entire screen, and `"\e[;H"` moves the cursor to the top-left corner of the screen.
 
 ANSI escape codes are widely used in command-line interfaces, terminal emulators, and other text-based applications to provide a richer and more interactive user experience.
-
 
 
 [Source](https://www.pcmag.com/encyclopedia/term/ansi-terminal)
@@ -77,7 +80,7 @@ AnsiX supports the following text styles:
 - underline
 
 
-<img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/text-styles.png" width="400">
+<img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/text-styles.png" width="400" alt="text-styles">
 
 
 ### Colors
@@ -90,7 +93,7 @@ Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors.
 - [All colors](https://github.com/nikosportolos/ansix/tree/main/docs/colors/all.md)
 
 
-<img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/color-tables.png" width="400">
+<img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/color-tables.png" width="400" alt="color-tables">
 
 Source: https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797#color-codes
 
@@ -294,4 +297,4 @@ Blue           #0000ff        (0, 0, 255)
 
 ## Examples
 
-You can check the [examples](https://github.com/nikosportolos/ansix/tree/main/examples) folder for samples. 
+You can check the [examples](https://github.com/nikosportolos/ansix/tree/main/examples) folder for more samples. 

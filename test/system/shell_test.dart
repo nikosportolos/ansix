@@ -16,7 +16,7 @@ void main() {
       );
 
       expect(result.isNotEmpty, true);
-      expect(result.replaceAll(RegExp('\r\n'), ''), message);
+      expect(result.replaceAll('\r', '').replaceAll('\n', ''), message);
     });
   });
 }

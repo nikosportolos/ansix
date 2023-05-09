@@ -57,6 +57,17 @@ void main() {
       expect(hsl.saturationString, '100%');
     });
   });
+
+  group('lightness', () {
+    test('lightness', () {
+      expect(AnsiColor.white.lightness, greaterThan(50));
+      expect(AnsiColor.black.lightness, lessThan(50));
+      expect(AnsiColor.white.rgb!.relativeLuminance, greaterThan(50));
+      expect(AnsiColor.black.rgb!.relativeLuminance, lessThan(50));
+      expect(AnsiColor.white.hsl!.lightness, greaterThan(50));
+      expect(AnsiColor.black.hsl!.lightness, lessThan(50));
+    });
+  });
 }
 
 void validateColorSet({

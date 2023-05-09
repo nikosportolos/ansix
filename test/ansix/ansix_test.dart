@@ -100,6 +100,7 @@ void main() {
                               } catch (e) {
                                 expect(e is AnsiXException, true);
                               }
+
                               expect(controller.isEnabled, supported || force);
                               expect(
                                 controller.formatter.runtimeType,

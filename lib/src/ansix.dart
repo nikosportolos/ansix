@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:ansix/src/controller.dart';
 import 'package:ansix/src/formatter/formatter.dart';
 

@@ -12,8 +12,100 @@ import 'package:ansix/ansix.dart';
 ///
 /// For example, the character '─' is used to draw horizontal lines,
 /// while '│' is used for vertical lines, and '+' is used to represent intersections.
-class BoxDrawingSet {
-  const BoxDrawingSet._({
+enum BoxDrawingSet {
+  ascii(
+    horizontalLine: '-',
+    verticalLine: '|',
+    topLeftCorner: '-',
+    topRightCorner: '-',
+    bottomLeftCorner: '-',
+    bottomRightCorner: '-',
+    intersection: '+',
+    middleBottomEdge: '-',
+    middleTopEdge: '-',
+    middleRightEdge: '|',
+    middleLeftEdge: '|',
+  ),
+  bold(
+    horizontalLine: '━',
+    verticalLine: '┃',
+    topLeftCorner: '┏',
+    topRightCorner: '┓',
+    bottomLeftCorner: '┗',
+    bottomRightCorner: '┛',
+    intersection: '╋',
+    middleBottomEdge: '┻',
+    middleTopEdge: '┳',
+    middleRightEdge: '┫',
+    middleLeftEdge: '┣',
+  ),
+  double(
+    horizontalLine: '═',
+    verticalLine: '║',
+    topLeftCorner: '╔',
+    topRightCorner: '╗',
+    bottomLeftCorner: '╚',
+    bottomRightCorner: '╝',
+    intersection: '╬',
+    middleBottomEdge: '╩',
+    middleTopEdge: '╦',
+    middleRightEdge: '╣',
+    middleLeftEdge: '╠',
+  ),
+  markdown(
+    horizontalLine: '-',
+    verticalLine: '|',
+    topLeftCorner: '|',
+    topRightCorner: '|',
+    bottomLeftCorner: '|',
+    bottomRightCorner: '|',
+    intersection: '-',
+    middleBottomEdge: '-',
+    middleTopEdge: '-',
+    middleRightEdge: '|',
+    middleLeftEdge: '|',
+  ),
+  none(
+    horizontalLine: '',
+    verticalLine: '',
+    topLeftCorner: '',
+    topRightCorner: '',
+    bottomLeftCorner: '',
+    bottomRightCorner: '',
+    intersection: '',
+    middleBottomEdge: '',
+    middleTopEdge: '',
+    middleRightEdge: '',
+    middleLeftEdge: '',
+  ),
+  rounded(
+    horizontalLine: '─',
+    verticalLine: '│',
+    topLeftCorner: '╭',
+    topRightCorner: '╮',
+    bottomLeftCorner: '╰',
+    bottomRightCorner: '╯',
+    intersection: '┼',
+    middleBottomEdge: '┴',
+    middleTopEdge: '┬',
+    middleRightEdge: '┤',
+    middleLeftEdge: '├',
+  ),
+  square(
+    horizontalLine: '─',
+    verticalLine: '│',
+    topLeftCorner: '┌',
+    topRightCorner: '┐',
+    bottomLeftCorner: '└',
+    bottomRightCorner: '┘',
+    intersection: '┼',
+    middleBottomEdge: '┴',
+    middleTopEdge: '┬',
+    middleRightEdge: '┤',
+    middleLeftEdge: '├',
+  );
+
+  const BoxDrawingSet({
     this.horizontalLine = '',
     this.verticalLine = '',
     this.topLeftCorner = '',
@@ -27,103 +119,17 @@ class BoxDrawingSet {
     this.middleLeftEdge = '',
   });
 
-  static const BoxDrawingSet ascii = BoxDrawingSet._(
-    horizontalLine: '-',
-    verticalLine: '|',
-    topLeftCorner: '-',
-    topRightCorner: '-',
-    bottomLeftCorner: '-',
-    bottomRightCorner: '-',
-    intersection: '+',
-    middleBottomEdge: '-',
-    middleTopEdge: '-',
-    middleRightEdge: '|',
-    middleLeftEdge: '|',
-  );
-
-  static const BoxDrawingSet bold = BoxDrawingSet._(
-    horizontalLine: '━',
-    verticalLine: '┃',
-    topLeftCorner: '┏',
-    topRightCorner: '┓',
-    bottomLeftCorner: '┗',
-    bottomRightCorner: '┛',
-    intersection: '╋',
-    middleBottomEdge: '┻',
-    middleTopEdge: '┳',
-    middleRightEdge: '┫',
-    middleLeftEdge: '┣',
-  );
-
-  static const BoxDrawingSet double = BoxDrawingSet._(
-    horizontalLine: '═',
-    verticalLine: '║',
-    topLeftCorner: '╔',
-    topRightCorner: '╗',
-    bottomLeftCorner: '╚',
-    bottomRightCorner: '╝',
-    intersection: '╬',
-    middleBottomEdge: '╩',
-    middleTopEdge: '╦',
-    middleRightEdge: '╣',
-    middleLeftEdge: '╠',
-  );
-
-  static const BoxDrawingSet markdown = BoxDrawingSet._(
-    horizontalLine: '-',
-    verticalLine: '|',
-    topLeftCorner: '|',
-    topRightCorner: '|',
-    bottomLeftCorner: '|',
-    bottomRightCorner: '|',
-    intersection: '-',
-    middleBottomEdge: '-',
-    middleTopEdge: '-',
-    middleRightEdge: '|',
-    middleLeftEdge: '|',
-  );
-
-  static const BoxDrawingSet none = BoxDrawingSet._(
-    horizontalLine: '',
-    verticalLine: '',
-    topLeftCorner: '',
-    topRightCorner: '',
-    bottomLeftCorner: '',
-    bottomRightCorner: '',
-    intersection: '',
-    middleBottomEdge: '',
-    middleTopEdge: '',
-    middleRightEdge: '',
-    middleLeftEdge: '',
-  );
-
-  static const BoxDrawingSet rounded = BoxDrawingSet._(
-    horizontalLine: '─',
-    verticalLine: '│',
-    topLeftCorner: '╭',
-    topRightCorner: '╮',
-    bottomLeftCorner: '╰',
-    bottomRightCorner: '╯',
-    intersection: '┼',
-    middleBottomEdge: '┴',
-    middleTopEdge: '┬',
-    middleRightEdge: '┤',
-    middleLeftEdge: '├',
-  );
-
-  static const BoxDrawingSet square = BoxDrawingSet._(
-    horizontalLine: '─',
-    verticalLine: '│',
-    topLeftCorner: '┌',
-    topRightCorner: '┐',
-    bottomLeftCorner: '└',
-    bottomRightCorner: '┘',
-    intersection: '┼',
-    middleBottomEdge: '┴',
-    middleTopEdge: '┬',
-    middleRightEdge: '┤',
-    middleLeftEdge: '├',
-  );
+  final String horizontalLine;
+  final String verticalLine;
+  final String topLeftCorner;
+  final String topRightCorner;
+  final String bottomLeftCorner;
+  final String bottomRightCorner;
+  final String intersection;
+  final String middleBottomEdge;
+  final String middleTopEdge;
+  final String middleRightEdge;
+  final String middleLeftEdge;
 
   factory BoxDrawingSet.fromBorderStyle(final AnsiBorderStyle style) {
     switch (style) {
@@ -144,25 +150,18 @@ class BoxDrawingSet {
     }
   }
 
-  final String horizontalLine;
-  final String verticalLine;
-  final String topLeftCorner;
-  final String topRightCorner;
-  final String bottomLeftCorner;
-  final String bottomRightCorner;
-  final String intersection;
-  final String middleBottomEdge;
-  final String middleTopEdge;
-  final String middleRightEdge;
-  final String middleLeftEdge;
-
-  static const List<BoxDrawingSet> values = <BoxDrawingSet>[
-    ascii,
-    bold,
-    double,
-    markdown,
-    none,
-    rounded,
-    square,
-  ];
+  @override
+  String toString() {
+    return '$horizontalLine'
+        '$verticalLine'
+        '$topLeftCorner'
+        '$topRightCorner'
+        '$bottomLeftCorner'
+        '$bottomRightCorner'
+        '$intersection'
+        '$middleBottomEdge'
+        '$middleTopEdge'
+        '$middleRightEdge'
+        '$middleLeftEdge';
+  }
 }

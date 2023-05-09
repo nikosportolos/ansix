@@ -7,73 +7,41 @@ import 'package:ansix/src/widgets/table/row.dart';
 void main() {
   AnsiX.ensureSupportsAnsi();
 
-  const int fixedWidth = 35;
+  const int fixedWidth = 15;
 
   final List<AnsiTableCell> headerData = <AnsiTableCell>[
     AnsiTableCell(
       'Name',
       width: fixedWidth,
-      textAlignment: AnsiTextAlignment.left,
-      foregroundColor: AnsiColor.black,
-      backgroundColor: AnsiColor.darkOliveGreen3,
-      textStyle: const AnsiTextStyle(bold: true),
     ),
     AnsiTableCell(
       'Hex',
       width: fixedWidth,
-      textAlignment: AnsiTextAlignment.center,
-      foregroundColor: AnsiColor.black,
-      backgroundColor: AnsiColor.deepSkyBlue5,
-      textStyle: const AnsiTextStyle(strikethrough: true),
     ),
     AnsiTableCell(
       'RGB',
       width: fixedWidth,
-      textAlignment: AnsiTextAlignment.center,
-      foregroundColor: AnsiColor.black,
-      backgroundColor: AnsiColor.dodgerBlue2,
-      textStyle: const AnsiTextStyle(underline: true),
-    ),
-    AnsiTableCell(
-      'Sample',
-      width: fixedWidth,
-      textAlignment: AnsiTextAlignment.right,
-      foregroundColor: AnsiColor.black,
-      backgroundColor: AnsiColor.wheat1,
-      textStyle: const AnsiTextStyle(italic: true),
     ),
   ];
 
   final List<AnsiTableRow> data = <AnsiColor>[
-    AnsiColor.darkSeaGreen8,
-    AnsiColor.seaGreen3,
-    AnsiColor.deepSkyBlue6,
+    AnsiColor.red,
+    AnsiColor.green,
+    AnsiColor.blue,
   ].map((AnsiColor color) {
     return AnsiTableRow(
       data: <AnsiTableCell>[
         AnsiTableCell(
           color.name,
-          foregroundColor: color,
           width: fixedWidth,
-          textAlignment: AnsiTextAlignment.left,
         ),
         AnsiTableCell(
           color.hex,
-          foregroundColor: color,
           width: fixedWidth,
-          textAlignment: AnsiTextAlignment.center,
         ),
         AnsiTableCell(
           color.rgb.toString(),
-          foregroundColor: color,
           width: fixedWidth,
-          textAlignment: AnsiTextAlignment.center,
-        ),
-        AnsiTableCell(
-          '',
-          backgroundColor: color,
-          width: fixedWidth,
-          textAlignment: AnsiTextAlignment.right,
         ),
       ],
     );
@@ -83,14 +51,11 @@ void main() {
     print('');
     print(type.name.bold());
 
-    final AnsiBorder border = AnsiBorder(
-      style: AnsiBorderStyle.double,
-      type: type,
-      color: AnsiColor.deepSkyBlue4,
-    );
-
     final AnsiTable table = AnsiTable(
-      border: border,
+      border: AnsiBorder(
+        style: AnsiBorderStyle.square,
+        type: type,
+      ),
       data: <AnsiTableRow>[
         AnsiTableRow(data: headerData),
         ...data,

@@ -1,6 +1,8 @@
 import 'dart:io';
 
 class Shell {
+  const Shell();
+
   String runCommand(final ShellCommand command) {
     try {
       return Process.runSync(

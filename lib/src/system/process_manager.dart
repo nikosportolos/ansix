@@ -3,26 +3,28 @@ import 'package:ansix/src/system/system.dart';
 import 'package:meta/meta.dart';
 
 class ProcessManager {
-  ProcessManager({final Shell? shell}) : _shell = shell ?? Shell();
+  const ProcessManager({
+    final Shell? shell,
+  }) : _shell = shell ?? const Shell();
 
   final Shell _shell;
 
   /// 0 = Enable 'Use legacy console'
   @visibleForTesting
-  final RegExp enabledLegacyModeMatcher = RegExp('ForceV2( )*REG_DWORD( )*0x0');
+  static final RegExp enabledLegacyModeMatcher = RegExp('ForceV2( )*REG_DWORD( )*0x0');
 
   /// 1 = Disable 'Use legacy console'
   @visibleForTesting
-  final RegExp disabledLegacyModeMatcher = RegExp('ForceV2( )*REG_DWORD( )*0x1');
+  static final RegExp disabledLegacyModeMatcher = RegExp('ForceV2( )*REG_DWORD( )*0x1');
 
   @visibleForTesting
-  final RegExp bashTerminalMatcher = RegExp('256');
+  static final RegExp bashTerminalMatcher = RegExp('256');
 
   @visibleForTesting
-  final RegExp cmdTerminalMatcher = RegExp('CMD');
+  static final RegExp cmdTerminalMatcher = RegExp('CMD');
 
   @visibleForTesting
-  final RegExp powershellTerminalMatcher = RegExp('PowerShell');
+  static final RegExp powershellTerminalMatcher = RegExp('PowerShell');
 
   @visibleForTesting
   static const ShellCommand detectTerminalColorsCommand = ShellCommand(
@@ -50,9 +52,12 @@ class ProcessManager {
     if (determineLegacyConsoleMode() == LegacyConsoleMode.disabled) {
       return true;
     }
-    if (determineTerminalType().isValid) {
+
+    final TerminalType terminalType = determineTerminalType();
+    if (terminalType != TerminalType.unknown && terminalType != TerminalType.cmd) {
       return true;
     }
+
     throw const AnsiXException.ansiNotSupported(
       'Legacy console mode is enabled. '
       'ANSI escape characters are not supported',

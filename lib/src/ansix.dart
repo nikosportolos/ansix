@@ -1,26 +1,23 @@
-import 'package:ansix/src/core/core.dart';
-import 'package:ansix/src/formatter/formatters.dart';
-import 'package:ansix/src/system/ansi_support_detection.dart';
+import 'package:ansix/src/controller.dart';
+import 'package:ansix/src/formatter/formatter.dart';
 
 abstract class AnsiX {
+  static final AnsiXController _controller = AnsiXController();
+
   /// Returns true if ANSI formatting is supported and enabled.
-  static bool get isEnabled => _isEnabled;
-  static bool _isEnabled = true;
+  static bool get isEnabled => _controller.isEnabled;
 
   /// Returns the active text formatter.
-  static TextFormatter get formatter => _formatter;
-  static TextFormatter _formatter = AnsiTextFormatter();
+  static TextFormatter get formatter => _controller.formatter;
 
   /// Enables ANSI formatting (if supported by the system).
   static void enable() {
-    _isEnabled = true;
-    _formatter = AnsiTextFormatter();
+    _controller.enable();
   }
 
   /// Disables ANSI formatting.
   static void disable() {
-    _isEnabled = false;
-    _formatter = StandardTextFormatter();
+    _controller.disable();
   }
 
   /// **Ensure that ANSI formatting is supported.**
@@ -33,26 +30,9 @@ abstract class AnsiX {
     final bool silent = false,
     final bool force = false,
   }) {
-    try {
-      if (!AnsiSupportDetection.checkAnsiSupport()) {
-        throw const AnsiXException.ansiNotSupported(
-          'ANSI escape characters are not supported.',
-        );
-      }
-
-      enable();
-    } on AnsiXException catch (e) {
-      if (force) {
-        enable();
-        return;
-      }
-
-      disable();
-      if (silent) {
-        handleException(e);
-        return;
-      }
-      rethrow;
-    }
+    _controller.ensureSupportsAnsi(
+      silent: silent,
+      force: force,
+    );
   }
 }

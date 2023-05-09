@@ -1,4 +1,4 @@
 export 'legacy_console_mode.dart';
 export 'process_manager.dart';
 export 'shell.dart';
-export 'terminal_type.dart';
+export 'terminal.dart';

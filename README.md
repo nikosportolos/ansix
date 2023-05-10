@@ -35,11 +35,6 @@
 
 ## Introduction
 
-_An early character-based display terminal that executed standard ANSI commands to control the cursor, 
-clear the screen and set colors. 
-The commands were preceded with an escape character (ANSI escape codes), and although widely used in the 1980s, 
-ANSI commands still exist in various communications programs._
-
 ANSI escape codes, also known as ANSI color codes or ANSI escape sequences, are a set of standardized sequences of 
 characters used in computing to control text formatting, color, and other visual aspects of terminal output.
 

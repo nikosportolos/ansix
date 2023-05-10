@@ -1,10 +1,9 @@
-name: Build
+name: PR Workflow
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+  pull_request:
+    types: [opened, reopened, synchronize]
 
 concurrency:
   group: ${{github.workflow}}-${{github.ref}}
@@ -14,4 +13,4 @@ jobs:
   build:
     uses: ./.github/workflows/ansix.yml
     with:
-      coverage: true
+      coverage: false

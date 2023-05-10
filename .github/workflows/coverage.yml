@@ -1,0 +1,27 @@
+name: Coverage
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  validate:
+    uses: ./.github/workflows/validate.yml
+
+  coverage:
+    needs: validate
+    runs-on: ${{inputs.runs_on}}
+    steps:
+      - name: ➕ Add code coverage package
+        run: dart pub global activate coverage
+
+      - name: 🧾 Generate code coverage
+        run: dart pub global run coverage:test_with_coverage
+
+      - name: 🚮 Remove auto-generated files from coverage
+        run: lcov --remove coverage/lcov.info '*.gen.dart' -o coverage/ansix_lcov.info
+
+      - name: ☂ Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: coverage/ansix_lcov.info

@@ -1,0 +1,108 @@
+name: Health Check
+
+on:
+  workflow_dispatch:
+    inputs:
+      runs_on:
+        required: false
+        type: string
+        default: "ubuntu-latest"
+      working_directory:
+        required: false
+        type: string
+        default: "."
+      dart_sdk:
+        required: false
+        type: string
+        default: "2.19.6"
+      analyze_directories:
+        required: false
+        type: string
+        default: "lib test"
+      line_length:
+        required: false
+        type: number
+        default: 120
+      concurrency:
+        required: false
+        type: number
+        default: 4
+      coverage:
+        type: boolean
+        required: false
+        default: false
+  workflow_call:
+    inputs:
+      runs_on:
+        required: false
+        type: string
+        default: "ubuntu-latest"
+      working_directory:
+        required: false
+        type: string
+        default: "."
+      dart_sdk:
+        required: false
+        type: string
+        default: "2.19.6"
+      analyze_directories:
+        required: false
+        type: string
+        default: "lib test"
+      line_length:
+        required: false
+        type: number
+        default: 120
+      concurrency:
+        required: false
+        type: number
+        default: 4
+      coverage:
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  setup:
+    defaults:
+      run:
+        working-directory: ${{inputs.working_directory}}
+    runs-on: ${{inputs.runs_on}}
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v3
+
+      - name: 🎯 Setup Dart
+        uses: dart-lang/setup-dart@v1.4
+        with:
+          sdk: ${{ inputs.dart_sdk }}
+
+      - name: 📦 Install Dependencies
+        shell: bash
+        run: dart pub get
+
+      - name: ✨ Check Formatting
+        run: dart format --output none --set-exit-if-changed -l ${{ inputs.line_length }} ${{ inputs.working_directory }}
+
+      - name: 🕵️ Analyze
+        run: dart analyze --fatal-infos --fatal-warnings ${{ inputs.analyze_directories }}
+
+      - name: 🧪 Run Tests
+        run: dart test -j ${{ inputs.concurrency }} --color
+
+      - name: ➕ Install coverage package
+        if: ${{inputs.coverage}}
+        run: dart pub global activate coverage
+
+      - name: 🧾 Generate code coverage
+        if: ${{inputs.coverage}}
+        run: dart pub global run coverage:test_with_coverage
+
+      - name: ☂ Upload coverage reports to Codecov
+        if: ${{inputs.coverage}}
+        uses: codecov/codecov-action@v3
+        with:
+          files: coverage/lcov.info
+          fail_ci_if_error: true
+
+

@@ -3,9 +3,10 @@
 #### AnsiX is an extended ANSI library that provides tools and extensions for Dart & Flutter projects. 
 
 
-![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
-[![CI Workflow](https://github.com/nikosportolos/ansix/actions/workflows/ci.yml/badge.svg)](https://github.com/nikosportolos/ansix/actions/workflows/ci.yml)
-<img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/coverage_badge.svg" alt="coverage">
+[![Language](https://img.shields.io/badge/language-Dart-blue.svg)](https://dart.dev)
+[![Build](https://github.com/nikosportolos/ansix/actions/workflows/build.yml/badge.svg)](https://github.com/nikosportolos/ansix/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/nikosportolos/ansix/branch/main/graph/badge.svg?token=RBU7C1V1UO)](https://codecov.io/gh/nikosportolos/ansix)
+
 
 <!--
 [![Pub Version](https://img.shields.io/pub/v/ansix?color=blue&logo=dart)](https://pub.dev/packages/ansix)

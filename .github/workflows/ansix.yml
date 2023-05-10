@@ -1,4 +1,4 @@
-name: Health Check
+name: AnsiX
 
 on:
   workflow_dispatch:
@@ -63,7 +63,7 @@ on:
         default: false
 
 jobs:
-  setup:
+  ansix:
     defaults:
       run:
         working-directory: ${{inputs.working_directory}}
@@ -88,21 +88,21 @@ jobs:
         run: dart analyze --fatal-infos --fatal-warnings ${{ inputs.analyze_directories }}
 
       - name: 🧪 Run Tests
+        if: ${{ !inputs.coverage }}
         run: dart test -j ${{ inputs.concurrency }} --color
 
       - name: ➕ Install coverage package
-        if: ${{inputs.coverage}}
+        if: ${{ inputs.coverage }}
         run: dart pub global activate coverage
 
       - name: 🧾 Generate code coverage
-        if: ${{inputs.coverage}}
+        if: ${{ inputs.coverage }}
         run: dart pub global run coverage:test_with_coverage
 
       - name: ☂ Upload coverage reports to Codecov
-        if: ${{inputs.coverage}}
+        if: ${{ inputs.coverage }}
         uses: codecov/codecov-action@v3
         with:
+          token: ${{ secrets.CODECOV }}
           files: coverage/lcov.info
           fail_ci_if_error: true
-
-

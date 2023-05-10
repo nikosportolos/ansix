@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ..
+
 # Run tests with coverage
 dart pub global run coverage:test_with_coverage || { echo 'test with coverage failed' ; exit 1; }
 
@@ -9,4 +11,3 @@ lcov --remove coverage/lcov.info '*.gen.dart' -o coverage/ansix_lcov.info || { e
 # Generate coverage report
 genhtml coverage/ansix_lcov.info -o coverage/html || { echo 'failed to generate coverage report' ; exit 1; }
 
-dart run ../coverage_badge_generator/bin/generator.dart -p coverage/ansix_lcov.info -o ./

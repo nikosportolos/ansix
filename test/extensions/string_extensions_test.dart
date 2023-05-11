@@ -20,24 +20,36 @@ void main() {
     const AnsiColor foregroundColor = AnsiColor.deepSkyBlue4;
     const AnsiColor backgroundColor = AnsiColor.cyan3;
 
-    test('colored', () {
-      final String output = testMessage.colored(
-        foreground: foregroundColor,
-        background: backgroundColor,
-      );
+    test('withForegroundColor', () {
       expect(
-        output,
+        testMessage.withForegroundColor(foregroundColor),
+        '\x1B[38;5;25m$testMessage\x1B[0m',
+      );
+    });
+
+    test('withBackgroundColor', () {
+      expect(
+        testMessage.withBackgroundColor(backgroundColor),
+        '\x1B[48;5;43m$testMessage\x1B[0m',
+      );
+    });
+
+    test('colored', () {
+      expect(
+        testMessage.colored(
+          foreground: foregroundColor,
+          background: backgroundColor,
+        ),
         '\x1B[38;5;25m\x1B[48;5;43m$testMessage\x1B[0m',
       );
     });
 
     test('coloredRgb', () {
-      final String output = testMessage.coloredRgb(
-        foreground: foregroundColor,
-        background: backgroundColor,
-      );
       expect(
-        output,
+        testMessage.coloredRgb(
+          foreground: foregroundColor,
+          background: backgroundColor,
+        ),
         '\x1B[38;2;0;95;175m\x1B[48;2;0;215;175m$testMessage\x1B[0m',
       );
     });

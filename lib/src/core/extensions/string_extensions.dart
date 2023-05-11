@@ -45,6 +45,14 @@ extension AnsiString on String {
 
   String white() => colored(foreground: AnsiColor.white);
 
+  String withForegroundColor(final AnsiColor color) {
+    return AnsiX.formatter.addColor(this, foreground: color);
+  }
+
+  String withBackgroundColor(final AnsiColor color) {
+    return AnsiX.formatter.addColor(this, background: color);
+  }
+
   String colored({
     final AnsiColor foreground = AnsiColor.none,
     final AnsiColor background = AnsiColor.none,

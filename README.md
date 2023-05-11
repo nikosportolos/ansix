@@ -1,11 +1,17 @@
 # AnsiX
 
-#### AnsiX is an extended ANSI library that provides tools and extensions for Dart & Flutter projects. 
-
-
 [![Language](https://img.shields.io/badge/language-Dart-blue.svg)](https://dart.dev)
 [![Build](https://github.com/nikosportolos/ansix/actions/workflows/build.yml/badge.svg)](https://github.com/nikosportolos/ansix/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/nikosportolos/ansix/branch/main/graph/badge.svg?token=RBU7C1V1UO)](https://codecov.io/gh/nikosportolos/ansix)
+
+AnsiX is a powerful and easy-to-use library that provides tools and extensions for adding ANSI color and styling support to your Dart & Flutter applications. 
+
+You can easily create colorful and visually appealing output for your command-line interfaces, 
+including bold, italic, underline, and strikethrough text, as well as foreground and background colors in a
+wide range of ANSI-compatible terminals.
+
+Whether you're building a CLI tool, a dart server, or a Flutter application, 
+AnsiX makes it easy to add ANSI styling to your output with minimal effort and maximum flexibility. 
 
 
 <!--
@@ -49,6 +55,7 @@ The code `"\e[2J"` clears the entire screen, and `"\e[;H"` moves the cursor to t
 ANSI escape codes are widely used in command-line interfaces, terminal emulators, and other text-based applications 
 to provide a richer and more interactive user experience.
 
+# AnsiX Features
 
 ## Theme
 
@@ -84,9 +91,7 @@ Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors.
 - [Greyscale colors](https://github.com/nikosportolos/ansix/tree/main/docs/colors/greyscale.md)
 - [All colors](https://github.com/nikosportolos/ansix/tree/main/docs/colors/all.md)
 
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/color-tables.png" target="_blank"><img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/color-tables.png" width="400" alt="text-styles"></a>
-
-Source: https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797#color-codes
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/color-tables.png" target="_blank"><img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/color-tables.png" width="100%" alt="text-styles"></a>
 
 ### Text alignment
 

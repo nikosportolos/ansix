@@ -1,7 +1,6 @@
 name: ansix
 description: AnsiX is an extended ANSI library that provides tools and extensions for Dart & Flutter projects.
-version: 0.0.1+1
-publish_to: 'none'
+version: 0.0.1
 
 homepage: https://github.com/nikosportolos/ansix
 repository: https://github.com/nikosportolos/ansix

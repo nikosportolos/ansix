@@ -215,8 +215,15 @@ AnsiTextStyle(
 
 ### AnsiTable
 
+An ANSI table is a 2D table of data that is formatted with ANSI escape sequences to display borders
+and optionally add colors or styles in certain cells or text.
 
-- AnsiTable
+The borders are drawn using ASCII or Unicode characters that simulate table lines and corners,
+and the cells can be colored or styled with different foreground and background colors
+to improve readability and visual appeal.
+
+These tables are commonly used in command-line interfaces, log files, and other text-based applications
+to present data in a tabular format that is easy to read and analyze.
 
 ```dart
 AnsiTable({
@@ -225,7 +232,30 @@ AnsiTable({
 })
 ```
 
-- AnsiTable.fromList
+- #### AnsiTable.fromList
+
+Returns an `AnsiTable` build from the input list of data.
+
+Arguments:
+- `data` 
+  
+  Will use the input list of data to build an `AnsiTableColumn`.
+
+- `fixedWidth` 
+
+  If set will use this value as default width for all table cells.
+
+- `keepSameWidth` 
+
+  If set to true will find the max cell width and use it for the whole table.
+
+- `border` 
+
+  The `AnsiBorder` that will be used to draw the table with.
+
+- `defaultAlignment` 
+
+  The default `AnsiTextAlignment` that will be used for all table cells.
 
 ```dart
 factory AnsiTable.fromList(
@@ -233,6 +263,46 @@ factory AnsiTable.fromList(
   final int? fixedWidth,
   final AnsiBorder border = const AnsiBorder(),
   final AnsiTextAlignment defaultAlignment = AnsiTextAlignment.left,
+})
+```
+
+- #### AnsiTable.fromMap
+Returns an `AnsiTable` build from the input map of data.
+
+Arguments:
+- `data` 
+
+  Will use the keys of the map as headers and their values as data.
+
+- `fixedWidth` 
+
+  If set will use this value as default width for all table cells.
+
+- `keepSameWidth` 
+
+  If set to true will find the max cell width and use it for the whole table.
+
+- `border` 
+
+  The `AnsiBorder` that will be used to draw the table with.
+
+- `defaultAlignment` 
+
+  The default `AnsiTextAlignment` that will be used for all table cells.
+
+- `orientation`
+
+  The `AnsiOrientation` that will be used to draw the table.
+
+
+```dart
+factory AnsiTable.fromMap(
+  final Map<String, List<Object?>> data, {
+  final int? fixedWidth,
+  final bool keepSameWidth = false,
+  final AnsiBorder border = const AnsiBorder(),
+  final AnsiTextAlignment defaultAlignment = AnsiTextAlignment.left,
+  final AnsiOrientation orientation = AnsiOrientation.vertical,
 })
 ```
 

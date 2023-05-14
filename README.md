@@ -466,7 +466,7 @@ Blue           #0000ff        (0, 0, 255)
 ```
 
 
-## Examples
+## Example
 
 ```dart
 import 'package:ansix/ansix.dart';

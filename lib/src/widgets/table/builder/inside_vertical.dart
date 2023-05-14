@@ -21,7 +21,7 @@ class InsideVerticalBorderTableBuilder extends AnsiTableBuilder {
     final StringBuffer buffer = StringBuffer();
 
     buffer
-      ..writeColored(
+      ..writeWithForegroundColor(
           data.join(border.style.boxDrawingSet.verticalLine.colored(
             foreground: border.color,
           )),

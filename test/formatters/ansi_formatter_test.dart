@@ -10,9 +10,9 @@ void main() {
   const AnsiColor backgroundColor = AnsiColor.cyan3;
 
   group('AnsiTextFormatter', () {
-    test('addStyle', () {
+    test('withStyle', () {
       for (final AnsiStyle style in AnsiStyle.values) {
-        final String output = formatter.addStyle(testMessage, style);
+        final String output = formatter.withStyle(testMessage, style);
         expect(
           output,
           '${style.startEscapeCode}$testMessage${style.endEscapeCode}',
@@ -20,8 +20,8 @@ void main() {
       }
     });
 
-    test('addColor', () {
-      final String output = formatter.addColor(
+    test('withColor', () {
+      final String output = formatter.withColor(
         testMessage,
         foreground: foregroundColor,
         background: backgroundColor,
@@ -32,8 +32,8 @@ void main() {
       );
     });
 
-    test('addColorRgb', () {
-      final String output = formatter.addColorRgb(
+    test('withColorRgb', () {
+      final String output = formatter.withColorRgb(
         testMessage,
         foreground: foregroundColor,
         background: backgroundColor,

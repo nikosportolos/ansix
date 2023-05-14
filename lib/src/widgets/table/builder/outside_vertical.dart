@@ -23,7 +23,7 @@ class OutsideVerticalBorderTableBuilder extends AnsiTableBuilder {
 
     final StringBuffer buffer = StringBuffer();
     for (int i = 0; i < data.length; i++) {
-      buffer.writeColored(border.style.boxDrawingSet.horizontalLine * data[i].width, border.color);
+      buffer.writeWithForegroundColor(border.style.boxDrawingSet.horizontalLine * data[i].width, border.color);
     }
 
     buffer.writeln();
@@ -36,7 +36,7 @@ class OutsideVerticalBorderTableBuilder extends AnsiTableBuilder {
     final StringBuffer buffer = StringBuffer();
 
     buffer
-      ..writeColored(data.join(''), border.color)
+      ..writeWithForegroundColor(data.join(''), border.color)
       ..writeln();
 
     return buffer.toString();
@@ -53,7 +53,7 @@ class OutsideVerticalBorderTableBuilder extends AnsiTableBuilder {
 
     final StringBuffer buffer = StringBuffer();
     for (int i = 0; i < data.length; i++) {
-      buffer.writeColored(
+      buffer.writeWithForegroundColor(
         border.style.boxDrawingSet.horizontalLine * (data[i].width),
         border.color,
       );

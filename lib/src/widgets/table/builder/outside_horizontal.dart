@@ -23,9 +23,9 @@ class OutsideHorizontalBorderTableBuilder extends AnsiTableBuilder {
     final StringBuffer buffer = StringBuffer();
 
     buffer
-      ..writeColored(border.style.boxDrawingSet.verticalLine, border.color)
-      ..writeColored(data.join(''), border.color)
-      ..writeColored(border.style.boxDrawingSet.verticalLine, border.color);
+      ..writeWithForegroundColor(border.style.boxDrawingSet.verticalLine, border.color)
+      ..writeWithForegroundColor(data.join(''), border.color)
+      ..writeWithForegroundColor(border.style.boxDrawingSet.verticalLine, border.color);
 
     if (!isLastLine) {
       buffer.writeln();

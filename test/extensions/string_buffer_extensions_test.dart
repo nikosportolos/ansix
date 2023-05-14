@@ -19,7 +19,7 @@ void main() {
 
     test('writeColored', () {
       const AnsiColor color = AnsiColor.cyan1;
-      buffer.writeColored(color.name, color);
+      buffer.writeColored(color.name, foregroundColor: color);
       expect(
         buffer.toString(),
         color.name.colored(foreground: color),

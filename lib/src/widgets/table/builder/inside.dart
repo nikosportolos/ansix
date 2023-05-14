@@ -24,7 +24,7 @@ class InsideBorderTableBuilder extends AnsiTableBuilder {
     final StringBuffer buffer = StringBuffer();
 
     buffer
-      ..writeColored(
+      ..writeWithForegroundColor(
         data.join(border.style.boxDrawingSet.verticalLine.colored(foreground: border.color)),
         border.color,
       )
@@ -42,13 +42,13 @@ class InsideBorderTableBuilder extends AnsiTableBuilder {
     final StringBuffer buffer = StringBuffer();
 
     for (int i = 0; i < data.length; i++) {
-      buffer.writeColored(
+      buffer.writeWithForegroundColor(
         border.style.boxDrawingSet.horizontalLine * (data[i].width),
         border.color,
       );
 
       if (i != data.length - 1) {
-        buffer.writeColored(border.style.boxDrawingSet.intersection, border.color);
+        buffer.writeWithForegroundColor(border.style.boxDrawingSet.intersection, border.color);
       }
     }
 

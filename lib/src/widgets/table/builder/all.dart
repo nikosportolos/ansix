@@ -26,17 +26,17 @@ class AllBorderTableBuilder extends AnsiTableBuilder {
     }
 
     final StringBuffer buffer = StringBuffer();
-    buffer.writeColored(border.style.boxDrawingSet.topLeftCorner, border.color);
+    buffer.writeWithForegroundColor(border.style.boxDrawingSet.topLeftCorner, border.color);
 
     for (int i = 0; i < data.length; i++) {
-      buffer.writeColored(border.style.boxDrawingSet.horizontalLine * data[i].width, border.color);
+      buffer.writeWithForegroundColor(border.style.boxDrawingSet.horizontalLine * data[i].width, border.color);
       if (i != data.length - 1) {
-        buffer.writeColored(border.style.boxDrawingSet.middleTopEdge, border.color);
+        buffer.writeWithForegroundColor(border.style.boxDrawingSet.middleTopEdge, border.color);
       }
     }
 
     buffer
-      ..writeColored(border.style.boxDrawingSet.topRightCorner, border.color)
+      ..writeWithForegroundColor(border.style.boxDrawingSet.topRightCorner, border.color)
       ..writeln();
 
     return buffer.toString();
@@ -48,12 +48,12 @@ class AllBorderTableBuilder extends AnsiTableBuilder {
     final StringBuffer buffer = StringBuffer();
 
     buffer
-      ..writeColored(border.style.boxDrawingSet.verticalLine, border.color)
-      ..writeColored(
+      ..writeWithForegroundColor(border.style.boxDrawingSet.verticalLine, border.color)
+      ..writeWithForegroundColor(
         data.join(border.style.boxDrawingSet.verticalLine.colored(foreground: border.color)),
         border.color,
       )
-      ..writeColored(border.style.boxDrawingSet.verticalLine, border.color)
+      ..writeWithForegroundColor(border.style.boxDrawingSet.verticalLine, border.color)
       ..writeln();
 
     return buffer.toString();
@@ -67,24 +67,24 @@ class AllBorderTableBuilder extends AnsiTableBuilder {
     }
 
     final StringBuffer buffer = StringBuffer()
-      ..writeColored(
+      ..writeWithForegroundColor(
         border.style.boxDrawingSet.middleLeftEdge,
         border.color,
       );
 
     for (int i = 0; i < data.length; i++) {
-      buffer.writeColored(
+      buffer.writeWithForegroundColor(
         border.style.boxDrawingSet.horizontalLine * (data[i].width),
         border.color,
       );
 
       if (i != data.length - 1) {
-        buffer.writeColored(border.style.boxDrawingSet.intersection, border.color);
+        buffer.writeWithForegroundColor(border.style.boxDrawingSet.intersection, border.color);
       }
     }
 
     buffer
-      ..writeColored(border.style.boxDrawingSet.middleRightEdge, border.color)
+      ..writeWithForegroundColor(border.style.boxDrawingSet.middleRightEdge, border.color)
       ..writeln();
 
     return buffer.toString();
@@ -98,18 +98,18 @@ class AllBorderTableBuilder extends AnsiTableBuilder {
     }
 
     final StringBuffer buffer = StringBuffer();
-    buffer.writeColored(border.style.boxDrawingSet.bottomLeftCorner, border.color);
+    buffer.writeWithForegroundColor(border.style.boxDrawingSet.bottomLeftCorner, border.color);
     for (int i = 0; i < data.length; i++) {
-      buffer.writeColored(
+      buffer.writeWithForegroundColor(
         border.style.boxDrawingSet.horizontalLine * (data[i].width),
         border.color,
       );
       if (i != data.length - 1) {
-        buffer.writeColored(border.style.boxDrawingSet.middleBottomEdge, border.color);
+        buffer.writeWithForegroundColor(border.style.boxDrawingSet.middleBottomEdge, border.color);
       }
     }
 
-    buffer.writeColored(border.style.boxDrawingSet.bottomRightCorner, border.color);
+    buffer.writeWithForegroundColor(border.style.boxDrawingSet.bottomRightCorner, border.color);
 
     return buffer.toString();
   }

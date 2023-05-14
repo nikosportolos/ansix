@@ -49,7 +49,7 @@ class HeaderBorderTableBuilder extends AnsiTableBuilder {
 
     buffer
       ..write(separator)
-      ..writeColored(data.join(separator), border.color)
+      ..writeWithForegroundColor(data.join(separator), border.color)
       ..write(separator)
       ..writeln();
 

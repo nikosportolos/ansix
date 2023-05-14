@@ -6,14 +6,14 @@ void main() {
   AnsiX.ensureSupportsAnsi();
 
   print(StringBuffer()
-    ..writeColored('Hello ', AnsiColor.blue)
+    ..writeWithForegroundColor('Hello ', AnsiColor.blue)
     ..writeStyled(
       'AnsiX ',
       textStyle: const AnsiTextStyle(bold: true),
       foregroundColor: AnsiColor.aquamarine2,
     )
-    ..writeColored('!', AnsiColor.fuchsia)
-    ..writeColored('!', AnsiColor.red1)
-    ..writeColored('!', AnsiColor.darkOrange3)
+    ..writeWithForegroundColor('!', AnsiColor.fuchsia)
+    ..writeWithForegroundColor('!', AnsiColor.red1)
+    ..writeWithForegroundColor('!', AnsiColor.darkOrange3)
     ..toString());
 }

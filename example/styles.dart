@@ -8,6 +8,6 @@ void main() {
   for (final AnsiStyle style in AnsiStyle.values) {
     final String text = 'This is a sample text with [${style.name}] style';
     // ignore: avoid_print
-    print(text.addStyle(style));
+    print(text.withStyle(style));
   }
 }

@@ -9,7 +9,7 @@ import 'package:ansix/src/theme/style.dart';
 /// Used when ANSI formatting is not supported.
 class StandardTextFormatter extends TextFormatter {
   @override
-  String addStyle(
+  String withStyle(
     final String text,
     final AnsiStyle style,
   ) {
@@ -17,7 +17,7 @@ class StandardTextFormatter extends TextFormatter {
   }
 
   @override
-  String addColor(
+  String withColor(
     final String text, {
     final AnsiColor foreground = AnsiColor.none,
     final AnsiColor background = AnsiColor.none,
@@ -26,7 +26,7 @@ class StandardTextFormatter extends TextFormatter {
   }
 
   @override
-  String addColorRgb(
+  String withColorRgb(
     final String text, {
     final AnsiColor foreground = AnsiColor.none,
     final AnsiColor background = AnsiColor.none,

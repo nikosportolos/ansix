@@ -1,4 +1,47 @@
-part of 'table_test.dart';
+import 'package:ansix/src/theme/border.dart';
+import 'package:ansix/src/theme/color/color.dart';
+import 'package:ansix/src/widgets/table/cell.dart';
+import 'package:ansix/src/widgets/table/row.dart';
+import 'package:ansix/src/widgets/table/table.dart';
+import 'package:test/test.dart';
+
+void main() {
+  const int fixedWidth = 15;
+
+  final List<AnsiTableCell> headerData = <AnsiTableCell>[
+    AnsiTableCell('Name', width: fixedWidth),
+    AnsiTableCell('Hex', width: fixedWidth),
+    AnsiTableCell('RGB', width: fixedWidth),
+  ];
+
+  final List<AnsiTableRow> data = <AnsiColor>[AnsiColor.red, AnsiColor.green, AnsiColor.blue].map(
+    (AnsiColor color) {
+      return AnsiTableRow(
+        data: <AnsiTableCell>[
+          AnsiTableCell(color.name, width: fixedWidth),
+          AnsiTableCell(color.hex, width: fixedWidth),
+          AnsiTableCell(color.rgb.toString(), width: fixedWidth),
+        ],
+      );
+    },
+  ).toList(growable: false);
+
+  for (final AnsiBorderType type in AnsiBorderType.values) {
+    group(type.name, () {
+      test('AnsiTable', () {
+        final AnsiTable table = AnsiTable(
+          border: AnsiBorder(
+            style: AnsiBorderStyle.square,
+            type: type,
+          ),
+          data: <AnsiTableRow>[AnsiTableRow(data: headerData), ...data],
+        );
+
+        expect(table.toString(), tableMocks[type]);
+      });
+    });
+  }
+}
 
 final Map<AnsiBorderType, String> tableMocks = <AnsiBorderType, String>{
   AnsiBorderType.all: allBorderTableMock,
@@ -10,18 +53,6 @@ final Map<AnsiBorderType, String> tableMocks = <AnsiBorderType, String>{
   AnsiBorderType.outside: outsideBorderTableMock,
   AnsiBorderType.outsideHorizontal: outsideHorizontalBorderTableMock,
   AnsiBorderType.outsideVertical: outsideVerticalBorderTableMock,
-};
-
-final Map<AnsiBorderType, String> listMocks = <AnsiBorderType, String>{
-  AnsiBorderType.all: allBorderListMock,
-  AnsiBorderType.header: headerBorderListMock,
-  AnsiBorderType.inside: insideBorderListMock,
-  AnsiBorderType.insideHorizontal: insideHorizontalBorderListMock,
-  AnsiBorderType.insideVertical: insideVerticalBorderListMock,
-  AnsiBorderType.none: noBorderListMock,
-  AnsiBorderType.outside: outsideBorderListMock,
-  AnsiBorderType.outsideHorizontal: outsideHorizontalBorderListMock,
-  AnsiBorderType.outsideVertical: outsideVerticalBorderListMock,
 };
 
 const String allBorderTableMock = '''
@@ -99,79 +130,3 @@ Red            #ff0000        (255, 0, 0)
 Green          #008000        (0, 128, 0)    
 Blue           #0000ff        (0, 0, 255)    
 ─────────────────────────────────────────────''';
-
-const String allBorderListMock = '''
-┌─────┐
-│Name │
-├─────┤
-│Red  │
-├─────┤
-│Green│
-├─────┤
-│Blue │
-└─────┘''';
-
-const String headerBorderListMock = '''
-┌─────┐
-│Name │
-└─────┘
- Red   
- Green 
- Blue  
-''';
-
-const String insideBorderListMock = '''
-Name 
-─────
-Red  
-─────
-Green
-─────
-Blue 
-''';
-
-const String insideHorizontalBorderListMock = '''
-Name 
-─────
-Red  
-─────
-Green
-─────
-Blue 
-''';
-
-const String insideVerticalBorderListMock = '''
-Name 
-Red  
-Green
-Blue 
-''';
-
-const String noBorderListMock = '''
-Name 
-Red  
-Green
-Blue 
-''';
-
-const String outsideBorderListMock = '''
-┌─────┐
-│Name │
-│Red  │
-│Green│
-│Blue │
-└─────┘''';
-
-const String outsideHorizontalBorderListMock = '''
-│Name │
-│Red  │
-│Green│
-│Blue │''';
-
-const String outsideVerticalBorderListMock = '''
-─────
-Name 
-Red  
-Green
-Blue 
-─────''';

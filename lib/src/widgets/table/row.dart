@@ -14,62 +14,11 @@ class AnsiTableRow {
     required final bool isFirstLine,
     required final bool isLastLine,
   }) {
-    switch (border.type) {
-      case AnsiBorderType.all:
-        return AllBorderTableBuilder(
-          data: data,
-          border: border,
-          isFirstLine: isFirstLine,
-          isLastLine: isLastLine,
-        ).toString();
-
-      case AnsiBorderType.header:
-        return HeaderBorderTableBuilder(
-          data: data,
-          border: border,
-          isFirstLine: isFirstLine,
-          isLastLine: isLastLine,
-        ).toString();
-
-      case AnsiBorderType.inside:
-        return InsideBorderTableBuilder(
-          data: data,
-          border: border,
-          isFirstLine: isFirstLine,
-          isLastLine: isLastLine,
-        ).toString();
-
-      case AnsiBorderType.insideHorizontal:
-        return InsideHorizontalBorderTableBuilder(
-          data: data,
-          border: border,
-          isFirstLine: isFirstLine,
-          isLastLine: isLastLine,
-        ).toString();
-
-      case AnsiBorderType.insideVertical:
-        return InsideVerticalBorderTableBuilder(
-          data: data,
-          border: border,
-          isFirstLine: isFirstLine,
-          isLastLine: isLastLine,
-        ).toString();
-
-      case AnsiBorderType.none:
-        return NoBorderTableBuilder(
-          data: data,
-          border: border,
-          isFirstLine: isFirstLine,
-          isLastLine: isLastLine,
-        ).toString();
-
-      case AnsiBorderType.outside:
-        return OutsideBorderTableBuilder(
-          data: data,
-          border: border,
-          isFirstLine: isFirstLine,
-          isLastLine: isLastLine,
-        ).toString();
-    }
+    final AnsiTableBuilder builder = AnsiTableBuilder.fromBorderType(border.type);
+    builder.data = data;
+    builder.border = border;
+    builder.isFirstLine = isFirstLine;
+    builder.isLastLine = isLastLine;
+    return builder.toString();
   }
 }

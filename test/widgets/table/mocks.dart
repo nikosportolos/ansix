@@ -8,6 +8,8 @@ final Map<AnsiBorderType, String> tableMocks = <AnsiBorderType, String>{
   AnsiBorderType.insideVertical: insideVerticalBorderTableMock,
   AnsiBorderType.none: noBorderTableMock,
   AnsiBorderType.outside: outsideBorderTableMock,
+  AnsiBorderType.outsideHorizontal: outsideHorizontalBorderTableMock,
+  AnsiBorderType.outsideVertical: outsideVerticalBorderTableMock,
 };
 
 final Map<AnsiBorderType, String> listMocks = <AnsiBorderType, String>{
@@ -18,6 +20,8 @@ final Map<AnsiBorderType, String> listMocks = <AnsiBorderType, String>{
   AnsiBorderType.insideVertical: insideVerticalBorderListMock,
   AnsiBorderType.none: noBorderListMock,
   AnsiBorderType.outside: outsideBorderListMock,
+  AnsiBorderType.outsideHorizontal: outsideHorizontalBorderListMock,
+  AnsiBorderType.outsideVertical: outsideVerticalBorderListMock,
 };
 
 const String allBorderTableMock = '''
@@ -82,6 +86,20 @@ const String outsideBorderTableMock = '''
 │Blue           #0000ff        (0, 0, 255)    │
 └─────────────────────────────────────────────┘''';
 
+const String outsideHorizontalBorderTableMock = '''
+│Name           Hex            RGB            │
+│Red            #ff0000        (255, 0, 0)    │
+│Green          #008000        (0, 128, 0)    │
+│Blue           #0000ff        (0, 0, 255)    │''';
+
+const String outsideVerticalBorderTableMock = '''
+─────────────────────────────────────────────
+Name           Hex            RGB            
+Red            #ff0000        (255, 0, 0)    
+Green          #008000        (0, 128, 0)    
+Blue           #0000ff        (0, 0, 255)    
+─────────────────────────────────────────────''';
+
 const String allBorderListMock = '''
 ┌─────┐
 │Name │
@@ -143,3 +161,17 @@ const String outsideBorderListMock = '''
 │Green│
 │Blue │
 └─────┘''';
+
+const String outsideHorizontalBorderListMock = '''
+│Name │
+│Red  │
+│Green│
+│Blue │''';
+
+const String outsideVerticalBorderListMock = '''
+─────
+Name 
+Red  
+Green
+Blue 
+─────''';

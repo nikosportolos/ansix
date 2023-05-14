@@ -1,52 +1,29 @@
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/widgets/table/builder/builder.dart';
 
-/// **InsideHorizontalBorderTableBuilder**
+/// **OutsideVerticalBorderTableBuilder**
 ///
-/// Builds a table with inside horizontal borders.
+/// Builds a table with outside top and bottom borders only.
 ///
 /// Example:
 /// ```dart
-/// Name            Hex             RGB
 /// ───────────────────────────────────────────────
-/// Red             #ff0000         (255, 0, 0)
+///  Name           Hex            RGB
+///  Red            #ff0000        (255, 0, 0)
+///  Green          #008000        (0, 128, 0)
+///  Blue           #0000ff        (0, 0, 255)
 /// ───────────────────────────────────────────────
-/// Green           #008000         (0, 128, 0)
-/// ───────────────────────────────────────────────
-/// Blue            #0000ff         (0, 0, 255)
 /// ```
-class InsideHorizontalBorderTableBuilder extends AnsiTableBuilder {
+class OutsideVerticalBorderTableBuilder extends AnsiTableBuilder {
   @override
-  String get topBorder => '';
-
-  @override
-  String get textLineBorder {
-    final StringBuffer buffer = StringBuffer();
-
-    buffer
-      ..writeColored(data.join(' '), border.color)
-      ..writeln();
-
-    return buffer.toString();
-  }
-
-  @override
-  String get middleBorder {
+  String get topBorder {
     if (border.style == AnsiBorderStyle.none) {
       return '';
     }
 
     final StringBuffer buffer = StringBuffer();
-
     for (int i = 0; i < data.length; i++) {
-      buffer.writeColored(
-        border.style.boxDrawingSet.horizontalLine * (data[i].width),
-        border.color,
-      );
-
-      if (i != data.length - 1) {
-        buffer.writeColored(border.style.boxDrawingSet.horizontalLine, border.color);
-      }
+      buffer.writeColored(border.style.boxDrawingSet.horizontalLine * data[i].width, border.color);
     }
 
     buffer.writeln();
@@ -55,5 +32,33 @@ class InsideHorizontalBorderTableBuilder extends AnsiTableBuilder {
   }
 
   @override
-  String get bottomBorder => '';
+  String get textLineBorder {
+    final StringBuffer buffer = StringBuffer();
+
+    buffer
+      ..writeColored(data.join(''), border.color)
+      ..writeln();
+
+    return buffer.toString();
+  }
+
+  @override
+  String get middleBorder => '';
+
+  @override
+  String get bottomBorder {
+    if (border.style == AnsiBorderStyle.none) {
+      return '';
+    }
+
+    final StringBuffer buffer = StringBuffer();
+    for (int i = 0; i < data.length; i++) {
+      buffer.writeColored(
+        border.style.boxDrawingSet.horizontalLine * (data[i].width),
+        border.color,
+      );
+    }
+
+    return buffer.toString();
+  }
 }

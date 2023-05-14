@@ -6,3 +6,5 @@ export 'inside_horizontal.dart';
 export 'inside_vertical.dart';
 export 'no_border.dart';
 export 'outside.dart';
+export 'outside_horizontal.dart';
+export 'outside_vertical.dart';

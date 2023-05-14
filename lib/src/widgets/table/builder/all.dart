@@ -18,13 +18,6 @@ import 'package:ansix/src/widgets/table/builder/builder.dart';
 /// └───────────────┴───────────────┴───────────────┘
 /// ```
 class AllBorderTableBuilder extends AnsiTableBuilder {
-  AllBorderTableBuilder({
-    required super.data,
-    required super.border,
-    required super.isFirstLine,
-    required super.isLastLine,
-  });
-
   /// Returns the top horizontal border for the first row
   @override
   String get topBorder {

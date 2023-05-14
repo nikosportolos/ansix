@@ -1,6 +1,8 @@
 import 'package:ansix/src/theme/border.dart';
 import 'package:ansix/src/widgets/text/text.dart';
 
+import 'builders.dart';
+
 export 'all.dart';
 export 'header.dart';
 export 'inside.dart';
@@ -10,18 +12,11 @@ export 'no_border.dart';
 export 'outside.dart';
 
 abstract class AnsiTableBuilder {
-  AnsiTableBuilder({
-    required this.data,
-    required this.border,
-    required this.isFirstLine,
-    required this.isLastLine,
-  });
-
   final StringBuffer buffer = StringBuffer();
-  final List<AnsiText> data;
-  final AnsiBorder border;
-  final bool isFirstLine;
-  final bool isLastLine;
+  late final List<AnsiText> data;
+  late final AnsiBorder border;
+  late final bool isFirstLine;
+  late final bool isLastLine;
 
   /// Returns the top horizontal border for the first row
   String get topBorder;
@@ -34,6 +29,37 @@ abstract class AnsiTableBuilder {
 
   /// Returns the bottom border for the last row
   String get bottomBorder;
+
+  static AnsiTableBuilder fromBorderType(final AnsiBorderType type) {
+    switch (type) {
+      case AnsiBorderType.all:
+        return AllBorderTableBuilder();
+
+      case AnsiBorderType.header:
+        return HeaderBorderTableBuilder();
+
+      case AnsiBorderType.inside:
+        return InsideBorderTableBuilder();
+
+      case AnsiBorderType.insideHorizontal:
+        return InsideHorizontalBorderTableBuilder();
+
+      case AnsiBorderType.insideVertical:
+        return InsideVerticalBorderTableBuilder();
+
+      case AnsiBorderType.none:
+        return NoBorderTableBuilder();
+
+      case AnsiBorderType.outside:
+        return OutsideBorderTableBuilder();
+
+      case AnsiBorderType.outsideHorizontal:
+        return OutsideHorizontalBorderTableBuilder();
+
+      case AnsiBorderType.outsideVertical:
+        return OutsideVerticalBorderTableBuilder();
+    }
+  }
 
   @override
   String toString() {

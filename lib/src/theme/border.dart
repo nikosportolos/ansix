@@ -48,4 +48,6 @@ enum AnsiBorderType {
   insideVertical,
   none,
   outside,
+  outsideHorizontal,
+  outsideVertical,
 }

@@ -15,13 +15,6 @@ import 'package:ansix/src/widgets/table/builder/builder.dart';
 /// └─────────────────────────────────────────────┘
 /// ```
 class OutsideBorderTableBuilder extends AnsiTableBuilder {
-  OutsideBorderTableBuilder({
-    required super.data,
-    required super.border,
-    required super.isFirstLine,
-    required super.isLastLine,
-  });
-
   @override
   String get topBorder {
     if (border.style == AnsiBorderStyle.none) {

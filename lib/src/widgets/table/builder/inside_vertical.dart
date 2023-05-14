@@ -13,13 +13,6 @@ import 'package:ansix/src/widgets/table/builder/builder.dart';
 /// Blue           │#0000ff        │(0, 0, 255)
 /// ```
 class InsideVerticalBorderTableBuilder extends AnsiTableBuilder {
-  InsideVerticalBorderTableBuilder({
-    required super.data,
-    required super.border,
-    required super.isFirstLine,
-    required super.isLastLine,
-  });
-
   @override
   String get topBorder => '';
 

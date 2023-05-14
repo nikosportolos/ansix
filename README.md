@@ -375,6 +375,48 @@ Blue           #0000ff        (0, 0, 255)
 ```
 
 
+- AnsiBorderType.outsideHorizontal
+
+```shell
+│Name           Hex            RGB            │
+│Red            #ff0000        (255, 0, 0)    │
+│Green          #008000        (0, 128, 0)    │
+│Blue           #0000ff        (0, 0, 255)    │
+```
+
+
+- AnsiBorderType.outsideVertical
+```shell
+───────────────────────────────────────────────
+Name           Hex            RGB
+Red            #ff0000        (255, 0, 0)
+Green          #008000        (0, 128, 0)
+Blue           #0000ff        (0, 0, 255)
+───────────────────────────────────────────────
+```
+
+
 ## Examples
 
-You can check the [examples](https://github.com/nikosportolos/ansix/tree/main/examples) folder for more samples. 
+```dart
+import 'package:ansix/ansix.dart';
+
+void main() {
+  AnsiX.ensureSupportsAnsi();
+
+  print(StringBuffer()
+    ..writeColored('Hello ', AnsiColor.blue)
+    ..writeStyled(
+      'AnsiX ',
+      textStyle: const AnsiTextStyle(bold: true),
+      foregroundColor: AnsiColor.aquamarine2,
+    )
+    ..writeColored('!', AnsiColor.fuchsia)
+    ..writeColored('!', AnsiColor.red1)
+    ..writeColored('!', AnsiColor.darkOrange3)
+    ..toString());
+}
+```
+
+
+You can check the [example](https://github.com/nikosportolos/ansix/tree/main/example) folder for more samples. 

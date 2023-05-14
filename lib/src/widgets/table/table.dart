@@ -23,42 +23,6 @@ class AnsiTable {
   final List<AnsiTableRow> data;
   final String formattedText;
 
-  factory AnsiTable.fromMap(
-    final Map<String, List<Object?>> data, {
-    final int? fixedWidth,
-    final AnsiBorder border = const AnsiBorder(),
-    final AnsiTextAlignment defaultAlignment = AnsiTextAlignment.left,
-  }) {
-    final List<AnsiTableColumn> columns = <AnsiTableColumn>[];
-    final List<AnsiTableRow> rows = <AnsiTableRow>[];
-
-    for (final MapEntry<String, List<Object?>> column in data.entries) {
-      columns.add(
-        AnsiTableColumn(
-          data: <Object?>[column.key, ...column.value],
-          fixedWidth: fixedWidth,
-          defaultAlignment: defaultAlignment,
-        ),
-      );
-    }
-
-    bool hasMoreRows = true;
-    int i = 0;
-
-    while (hasMoreRows) {
-      if (columns.length >= i) {
-        // rows.addAll(columns[i].rows[i].);
-      }
-
-      i++;
-      hasMoreRows = false;
-    }
-
-    return AnsiTable(
-      border: border,
-    );
-  }
-
   factory AnsiTable.fromList(
     final List<Object?> data, {
     final int? fixedWidth,

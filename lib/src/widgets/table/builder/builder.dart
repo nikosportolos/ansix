@@ -1,7 +1,6 @@
 import 'package:ansix/src/theme/border.dart';
+import 'package:ansix/src/widgets/table/builder/builders.dart';
 import 'package:ansix/src/widgets/text/text.dart';
-
-import 'builders.dart';
 
 export 'all.dart';
 export 'header.dart';

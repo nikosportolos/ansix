@@ -7,9 +7,9 @@ import 'package:test/test.dart';
 void main() {
   group('AnsiTable.fromMap', () {
     group('horizontal', () {
-      final Map<String, List<Object?>> horizontalData = {
-        AnsiText('Row 1').toString(): [1, 2, 3, 4, 5, 6, 7, 8, 9],
-        'Row 2': ['test1', 'test2', 'test342423423', AnsiText('test4').toString(), 'test5'],
+      final Map<String, List<Object?>> horizontalData = <String, List<Object?>>{
+        AnsiText('Row 1').toString(): <Object?>[1, 2, 3, 4, 5, 6, 7, 8, 9],
+        'Row 2': <Object?>['test1', 'test2', 'test342423423', AnsiText('test4').toString(), 'test5'],
       };
 
       test('auto', () {
@@ -43,9 +43,9 @@ void main() {
     });
 
     group('vertical', () {
-      final Map<String, List<Object?>> verticalData = {
-        'Column 1': [1, 2, 3, 4, 5, 6, 7, 8, 9],
-        'Column 2': ['row 1', AnsiText('row 2').toString(), 'this is a long text', '', 'row 5'],
+      final Map<String, List<Object?>> verticalData = <String, List<Object?>>{
+        'Column 1': <Object?>[1, 2, 3, 4, 5, 6, 7, 8, 9],
+        'Column 2': <Object?>['row 1', AnsiText('row 2').toString(), 'this is a long text', '', 'row 5'],
       };
 
       test('auto', () {

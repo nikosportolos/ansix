@@ -11,3 +11,4 @@ lcov --remove coverage/lcov.info '*.gen.dart' -o coverage/ansix_lcov.info || { e
 # Generate coverage report
 genhtml coverage/ansix_lcov.info -o coverage/html || { echo 'failed to generate coverage report' ; exit 1; }
 
+echo "Coverage report generated in $PWD/coverage/html/index.html"

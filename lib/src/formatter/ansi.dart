@@ -11,6 +11,10 @@ class AnsiTextFormatter implements TextFormatter {
     final String text,
     final AnsiStyle style,
   ) {
+    // if (text.isEmpty) {
+    //   return '';
+    // }
+
     return '${style.startEscapeCode}$text${style.endEscapeCode}';
   }
 
@@ -20,6 +24,10 @@ class AnsiTextFormatter implements TextFormatter {
     final AnsiColor foreground = AnsiColor.none,
     final AnsiColor background = AnsiColor.none,
   }) {
+    // if (text.isEmpty) {
+    //   return '';
+    // }
+
     if (foreground == AnsiColor.none && background == AnsiColor.none) {
       return text;
     }
@@ -33,6 +41,10 @@ class AnsiTextFormatter implements TextFormatter {
     final AnsiColor foreground = AnsiColor.none,
     final AnsiColor background = AnsiColor.none,
   }) {
+    // if (text.isEmpty) {
+    //   return '';
+    // }
+
     if (foreground == AnsiColor.none && background == AnsiColor.none) {
       return text;
     }

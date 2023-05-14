@@ -41,6 +41,7 @@ class AnsiTableColumn {
       }
     }
 
+    width = maxColumnWidth;
     rows = list.mapIndexed((int index, String text) {
       return AnsiTableRow(
         data: <AnsiText>[
@@ -59,4 +60,5 @@ class AnsiTableColumn {
   final AnsiTextAlignment defaultAlignment;
 
   late final List<AnsiTableRow> rows;
+  late final int width;
 }

@@ -3,6 +3,8 @@
 [![Language](https://img.shields.io/badge/language-Dart-blue.svg)](https://dart.dev)
 [![Build](https://github.com/nikosportolos/ansix/actions/workflows/build.yml/badge.svg)](https://github.com/nikosportolos/ansix/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/nikosportolos/ansix/branch/main/graph/badge.svg?token=RBU7C1V1UO)](https://codecov.io/gh/nikosportolos/ansix)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 
 AnsiX is a powerful and easy-to-use library that provides tools and extensions for adding ANSI color and styling support to your Dart & Flutter applications. 
 
@@ -23,20 +25,28 @@ AnsiX makes it easy to add ANSI styling to your output with minimal effort and m
 ## Table of contents
 
 - [Introduction](#introduction)
-- [Theme](#theme)
-  - [Styles](#styles)
-  - [Colors](#colors)
-  - [Text alignment](#text-alignment)
-- [Extensions](#extensions)
-  - [String](#string) 
-  - [StringBuffer](#stringbuffer) 
-- [Widgets](#widgets)
-  - [AnsiText](#ansitext) 
-    - [AnsiTextStyle](#ansitextstyle)
-  - [AnsiTable](#ansitable) 
-    - [AnsiBorder](#ansiborder) 
-    - [AnsiType](#ansitype)
+- [AnsiX Features](#ansix-features)
+  - [ANSI Support](#ansi-support)
+    - [ANSI support detection](#ansi-support-detection)
+    - [Ensure ANSI support](#ensure-ansi-support)
+    - [Force usage of ANSI escape codes](#force-usage-of-ansi-escape-codes)
+    - [Enable/Disable AnsiX](#enabledisable-ansix)
+  - [Theme](#theme)
+    - [Styles](#styles)
+    - [Colors](#colors)
+      - [Color sets](#ansi-color-sets)
+    - [Text alignment](#text-alignment)
+  - [Extensions](#extensions)
+    - [String](#string) 
+    - [StringBuffer](#stringbuffer) 
+  - [Widgets](#widgets)
+    - [AnsiText](#ansitext) 
+      - [AnsiTextStyle](#ansitextstyle)
+    - [AnsiTable](#ansitable) 
+      - [AnsiBorder](#ansiborder) 
+      - [AnsiType](#ansitype)
 - [Examples](#examples)
+- [Changelog](#changelog)
 
 
 ## Introduction
@@ -56,6 +66,84 @@ ANSI escape codes are widely used in command-line interfaces, terminal emulators
 to provide a richer and more interactive user experience.
 
 # AnsiX Features
+
+## ANSI Support
+
+With **AnsiX** you can check whether the terminal that is attached to your application supports ANSI escape codes 
+and automatically disable all ANSI formatting to avoid malformed messages in your console.
+
+### ANSI support detection
+
+**AnsiX** will check if ANSI escape codes are supported in the attached terminal by using the 
+default [Dart methods](https://api.flutter.dev/flutter/dart-io/Stdout/supportsAnsiEscapes.html) and taking an
+extra step trying to further detect ANSI support in case default dart implementation fails.
+
+
+### Ensure ANSI support
+
+For example, when running an application in a terminal that doesn't support ANSI escape codes 
+the formatted text looks like this:
+
+```shell
+> dart run example/styles.dart
+
+[1mThis is a sample text with [bold] style[22m
+[21mThis is a sample text with [boldUnderline] style[24m
+[2mThis is a sample text with [dim] style[22m
+[7mThis is a sample text with [inverse] style[27m
+[3mThis is a sample text with [italic] style[23m
+This is a sample text with [normal] style
+[9mThis is a sample text with [strikethrough] style[29m
+[4mThis is a sample text with [underline] style[24m
+```
+
+In the beginning of our application we can run `AnsiX.ensureSupportsAnsi();` to ensure that ANSI formatting is supported.
+
+By default, if there's no ANSI support it will throw an error of type `AnsiNotSupported`.
+
+We can override the default behaviour by setting the `setting` flag to true:
+
+```dart
+AnsiX.ensureSupportsAnsi(silent: true);
+```
+
+This will result to displaying the text with no ANSI formatting and ensure the quality and readability of your console messages:
+
+```shell
+> dart run example/styles.dart
+
+This is a sample text with [bold] style
+This is a sample text with [boldUnderline] style
+This is a sample text with [dim] style
+This is a sample text with [inverse] style
+This is a sample text with [italic] style
+This is a sample text with [normal] style
+This is a sample text with [strikethrough] style
+This is a sample text with [underline] style
+```
+
+
+### Force usage of ANSI escape codes
+
+We can override the default AnsiX behaviour in order to enable ANSI formatting even if ANSI support detection failed, 
+by using the `force` flag:
+
+```dart
+AnsiX.ensureSupportsAnsi(force: true);
+```
+
+***Use with caution, as it may lead to printing wrongly-formatted text.***
+
+
+### Enable/Disable AnsiX
+
+We can enable ANSI formatting simply by running the following:
+
+```dart
+AnsiX.enable();
+AnsiX.disable();
+```
+
 
 ## Theme
 
@@ -84,14 +172,61 @@ AnsiX supports the following text styles:
 
 ### Colors
 
+ANSI colors are a set of standardized color codes that can be used
+in text-based interfaces to add color and emphasis to text.
+
+The ANSI color codes are typically supported by terminal emulators and command-line interfaces,
+and can be used to change the foreground and background colors of text.
+
+The ANSI color codes consist of a special sequence of characters that starts with the
+escape character (ASCII code 27), followed by the characters '[', the color code, and the letter 'm'.
+
+The color code can be a number between 0 and 255, and is used to specify
+a specific color in the terminal's color palette.
+
 Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors.
 
+#### ANSI Color sets
+
 - [System colors](https://github.com/nikosportolos/ansix/tree/main/docs/colors/system.md)
+
+  The 16 ANSI colors are a set of standardized colors used by early computer terminals,
+  and are still commonly used today in various terminal applications.
+  
+  They consist of eight basic colors and their corresponding "bright" versions.
+
+
 - [Extended colors](https://github.com/nikosportolos/ansix/tree/main/docs/colors/extended.md)
+
+  Extended colors are a range of additional colors beyond the standard 16-color and 256-color palettes in the ANSI color space. 
+
+  They are typically used in modern terminals that support true color or in applications that can generate 24-bit color codes. 
+
+  The extended color range allows for a more extensive and diverse color palette, enabling users to choose from millions of possible color combinations. 
+
+  Each color is represented by an RGB triplet or hexadecimal value, allowing for precise color selection. 
+
+  Overall, the extended color range offers greater flexibility and creative freedom when it comes to designing and 
+  displaying text and graphics in a terminal environment.
+
+
 - [Greyscale colors](https://github.com/nikosportolos/ansix/tree/main/docs/colors/greyscale.md)
+
+  Greyscale colors are a range of neutral colors that range from black to white, passing through shades of grey. 
+
+  They are often used to provide contrast with other colors or to create a subdued, monochromatic look. 
+
+  In the context of ANSI terminal colors, greyscale colors are represented by a series of shades ranging from black 
+  to white, with a total of 24 different shades available.
+
+
 - [All colors](https://github.com/nikosportolos/ansix/tree/main/docs/colors/all.md)
 
+  Includes all 256 available terminal ANSI colors.
+
+
 <a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/color-tables.png" target="_blank"><img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/color-tables.png" width="100%" alt="text-styles"></a>
+
 
 ### Text alignment
 
@@ -101,11 +236,13 @@ Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors.
 |This is a text with [left] alignment                        |
 ```
 
+
 - AnsiTextAlignment.center
 
 ```shell
 |           This is a text with [center] alignment           |
 ```
+
 
 - AnsiTextAlignment.right
 
@@ -116,13 +253,68 @@ Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors.
 
 ## Extensions
 
+
 ### String
+
+
+- withStyle
+
+```dart
+ String withStyle(final AnsiStyle style)
+```
+
+
+- styled
+
+```dart
+String styled(
+  final AnsiTextStyle textStyle, [
+  final AnsiColor foreground = AnsiColor.none,
+  final AnsiColor background = AnsiColor.none,
+]) 
+```
+
+
+- withForegroundColor
+
+```dart
+String withForegroundColor(final AnsiColor color)
+```
+
+
+- withBackgroundColor
+
+```dart
+String withBackgroundColor(final AnsiColor color)
+```
+
+
+- colored
+
+```dart
+String colored({
+  final AnsiColor foreground = AnsiColor.none,
+  final AnsiColor background = AnsiColor.none,
+})
+```
+
+
+- coloredRgb
+
+```dart
+String coloredRgb({
+  final AnsiColor foreground = AnsiColor.none,
+  final AnsiColor background = AnsiColor.none,
+})
+```
+
 
 #### Styles
 - bold
 - italic
 - underline
 - strikethrough
+
 
 #### Colors
 - black
@@ -141,9 +333,11 @@ Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors.
 
 Writes empty lines in buffer:
 
+
 ```dart
 void writeLines(final int lines)
 ```
+
 
 - writeSpaces
 
@@ -156,6 +350,7 @@ void writeSpaces(
 ]) 
 ```
 
+
 - writeColored
 
 Writes a text in buffer with foreground color:
@@ -166,6 +361,7 @@ void writeColored(
   final AnsiColor color,
 )
 ```
+
 
 - writeStyled
 
@@ -179,6 +375,7 @@ void writeStyled(
   final AnsiColor backgroundColor = AnsiColor.none,
 }) 
 ```
+
 
 ## Widgets
 
@@ -307,6 +504,14 @@ factory AnsiTable.fromMap(
 ```
 
 ### AnsiBorder
+
+```dart
+const AnsiBorder({
+  this.type = AnsiBorderType.none,
+  this.style = AnsiBorderStyle.none,
+  this.color = AnsiColor.none,
+})
+```
 
 #### AnsiBorderStyle
 
@@ -466,27 +671,42 @@ Blue           #0000ff        (0, 0, 255)
 ```
 
 
-## Example
+## Examples
 
 ```dart
 import 'package:ansix/ansix.dart';
 
 void main() {
+  // Ensure that the attached terminal supports ANSI formatting
   AnsiX.ensureSupportsAnsi();
 
+  // String extensions
+  print('This is a bold text'.bold());
+  print('This is a text with red foreground color'.red());
+
+  // StringBuffer extensions
   print(StringBuffer()
-    ..writeColored('Hello ', AnsiColor.blue)
+    ..writeWithForegroundColor('Hello ', AnsiColor.blue)
     ..writeStyled(
       'AnsiX ',
       textStyle: const AnsiTextStyle(bold: true),
       foregroundColor: AnsiColor.aquamarine2,
     )
-    ..writeColored('!', AnsiColor.fuchsia)
-    ..writeColored('!', AnsiColor.red1)
-    ..writeColored('!', AnsiColor.darkOrange3)
+    ..writeWithForegroundColor('!', AnsiColor.fuchsia)
+    ..writeWithForegroundColor('!', AnsiColor.red1)
+    ..writeWithForegroundColor('!', AnsiColor.darkOrange3)
     ..toString());
 }
 ```
 
 
 You can check the [example](https://github.com/nikosportolos/ansix/tree/main/example) folder for more samples. 
+
+
+## Changelog
+
+You can find the [CHANGELOG.md](https://github.com/nikosportolos/ansix/tree/main/CHANGELOG.md) 
+to check what has changed in *AnsiX*. 
+
+
+

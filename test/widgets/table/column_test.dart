@@ -5,11 +5,11 @@ import 'package:test/test.dart';
 void main() {
   group('AnsiTableColumn', () {
     test('string width', () {
-      expect(AnsiTableColumn(data: ['test', 'test 1']).width, 6);
+      expect(AnsiTableColumn(data: <Object?>['test', 'test 1']).width, 6);
     });
 
     test('AnsiText width', () {
-      expect(AnsiTableColumn(data: ['test', 'test 1', AnsiText('this is a test message')]).width, 22);
+      expect(AnsiTableColumn(data: <Object?>['test', 'test 1', AnsiText('this is a test message')]).width, 22);
     });
   });
 }

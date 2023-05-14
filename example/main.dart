@@ -3,8 +3,14 @@
 import 'package:ansix/ansix.dart';
 
 void main() {
+  // Ensure that the attached terminal supports ANSI formatting
   AnsiX.ensureSupportsAnsi();
 
+  // String extensions
+  print('This is a bold text'.bold());
+  print('This is a text with red foreground color'.red());
+
+  // StringBuffer extensions
   print(StringBuffer()
     ..writeWithForegroundColor('Hello ', AnsiColor.blue)
     ..writeStyled(

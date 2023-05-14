@@ -44,6 +44,12 @@ abstract class AnsiColorSet {
 
   /// **Greyscale color set**
   ///
+  /// Greyscale colors are a range of neutral colors that range from black to white, passing through shades of grey.
+  ///
+  /// They are often used to provide contrast with other colors or to create a subdued, monochromatic look.
+  ///
+  /// In the context of ANSI terminal colors, greyscale colors are represented by a series of shades ranging
+  /// from black to white, with a total of 24 different shades available.
   static const List<AnsiColor> greyscale = <AnsiColor>[
     AnsiColor.grey3,
     AnsiColor.grey7,
@@ -73,6 +79,19 @@ abstract class AnsiColorSet {
 
   /// **Extended color set**
   ///
+  /// Extended colors are a range of additional colors beyond the standard 16-color
+  /// and 256-color palettes in the ANSI color space.
+  ///
+  /// They are typically used in modern terminals that support true color or in applications
+  /// that can generate 24-bit color codes.
+  ///
+  /// The extended color range allows for a more extensive and diverse color palette,
+  /// enabling users to choose from millions of possible color combinations.
+  ///
+  /// Each color is represented by an RGB triplet or hexadecimal value, allowing for precise color selection.
+  ///
+  /// Overall, the extended color range offers greater flexibility and creative freedom when it comes to designing
+  /// and displaying text and graphics in a terminal environment.
   static const List<AnsiColor> extended = <AnsiColor>[
     AnsiColor.grey0,
     AnsiColor.navyBlue,

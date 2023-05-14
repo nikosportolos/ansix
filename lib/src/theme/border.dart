@@ -23,6 +23,8 @@ class AnsiBorder {
 /// ANSI border styles are a set of characters and escape codes
 /// that can be used to draw borders and frames around text
 /// or other content in terminal-based applications.
+///
+/// Each style contains a [BoxDrawingSet].
 enum AnsiBorderStyle {
   ascii(BoxDrawingSet.ascii),
   bold(BoxDrawingSet.bold),

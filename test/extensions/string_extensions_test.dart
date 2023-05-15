@@ -91,56 +91,56 @@ void main() {
       test('black', () {
         expect(
           testMessage.black(),
-          '${AnsiColor.black.foreground}$testMessage$reset',
+          '${AnsiColor.black.foreground}$testMessage${AnsiEscapeCodes.reset}',
         );
       });
 
       test('red', () {
         expect(
           testMessage.red(),
-          '${AnsiColor.red.foreground}$testMessage$reset',
+          '${AnsiColor.red.foreground}$testMessage${AnsiEscapeCodes.reset}',
         );
       });
 
       test('green', () {
         expect(
           testMessage.green(),
-          '${AnsiColor.green.foreground}$testMessage$reset',
+          '${AnsiColor.green.foreground}$testMessage${AnsiEscapeCodes.reset}',
         );
       });
 
       test('yellow', () {
         expect(
           testMessage.yellow(),
-          '${AnsiColor.yellow.foreground}$testMessage$reset',
+          '${AnsiColor.yellow.foreground}$testMessage${AnsiEscapeCodes.reset}',
         );
       });
 
       test('blue', () {
         expect(
           testMessage.blue(),
-          '${AnsiColor.blue.foreground}$testMessage$reset',
+          '${AnsiColor.blue.foreground}$testMessage${AnsiEscapeCodes.reset}',
         );
       });
 
       test('fuchsia', () {
         expect(
           testMessage.fuchsia(),
-          '${AnsiColor.fuchsia.foreground}$testMessage$reset',
+          '${AnsiColor.fuchsia.foreground}$testMessage${AnsiEscapeCodes.reset}',
         );
       });
 
       test('aqua', () {
         expect(
           testMessage.aqua(),
-          '${AnsiColor.aqua.foreground}$testMessage$reset',
+          '${AnsiColor.aqua.foreground}$testMessage${AnsiEscapeCodes.reset}',
         );
       });
 
       test('white', () {
         expect(
           testMessage.white(),
-          '${AnsiColor.white.foreground}$testMessage$reset',
+          '${AnsiColor.white.foreground}$testMessage${AnsiEscapeCodes.reset}',
         );
       });
     });

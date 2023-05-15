@@ -14,7 +14,7 @@ void main() {
 
     test('writeSpaces', () {
       buffer.writeLines(10);
-      expect(buffer.toString(), newLine * 10);
+      expect(buffer.toString(), AnsiEscapeCodes.newLine * 10);
     });
 
     test('writeColored', () {

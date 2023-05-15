@@ -2,7 +2,7 @@ import 'package:ansix/ansix.dart';
 
 extension StringBufferX on StringBuffer {
   void writeLines(final int lines) {
-    write(newLine * lines);
+    write(AnsiEscapeCodes.newLine * lines);
   }
 
   void writeSpaces(

@@ -15,11 +15,11 @@ void main() {
   }) {
     expect(
       AnsiText(demoText, padding: padding).formattedText,
-      '${newLine * expectedTopLines}'
+      '${AnsiEscapeCodes.newLine * expectedTopLines}'
       '${' ' * expectedStartSpaces}'
       '$demoText'
       '${' ' * expectedEndSpaces}'
-      '${newLine * expectedBottomLines}',
+      '${AnsiEscapeCodes.newLine * expectedBottomLines}',
     );
   }
 

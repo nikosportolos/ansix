@@ -53,7 +53,7 @@ void main() {
                               );
 
                               final StringBuffer buffer = StringBuffer()
-                                ..write(newLine * padding.top)
+                                ..write(AnsiEscapeCodes.newLine * padding.top)
                                 ..write(backgroundColor.background)
                                 ..write(' ' * padding.left)
                                 ..write(
@@ -68,7 +68,7 @@ void main() {
                                           ? (width ?? 0) ~/ 2 - testMessage.length ~/ 2 - padding.left - padding.right
                                           : 0),
                                 )
-                                ..write(backgroundColor == AnsiColor.none ? '' : reset)
+                                ..write(backgroundColor == AnsiColor.none ? '' : AnsiEscapeCodes.reset)
                                 ..write(foregroundColor.foreground)
                                 ..write(backgroundColor.background)
                                 ..write(style.startEscapeCode)
@@ -77,7 +77,7 @@ void main() {
                                 ..write(
                                   foregroundColor == AnsiColor.none && backgroundColor == AnsiColor.none //
                                       ? ''
-                                      : reset,
+                                      : AnsiEscapeCodes.reset,
                                 )
                                 ..write(backgroundColor.background)
                                 ..write(' ' * padding.right)
@@ -93,8 +93,8 @@ void main() {
                                           ? (width ?? 0) ~/ 2 - testMessage.length ~/ 2 - padding.left - padding.right
                                           : 0),
                                 )
-                                ..write(backgroundColor == AnsiColor.none ? '' : reset)
-                                ..write(newLine * padding.bottom);
+                                ..write(backgroundColor == AnsiColor.none ? '' : AnsiEscapeCodes.reset)
+                                ..write(AnsiEscapeCodes.newLine * padding.bottom);
 
                               // print('actual   : ${ansiText.toString()}');
                               // print('expected : ${buffer.toString()}');

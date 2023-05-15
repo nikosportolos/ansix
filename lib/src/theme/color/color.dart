@@ -1843,25 +1843,29 @@ class AnsiColor {
   /// Foreground 8 bit 256 color code
   @pragma('vm:prefer-inline')
   String get foreground {
-    return value < 0 ? '' : '$foregroundColorStartCode$value$colorEndCode';
+    return value < 0 ? '' : '${AnsiEscapeCodes.foregroundColorStartCode}$value${AnsiEscapeCodes.colorEndCode}';
   }
 
   /// Background 8 bit 256 color code
   @pragma('vm:prefer-inline')
   String get background {
-    return value < 0 ? '' : '$backgroundColorStartCode$value$colorEndCode';
+    return value < 0 ? '' : '${AnsiEscapeCodes.backgroundColorStartCode}$value${AnsiEscapeCodes.colorEndCode}';
   }
 
   /// Foreground 24 bit rgb color code
   @pragma('vm:prefer-inline')
   String get foregroundRgb {
-    return rgb == null ? '' : '$foregroundRgbColorStartCode${rgb!.toAnsiString()}$colorEndCode';
+    return rgb == null
+        ? ''
+        : '${AnsiEscapeCodes.foregroundRgbColorStartCode}${rgb!.toAnsiString()}${AnsiEscapeCodes.colorEndCode}';
   }
 
   /// Background 24 bit rgb color code
   @pragma('vm:prefer-inline')
   String get backgroundRgb {
-    return rgb == null ? '' : '$backgroundRgbColorStartCode${rgb!.toAnsiString()}$colorEndCode';
+    return rgb == null
+        ? ''
+        : '${AnsiEscapeCodes.backgroundRgbColorStartCode}${rgb!.toAnsiString()}${AnsiEscapeCodes.colorEndCode}';
   }
 
   @pragma('vm:prefer-inline')

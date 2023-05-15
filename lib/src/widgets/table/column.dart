@@ -20,7 +20,7 @@ class AnsiTableColumn {
     for (final Object? object in data) {
       if (object is AnsiText) {
         maxColumnWidth = max(object.width, maxColumnWidth);
-        list.addAll(object.formattedText.split(newLine));
+        list.addAll(object.formattedText.split(AnsiEscapeCodes.newLine));
 
         alignments.addAll(<AnsiTextAlignment>[
           for (int i = 0; i < object.padding.top; i++) defaultAlignment,
@@ -32,7 +32,7 @@ class AnsiTableColumn {
       } else {
         final String text = object.toString();
         maxColumnWidth = max(text.length, maxColumnWidth);
-        final List<String> temp = text.split(newLine);
+        final List<String> temp = text.split(AnsiEscapeCodes.newLine);
         list.addAll(temp);
 
         alignments.addAll(<AnsiTextAlignment>[

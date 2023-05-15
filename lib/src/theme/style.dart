@@ -15,22 +15,43 @@ import 'package:ansix/src/core/escape_codes.dart';
 /// https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797#color-codes
 enum AnsiStyle {
   /// Bold or increased intensity
-  bold(boldStartCode, boldEndCode),
+  bold(
+    AnsiEscapeCodes.boldStartCode,
+    AnsiEscapeCodes.boldEndCode,
+  ),
 
-  boldUnderline(boldUnderlineStartCode, boldUnderlineEndCode),
+  boldUnderline(
+    AnsiEscapeCodes.boldUnderlineStartCode,
+    AnsiEscapeCodes.boldUnderlineEndCode,
+  ),
 
   /// Faint, decreased intensity, or dim
-  dim(dimStartCode, dimEndCode),
+  dim(
+    AnsiEscapeCodes.dimStartCode,
+    AnsiEscapeCodes.dimEndCode,
+  ),
 
-  inverse(inverseStartCode, inverseEndCode),
+  inverse(
+    AnsiEscapeCodes.inverseStartCode,
+    AnsiEscapeCodes.inverseEndCode,
+  ),
 
-  italic(italicStartCode, italicEndCode),
+  italic(
+    AnsiEscapeCodes.italicStartCode,
+    AnsiEscapeCodes.italicEndCode,
+  ),
 
   normal('', ''),
 
-  strikethrough(strikethroughStartCode, strikethroughEndCode),
+  strikethrough(
+    AnsiEscapeCodes.strikethroughStartCode,
+    AnsiEscapeCodes.strikethroughEndCode,
+  ),
 
-  underline(underlineStartCode, underlineEndCode);
+  underline(
+    AnsiEscapeCodes.underlineStartCode,
+    AnsiEscapeCodes.underlineEndCode,
+  );
 
   const AnsiStyle(
     this.startEscapeCode,

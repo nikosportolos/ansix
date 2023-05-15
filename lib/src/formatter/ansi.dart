@@ -32,7 +32,7 @@ class AnsiTextFormatter implements TextFormatter {
       return text;
     }
 
-    return '${foreground.foreground}${background.background}$text$reset';
+    return '${foreground.foreground}${background.background}$text${AnsiEscapeCodes.reset}';
   }
 
   @override
@@ -49,6 +49,6 @@ class AnsiTextFormatter implements TextFormatter {
       return text;
     }
 
-    return '${foreground.foregroundRgb}${background.backgroundRgb}$text$reset';
+    return '${foreground.foregroundRgb}${background.backgroundRgb}$text${AnsiEscapeCodes.reset}';
   }
 }

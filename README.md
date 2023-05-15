@@ -47,6 +47,7 @@ AnsiX makes it easy to add ANSI styling to your output with minimal effort and m
       - [AnsiType](#ansitype)
 - [Examples](#examples)
 - [Changelog](#changelog)
+- [Contribution](#contribution)
 
 
 ## Introduction
@@ -706,7 +707,8 @@ You can check the [example](https://github.com/nikosportolos/ansix/tree/main/exa
 ## Changelog
 
 You can find the [CHANGELOG.md](https://github.com/nikosportolos/ansix/tree/main/CHANGELOG.md) 
-to check what has changed in *AnsiX*. 
+to check what has changed in **AnsiX**. 
 
+## Contribution
 
-
+Check the [contribution guide](https://github.com/nikosportolos/ansix/tree/main/CONTRIBUTING.md) if you want to help with **AnsiX**.

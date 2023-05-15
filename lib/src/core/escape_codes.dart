@@ -54,4 +54,19 @@ abstract class AnsiEscapeCodes {
   /// The "48" part of the sequence refers to the background color, and the "2" indicates that we're using 24-bit colors.
   static const String backgroundRgbColorStartCode = '$escape[48;2;';
   static const String colorEndCode = 'm';
+
+  static const String backspace = '\b$cleanFromCursorToEnd';
+  static const String cleanAll = '\x1b[2J';
+  static const String cleanLine = '\x1b[2K';
+  static const String cleanFromCursorToEnd = '\x1b[K';
+
+  static const String cursorHide = '\x1b[?25l';
+  static const String cursorShow = '\x1b[?25h';
+
+  static const String cursorMoveLeft = '\x1b[D';
+  static const String cursorMoveRight = '\x1b[C';
+  static const String cursorMoveUp = '\x1b[A';
+  static const String cursorMoveDown = '\x1b[B';
+
+  static const String cursorResetPosition = '\x1b[H';
 }

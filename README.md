@@ -6,6 +6,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/AnsiX.gif" target="_blank"><img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/AnsiX.gif" width="500" alt="ansix"></a>
+
 AnsiX is a powerful and easy-to-use library that provides tools and extensions for adding ANSI color and styling support to your Dart & Flutter applications. 
 
 You can easily create colorful and visually appealing output for your command-line interfaces, 

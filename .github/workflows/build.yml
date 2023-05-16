@@ -12,6 +12,16 @@ concurrency:
 
 jobs:
   build:
-    uses: ./.github/workflows/ansix.yml
-    with:
-      coverage: true
+    defaults:
+      run:
+        working-directory: .
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v3
+
+      - name: dart-package
+        uses: nikosportolos/dart_package@v0.0.1
+        with:
+          coverage: true
+          codecov_token: ${{ secrets.CODECOV_TOKEN }}

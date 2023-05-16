@@ -23,6 +23,10 @@ on:
         required: false
         type: number
         default: 120
+      skip_tests:
+        required: false
+        type: boolean
+        default: false
       concurrency:
         required: false
         type: number
@@ -53,6 +57,10 @@ on:
         required: false
         type: number
         default: 120
+      skip_tests:
+        required: false
+        type: boolean
+        default: false
       concurrency:
         required: false
         type: number
@@ -69,40 +77,17 @@ jobs:
         working-directory: ${{inputs.working_directory}}
     runs-on: ${{inputs.runs_on}}
     steps:
-      - name: 📚 Git Checkout
-        uses: actions/checkout@v3
-
-      - name: 🎯 Setup Dart
-        uses: dart-lang/setup-dart@v1.4
+      - uses: actions/checkout@v3
+      - uses: nikosportolos/dart_package@v0.0.3
         with:
-          sdk: ${{ inputs.dart_sdk }}
-
-      - name: 📦 Install Dependencies
-        shell: bash
-        run: dart pub get
-
-      - name: 🎨 Check Formatting
-        run: dart format --output none --set-exit-if-changed -l ${{ inputs.line_length }} ${{ inputs.working_directory }}
-
-      - name: 🕵️ Analyze
-        run: dart analyze --fatal-infos --fatal-warnings ${{ inputs.analyze_directories }}
-
-      - name: 🧪 Run Tests
-        if: ${{ !inputs.coverage }}
-        run: dart test -j ${{ inputs.concurrency }} --color
-
-      - name: ➕ Install coverage package
-        if: ${{ inputs.coverage }}
-        run: dart pub global activate coverage
-
-      - name: 🧾 Generate code coverage
-        if: ${{ inputs.coverage }}
-        run: dart pub global run coverage:test_with_coverage
-
-      - name: ☂ Upload coverage reports to Codecov
-        if: ${{ inputs.coverage }}
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV }}
-          files: coverage/lcov.info
-          fail_ci_if_error: true
+          working_directory: ${{ inputs.working_directory }}
+          dart_sdk: ${{ inputs.dart_sdk }}
+          analyze_directories: ${{ inputs.analyze_directories }}
+          line_length: ${{ inputs.line_length }}
+          skip_tests: ${{ inputs.skip_tests }}
+          concurrency: ${{ inputs.concurrency }}
+          coverage: ${{ inputs.coverage }}
+          codecov: ${{ inputs.codecov }}
+          codecov_token: ${{ secrets.CODECOV_TOKEN }}
+          publish: ${{ inputs.publish }}
+          pubdev_token: ${{ secrets.PUBDEV_TOKEN }}

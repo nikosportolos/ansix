@@ -1,3 +1,6 @@
+/.githooks/*
+/.github/*
+/assets/*
 /coverage/*
 /docs/*
 /scripts/*

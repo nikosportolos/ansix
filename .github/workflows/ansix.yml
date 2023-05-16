@@ -94,7 +94,7 @@ jobs:
     runs-on: ${{inputs.runs_on}}
     steps:
       - uses: actions/checkout@v3
-      - uses: nikosportolos/dart_package@v0.0.3
+      - uses: nikosportolos/dart_package@v0.0.4
         with:
           working_directory: .
           dart_sdk: ${{ inputs.dart_sdk }}

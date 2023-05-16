@@ -11,4 +11,10 @@ concurrency:
 
 jobs:
   build:
-    uses: ./.github/workflows/ansix.yml
+    defaults:
+      run:
+        working-directory: .
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v3
+      - uses: nikosportolos/dart_package@v0.0.5

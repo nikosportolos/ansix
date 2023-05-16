@@ -708,9 +708,10 @@ You can check the [example](https://github.com/nikosportolos/ansix/tree/main/exa
 
 ## Changelog
 
-You can find the [CHANGELOG.md](https://github.com/nikosportolos/ansix/tree/main/CHANGELOG.md) 
-to check what has changed in **AnsiX**. 
+Check the [changelog](https://github.com/nikosportolos/ansix/tree/main/CHANGELOG.md)
+to learn what's new in **AnsiX**.
 
 ## Contribution
 
-Check the [contribution guide](https://github.com/nikosportolos/ansix/tree/main/CONTRIBUTING.md) if you want to help with **AnsiX**.
+Check the [contribution guide](https://github.com/nikosportolos/ansix/tree/main/CONTRIBUTING.md) 
+if you want to help with **AnsiX**.

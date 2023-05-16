@@ -65,7 +65,7 @@ Please complete the following steps in advance to help us fix any potential bug 
 
 - To see if other users have experienced (and potentially already solved) the same issue you are having, 
   check if there is not already a bug report existing for your bug or error in the 
-  [bug tracker](https://github.com/nikosportolos/ansixissues?q=label%3Abug).
+  [bug tracker](https://github.com/nikosportolos/ansix/issues?q=label%3Abug).
 
 - Also make sure to search the internet (including Stack Overflow) to see if users 
   outside the GitHub community have discussed the issue.

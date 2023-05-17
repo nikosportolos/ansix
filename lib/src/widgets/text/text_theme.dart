@@ -14,9 +14,9 @@ abstract class AnsiTextTheme {
   const factory AnsiTextTheme({
     AnsiColor foregroundColor,
     AnsiColor backgroundColor,
-    AnsiTextStyle textStyle,
+    AnsiTextStyle style,
     AnsiPadding padding,
-    AnsiTextAlignment textAlignment,
+    AnsiTextAlignment alignment,
     int? fixedWidth,
   }) = _$AnsiTextThemeImpl;
 
@@ -27,13 +27,13 @@ abstract class AnsiTextTheme {
   AnsiColor get backgroundColor;
 
   @DefaultValue(AnsiTextStyle())
-  AnsiTextStyle get textStyle;
+  AnsiTextStyle get style;
 
   @DefaultValue(AnsiPadding.none)
   AnsiPadding get padding;
 
   @DefaultValue(AnsiTextAlignment.left)
-  AnsiTextAlignment get textAlignment;
+  AnsiTextAlignment get alignment;
 
   int? get fixedWidth;
 }

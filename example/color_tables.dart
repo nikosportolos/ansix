@@ -16,7 +16,7 @@ void main() {
         AnsiText(
           '$colorSetName (${colors.length})',
           foregroundColor: AnsiColor.white,
-          textStyle: const AnsiTextStyle(
+          style: const AnsiTextStyle(
             bold: true,
             boldUnderline: true,
           ),
@@ -35,7 +35,7 @@ void main() {
             : AnsiColor.white,
         backgroundColor: colors[i],
         fixedWidth: size,
-        textAlignment: AnsiTextAlignment.center,
+        alignment: AnsiTextAlignment.center,
       ));
     }
 

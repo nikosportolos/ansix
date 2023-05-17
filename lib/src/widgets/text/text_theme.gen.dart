@@ -8,9 +8,9 @@ class _$AnsiTextThemeImpl extends AnsiTextTheme {
   const _$AnsiTextThemeImpl({
     this.foregroundColor = AnsiColor.none,
     this.backgroundColor = AnsiColor.none,
-    this.textStyle = const AnsiTextStyle(),
+    this.style = const AnsiTextStyle(),
     this.padding = AnsiPadding.none,
-    this.textAlignment = AnsiTextAlignment.left,
+    this.alignment = AnsiTextAlignment.left,
     this.fixedWidth,
   }) : super.ctor();
 
@@ -21,13 +21,13 @@ class _$AnsiTextThemeImpl extends AnsiTextTheme {
   final AnsiColor backgroundColor;
 
   @override
-  final AnsiTextStyle textStyle;
+  final AnsiTextStyle style;
 
   @override
   final AnsiPadding padding;
 
   @override
-  final AnsiTextAlignment textAlignment;
+  final AnsiTextAlignment alignment;
 
   @override
   final int? fixedWidth;
@@ -39,9 +39,9 @@ class _$AnsiTextThemeImpl extends AnsiTextTheme {
             runtimeType == other.runtimeType &&
             foregroundColor == other.foregroundColor &&
             backgroundColor == other.backgroundColor &&
-            textStyle == other.textStyle &&
+            style == other.style &&
             padding == other.padding &&
-            textAlignment == other.textAlignment &&
+            alignment == other.alignment &&
             fixedWidth == other.fixedWidth;
   }
 
@@ -51,9 +51,9 @@ class _$AnsiTextThemeImpl extends AnsiTextTheme {
       runtimeType,
       foregroundColor,
       backgroundColor,
-      textStyle,
+      style,
       padding,
-      textAlignment,
+      alignment,
       fixedWidth,
     ]);
   }
@@ -63,7 +63,7 @@ class _$AnsiTextThemeImpl extends AnsiTextTheme {
     String toStringOutput = 'AnsiTextTheme{<optimized out>}';
     assert(() {
       toStringOutput =
-          'AnsiTextTheme@<$hexIdentity>{foregroundColor: $foregroundColor, backgroundColor: $backgroundColor, textStyle: $textStyle, padding: $padding, textAlignment: $textAlignment, fixedWidth: $fixedWidth}';
+          'AnsiTextTheme@<$hexIdentity>{foregroundColor: $foregroundColor, backgroundColor: $backgroundColor, style: $style, padding: $padding, alignment: $alignment, fixedWidth: $fixedWidth}';
       return true;
     }());
     return toStringOutput;
@@ -85,13 +85,13 @@ class _$AnsiTextThemeCopyWithProxy {
   AnsiTextTheme backgroundColor(AnsiColor newValue) => this(backgroundColor: newValue);
 
   @pragma('vm:prefer-inline')
-  AnsiTextTheme textStyle(AnsiTextStyle newValue) => this(textStyle: newValue);
+  AnsiTextTheme style(AnsiTextStyle newValue) => this(style: newValue);
 
   @pragma('vm:prefer-inline')
   AnsiTextTheme padding(AnsiPadding newValue) => this(padding: newValue);
 
   @pragma('vm:prefer-inline')
-  AnsiTextTheme textAlignment(AnsiTextAlignment newValue) => this(textAlignment: newValue);
+  AnsiTextTheme alignment(AnsiTextAlignment newValue) => this(alignment: newValue);
 
   @pragma('vm:prefer-inline')
   AnsiTextTheme fixedWidth(int? newValue) => this(fixedWidth: newValue);
@@ -100,17 +100,17 @@ class _$AnsiTextThemeCopyWithProxy {
   AnsiTextTheme call({
     final AnsiColor? foregroundColor,
     final AnsiColor? backgroundColor,
-    final AnsiTextStyle? textStyle,
+    final AnsiTextStyle? style,
     final AnsiPadding? padding,
-    final AnsiTextAlignment? textAlignment,
+    final AnsiTextAlignment? alignment,
     final Object? fixedWidth = const Object(),
   }) {
     return _$AnsiTextThemeImpl(
       foregroundColor: foregroundColor ?? _value.foregroundColor,
       backgroundColor: backgroundColor ?? _value.backgroundColor,
-      textStyle: textStyle ?? _value.textStyle,
+      style: style ?? _value.style,
       padding: padding ?? _value.padding,
-      textAlignment: textAlignment ?? _value.textAlignment,
+      alignment: alignment ?? _value.alignment,
       fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
     );
   }
@@ -129,13 +129,13 @@ class $AnsiTextThemeCopyWithProxyChain<$Result> {
   $Result backgroundColor(AnsiColor newValue) => this(backgroundColor: newValue);
 
   @pragma('vm:prefer-inline')
-  $Result textStyle(AnsiTextStyle newValue) => this(textStyle: newValue);
+  $Result style(AnsiTextStyle newValue) => this(style: newValue);
 
   @pragma('vm:prefer-inline')
   $Result padding(AnsiPadding newValue) => this(padding: newValue);
 
   @pragma('vm:prefer-inline')
-  $Result textAlignment(AnsiTextAlignment newValue) => this(textAlignment: newValue);
+  $Result alignment(AnsiTextAlignment newValue) => this(alignment: newValue);
 
   @pragma('vm:prefer-inline')
   $Result fixedWidth(int? newValue) => this(fixedWidth: newValue);
@@ -144,17 +144,17 @@ class $AnsiTextThemeCopyWithProxyChain<$Result> {
   $Result call({
     final AnsiColor? foregroundColor,
     final AnsiColor? backgroundColor,
-    final AnsiTextStyle? textStyle,
+    final AnsiTextStyle? style,
     final AnsiPadding? padding,
-    final AnsiTextAlignment? textAlignment,
+    final AnsiTextAlignment? alignment,
     final Object? fixedWidth = const Object(),
   }) {
     return _chain(_$AnsiTextThemeImpl(
       foregroundColor: foregroundColor ?? _value.foregroundColor,
       backgroundColor: backgroundColor ?? _value.backgroundColor,
-      textStyle: textStyle ?? _value.textStyle,
+      style: style ?? _value.style,
       padding: padding ?? _value.padding,
-      textAlignment: textAlignment ?? _value.textAlignment,
+      alignment: alignment ?? _value.alignment,
       fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
     ));
   }

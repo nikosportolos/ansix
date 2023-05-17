@@ -9,7 +9,7 @@ void main() {
       'Row 2': <Object?>[1, 2, 3, 4, 5, 6, 7, 8, 9],
       AnsiText(
         'Row 3',
-        textStyle: const AnsiTextStyle(strikethrough: true),
+        style: const AnsiTextStyle(strikethrough: true),
         foregroundColor: AnsiColor.deepSkyBlue5,
       ): <Object?>['test1', 'test2', 'test342423423', 'test4', 'test5'],
     },

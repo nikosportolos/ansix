@@ -35,8 +35,8 @@ void main() {
                                 testMessage,
                                 fixedWidth: width,
                                 padding: padding,
-                                textAlignment: alignment,
-                                textStyle: AnsiTextStyle.fromStyle(style),
+                                alignment: alignment,
+                                style: AnsiTextStyle.fromStyle(style),
                                 foregroundColor: foregroundColor,
                                 backgroundColor: backgroundColor,
                               );
@@ -95,9 +95,6 @@ void main() {
                                 ..write(backgroundColor == AnsiColor.none ? '' : AnsiEscapeCodes.reset)
                                 ..write(AnsiEscapeCodes.newLine * padding.bottom);
 
-                              // print('actual   : ${ansiText.toString()}');
-                              // print('expected : ${buffer.toString()}');
-
                               expect(ansiText.toString(), buffer.toString());
 
                               // Validate AnsiText.withTheme
@@ -108,8 +105,8 @@ void main() {
                                   AnsiTextTheme(
                                     backgroundColor: backgroundColor,
                                     foregroundColor: foregroundColor,
-                                    textStyle: AnsiTextStyle.fromStyle(style),
-                                    textAlignment: alignment,
+                                    style: AnsiTextStyle.fromStyle(style),
+                                    alignment: alignment,
                                     padding: padding,
                                     fixedWidth: width,
                                   ),

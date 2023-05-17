@@ -11,8 +11,8 @@ class AnsiText {
 
   AnsiText(
     final String text, {
-    this.textAlignment = AnsiTextAlignment.left,
-    this.textStyle = const AnsiTextStyle(),
+    this.alignment = AnsiTextAlignment.left,
+    this.style = const AnsiTextStyle(),
     this.foregroundColor = AnsiColor.none,
     this.backgroundColor = AnsiColor.none,
     this.padding = AnsiPadding.none,
@@ -27,7 +27,7 @@ class AnsiText {
     late final int leftPadding;
     late final int rightPadding;
 
-    switch (textAlignment) {
+    switch (alignment) {
       case AnsiTextAlignment.left:
         leftPadding = padding.left;
         rightPadding = width - padding.left - this.text.length;
@@ -48,7 +48,7 @@ class AnsiText {
           ..writeSpaces(leftPadding, backgroundColor)
           ..writeStyled(
             text,
-            textStyle: textStyle,
+            textStyle: style,
             foregroundColor: foregroundColor,
             backgroundColor: backgroundColor,
           )
@@ -60,9 +60,9 @@ class AnsiText {
   final String text;
   final AnsiColor foregroundColor;
   final AnsiColor backgroundColor;
-  final AnsiTextStyle textStyle;
+  final AnsiTextStyle style;
   final AnsiPadding padding;
-  final AnsiTextAlignment textAlignment;
+  final AnsiTextAlignment alignment;
 
   late final int width;
   late final String formattedText;
@@ -72,8 +72,8 @@ class AnsiText {
       text,
       foregroundColor: theme.foregroundColor,
       backgroundColor: theme.backgroundColor,
-      textStyle: theme.textStyle,
-      textAlignment: theme.textAlignment,
+      style: theme.style,
+      alignment: theme.alignment,
       padding: theme.padding,
       fixedWidth: theme.fixedWidth,
     );

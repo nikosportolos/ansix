@@ -271,7 +271,7 @@ Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors.
 
 ```dart
 String styled(
-  final AnsiTextStyle textStyle, [
+  final AnsiTextStyle style, [
   final AnsiColor foreground = AnsiColor.none,
   final AnsiColor background = AnsiColor.none,
 ]) 
@@ -373,7 +373,7 @@ Writes a styled text in buffer with optional colors:
 ```dart
 void writeStyled(
   final String text, {
-  required final AnsiTextStyle textStyle,
+  required final AnsiTextStyle style,
   final AnsiColor foregroundColor = AnsiColor.none,
   final AnsiColor backgroundColor = AnsiColor.none,
 }) 
@@ -391,8 +391,8 @@ AnsiText(
   foregroundColor: AnsiColor.white,
   backgroundColor: AnsiColor.deepSkyBlue4,
   fixedWidth: 40,
-  textAlignment: AnsiTextAlignment.center,
-  textStyle: const AnsiTextStyle(
+  alignment: AnsiTextAlignment.center,
+  style: const AnsiTextStyle(
     bold: true,
   ),
 );
@@ -692,7 +692,7 @@ void main() {
     ..writeWithForegroundColor('Hello ', AnsiColor.blue)
     ..writeStyled(
       'AnsiX ',
-      textStyle: const AnsiTextStyle(bold: true),
+      style: const AnsiTextStyle(bold: true),
       foregroundColor: AnsiColor.aquamarine2,
     )
     ..writeWithForegroundColor('!', AnsiColor.fuchsia)

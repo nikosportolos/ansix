@@ -15,21 +15,21 @@ void main() {
           color.name,
           foregroundColor: color,
           fixedWidth: fixedWidth,
-          textAlignment: AnsiTextAlignment.left,
+          alignment: AnsiTextAlignment.left,
         )}'
         '|'
         '${AnsiText(
           color.hex,
           foregroundColor: color,
           fixedWidth: fixedWidth,
-          textAlignment: AnsiTextAlignment.center,
+          alignment: AnsiTextAlignment.center,
         )}'
         '|'
         '${AnsiText(
           '${color.rgb}',
           foregroundColor: color,
           fixedWidth: fixedWidth,
-          textAlignment: AnsiTextAlignment.right,
+          alignment: AnsiTextAlignment.right,
         )}'
         '|'
         '${AnsiText(

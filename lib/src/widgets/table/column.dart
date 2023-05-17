@@ -24,7 +24,7 @@ class AnsiTableColumn {
 
         alignments.addAll(<AnsiTextAlignment>[
           for (int i = 0; i < object.padding.top; i++) defaultAlignment,
-          object.textAlignment,
+          object.alignment,
           for (int i = 0; i < object.padding.bottom; i++) defaultAlignment,
         ]);
 
@@ -48,7 +48,7 @@ class AnsiTableColumn {
           AnsiTableCell(
             text,
             width: maxColumnWidth,
-            textAlignment: alignments[index],
+            alignment: alignments[index],
           ),
         ],
       );

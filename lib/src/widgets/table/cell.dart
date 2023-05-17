@@ -9,8 +9,8 @@ class AnsiTableCell extends AnsiText {
     required final int width,
     super.foregroundColor = AnsiColor.none,
     super.backgroundColor = AnsiColor.none,
-    super.textStyle = const AnsiTextStyle(),
+    super.style = const AnsiTextStyle(),
     super.padding = AnsiPadding.none,
-    super.textAlignment = AnsiTextAlignment.left,
+    super.alignment = AnsiTextAlignment.left,
   }) : super(fixedWidth: width);
 }

@@ -6,14 +6,14 @@ void main() {
       AnsiText(
         'A N S I X',
         foregroundColor: AnsiColor.aqua,
-        textAlignment: AnsiTextAlignment.center,
+        alignment: AnsiTextAlignment.center,
         padding: AnsiPadding.only(top: 1, bottom: 1),
       ),
       AnsiText(
         'An extended ANSI library that provides tools '
         'and extensions for Dart & Flutter projects',
         foregroundColor: AnsiColor.red3,
-        textAlignment: AnsiTextAlignment.center,
+        alignment: AnsiTextAlignment.center,
         padding: AnsiPadding.only(right: 2, left: 2, bottom: 1),
       ),
     ],

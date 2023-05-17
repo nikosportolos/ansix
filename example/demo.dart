@@ -23,10 +23,10 @@ void main() {
     AnsiText('this is a demo text').toString(),
     AnsiText(
       'this is a demo ${'AnsiText'.strikethrough()}',
-      textStyle: const AnsiTextStyle(bold: true),
+      style: const AnsiTextStyle(bold: true),
       foregroundColor: AnsiColor.fuchsia,
       fixedWidth: 30,
-      textAlignment: AnsiTextAlignment.center,
+      alignment: AnsiTextAlignment.center,
       backgroundColor: AnsiColor.lightGoldenrod4,
       // padding: AnsiPadding.vertical(1),
     ).toString(),

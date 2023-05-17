@@ -11,7 +11,7 @@ void main() {
       ..write('|')
       ..write(AnsiText(
         'This is a text with [${alignment.name}] alignment',
-        textAlignment: alignment,
+        alignment: alignment,
         fixedWidth: width,
       ))
       ..write('|')

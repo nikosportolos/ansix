@@ -38,8 +38,12 @@ class AnsiXController {
     final bool attachedToValidStream = _terminal.attachedToValidStream;
     final bool isSupported = attachedToValidStream && _terminal.supportsAnsi;
 
-    if (!isSupported && _terminal.runsOnWindows) {
-      return attachedToValidStream && _processManager.detectWindowsAnsiSupport();
+    if (!isSupported) {
+      if (_terminal.runsOnWindows) {
+        return attachedToValidStream && _processManager.detectWindowsAnsiSupport();
+      }
+
+      return attachedToValidStream || _processManager.determineTerminalType() == TerminalType.bash;
     }
 
     return isSupported;

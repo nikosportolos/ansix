@@ -29,7 +29,6 @@ enum AnsiBorderStyle {
   ascii(BoxDrawingSet.ascii),
   bold(BoxDrawingSet.bold),
   double(BoxDrawingSet.double),
-  markdown(BoxDrawingSet.markdown),
   none(BoxDrawingSet.none),
   rounded(BoxDrawingSet.rounded),
   square(BoxDrawingSet.square);

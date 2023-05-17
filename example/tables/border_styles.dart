@@ -5,15 +5,25 @@ import 'package:ansix/ansix.dart';
 void main() {
   AnsiX.ensureSupportsAnsi();
 
+  print('');
+
   for (final AnsiBorderStyle style in AnsiBorderStyle.values) {
-    print('');
-    print(style.name.bold());
     final AnsiTable table = AnsiTable.fromList(
-      <Object?>['AnsiX'],
+      <Object?>[
+        AnsiText(
+          style.toString(),
+          fixedWidth: 35,
+          padding: AnsiPadding.symmetric(
+            vertical: 1,
+            horizontal: 5,
+          ),
+          alignment: AnsiTextAlignment.center,
+        )
+      ],
       fixedWidth: 10,
       defaultAlignment: AnsiTextAlignment.center,
       border: AnsiBorder(
-        type: AnsiBorderType.all,
+        type: AnsiBorderType.outside,
         style: style,
       ),
     );

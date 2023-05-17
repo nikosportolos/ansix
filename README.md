@@ -521,157 +521,73 @@ const AnsiBorder({
 ANSI border styles are a set of characters and escape codes that can be used to draw borders 
 and frames around text or other content in terminal-based applications.
 
-- AnsiBorderStyle.ascii
-
-```shell
-------------
-|  AnsiX   |
-------------
-```
-
-- AnsiBorderStyle.bold
-
-```shell
-┏━━━━━━━━━━┓
-┃  AnsiX   ┃
-┗━━━━━━━━━━┛
-```
-
-- AnsiBorderStyle.double
-
-```shell
-╔══════════╗
-║  AnsiX   ║
-╚══════════╝
-```
-
-- AnsiBorderStyle.none
-
-```shell
-  AnsiX   
-```
-
-- AnsiBorderStyle.rounded
-
-```shell
-╭──────────╮
-│  AnsiX   │
-╰──────────╯
-```
-
-- AnsiBorderStyle.square
-
-```shell
-┌──────────┐
-│  AnsiX   │
-└──────────┘
-```
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-styles.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-styles.png" width="400" alt="border-styles">
+</a>
 
 #### AnsiBorderType
 
 - AnsiBorderType.all
 
-```shell
-┌───────────────┬───────────────┬───────────────┐
-│Name           │Hex            │RGB            │
-├───────────────┼───────────────┼───────────────┤
-│Red            │#ff0000        │(255, 0, 0)    │
-├───────────────┼───────────────┼───────────────┤
-│Green          │#008000        │(0, 128, 0)    │
-├───────────────┼───────────────┼───────────────┤
-│Blue           │#0000ff        │(0, 0, 255)    │
-└───────────────┴───────────────┴───────────────┘
-```
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/all.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/all.png" width="400" alt="all-border-type">
+</a>
+
 
 - AnsiBorderType.header
 
-```shell
-┌───────────────┬───────────────┬───────────────┐
-│Name           │Hex            │RGB            │
-└───────────────┴───────────────┴───────────────┘
- Red             #ff0000         (255, 0, 0)     
- Green           #008000         (0, 128, 0)     
- Blue            #0000ff         (0, 0, 255)
-```
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/header.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/header.png" width="400" alt="header-border-type">
+</a>
 
 
 - AnsiBorderType.inside
 
-```shell
-Name           │Hex            │RGB            
-───────────────┼───────────────┼───────────────
-Red            │#ff0000        │(255, 0, 0)    
-───────────────┼───────────────┼───────────────
-Green          │#008000        │(0, 128, 0)    
-───────────────┼───────────────┼───────────────
-Blue           │#0000ff        │(0, 0, 255)
-```
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside.png" width="400" alt="inside-border-type">
+</a>
 
 
 - AnsiBorderType.insideHorizontal
 
-```shell
-Name            Hex             RGB            
-───────────────────────────────────────────────
-Red             #ff0000         (255, 0, 0)    
-───────────────────────────────────────────────
-Green           #008000         (0, 128, 0)    
-───────────────────────────────────────────────
-Blue            #0000ff         (0, 0, 255)
-```
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside-horizontal.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside-horizontal.png" width="400" alt="inside-horizontal-border-type">
+</a>
 
 
 - AnsiBorderType.insideVertical
 
-```shell
-Name           │Hex            │RGB            
-Red            │#ff0000        │(255, 0, 0)    
-Green          │#008000        │(0, 128, 0)    
-Blue           │#0000ff        │(0, 0, 255)
-```
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside-vertical.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside-vertical.png" width="400" alt="inside-vertical-border-type">
+</a>
 
 
 - AnsiBorderType.none
 
-```shell
-Name           Hex            RGB            
-Red            #ff0000        (255, 0, 0)    
-Green          #008000        (0, 128, 0)    
-Blue           #0000ff        (0, 0, 255)
-```
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/none.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/none.png" width="400" alt="none-border-type">
+</a>
 
 
 - AnsiBorderType.outside
 
-```shell
-┌─────────────────────────────────────────────┐
-│Name           Hex            RGB            │
-│Red            #ff0000        (255, 0, 0)    │
-│Green          #008000        (0, 128, 0)    │
-│Blue           #0000ff        (0, 0, 255)    │
-└─────────────────────────────────────────────┘
-```
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/outside.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/outside.png" width="400" alt="outside-border-type">
+</a>
 
 
 - AnsiBorderType.outsideHorizontal
 
-```shell
-│Name           Hex            RGB            │
-│Red            #ff0000        (255, 0, 0)    │
-│Green          #008000        (0, 128, 0)    │
-│Blue           #0000ff        (0, 0, 255)    │
-```
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/outside-horizontal.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/outside-horizontal.png" width="400" alt="outside-horizontal-border-type">
+</a>
 
 
 - AnsiBorderType.outsideVertical
-```shell
-───────────────────────────────────────────────
-Name           Hex            RGB
-Red            #ff0000        (255, 0, 0)
-Green          #008000        (0, 128, 0)
-Blue           #0000ff        (0, 0, 255)
-───────────────────────────────────────────────
-```
+
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/outside-vertical.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/outside-vertical.png" width="400" alt="outside-vertical-border-type">
+</a>
 
 
 ## Examples

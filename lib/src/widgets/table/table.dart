@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:ansix/ansix.dart';
-import 'package:ansix/src/theme/orientation.dart';
 import 'package:ansix/src/widgets/table/column.dart';
 import 'package:ansix/src/widgets/table/row.dart';
 import 'package:meta/meta.dart';

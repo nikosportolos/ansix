@@ -72,7 +72,7 @@ class AnsiTable {
   /// - [defaultAlignment] The default [AnsiTextAlignment] that will be used for all table cells.
   /// - [orientation] The [AnsiOrientation] that will be used to draw the table.
   factory AnsiTable.fromMap(
-    final Map<String, List<Object?>> data, {
+    final Map<Object, List<Object?>> data, {
     final int? fixedWidth,
     final bool keepSameWidth = false,
     final AnsiBorder border = const AnsiBorder(),
@@ -82,12 +82,14 @@ class AnsiTable {
     int maxRows = 0;
     int maxColumnLength = 0;
 
-    for (final MapEntry<String, List<Object?>> column in data.entries) {
+    for (final MapEntry<Object, List<Object?>> column in data.entries) {
       maxRows = max(maxRows, column.value.length + 1);
       maxColumnLength = max(
         maxColumnLength,
         max(
-          column.key.length,
+          column.key is AnsiText
+              ? (column.key as AnsiText).width
+              : column.key.toString().replaceAll(AnsiText.ansiMatcher, '').length,
           column.value.fold<int>(0, (int max, Object? e) {
             if (e is AnsiText) {
               return e.width > max ? e.width : max;
@@ -99,7 +101,7 @@ class AnsiTable {
     }
 
     final List<AnsiTableColumn> columns = <AnsiTableColumn>[
-      for (final MapEntry<String, List<Object?>> column in data.entries)
+      for (final MapEntry<Object, List<Object?>> column in data.entries)
         AnsiTableColumn(
           data: <Object?>[column.key, ...column.value],
           defaultAlignment: defaultAlignment,

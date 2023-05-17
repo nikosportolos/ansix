@@ -7,6 +7,8 @@ import 'package:ansix/src/widgets/text/text_theme.dart';
 export 'text_theme.dart';
 
 class AnsiText {
+  static final RegExp ansiMatcher = RegExp(r'\[(.*?)m');
+
   AnsiText(
     final String text, {
     this.textAlignment = AnsiTextAlignment.left,
@@ -15,7 +17,7 @@ class AnsiText {
     this.backgroundColor = AnsiColor.none,
     this.padding = AnsiPadding.none,
     final int? fixedWidth,
-  }) : text = text.replaceAll(RegExp(r'\[(.*?)m'), '') {
+  }) : text = text.replaceAll(ansiMatcher, '') {
     final int minWidth = this.text.length + padding.left + padding.right;
     width = (fixedWidth == null || fixedWidth == 0 || fixedWidth < minWidth) ? minWidth : fixedWidth;
     // width = fixedWidth ?? minWidth;

@@ -497,7 +497,7 @@ Arguments:
 
 ```dart
 factory AnsiTable.fromMap(
-  final Map<String, List<Object?>> data, {
+  final Map<Object, List<Object?>> data, {
   final int? fixedWidth,
   final bool keepSameWidth = false,
   final AnsiBorder border = const AnsiBorder(),

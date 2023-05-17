@@ -103,10 +103,10 @@ Blue           │#0000ff        │(0, 0, 255)
 ''';
 
 const String noBorderTableMock = '''
-Name           Hex            RGB            
-Red            #ff0000        (255, 0, 0)    
-Green          #008000        (0, 128, 0)    
-Blue           #0000ff        (0, 0, 255)    
+Name            Hex             RGB            
+Red             #ff0000         (255, 0, 0)    
+Green           #008000         (0, 128, 0)    
+Blue            #0000ff         (0, 0, 255)    
 ''';
 
 const String outsideBorderTableMock = '''
@@ -118,15 +118,15 @@ const String outsideBorderTableMock = '''
 └─────────────────────────────────────────────┘''';
 
 const String outsideHorizontalBorderTableMock = '''
-│Name           Hex            RGB            │
-│Red            #ff0000        (255, 0, 0)    │
-│Green          #008000        (0, 128, 0)    │
-│Blue           #0000ff        (0, 0, 255)    │''';
+│Name            Hex             RGB            │
+│Red             #ff0000         (255, 0, 0)    │
+│Green           #008000         (0, 128, 0)    │
+│Blue            #0000ff         (0, 0, 255)    │''';
 
 const String outsideVerticalBorderTableMock = '''
 ─────────────────────────────────────────────
-Name           Hex            RGB            
-Red            #ff0000        (255, 0, 0)    
-Green          #008000        (0, 128, 0)    
-Blue           #0000ff        (0, 0, 255)    
+Name            Hex             RGB            
+Red             #ff0000         (255, 0, 0)    
+Green           #008000         (0, 128, 0)    
+Blue            #0000ff         (0, 0, 255)    
 ─────────────────────────────────────────────''';

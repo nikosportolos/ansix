@@ -60,7 +60,12 @@ void main() {
                   when(() => terminal.attachedToValidStream).thenReturn(attachedToValidStream);
                   when(() => terminal.runsOnWindows).thenReturn(false);
                   when(() => terminal.supportsAnsi).thenReturn(supportsAnsi);
-                  expect(controller.checkAnsiSupport(), attachedToValidStream && supportsAnsi);
+                  when(() => processManager.determineTerminalType()).thenReturn(TerminalType.bash);
+
+                  expect(
+                      controller.checkAnsiSupport(),
+                      (attachedToValidStream && supportsAnsi) ||
+                          processManager.determineTerminalType() == TerminalType.bash);
                 });
               });
             }
@@ -133,8 +138,10 @@ void main() {
                           when(() => terminal.attachedToValidStream).thenReturn(attachedToValidStream);
                           when(() => terminal.runsOnWindows).thenReturn(false);
                           when(() => terminal.supportsAnsi).thenReturn(supportsAnsi);
+                          when(() => processManager.determineTerminalType()).thenReturn(TerminalType.bash);
 
-                          final bool supported = attachedToValidStream && supportsAnsi;
+                          final bool supported = (attachedToValidStream && supportsAnsi) ||
+                              processManager.determineTerminalType() == TerminalType.bash;
 
                           try {
                             controller.ensureSupportsAnsi(

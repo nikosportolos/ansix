@@ -36,7 +36,7 @@ class OutsideVerticalBorderTableBuilder extends AnsiTableBuilder {
     final StringBuffer buffer = StringBuffer();
 
     buffer
-      ..writeWithForegroundColor(data.join(''), border.color)
+      ..writeWithForegroundColor(data.join(' '), border.color)
       ..writeln();
 
     return buffer.toString();

@@ -16,7 +16,7 @@ class NoBorderTableBuilder extends AnsiTableBuilder {
   String get topBorder => '';
 
   @override
-  String get textLineBorder => '${data.join('')}\n';
+  String get textLineBorder => '${data.join(' ')}\n';
 
   @override
   String get middleBorder => '';

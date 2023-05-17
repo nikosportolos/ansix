@@ -26,6 +26,17 @@ void main() {
       );
     });
 
+    test('writeColoredRgb', () {
+      const Rgb rgb = Rgb(0, 255, 255);
+      final AnsiColor color = AnsiColor.fromRgb(rgb);
+
+      buffer.writeColoredRgb(color.name, foreground: rgb);
+      expect(
+        buffer.toString(),
+        color.name.coloredRgb(foreground: rgb),
+      );
+    });
+
     test('writeStyledText', () {
       const AnsiColor color = AnsiColor.cyan1;
       const AnsiColor color1 = AnsiColor.red;

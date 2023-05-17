@@ -46,8 +46,8 @@ void main() {
     test('coloredRgb', () {
       expect(
         testMessage.coloredRgb(
-          foreground: foregroundColor,
-          background: backgroundColor,
+          foreground: const Rgb(0, 95, 175),
+          background: const Rgb(0, 215, 175),
         ),
         '\x1B[38;2;0;95;175m\x1B[48;2;0;215;175m$testMessage\x1B[0m',
       );

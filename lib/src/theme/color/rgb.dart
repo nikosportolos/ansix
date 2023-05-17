@@ -49,6 +49,14 @@ class Rgb {
     // return sqrt(0.299 * red * red + 0.587 * green * green + 0.114 * blue * blue).floor();
   }
 
+  String toHex() {
+    final String r = red.toRadixString(16).padLeft(2, '0');
+    final String g = green.toRadixString(16).padLeft(2, '0');
+    final String b = blue.toRadixString(16).padLeft(2, '0');
+
+    return '#$r$g$b';
+  }
+
   @override
   String toString() {
     return '($red, $green, $blue)';

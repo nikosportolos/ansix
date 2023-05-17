@@ -40,13 +40,13 @@ extension AnsiString on String {
   }
 
   String coloredRgb({
-    final AnsiColor foreground = AnsiColor.none,
-    final AnsiColor background = AnsiColor.none,
+    final Rgb? foreground,
+    final Rgb? background,
   }) {
     return AnsiX.formatter.withColorRgb(
       this,
-      foreground: foreground,
-      background: background,
+      foreground: foreground == null ? AnsiColor.none : AnsiColor.fromRgb(foreground),
+      background: background == null ? AnsiColor.none : AnsiColor.fromRgb(background),
     );
   }
 }

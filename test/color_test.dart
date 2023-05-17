@@ -29,6 +29,14 @@ void main() {
     );
   });
 
+  group('Calculate HEX value', () {
+    for (final AnsiColor color in AnsiColorSet.all) {
+      test('$color', () {
+        expect(color.hex, color.rgb?.toHex());
+      });
+    }
+  });
+
   group('Calculate RGB value', () {
     for (final AnsiColor color in AnsiColorSet.extended) {
       test('$color', () {

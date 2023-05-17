@@ -1,5 +1,4 @@
 import 'package:ansix/ansix.dart';
-import 'package:ansix/src/theme/style.dart';
 
 extension AnsiString on String {
   String withStyle(final AnsiStyle style) {

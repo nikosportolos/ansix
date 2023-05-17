@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:ansix/ansix.dart';
-import 'package:ansix/src/theme/style.dart';
 import 'package:test/test.dart';
 
 void main() {

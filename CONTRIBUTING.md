@@ -1,5 +1,10 @@
 # Contributing to AnsiX
 
+![GitHub issues](https://img.shields.io/github/issues/nikosportolos/ansix)
+![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/nikosportolos/ansix)
+![GitHub Discussions](https://img.shields.io/github/discussions/nikosportolos/ansix)
+
+
 First off, thanks for taking the time to contribute! 💙
 
 All types of contributions are encouraged and valued. 

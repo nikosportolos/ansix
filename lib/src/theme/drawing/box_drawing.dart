@@ -52,19 +52,6 @@ enum BoxDrawingSet {
     middleRightEdge: '╣',
     middleLeftEdge: '╠',
   ),
-  markdown(
-    horizontalLine: '-',
-    verticalLine: '|',
-    topLeftCorner: '|',
-    topRightCorner: '|',
-    bottomLeftCorner: '|',
-    bottomRightCorner: '|',
-    intersection: '-',
-    middleBottomEdge: '-',
-    middleTopEdge: '-',
-    middleRightEdge: '|',
-    middleLeftEdge: '|',
-  ),
   none(
     horizontalLine: '',
     verticalLine: '',
@@ -139,8 +126,6 @@ enum BoxDrawingSet {
         return BoxDrawingSet.bold;
       case AnsiBorderStyle.double:
         return BoxDrawingSet.double;
-      case AnsiBorderStyle.markdown:
-        return BoxDrawingSet.markdown;
       case AnsiBorderStyle.none:
         return BoxDrawingSet.none;
       case AnsiBorderStyle.rounded:

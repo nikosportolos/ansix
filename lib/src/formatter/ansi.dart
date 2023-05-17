@@ -1,6 +1,5 @@
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/formatter/formatter.dart';
-import 'package:ansix/src/theme/style.dart';
 
 /// **AnsiTextFormatter**
 ///

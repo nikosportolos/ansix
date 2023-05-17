@@ -27,6 +27,17 @@ extension StringBufferX on StringBuffer {
     ));
   }
 
+  void writeColoredRgb(
+    final String text, {
+    final Rgb? foreground,
+    final Rgb? background,
+  }) {
+    write(text.coloredRgb(
+      foreground: foreground,
+      background: background,
+    ));
+  }
+
   void writeWithForegroundColor(final String text, final AnsiColor color) {
     write(text.withForegroundColor(color));
   }

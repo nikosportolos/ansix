@@ -306,8 +306,8 @@ String colored({
 
 ```dart
 String coloredRgb({
-  final AnsiColor foreground = AnsiColor.none,
-  final AnsiColor background = AnsiColor.none,
+  final Rgb? foreground,
+  final Rgb? background,
 })
 ```
 
@@ -363,6 +363,16 @@ void writeColored(
   final String text,
   final AnsiColor color,
 )
+```
+
+
+- coloredRgb
+
+```dart
+String coloredRgb({
+  final Rgb? foreground,
+  final Rgb? background,
+})
 ```
 
 

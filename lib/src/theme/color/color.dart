@@ -32,6 +32,8 @@ class AnsiColor {
     rgb: null,
     hsl: null,
   );
+
+  /// System black color
   static const AnsiColor black = AnsiColor._(
     value: 0,
     name: 'Black',
@@ -39,6 +41,8 @@ class AnsiColor {
     rgb: Rgb(0, 0, 0),
     hsl: Hsl(0, 0, 0),
   );
+
+  /// System maroon color
   static const AnsiColor maroon = AnsiColor._(
     value: 1,
     name: 'Maroon',
@@ -46,6 +50,8 @@ class AnsiColor {
     rgb: Rgb(128, 0, 0),
     hsl: Hsl(0, 100, 25),
   );
+
+  /// System green color
   static const AnsiColor green = AnsiColor._(
     value: 2,
     name: 'Green',
@@ -53,6 +59,8 @@ class AnsiColor {
     rgb: Rgb(0, 128, 0),
     hsl: Hsl(120, 100, 25),
   );
+
+  /// System olive color
   static const AnsiColor olive = AnsiColor._(
     value: 3,
     name: 'Olive',
@@ -60,6 +68,8 @@ class AnsiColor {
     rgb: Rgb(128, 128, 0),
     hsl: Hsl(60, 100, 25),
   );
+
+  /// System navy color
   static const AnsiColor navy = AnsiColor._(
     value: 4,
     name: 'Navy',
@@ -67,6 +77,8 @@ class AnsiColor {
     rgb: Rgb(0, 0, 128),
     hsl: Hsl(240, 100, 25),
   );
+
+  /// System magenta color
   static const AnsiColor magenta = AnsiColor._(
     value: 5,
     name: 'Magenta',
@@ -74,6 +86,8 @@ class AnsiColor {
     rgb: Rgb(128, 0, 128),
     hsl: Hsl(300, 100, 25),
   );
+
+  /// System teal color
   static const AnsiColor teal = AnsiColor._(
     value: 6,
     name: 'Teal',
@@ -81,6 +95,8 @@ class AnsiColor {
     rgb: Rgb(0, 128, 128),
     hsl: Hsl(180, 100, 25),
   );
+
+  /// System silver color
   static const AnsiColor silver = AnsiColor._(
     value: 7,
     name: 'Silver',
@@ -88,6 +104,8 @@ class AnsiColor {
     rgb: Rgb(192, 192, 192),
     hsl: Hsl(0, 0, 75),
   );
+
+  /// System grey color
   static const AnsiColor grey = AnsiColor._(
     value: 8,
     name: 'Grey',
@@ -95,6 +113,8 @@ class AnsiColor {
     rgb: Rgb(128, 128, 128),
     hsl: Hsl(0, 0, 50),
   );
+
+  /// System red color
   static const AnsiColor red = AnsiColor._(
     value: 9,
     name: 'Red',
@@ -102,6 +122,8 @@ class AnsiColor {
     rgb: Rgb(255, 0, 0),
     hsl: Hsl(0, 100, 50),
   );
+
+  /// System lime color
   static const AnsiColor lime = AnsiColor._(
     value: 10,
     name: 'Lime',
@@ -109,6 +131,8 @@ class AnsiColor {
     rgb: Rgb(0, 255, 0),
     hsl: Hsl(120, 100, 50),
   );
+
+  /// System yellow color
   static const AnsiColor yellow = AnsiColor._(
     value: 11,
     name: 'Yellow',
@@ -116,6 +140,8 @@ class AnsiColor {
     rgb: Rgb(255, 255, 0),
     hsl: Hsl(60, 100, 50),
   );
+
+  /// System blue color
   static const AnsiColor blue = AnsiColor._(
     value: 12,
     name: 'Blue',
@@ -123,6 +149,8 @@ class AnsiColor {
     rgb: Rgb(0, 0, 255),
     hsl: Hsl(240, 100, 50),
   );
+
+  /// System fuchsia color
   static const AnsiColor fuchsia = AnsiColor._(
     value: 13,
     name: 'Fuchsia',
@@ -130,6 +158,8 @@ class AnsiColor {
     rgb: Rgb(255, 0, 255),
     hsl: Hsl(300, 100, 50),
   );
+
+  /// System aqua color
   static const AnsiColor aqua = AnsiColor._(
     value: 14,
     name: 'Aqua',
@@ -137,6 +167,8 @@ class AnsiColor {
     rgb: Rgb(0, 255, 255),
     hsl: Hsl(180, 100, 50),
   );
+
+  /// System white color
   static const AnsiColor white = AnsiColor._(
     value: 15,
     name: 'White',
@@ -144,6 +176,7 @@ class AnsiColor {
     rgb: Rgb(255, 255, 255),
     hsl: Hsl(0, 0, 100),
   );
+
   static const AnsiColor grey0 = AnsiColor._(
     value: 16,
     name: 'Grey 0',
@@ -1839,6 +1872,15 @@ class AnsiColor {
   final String hex;
   final Rgb? rgb;
   final Hsl? hsl;
+
+  factory AnsiColor.fromRgb(final Rgb rgb) {
+    return AnsiColor._(
+      name: rgb.toString(),
+      hex: rgb.toHex(),
+      value: rgb.value,
+      rgb: rgb,
+    );
+  }
 
   /// Foreground 8 bit 256 color code
   @pragma('vm:prefer-inline')

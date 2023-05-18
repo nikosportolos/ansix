@@ -1,0 +1,131 @@
+name: dart-package
+description: "This is an action to validate and publish a Dart package to pub.dev."
+author: Nikos Portolos
+branding:
+  icon: "activity"
+  color: "blue"
+
+inputs:
+  working_directory:
+    description: "Specify the working directory."
+    required: false
+    default: "."
+  dart_sdk:
+    description: "Specify the Dart SDK version."
+    required: false
+    default: "2.19.6"
+  analyze_directories:
+    description: "Specify the directories to run dart analyze."
+    required: false
+    default: "lib test"
+  line_length:
+    description: "The line length to use with dart format."
+    required: false
+    default: "120"
+  concurrency:
+    description: "Controls the number of test suites that runs concurrently, meaning that multiple tests in independent suites or platforms can run at the same time."
+    required: false
+    default: "4"
+  skip_tests:
+    description: "Flag that defines whether to skip tests."
+    required: false
+    default: "false"
+  coverage:
+    description: "Flag that defines whether to run tests with coverage."
+    required: false
+    default: "false"
+  codecov:
+    description: "Flag that defines whether to upload coverage reports to Codecov. Requires the codecov_token."
+    required: false
+    default: "false"
+  codecov_token:
+    description: "The token that will be used to upload coverage reports to Codecov. Requires the codecov flag to be set to true."
+    required: false
+    default: ""
+  publish:
+    description: "Flag that defines whether to publish the Dart package on pub.dev."
+    required: false
+    default: "false"
+  pubdev_token:
+    description: "The token that will be used to publish the dart package to pub.dev."
+    required: false
+    default: ""
+  pana_threshold:
+    description: "The exit code will indicate if (max - granted points) <= threshold."
+    required: false
+    default: "19"
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo "::group::📑 Git Checkout"
+      shell: bash
+    - uses: actions/checkout@v3
+    - run: echo "::endgroup::"
+      shell: bash
+
+    - run: echo "::group::🎯 Setup Dart"
+      shell: bash
+    - uses: dart-lang/setup-dart@v1.4
+      with:
+        sdk: ${{ inputs.dart_sdk }}
+    - run: echo "::endgroup::"
+      shell: bash
+
+    - run: |
+        echo "::group::📦 Install Dependencies"
+        dart pub get
+        echo "::endgroup::"
+      shell: bash
+
+    - run: |
+        echo "::group::🎨 Check Formatting"
+        dart format --output none --set-exit-if-changed -l ${{ inputs.line_length }} ${{ inputs.working_directory }}
+        echo "::endgroup::"
+      shell: bash
+
+    - run: |
+        echo "::group::🕵️ Analyze"
+        dart analyze --fatal-infos --fatal-warnings ${{ inputs.analyze_directories }}
+        echo "::endgroup::"
+      shell: bash
+
+    - if: ${{ inputs.skip_tests == 'false' && inputs.coverage == 'false' && inputs.codecov == 'false'}}
+      run: |
+        echo "::group::🧪 Run Tests"
+        dart test --concurrency ${{ inputs.concurrency }} --color
+        echo "::endgroup::"
+      shell: bash
+
+    - if: ${{ inputs.coverage == 'true' || inputs.codecov == 'true' }}
+      run: |
+        echo "::group::🧾 Generate code coverage"
+        dart pub global activate coverage
+        dart pub global run coverage:test_with_coverage
+        echo "::endgroup::"
+      shell: bash
+
+    - if: ${{ inputs.codecov == 'true' }}
+      run: echo "::group::☂ Upload coverage report to Codecov"
+      shell: bash
+    - if: ${{ inputs.codecov == 'true' }}
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ inputs.codecov_token }}
+        files: coverage/lcov.info
+        fail_ci_if_error: true
+    - if: ${{ inputs.codecov == 'true' }}
+      run: echo "::endgroup::"
+      shell: bash
+
+    - if: ${{ inputs.publish == 'true' }}
+      run: |
+        echo "::group::🚀 Publish on pub.dev"
+        dart pub global activate pana
+        dart pub publish --dry-run
+        pana --line-length ${{ inputs.line_length }} --exit-code-threshold ${{ inputs.pana_threshold }} ${{ inputs.working_directory }}
+        mkdir -p ~/.config/dart
+        echo "${{ inputs.pubdev_token }}" | base64 --decode >> ~/.config/dart/pub-credentials.json
+        dart pub publish --force
+        echo "::endgroup::"
+      shell: bash

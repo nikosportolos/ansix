@@ -7,8 +7,8 @@ import 'package:test/test.dart';
 void main() {
   group('AnsiTable.fromMap', () {
     group('horizontal', () {
-      final Map<String, List<Object?>> horizontalData = <String, List<Object?>>{
-        AnsiText('Row 1').toString(): <Object?>[1, 2, 3, 4, 5, 6, 7, 8, 9],
+      final Map<Object, List<Object?>> horizontalData = <Object, List<Object?>>{
+        AnsiText('Row 1'): <Object?>[1, 2, 3, 4, 5, 6, 7, 8, 9],
         'Row 2': <Object?>['test1', 'test2', 'test342423423', AnsiText('test4'), 'test5'],
       };
 

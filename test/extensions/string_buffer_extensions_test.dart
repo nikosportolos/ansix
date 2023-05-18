@@ -17,6 +17,24 @@ void main() {
       expect(buffer.toString(), AnsiEscapeCodes.newLine * 10);
     });
 
+    test('writeWithForegroundColor', () {
+      const AnsiColor color = AnsiColor.cyan1;
+      buffer.writeWithForegroundColor(color.name, color);
+      expect(
+        buffer.toString(),
+        color.name.colored(foreground: color),
+      );
+    });
+
+    test('writeWithBackgroundColor', () {
+      const AnsiColor color = AnsiColor.cyan1;
+      buffer.writeWithBackgroundColor(color.name, color);
+      expect(
+        buffer.toString(),
+        color.name.colored(background: color),
+      );
+    });
+
     test('writeColored', () {
       const AnsiColor color = AnsiColor.cyan1;
       buffer.writeColored(color.name, foregroundColor: color);

@@ -47,9 +47,10 @@ AnsiX makes it easy to add ANSI styling to your output with minimal effort and m
     - [AnsiTable](#ansitable) 
       - [AnsiBorder](#ansiborder) 
       - [AnsiType](#ansitype)
+- [FAQ](#faq)
 - [Examples](#examples)
-- [Changelog](#changelog)
 - [Contribution](#contribution)
+- [Changelog](#changelog)
 
 
 ## Introduction
@@ -532,7 +533,7 @@ ANSI border styles are a set of characters and escape codes that can be used to 
 and frames around text or other content in terminal-based applications.
 
 <a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-styles.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-styles.png" width="400" alt="border-styles">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-styles.png" width="300" alt="border-styles">
 </a>
 
 #### AnsiBorderType
@@ -600,6 +601,12 @@ and frames around text or other content in terminal-based applications.
 </a>
 
 
+### FAQ
+
+If you have questions about **AnsiX**, make sure to check the
+[FAQ](https://github.com/nikosportolos/ansix/tree/main/CONTRIBUTING.md) document.
+
+
 ## Examples
 
 ```dart
@@ -629,15 +636,16 @@ void main() {
 ```
 
 
-You can check the [example](https://github.com/nikosportolos/ansix/tree/main/example) folder for more samples. 
+You can also check the [example](https://github.com/nikosportolos/ansix/tree/main/example) folder for more samples. 
+
+
+## Contribution
+
+Check the [contribution guide](https://github.com/nikosportolos/ansix/tree/main/CONTRIBUTING.md) 
+if you want to help with **AnsiX**.
 
 
 ## Changelog
 
 Check the [changelog](https://github.com/nikosportolos/ansix/tree/main/CHANGELOG.md)
 to learn what's new in **AnsiX**.
-
-## Contribution
-
-Check the [contribution guide](https://github.com/nikosportolos/ansix/tree/main/CONTRIBUTING.md) 
-if you want to help with **AnsiX**.

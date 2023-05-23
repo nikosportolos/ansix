@@ -17,7 +17,7 @@ class AnsiText {
     this.backgroundColor = AnsiColor.none,
     this.padding = AnsiPadding.none,
     final int? fixedWidth,
-  }) : text = text.replaceAll(ansiMatcher, '') {
+  }) : text = text.unformatted {
     final int minWidth = this.text.length + padding.left + padding.right;
     width = (fixedWidth == null || fixedWidth == 0 || fixedWidth < minWidth) ? minWidth : fixedWidth;
     // width = fixedWidth ?? minWidth;

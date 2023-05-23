@@ -14,6 +14,19 @@ void main() {
     }
   });
 
+  group('remove ANSI formatting', () {
+    test('unformatted', () {
+      const String text = 'this is a demo text';
+      expect(text.bold().unformatted, text);
+      expect(text.red().unformatted, text);
+    });
+    test('unformattedLength', () {
+      const String text = 'this is a demo text';
+      expect(text.bold().unformattedLength, text.length);
+      expect(text.red().unformattedLength, text.length);
+    });
+  });
+
   group('colored', () {
     const String testMessage = 'This is a test message.';
     const AnsiColor foregroundColor = AnsiColor.deepSkyBlue4;

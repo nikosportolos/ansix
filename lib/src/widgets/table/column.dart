@@ -31,7 +31,7 @@ class AnsiTableColumn {
         // TODO: Wrap line if AnsiText.fixedWidth is set
       } else {
         final String text = object.toString();
-        maxColumnWidth = max(text.length, maxColumnWidth);
+        maxColumnWidth = max(text.unformattedLength, maxColumnWidth);
         final List<String> temp = text.split(AnsiEscapeCodes.newLine);
         list.addAll(temp);
 

@@ -87,14 +87,13 @@ class AnsiTable {
       maxColumnLength = max(
         maxColumnLength,
         max(
-          column.key is AnsiText
-              ? (column.key as AnsiText).width
-              : column.key.toString().replaceAll(AnsiText.ansiMatcher, '').length,
+          column.key is AnsiText ? (column.key as AnsiText).width : column.key.toString().unformattedLength,
           column.value.fold<int>(0, (int max, Object? e) {
             if (e is AnsiText) {
               return e.width > max ? e.width : max;
             }
-            return e.toString().length > max ? e.toString().length : max;
+            final int length = e.toString().unformattedLength;
+            return length > max ? length : max;
           }),
         ),
       );

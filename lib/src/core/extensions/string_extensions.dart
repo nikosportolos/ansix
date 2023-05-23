@@ -1,6 +1,9 @@
 import 'package:ansix/ansix.dart';
 
 extension AnsiString on String {
+  String get unformatted => replaceAll(AnsiText.ansiMatcher, '');
+  int get unformattedLength => replaceAll(AnsiText.ansiMatcher, '').length;
+
   String withStyle(final AnsiStyle style) {
     return AnsiX.formatter.withStyle(this, style);
   }

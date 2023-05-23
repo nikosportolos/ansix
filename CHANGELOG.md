@@ -1,8 +1,19 @@
+## v0.0.3-prerelease
+
+#### Bug fixes
+
+- AnsiTable: Fix cell width calculation for styled/colored text ([#50](https://github.com/nikosportolos/ansix/issues/50))
+
+#### Dependencies
+
+- Bump test from 1.24.2 to 1.24.3 ([#46](https://github.com/nikosportolos/ansix/pull/46))
+
+
 ## v0.0.2-prerelease
 
 #### AnsiX
 
-- ensureSupportsAnsi throws exception on Mac/VSCode ([#12](https://github.com/nikosportolos/ansix/issues/12))
+- ensureSupportsAnsi throws exception on Mac/VSCode  ([#12](https://github.com/nikosportolos/ansix/issues/12))
 - Export missing classes ([#13](https://github.com/nikosportolos/ansix/issues/13),
   [#20](https://github.com/nikosportolos/ansix/issues/20))
 

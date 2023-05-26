@@ -27,7 +27,17 @@ The community looks forward to your contributions. 🎉
 - [I Have a Question](#i-have-a-question)
 - [I Want To Contribute](#i-want-to-contribute)
   - [Reporting Bugs](#reporting-bugs)
+    - [Before Submitting a Bug Report](#before-submitting-a-bug-report)
+    - [How Do I Submit a Good Bug Report?](#how-do-i-submit-a-good-bug-report)
   - [Suggesting Enhancements](#suggesting-enhancements)
+    - [Before Submitting an Enhancement](#before-submitting-an-enhancement)
+    - [How Do I Submit a Good Enhancement Suggestion?](#how-do-i-submit-a-good-enhancement-suggestion)
+- [Code Contribution](#code-contribution)
+  - [Fork the repository](#fork-the-repository)
+  - [Create a working branch and start with your changes!](#create-a-working-branch-and-start-with-your-changes)
+  - [Commit your update](#commit-your-update)
+  - [Pull Request](#pull-request)
+  - [Your PR is merged!](#your-pr-is-merged)
 
 
 ## I Have a Question
@@ -156,5 +166,54 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/nikosp
 - **Explain why this enhancement would be useful** to most AnsiX users. 
   You may also want to point out the other projects that solved it better and which could serve as inspiration.
 
+
+## Code Contribution
+
+### Fork the repository
+- Using GitHub Desktop:
+  - [Getting started with GitHub Desktop](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/getting-started-with-github-desktop) will guide you through setting up Desktop.
+  - Once Desktop is set up, you can use it to [fork the repo](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/cloning-and-forking-repositories-from-github-desktop)!
+
+- Using the command line:
+  - [Fork the repo](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#fork-an-example-repository) so that you can make your changes without affecting the original project until you're ready to merge them.
+
+
+### Create a working branch and start with your changes!
+  
+Learn how you can easily create a branch for an issue [here](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-a-branch-for-an-issue#creating-a-branch-for-an-issue).
+
+
+### Commit your update
+
+Commit the changes once you are happy with them.
+
+> **Please make sure to add the ID and name of the issue in the commit message.**
+> 
+> For example:
+> `#123 Update README.md`
+> 
+> Learn more about [autolinked references](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls#issues-and-pull-requests).
+
+
+### Pull Request
+
+When you're finished with the changes, create a pull request, also known as a PR.
+- Fill the "Ready for review" template so that we can review your PR. This template helps reviewers understand your changes as well as the purpose of your pull request.
+- Don't forget to [link PR to issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) if you are solving one.
+- Enable the checkbox to [allow maintainer edits](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/allowing-changes-to-a-pull-request-branch-created-from-a-fork) so the branch can be updated for a merge.
+  Once you submit your PR, a Docs team member will review your proposal. We may ask questions or request additional information.
+- We may ask for changes to be made before a PR can be merged, either using [suggested changes](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/incorporating-feedback-in-your-pull-request) or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.
+- As you update your PR and apply changes, mark each conversation as [resolved](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#resolving-conversations).
+- If you run into any merge issues, checkout this [git tutorial](https://github.com/skills/resolve-merge-conflicts) to help you resolve merge conflicts and other issues.
+
+
+### Your PR is merged!
+Congratulations 🎉🎉 The **AnsiX** team thanks you! ✨.
+
+Once your PR is merged, your contributions will be publicly visible on the 
+[AnsiX repo](https://github.com/nikosportolos/ansix).
+
+
+---
 
 This guide is based on the [**contributing-gen**](https://github.com/bttger/contributing-gen).

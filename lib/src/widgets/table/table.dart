@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:ansix/ansix.dart';
+import 'package:ansix/src/widgets/table/builder.dart';
 import 'package:ansix/src/widgets/table/column.dart';
 import 'package:ansix/src/widgets/table/row.dart';
 import 'package:meta/meta.dart';
@@ -18,24 +19,42 @@ import 'package:meta/meta.dart';
 /// to present data in a tabular format that is easy to read and analyze.
 class AnsiTable {
   AnsiTable({
-    this.border = const AnsiBorder(),
-    this.data = const <AnsiTableRow>[],
-  }) : formattedText = (StringBuffer()
-              ..writeAll(
-                <String>[
-                  for (int i = 0; i < data.length; i++)
-                    data[i].print(
+    final List<AnsiTableRow> rows = const <AnsiTableRow>[],
+    final AnsiBorder border = const AnsiBorder(),
+  }) : builder = const AnsiBorderBuilder() {
+    formattedText = (StringBuffer()
+          ..writeAll(
+            <String>[
+              builder.print(
+                border: border.type.hasHeader ? border.copyWith.type(AnsiBorderType.all) : border,
+                data: rows[0].data,
+                index: 0,
+                total: border.type.hasHeader ? 1 : rows.length,
+              ),
+              if (border.type.hasHeader) AnsiEscapeCodes.newLine,
+              for (int i = 1; i < rows.length - 1; i++)
+                builder
+                    .print(
                       border: border,
-                      isFirstLine: i == 0,
-                      isLastLine: i == data.length - 1,
+                      data: rows[i].data,
+                      index: i,
+                      total: border.type.hasFooter ? rows.length - 1 : rows.length,
                     )
-                ],
-              ))
-            .toString();
+                    .toString(),
+              if (border.type.hasFooter) AnsiEscapeCodes.newLine,
+              builder.print(
+                border: border.type.hasFooter ? border.copyWith.type(AnsiBorderType.all) : border,
+                data: rows[rows.length - 1].data,
+                index: border.type.hasFooter ? 0 : rows.length - 1,
+                total: border.type.hasFooter ? 1 : rows.length,
+              ),
+            ],
+          ))
+        .toString();
+  }
 
-  final AnsiBorder border;
-  final List<AnsiTableRow> data;
-  final String formattedText;
+  late final String formattedText;
+  final AnsiBorderBuilder builder;
 
   /// **AnsiTable.fromList**
   ///
@@ -53,7 +72,7 @@ class AnsiTable {
   }) {
     return AnsiTable(
       border: border,
-      data: AnsiTableColumn(
+      rows: AnsiTableColumn(
         data: data,
         fixedWidth: fixedWidth,
         defaultAlignment: defaultAlignment,
@@ -115,7 +134,7 @@ class AnsiTable {
 
     return AnsiTable(
       border: border,
-      data: getRows(columns, maxRows, orientation),
+      rows: getRows(columns, maxRows, orientation),
     );
   }
 

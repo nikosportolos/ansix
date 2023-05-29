@@ -1,4 +1,4 @@
-import 'package:ansix/src/theme/border.dart';
+import 'package:ansix/src/theme/border/border.dart';
 import 'package:ansix/src/theme/drawing/box_drawing.dart';
 import 'package:test/test.dart';
 

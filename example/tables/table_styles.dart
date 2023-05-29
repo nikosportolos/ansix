@@ -56,7 +56,7 @@ void main() {
         style: AnsiBorderStyle.square,
         type: type,
       ),
-      data: <AnsiTableRow>[
+      rows: <AnsiTableRow>[
         AnsiTableRow(data: headerData),
         ...data,
       ],

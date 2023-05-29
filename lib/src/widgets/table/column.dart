@@ -7,6 +7,9 @@ import 'package:ansix/src/widgets/table/row.dart';
 import 'package:ansix/src/widgets/text/text.dart';
 import 'package:collection/collection.dart';
 
+/// **AnsiTableColumn**
+///
+/// Represents a column of a table.
 class AnsiTableColumn {
   AnsiTableColumn({
     required this.data,

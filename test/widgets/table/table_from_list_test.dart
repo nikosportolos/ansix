@@ -1,4 +1,4 @@
-import 'package:ansix/src/theme/border.dart';
+import 'package:ansix/src/theme/border/border.dart';
 import 'package:ansix/src/theme/color/color.dart';
 import 'package:ansix/src/widgets/table/table.dart';
 import 'package:test/test.dart';
@@ -33,10 +33,12 @@ void main() {
 
 final Map<AnsiBorderType, String> listMocks = <AnsiBorderType, String>{
   AnsiBorderType.all: allBorderListMock,
-  AnsiBorderType.header: headerBorderListMock,
   AnsiBorderType.inside: insideBorderListMock,
   AnsiBorderType.insideHorizontal: insideHorizontalBorderListMock,
   AnsiBorderType.insideVertical: insideVerticalBorderListMock,
+  AnsiBorderType.header: headerBorderListMock,
+  AnsiBorderType.headerFooter: headerFooterBorderListMock,
+  AnsiBorderType.footer: footerBorderListMock,
   AnsiBorderType.none: noBorderListMock,
   AnsiBorderType.outside: outsideBorderListMock,
   AnsiBorderType.outsideHorizontal: outsideHorizontalBorderListMock,
@@ -60,8 +62,7 @@ const String headerBorderListMock = '''
 └─────┘
  Red   
  Green 
- Blue  
-''';
+ Blue  ''';
 
 const String insideBorderListMock = '''
 Name 
@@ -70,8 +71,7 @@ Red
 ─────
 Green
 ─────
-Blue 
-''';
+Blue ''';
 
 const String insideHorizontalBorderListMock = '''
 Name 
@@ -80,22 +80,19 @@ Red
 ─────
 Green
 ─────
-Blue 
-''';
+Blue ''';
 
 const String insideVerticalBorderListMock = '''
 Name 
 Red  
 Green
-Blue 
-''';
+Blue ''';
 
 const String noBorderListMock = '''
 Name 
 Red  
 Green
-Blue 
-''';
+Blue ''';
 
 const String outsideBorderListMock = '''
 ┌─────┐
@@ -106,15 +103,33 @@ const String outsideBorderListMock = '''
 └─────┘''';
 
 const String outsideHorizontalBorderListMock = '''
-│Name │
-│Red  │
-│Green│
-│Blue │''';
-
-const String outsideVerticalBorderListMock = '''
 ─────
 Name 
 Red  
 Green
 Blue 
 ─────''';
+
+const String outsideVerticalBorderListMock = '''
+│Name │
+│Red  │
+│Green│
+│Blue │''';
+
+const String footerBorderListMock = '''
+ Name  
+ Red   
+ Green 
+┌─────┐
+│Blue │
+└─────┘''';
+
+const String headerFooterBorderListMock = '''
+┌─────┐
+│Name │
+└─────┘
+ Red   
+ Green 
+┌─────┐
+│Blue │
+└─────┘''';

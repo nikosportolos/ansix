@@ -552,6 +552,13 @@ and frames around text or other content in terminal-based applications.
 </a>
 
 
+- AnsiBorderType.headerFooter
+
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/header-footer.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/header-footer.png" width="400" alt="header-footer-border-type">
+</a>
+
+
 - AnsiBorderType.inside
 
 <a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside.png" target="_blank">
@@ -570,6 +577,13 @@ and frames around text or other content in terminal-based applications.
 
 <a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside-vertical.png" target="_blank">
   <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside-vertical.png" width="400" alt="inside-vertical-border-type">
+</a>
+
+
+- AnsiBorderType.footer
+
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/footer.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/footer.png" width="400" alt="footer-border-type">
 </a>
 
 

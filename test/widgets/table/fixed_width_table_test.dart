@@ -1,4 +1,4 @@
-import 'package:ansix/src/theme/border.dart';
+import 'package:ansix/src/theme/border/border.dart';
 import 'package:ansix/src/theme/color/color.dart';
 import 'package:ansix/src/widgets/table/cell.dart';
 import 'package:ansix/src/widgets/table/row.dart';
@@ -34,7 +34,7 @@ void main() {
             style: AnsiBorderStyle.square,
             type: type,
           ),
-          data: <AnsiTableRow>[AnsiTableRow(data: headerData), ...data],
+          rows: <AnsiTableRow>[AnsiTableRow(data: headerData), ...data],
         );
 
         expect(table.toString(), tableMocks[type]);
@@ -45,10 +45,12 @@ void main() {
 
 final Map<AnsiBorderType, String> tableMocks = <AnsiBorderType, String>{
   AnsiBorderType.all: allBorderTableMock,
-  AnsiBorderType.header: headerBorderTableMock,
   AnsiBorderType.inside: insideBorderTableMock,
   AnsiBorderType.insideHorizontal: insideHorizontalBorderTableMock,
   AnsiBorderType.insideVertical: insideVerticalBorderTableMock,
+  AnsiBorderType.header: headerBorderTableMock,
+  AnsiBorderType.headerFooter: headerFooterBorderTableMock,
+  AnsiBorderType.footer: footerBorderTableMock,
   AnsiBorderType.none: noBorderTableMock,
   AnsiBorderType.outside: outsideBorderTableMock,
   AnsiBorderType.outsideHorizontal: outsideHorizontalBorderTableMock,
@@ -72,8 +74,7 @@ const String headerBorderTableMock = '''
 └───────────────┴───────────────┴───────────────┘
  Red             #ff0000         (255, 0, 0)     
  Green           #008000         (0, 128, 0)     
- Blue            #0000ff         (0, 0, 255)     
-''';
+ Blue            #0000ff         (0, 0, 255)     ''';
 
 const String insideBorderTableMock = '''
 Name           │Hex            │RGB            
@@ -82,8 +83,7 @@ Red            │#ff0000        │(255, 0, 0)
 ───────────────┼───────────────┼───────────────
 Green          │#008000        │(0, 128, 0)    
 ───────────────┼───────────────┼───────────────
-Blue           │#0000ff        │(0, 0, 255)    
-''';
+Blue           │#0000ff        │(0, 0, 255)    ''';
 
 const String insideHorizontalBorderTableMock = '''
 Name            Hex             RGB            
@@ -92,22 +92,19 @@ Red             #ff0000         (255, 0, 0)
 ───────────────────────────────────────────────
 Green           #008000         (0, 128, 0)    
 ───────────────────────────────────────────────
-Blue            #0000ff         (0, 0, 255)    
-''';
+Blue            #0000ff         (0, 0, 255)    ''';
 
 const String insideVerticalBorderTableMock = '''
 Name           │Hex            │RGB            
 Red            │#ff0000        │(255, 0, 0)    
 Green          │#008000        │(0, 128, 0)    
-Blue           │#0000ff        │(0, 0, 255)    
-''';
+Blue           │#0000ff        │(0, 0, 255)    ''';
 
 const String noBorderTableMock = '''
 Name            Hex             RGB            
 Red             #ff0000         (255, 0, 0)    
 Green           #008000         (0, 128, 0)    
-Blue            #0000ff         (0, 0, 255)    
-''';
+Blue            #0000ff         (0, 0, 255)    ''';
 
 const String outsideBorderTableMock = '''
 ┌─────────────────────────────────────────────┐
@@ -117,16 +114,34 @@ const String outsideBorderTableMock = '''
 │Blue           #0000ff        (0, 0, 255)    │
 └─────────────────────────────────────────────┘''';
 
-const String outsideHorizontalBorderTableMock = '''
+const String outsideVerticalBorderTableMock = '''
 │Name            Hex             RGB            │
 │Red             #ff0000         (255, 0, 0)    │
 │Green           #008000         (0, 128, 0)    │
 │Blue            #0000ff         (0, 0, 255)    │''';
 
-const String outsideVerticalBorderTableMock = '''
+const String outsideHorizontalBorderTableMock = '''
 ─────────────────────────────────────────────
 Name            Hex             RGB            
 Red             #ff0000         (255, 0, 0)    
 Green           #008000         (0, 128, 0)    
 Blue            #0000ff         (0, 0, 255)    
 ─────────────────────────────────────────────''';
+
+const String headerFooterBorderTableMock = '''
+┌───────────────┬───────────────┬───────────────┐
+│Name           │Hex            │RGB            │
+└───────────────┴───────────────┴───────────────┘
+ Red             #ff0000         (255, 0, 0)     
+ Green           #008000         (0, 128, 0)     
+┌───────────────┬───────────────┬───────────────┐
+│Blue           │#0000ff        │(0, 0, 255)    │
+└───────────────┴───────────────┴───────────────┘''';
+
+const String footerBorderTableMock = '''
+ Name            Hex             RGB             
+ Red             #ff0000         (255, 0, 0)     
+ Green           #008000         (0, 128, 0)     
+┌───────────────┬───────────────┬───────────────┐
+│Blue           │#0000ff        │(0, 0, 255)    │
+└───────────────┴───────────────┴───────────────┘''';

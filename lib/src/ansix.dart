@@ -7,10 +7,15 @@ import 'dart:convert';
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/controller.dart';
 import 'package:ansix/src/formatter/formatter.dart';
+import 'package:ansix/src/theme/drawing/box_drawing.dart';
 
 abstract class AnsiX {
   static final AnsiXController _controller = AnsiXController();
-  static const JsonEncoder encoder = JsonEncoder.withIndent('  ');
+
+  /// Determines if printing messages to the attached terminal is allowed.
+  ///
+  /// Defaults to true for debug mode only.
+  static bool allowPrint = isDebugMode;
 
   /// Returns true if ANSI formatting is supported and enabled.
   static bool get isEnabled => _controller.isEnabled;
@@ -44,11 +49,9 @@ abstract class AnsiX {
     );
   }
 
-  static bool allowPrint = isDebugMode;
-
-  /// Prints a string representation of the object to the console
+  /// Prints a string representation of the object to console
   /// with the given styles and ANSI colors.
-  static printStyled(
+  static void printStyled(
     final Object? object, {
     required final AnsiTextStyle textStyle,
     final AnsiColor foreground = AnsiColor.none,
@@ -65,22 +68,35 @@ abstract class AnsiX {
   }
 
   /// Prints an indented string representation of the JSON
-  /// to the console with the given styles and ANSI colors.
-  static printJson(
+  /// to console with the given styles and ANSI colors.
+  static void printJson(
     final Object? object, {
     final AnsiTextStyle textStyle = const AnsiTextStyle(),
     final AnsiColor foreground = AnsiColor.none,
     final AnsiColor background = AnsiColor.none,
+    final int tabs = 2,
   }) {
     if (!allowPrint) {
       return;
     }
     print(
-      encoder.convert(object).styled(
+      JsonEncoder.withIndent(' ' * tabs).convert(object).styled(
             textStyle,
             foreground,
             background,
           ),
     );
+  }
+
+  /// Prints a tree-view representation of the given data to console.
+  static void printTreeView(
+    final dynamic data, {
+    final BoxDrawingSet boxDrawingSet = BoxDrawingSet.square,
+    final AnsiTreeViewTheme theme = const AnsiTreeViewTheme(),
+  }) {
+    if (!allowPrint) {
+      return;
+    }
+    print(AnsiTreeView(theme: theme).format(data));
   }
 }

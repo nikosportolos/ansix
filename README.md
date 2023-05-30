@@ -315,6 +315,7 @@ String coloredRgb({
 
 #### Styles
 - bold
+- dim
 - italic
 - underline
 - strikethrough

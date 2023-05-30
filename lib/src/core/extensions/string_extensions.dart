@@ -57,6 +57,8 @@ extension AnsiString on String {
 extension AnsiXShortcuts on String {
   String bold() => withStyle(AnsiStyle.bold);
 
+  String dim() => withStyle(AnsiStyle.dim);
+
   String italic() => withStyle(AnsiStyle.italic);
 
   String underline() => withStyle(AnsiStyle.underline);

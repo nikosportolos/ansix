@@ -20,6 +20,10 @@ enum AnsiStyle {
     AnsiEscapeCodes.boldEndCode,
   ),
 
+  /// Doubly underlined; or: not bold
+  ///
+  /// Double-underline per ECMA-48, but instead disables bold intensity on several terminals,
+  /// including in the Linux kernel's console before version 4.17.
   boldUnderline(
     AnsiEscapeCodes.boldUnderlineStartCode,
     AnsiEscapeCodes.boldUnderlineEndCode,

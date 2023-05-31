@@ -1,7 +1,6 @@
 import 'package:ansix/src/theme/border/border.dart';
 import 'package:ansix/src/theme/color/color.dart';
 import 'package:ansix/src/widgets/table/cell.dart';
-import 'package:ansix/src/widgets/table/row.dart';
 import 'package:ansix/src/widgets/table/table.dart';
 import 'package:test/test.dart';
 

@@ -3,8 +3,9 @@ import 'dart:math';
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/widgets/table/builder.dart';
 import 'package:ansix/src/widgets/table/column.dart';
-import 'package:ansix/src/widgets/table/row.dart';
 import 'package:meta/meta.dart';
+
+export 'row.dart';
 
 /// **AnsiTable**
 ///

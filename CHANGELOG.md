@@ -1,3 +1,22 @@
+## v0.0.4-prerelease
+
+#### New features
+
+- Introduced a new widget, `AnsiTreeView` ([#58](https://github.com/nikosportolos/ansix/issues/58),
+[#63](https://github.com/nikosportolos/ansix/issues/63))
+  
+  Read more [here](https://github.com/nikosportolos/ansix#ansitreeview)
+
+#### Bug fixes
+
+- Fix AnsiTable with only one cell ([#59](https://github.com/nikosportolos/ansix/issues/59))
+- Export class AnsiTableRow ([#62](https://github.com/nikosportolos/ansix/issues/62))
+
+#### Misc
+- AnsiTable - Set default AnsiBorderType to all ([#68](https://github.com/nikosportolos/ansix/issues/68))
+- Update CONTRIBUTING.md
+
+
 ## v0.0.3-prerelease
 
 #### Bug fixes

@@ -18,7 +18,7 @@ abstract class AnsiBorder {
     AnsiColor color,
   }) = _$AnsiBorderImpl;
 
-  @DefaultValue(AnsiBorderType.none)
+  @DefaultValue(AnsiBorderType.all)
   AnsiBorderType get type;
 
   @DefaultValue(AnsiBorderStyle.none)

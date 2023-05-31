@@ -190,6 +190,13 @@ class AnsiTreeView {
       keys.sort();
     }
 
+    if (keys.isEmpty) {
+      buffer.write(
+        _parseTreeNode('', '(empty)', isLast: true, prefix: prefix),
+      );
+      return buffer.toString();
+    }
+
     for (int i = 0; i < keys.length; i++) {
       final String key = keys[i];
       final dynamic value = map[key];
@@ -231,9 +238,6 @@ class AnsiTreeView {
               foregroundColor: theme.keyTheme.color,
             )
             ..writeln();
-          // if (!isLast && !theme.compact) {
-          //   buffer.writeln('$prefix$verticalLine$tab$verticalLine');
-          // }
           buffer.write(_parseTreeMap(
             value,
             prefix: isLast ? '$prefix$tab ' : '$prefix$_verticalLine$tab',
@@ -244,19 +248,12 @@ class AnsiTreeView {
           buffer.write(
             _parseTreeNode(key, value, isLast: isLast, prefix: prefix),
           );
-          if (!isLast && !theme.compact) {
-            // buffer.writeln('$prefix$verticalLine');
-          }
           break;
 
         case TreeNodeType.object:
           buffer.write(_parseTreeNode('', value, prefix: '$prefix$_verticalLine$tab'));
           break;
       }
-
-      // if (!theme.compact && isLast && !isMemberOfList) {
-      //   buffer.writeln(prefix);
-      // }
     }
 
     return buffer.toString();
@@ -269,18 +266,20 @@ class AnsiTreeView {
   ]) {
     final StringBuffer buffer = StringBuffer();
 
-    for (int i = 0; i < list.length; i++) {
-      final bool isLast = i == list.length - 1;
+    final List<dynamic> values = list.isEmpty ? <String>['(empty)'] : list;
 
-      switch (TreeNodeType.getType(list[i])) {
+    for (int i = 0; i < values.length; i++) {
+      final bool isLast = i == values.length - 1;
+
+      switch (TreeNodeType.getType(values[i])) {
         case TreeNodeType.primary:
           if (!theme.compact) {
             buffer.writeln('$prefix$_verticalLine');
           }
           buffer.write(
             _parseTreeNode(
-              '',
-              list[i],
+              theme.showListItemIndex && list.isNotEmpty ? '$i' : '',
+              values[i],
               isLast: isLast,
               prefix: prefix,
             ),
@@ -291,7 +290,7 @@ class AnsiTreeView {
         case TreeNodeType.iterable:
         case TreeNodeType.object:
           buffer.write(_parseTreeMap(
-            <String, dynamic>{'$i': list[i]},
+            <String, dynamic>{'$i': values[i]},
             prefix: prefix,
             isLastNode: isLast,
             isMemberOfList: true,

@@ -47,6 +47,8 @@ AnsiX makes it easy to add ANSI styling to your output with minimal effort and m
     - [AnsiTable](#ansitable) 
       - [AnsiBorder](#ansiborder) 
       - [AnsiType](#ansitype)
+    - [AnsiTreeView](#ansitreeview)
+      - [Default theme](#default-theme)
 - [FAQ](#faq)
 - [Examples](#examples)
 - [Contribution](#contribution)
@@ -615,6 +617,77 @@ and frames around text or other content in terminal-based applications.
   <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/outside-vertical.png" width="400" alt="outside-vertical-border-type">
 </a>
 
+
+### AnsiTreeView
+
+A tree view is a way to represent data in a hierarchical structure, similar to the branches of a tree.
+
+It shows the relationships between different elements or categories, where each element can have child elements.
+
+The tree view provides a visual way to understand the structure and hierarchy of the data,
+using indentation and/or graphical symbols to indicate levels and connections between the elements.
+
+
+```shell
+┌───────────────────┐
+│  User<133436977>  │
+└────────┬──────────┘
+         ├── id: #123456789
+         ├── name: John Doe
+         ├── email
+         │     ├── primary: john.doe@email.com
+         │     ├── secondary: null
+         │     └── personal: jd30@email.com
+         ├── age: 30
+         ├── phone: 555-1234
+         ├── addresses
+         │       ├── 0
+         │       │   ├── street: 123 Main St
+         │       │   ├── city: New York
+         │       │   └── state: NY
+         │       └── 1
+         │           ├── street: 56 Flutter Avenue
+         │           ├── city: Las Vegas
+         │           └── state: LV
+         └── groups
+               ├── 0: moderator
+               ├── 1: author
+               └── 2: tester
+```
+
+#### Default theme
+
+```dart
+AnsiTreeViewTheme(
+  compact: true,
+  sorted: false,
+  showListItemIndex: true,
+  anchorTheme: const TreeAnchorTheme(
+    color: AnsiColor.deepSkyBlue5,
+    boxDrawingSet: BoxDrawingSet.square,
+  ),
+  keyTheme: const TreeNodeTheme(
+    color: AnsiColor.white,
+    textStyle: AnsiTextStyle(bold: true),
+  ),
+  valueTheme: const TreeNodeTheme(
+    color: AnsiColor.grey69,
+    textStyle: AnsiTextStyle(italic: true),
+  ),
+  classTheme: TreeClassTheme(
+    textTheme: AnsiTextTheme(
+      style: const AnsiTextStyle(bold: true),
+      padding: AnsiPadding.horizontal(2),
+      foregroundColor: AnsiColor.white,
+    ),
+    border: const AnsiBorder(
+      style: AnsiBorderStyle.square,
+      type: AnsiBorderType.header,
+      color: AnsiColor.deepSkyBlue5,
+    ),
+  ),
+)
+```
 
 ### FAQ
 

@@ -7,7 +7,6 @@ import 'dart:convert';
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/controller.dart';
 import 'package:ansix/src/formatter/formatter.dart';
-import 'package:ansix/src/theme/drawing/box_drawing.dart';
 
 abstract class AnsiX {
   static final AnsiXController _controller = AnsiXController();
@@ -91,7 +90,6 @@ abstract class AnsiX {
   /// Prints a tree-view representation of the given data to console.
   static void printTreeView(
     final dynamic data, {
-    final BoxDrawingSet boxDrawingSet = BoxDrawingSet.square,
     final AnsiTreeViewTheme theme = const AnsiTreeViewTheme(),
   }) {
     if (!allowPrint) {

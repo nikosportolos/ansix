@@ -31,23 +31,25 @@ class AnsiTable {
                 index: 0,
                 total: border.type.hasHeader ? 1 : rows.length,
               ),
-              if (border.type.hasHeader) AnsiEscapeCodes.newLine,
-              for (int i = 1; i < rows.length - 1; i++)
-                builder
-                    .print(
-                      border: border,
-                      data: rows[i].data,
-                      index: i,
-                      total: border.type.hasFooter ? rows.length - 1 : rows.length,
-                    )
-                    .toString(),
-              if (border.type.hasFooter) AnsiEscapeCodes.newLine,
-              builder.print(
-                border: border.type.hasFooter ? border.copyWith.type(AnsiBorderType.all) : border,
-                data: rows[rows.length - 1].data,
-                index: border.type.hasFooter ? 0 : rows.length - 1,
-                total: border.type.hasFooter ? 1 : rows.length,
-              ),
+              if (rows.length > 1) ...<String>[
+                if (border.type.hasHeader) AnsiEscapeCodes.newLine,
+                for (int i = 1; i < rows.length - 1; i++)
+                  builder
+                      .print(
+                        border: border,
+                        data: rows[i].data,
+                        index: i,
+                        total: border.type.hasFooter ? rows.length - 1 : rows.length,
+                      )
+                      .toString(),
+                if (border.type.hasFooter) AnsiEscapeCodes.newLine,
+                builder.print(
+                  border: border.type.hasFooter ? border.copyWith.type(AnsiBorderType.all) : border,
+                  data: rows[rows.length - 1].data,
+                  index: border.type.hasFooter ? 0 : rows.length - 1,
+                  total: border.type.hasFooter ? 1 : rows.length,
+                ),
+              ],
             ],
           ))
         .toString();

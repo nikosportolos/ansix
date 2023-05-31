@@ -9,6 +9,7 @@ class AnsiTreeViewTheme {
   const AnsiTreeViewTheme({
     this.compact = true,
     this.sorted = false,
+    this.showListItemIndex = false,
     this.anchorTheme = const TreeAnchorTheme(),
     this.keyTheme = const TreeNodeTheme(
       textStyle: AnsiTextStyle(bold: true),
@@ -19,6 +20,7 @@ class AnsiTreeViewTheme {
 
   final bool compact;
   final bool sorted;
+  final bool showListItemIndex;
   final TreeAnchorTheme anchorTheme;
   final TreeNodeTheme keyTheme;
   final TreeNodeTheme valueTheme;
@@ -53,6 +55,7 @@ class AnsiTreeViewTheme {
           color: AnsiColor.deepSkyBlue5,
         ),
       ),
+      showListItemIndex: true,
     );
   }
 }

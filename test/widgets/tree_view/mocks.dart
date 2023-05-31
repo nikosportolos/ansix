@@ -106,8 +106,25 @@ const String treeviewNestedMock = '''
           │            ├── id: 34454354453
           │            ├── child: null
           │            └── nodes
+          │                 └── (empty)
           └── 1
               ├── id: 5463456343
               ├── child: null
               └── nodes
+                   └── (empty)
+''';
+
+const String treeviewEmptyMock = '''
+_Map<String, dynamic>
+         ├── map
+         │    ├── id: 123
+         │    └── username: AnsiX
+         ├── empty_map
+         │       └── (empty)
+         ├── list
+         │     ├── This
+         │     ├── is
+         │     └── AnsiX
+         └── empty_list
+                 └── (empty)
 ''';

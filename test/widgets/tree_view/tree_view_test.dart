@@ -129,5 +129,22 @@ void main() {
       ).format(node3);
       expect(actual.unformatted, treeviewNestedMock);
     });
+
+    test('empty', () {
+      final Map<String, dynamic> map = <String, dynamic>{
+        'map': <String, dynamic>{
+          'id': 123,
+          'username': 'AnsiX',
+        },
+        'empty_map': <String, String>{},
+        'list': <String>['This', 'is', 'AnsiX'],
+        'empty_list': <String>[],
+      };
+
+      final String actual = AnsiTreeView(
+        theme: const AnsiTreeViewTheme(classTheme: TreeClassTheme(showHash: false)),
+      ).format(map);
+      expect(actual.unformatted, treeviewEmptyMock);
+    });
   });
 }

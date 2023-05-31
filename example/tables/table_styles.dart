@@ -2,7 +2,6 @@
 
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/widgets/table/cell.dart';
-import 'package:ansix/src/widgets/table/row.dart';
 
 void main() {
   AnsiX.ensureSupportsAnsi();

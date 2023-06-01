@@ -1,5 +1,4 @@
 import 'package:ansix/ansix.dart';
-import 'package:ansix/src/theme/drawing/box_drawing.dart';
 
 /// **AnsiTreeViewTheme**
 ///

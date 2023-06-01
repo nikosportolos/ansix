@@ -18,6 +18,9 @@ class MockAnsiTerminal extends Mock implements AnsiTerminal {
 
   @override
   bool get runsOnWindows;
+
+  @override
+  TerminalSize get size => TerminalSize.$default;
 }
 
 class MockStdOut extends Mock implements Stdout {

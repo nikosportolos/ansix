@@ -1,5 +1,8 @@
 import 'dart:io';
 
+/// **Shell**
+///
+/// A library that wraps Dart's [Process] features.
 class Shell {
   const Shell();
 
@@ -16,6 +19,10 @@ class Shell {
   }
 }
 
+/// **ShellCommand**
+///
+/// A class that contains all required information for a
+/// shell command to be executed in the attached terminal.
 class ShellCommand {
   const ShellCommand(
     this.command, {

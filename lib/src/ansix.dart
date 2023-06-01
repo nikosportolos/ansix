@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/controller.dart';
 import 'package:ansix/src/formatter/formatter.dart';
+import 'package:ansix/src/system/terminal.dart';
 
 abstract class AnsiX {
   static final AnsiXController _controller = AnsiXController();
@@ -21,6 +22,9 @@ abstract class AnsiX {
 
   /// Returns the active text formatter.
   static TextFormatter get formatter => _controller.formatter;
+
+  /// Returns the size of the attached terminal.
+  static TerminalSize get size => _controller.terminalSize;
 
   /// Enables ANSI formatting (if supported by the system).
   static void enable() {

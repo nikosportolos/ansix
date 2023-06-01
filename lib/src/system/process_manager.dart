@@ -2,6 +2,9 @@ import 'package:ansix/src/core/exceptions/exceptions.dart';
 import 'package:ansix/src/system/system.dart';
 import 'package:meta/meta.dart';
 
+/// **ProcessManager**
+///
+/// A library that provides tools and info using bash commands.
 class ProcessManager {
   const ProcessManager({
     final Shell? shell,
@@ -80,6 +83,7 @@ class ProcessManager {
     }
   }
 
+  /// Returns the [TerminalType] of the attached terminal.
   TerminalType determineTerminalType() {
     return _checkIfRunningInBash() ?? _checkIfRunningInPowershell() ?? TerminalType.unknown;
   }

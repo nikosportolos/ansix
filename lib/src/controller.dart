@@ -3,15 +3,19 @@ import 'package:ansix/src/formatter/formatters.dart';
 import 'package:ansix/src/system/process_manager.dart';
 import 'package:ansix/src/system/terminal.dart';
 
+/// **AnsiXController**
 class AnsiXController {
   AnsiXController({
     final ProcessManager? processManager,
     final AnsiTerminal? terminal,
   })  : _processManager = processManager ?? const ProcessManager(),
-        _terminal = terminal ?? AnsiTerminal();
+        _terminal = terminal ?? AnsiTerminal() {
+    terminalSize = _terminal.size;
+  }
 
   final ProcessManager _processManager;
   final AnsiTerminal _terminal;
+  late final TerminalSize terminalSize;
 
   /// Returns true if ANSI formatting is supported and enabled.
   bool get isEnabled => _isEnabled;

@@ -49,6 +49,7 @@ abstract class AnsiTreeViewTheme {
     return AnsiTreeViewTheme(
       compact: true,
       sorted: false,
+      showListItemIndex: true,
       anchorTheme: const AnsiTreeAnchorTheme(
         color: AnsiColor.deepSkyBlue5,
         style: AnsiBorderStyle.square,
@@ -73,7 +74,6 @@ abstract class AnsiTreeViewTheme {
           color: AnsiColor.deepSkyBlue5,
         ),
       ),
-      showListItemIndex: true,
     );
   }
 }

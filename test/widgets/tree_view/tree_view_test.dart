@@ -10,7 +10,7 @@ void main() {
     test('List<int>', () {
       final String actual = AnsiTreeView(
         theme: const AnsiTreeViewTheme(
-          classTheme: TreeClassTheme(showHash: false),
+          classTheme: AnsiTreeClassTheme(showHash: false),
         ),
       ).format(<int>[1, 2, 3, 4, 5]);
       expect(actual, treeViewMock1);
@@ -19,7 +19,7 @@ void main() {
     test('Map<String, dynamic>', () {
       final String actual = AnsiTreeView(
         theme: const AnsiTreeViewTheme(
-          classTheme: TreeClassTheme(showHash: false),
+          classTheme: AnsiTreeClassTheme(showHash: false),
         ),
       ).format(<String, dynamic>{'id': 12312, 'username': 'AnsiX'});
       expect(actual, treeViewMock2);
@@ -28,7 +28,7 @@ void main() {
     test('String', () {
       final String actual = AnsiTreeView(
         theme: const AnsiTreeViewTheme(
-          classTheme: TreeClassTheme(showHash: false),
+          classTheme: AnsiTreeClassTheme(showHash: false),
         ),
       ).format('This is a test message');
       expect(actual, treeViewMock3);
@@ -61,7 +61,7 @@ void main() {
       );
       final String actual = AnsiTreeView(
         theme: const AnsiTreeViewTheme(
-          classTheme: TreeClassTheme(showHash: false),
+          classTheme: AnsiTreeClassTheme(showHash: false),
         ),
       ).format(user);
       expect(actual.unformatted, treeViewMockObject);
@@ -96,7 +96,7 @@ void main() {
         theme: const AnsiTreeViewTheme(
           compact: false,
           sorted: true,
-          classTheme: TreeClassTheme(
+          classTheme: AnsiTreeClassTheme(
             showHash: false,
             border: AnsiBorder(
               type: AnsiBorderType.all,
@@ -142,7 +142,7 @@ void main() {
       };
 
       final String actual = AnsiTreeView(
-        theme: const AnsiTreeViewTheme(classTheme: TreeClassTheme(showHash: false)),
+        theme: const AnsiTreeViewTheme(classTheme: AnsiTreeClassTheme(showHash: false)),
       ).format(map);
       expect(actual.unformatted, treeviewEmptyMock);
     });

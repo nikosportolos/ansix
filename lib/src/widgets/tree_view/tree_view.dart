@@ -48,10 +48,10 @@ class AnsiTreeView {
   AnsiTreeView({
     this.theme = const AnsiTreeViewTheme(),
   }) : _lineLength = theme.compact ? 2 : 4 {
-    _horizontalLine = (theme.anchorTheme.boxDrawingSet.horizontalLine * _lineLength).withForegroundColor(
+    _horizontalLine = (theme.anchorTheme.style.boxDrawingSet.horizontalLine * _lineLength).withForegroundColor(
       theme.anchorTheme.color,
     );
-    _verticalLine = theme.anchorTheme.boxDrawingSet.verticalLine.withForegroundColor(
+    _verticalLine = theme.anchorTheme.style.boxDrawingSet.verticalLine.withForegroundColor(
       theme.anchorTheme.color,
     );
   }
@@ -84,7 +84,7 @@ class AnsiTreeView {
           .replaceRange(
             prefixLength,
             prefixLength + 1,
-            theme.anchorTheme.boxDrawingSet.middleTopEdge,
+            theme.anchorTheme.style.boxDrawingSet.middleTopEdge,
           )
           .colored(foreground: theme.classTheme.border.color);
       header = <String>[
@@ -130,8 +130,9 @@ class AnsiTreeView {
   }) {
     final StringBuffer buffer = StringBuffer()
       ..write(prefix)
-      ..write(
-          isLast ? theme.anchorTheme.boxDrawingSet.bottomLeftCorner : theme.anchorTheme.boxDrawingSet.middleLeftEdge);
+      ..write(isLast
+          ? theme.anchorTheme.style.boxDrawingSet.bottomLeftCorner
+          : theme.anchorTheme.style.boxDrawingSet.middleLeftEdge);
     return buffer.toString().withForegroundColor(theme.anchorTheme.color);
   }
 

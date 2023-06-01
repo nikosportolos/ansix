@@ -1,29 +1,48 @@
 import 'package:ansix/ansix.dart';
+import 'package:data_class_plugin/data_class_plugin.dart';
+
+part 'theme.gen.dart';
 
 /// **AnsiTreeViewTheme**
 ///
 /// Contains styles and colors for [AnsiTreeView].
-class AnsiTreeViewTheme {
-  /// Shorthand constructor
-  const AnsiTreeViewTheme({
-    this.compact = true,
-    this.sorted = false,
-    this.showListItemIndex = false,
-    this.anchorTheme = const AnsiTreeAnchorTheme(),
-    this.keyTheme = const AnsiTreeNodeTheme(
-      textStyle: AnsiTextStyle(bold: true),
-    ),
-    this.valueTheme = const AnsiTreeNodeTheme(),
-    this.classTheme = const AnsiTreeClassTheme(),
-  });
+@DataClass()
+abstract class AnsiTreeViewTheme {
+  const AnsiTreeViewTheme.ctor();
 
-  final bool compact;
-  final bool sorted;
-  final bool showListItemIndex;
-  final AnsiTreeAnchorTheme anchorTheme;
-  final AnsiTreeNodeTheme keyTheme;
-  final AnsiTreeNodeTheme valueTheme;
-  final AnsiTreeClassTheme classTheme;
+  /// Default constructor
+  const factory AnsiTreeViewTheme({
+    bool compact,
+    bool sorted,
+    bool showListItemIndex,
+    AnsiTreeAnchorTheme anchorTheme,
+    AnsiTreeNodeTheme keyTheme,
+    AnsiTreeNodeTheme valueTheme,
+    AnsiTreeClassTheme classTheme,
+  }) = _$AnsiTreeViewThemeImpl;
+
+  @DefaultValue(true)
+  bool get compact;
+
+  @DefaultValue(false)
+  bool get sorted;
+
+  @DefaultValue(false)
+  bool get showListItemIndex;
+
+  @DefaultValue(AnsiTreeAnchorTheme())
+  AnsiTreeAnchorTheme get anchorTheme;
+
+  @DefaultValue(AnsiTreeNodeTheme(
+    textStyle: AnsiTextStyle(bold: true),
+  ))
+  AnsiTreeNodeTheme get keyTheme;
+
+  @DefaultValue(AnsiTreeNodeTheme())
+  AnsiTreeNodeTheme get valueTheme;
+
+  @DefaultValue(AnsiTreeClassTheme())
+  AnsiTreeClassTheme get classTheme;
 
   /// Default theme for [AnsiTreeView].
   factory AnsiTreeViewTheme.$default() {

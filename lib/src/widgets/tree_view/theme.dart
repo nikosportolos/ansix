@@ -9,40 +9,40 @@ class AnsiTreeViewTheme {
     this.compact = true,
     this.sorted = false,
     this.showListItemIndex = false,
-    this.anchorTheme = const TreeAnchorTheme(),
-    this.keyTheme = const TreeNodeTheme(
+    this.anchorTheme = const AnsiTreeAnchorTheme(),
+    this.keyTheme = const AnsiTreeNodeTheme(
       textStyle: AnsiTextStyle(bold: true),
     ),
-    this.valueTheme = const TreeNodeTheme(),
-    this.classTheme = const TreeClassTheme(),
+    this.valueTheme = const AnsiTreeNodeTheme(),
+    this.classTheme = const AnsiTreeClassTheme(),
   });
 
   final bool compact;
   final bool sorted;
   final bool showListItemIndex;
-  final TreeAnchorTheme anchorTheme;
-  final TreeNodeTheme keyTheme;
-  final TreeNodeTheme valueTheme;
-  final TreeClassTheme classTheme;
+  final AnsiTreeAnchorTheme anchorTheme;
+  final AnsiTreeNodeTheme keyTheme;
+  final AnsiTreeNodeTheme valueTheme;
+  final AnsiTreeClassTheme classTheme;
 
   /// Default theme for [AnsiTreeView].
   factory AnsiTreeViewTheme.$default() {
     return AnsiTreeViewTheme(
       compact: true,
       sorted: false,
-      anchorTheme: const TreeAnchorTheme(
+      anchorTheme: const AnsiTreeAnchorTheme(
         color: AnsiColor.deepSkyBlue5,
-        boxDrawingSet: BoxDrawingSet.square,
+        style: AnsiBorderStyle.square,
       ),
-      keyTheme: const TreeNodeTheme(
+      keyTheme: const AnsiTreeNodeTheme(
         color: AnsiColor.white,
         textStyle: AnsiTextStyle(bold: true),
       ),
-      valueTheme: const TreeNodeTheme(
+      valueTheme: const AnsiTreeNodeTheme(
         color: AnsiColor.grey69,
         textStyle: AnsiTextStyle(italic: true),
       ),
-      classTheme: TreeClassTheme(
+      classTheme: AnsiTreeClassTheme(
         textTheme: AnsiTextTheme(
           style: const AnsiTextStyle(bold: true),
           padding: AnsiPadding.horizontal(2),
@@ -59,22 +59,22 @@ class AnsiTreeViewTheme {
   }
 }
 
-/// **TreeAnchorTheme**
-class TreeAnchorTheme {
+/// **AnsiTreeAnchorTheme**
+class AnsiTreeAnchorTheme {
   /// Shorthand constructor
-  const TreeAnchorTheme({
-    this.boxDrawingSet = BoxDrawingSet.square,
+  const AnsiTreeAnchorTheme({
+    this.style = AnsiBorderStyle.square,
     this.color = AnsiColor.none,
   });
 
-  final BoxDrawingSet boxDrawingSet;
+  final AnsiBorderStyle style;
   final AnsiColor color;
 }
 
-/// **TreeClassTheme**
-class TreeClassTheme {
+/// **AnsiTreeClassTheme**
+class AnsiTreeClassTheme {
   /// Shorthand constructor
-  const TreeClassTheme({
+  const AnsiTreeClassTheme({
     this.border = const AnsiBorder(),
     this.textTheme = const AnsiTextTheme(),
     this.showHash = true,
@@ -85,10 +85,10 @@ class TreeClassTheme {
   final bool showHash;
 }
 
-/// **TreeNodeTheme**
-class TreeNodeTheme {
+/// **AnsiTreeNodeTheme**
+class AnsiTreeNodeTheme {
   /// Shorthand constructor
-  const TreeNodeTheme({
+  const AnsiTreeNodeTheme({
     this.textStyle = const AnsiTextStyle(),
     this.color = AnsiColor.none,
   });

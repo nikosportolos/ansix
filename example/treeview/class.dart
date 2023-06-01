@@ -22,7 +22,7 @@ void main() {
       Address(
         street: '56 Flutter Avenue',
         city: 'Las Vegas',
-        state: 'LV',
+        state: 'NV',
       ),
     ],
     // child: child,

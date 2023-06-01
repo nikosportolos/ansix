@@ -628,65 +628,68 @@ The tree view provides a visual way to understand the structure and hierarchy of
 using indentation and/or graphical symbols to indicate levels and connections between the elements.
 
 
-```shell
-┌───────────────────┐
-│  User<133436977>  │
-└────────┬──────────┘
-         ├── id: #123456789
-         ├── name: John Doe
-         ├── email
-         │     ├── primary: john.doe@email.com
-         │     ├── secondary: null
-         │     └── personal: jd30@email.com
-         ├── age: 30
-         ├── phone: 555-1234
-         ├── addresses
-         │       ├── 0
-         │       │   ├── street: 123 Main St
-         │       │   ├── city: New York
-         │       │   └── state: NY
-         │       └── 1
-         │           ├── street: 56 Flutter Avenue
-         │           ├── city: Las Vegas
-         │           └── state: LV
-         └── groups
-               ├── 0: moderator
-               ├── 1: author
-               └── 2: tester
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/treeview/class.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/treeview/class.png" width="400" alt="class-treeview">
+</a>
+
+### Usage
+
+You can print **any** type of object as a TreeView, just by using `AnsiX.printTreeView()`.
+
+For example:
+
+```dart
+final User user = User(
+  id: '123456789',
+  name: 'John Doe',
+  phone: '555-1234',
+  email: 'john.doe@email.com',
+);
+
+AnsiX.printTreeView(
+  user, 
+  theme: AnsiTreeViewTheme.$default(),
+);
 ```
+
+
+See more [examples](https://github.com/nikosportolos/ansix/tree/main/example/treeview).
+
 
 #### Default theme
 
 ```dart
-AnsiTreeViewTheme(
-  compact: true,
-  sorted: false,
-  showListItemIndex: true,
-  anchorTheme: const TreeAnchorTheme(
-    color: AnsiColor.deepSkyBlue5,
-    boxDrawingSet: BoxDrawingSet.square,
-  ),
-  keyTheme: const TreeNodeTheme(
-    color: AnsiColor.white,
-    textStyle: AnsiTextStyle(bold: true),
-  ),
-  valueTheme: const TreeNodeTheme(
-    color: AnsiColor.grey69,
-    textStyle: AnsiTextStyle(italic: true),
-  ),
-  classTheme: TreeClassTheme(
-    textTheme: AnsiTextTheme(
-      style: const AnsiTextStyle(bold: true),
-      padding: AnsiPadding.horizontal(2),
-      foregroundColor: AnsiColor.white,
-    ),
-    border: const AnsiBorder(
-      style: AnsiBorderStyle.square,
-      type: AnsiBorderType.header,
+factory AnsiTreeViewTheme.$default() {
+  return AnsiTreeViewTheme(
+    compact: true,
+    sorted: false,
+    showListItemIndex: true,
+    anchorTheme: const AnsiTreeAnchorTheme(
       color: AnsiColor.deepSkyBlue5,
+      style: AnsiBorderStyle.square,
     ),
-  ),
-)
+    keyTheme: const AnsiTreeNodeTheme(
+      color: AnsiColor.white,
+      textStyle: AnsiTextStyle(bold: true),
+    ),
+    valueTheme: const AnsiTreeNodeTheme(
+      color: AnsiColor.grey69,
+      textStyle: AnsiTextStyle(italic: true),
+    ),
+    classTheme: AnsiTreeClassTheme(
+      textTheme: AnsiTextTheme(
+        style: const AnsiTextStyle(bold: true),
+        padding: AnsiPadding.horizontal(2),
+        foregroundColor: AnsiColor.white,
+      ),
+      border: const AnsiBorder(
+        style: AnsiBorderStyle.square,
+        type: AnsiBorderType.header,
+        color: AnsiColor.deepSkyBlue5,
+      ),
+    ),
+  );
+}
 ```
 
 ### FAQ

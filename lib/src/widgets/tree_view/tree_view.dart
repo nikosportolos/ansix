@@ -68,22 +68,24 @@ class AnsiTreeView {
       border: theme.classTheme.border,
     ).formattedText;
 
-    final List<String> headerRows = header.split(AnsiEscapeCodes.newLine);
+    final List<String> headerRows = header.split(AnsiEscapeCodes.newLine).where((String line) {
+      return line.isNotEmpty;
+    }).toList(growable: false);
     int prefixLength = headerRows[0].unformattedLength ~/ 2;
     if (prefixLength % 2 == 0) {
       prefixLength--;
     }
     final String prefix = ' ' * prefixLength;
 
-    if (headerRows.length > 2) {
-      final String temp = headerRows[2]
-          .unformatted
-          .replaceRange(
-            prefixLength,
-            prefixLength + 1,
-            theme.classTheme.border.style.boxDrawingSet.middleTopEdge,
-          )
-          .colored(foreground: theme.classTheme.border.color);
+    if (headerRows.length > 2 && theme.classTheme.hasBorder) {
+      final String newChar = theme.classTheme.border.style.boxDrawingSet.middleTopEdge;
+      final String temp = newChar.isEmpty
+          ? ''
+          : headerRows[2]
+              .unformatted
+              .replaceRange(prefixLength, prefixLength + 1, newChar)
+              .colored(foreground: theme.classTheme.border.color);
+
       header = <String>[
         headerRows[0],
         headerRows[1],

@@ -102,6 +102,8 @@ class AnsiTreeClassTheme {
   final AnsiBorder border;
   final AnsiTextTheme textTheme;
   final bool showHash;
+
+  bool get hasBorder => border.style != AnsiBorderStyle.none;
 }
 
 /// **AnsiTreeNodeTheme**

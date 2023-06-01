@@ -17,10 +17,10 @@ abstract class AnsiBorder {
     AnsiColor color,
   }) = _$AnsiBorderImpl;
 
-  @DefaultValue(AnsiBorderType.all)
+  @DefaultValue(AnsiBorderType.none)
   AnsiBorderType get type;
 
-  @DefaultValue(AnsiBorderStyle.none)
+  @DefaultValue(AnsiBorderStyle.square)
   AnsiBorderStyle get style;
 
   @DefaultValue(AnsiColor.none)

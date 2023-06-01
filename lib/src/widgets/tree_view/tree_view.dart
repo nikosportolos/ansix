@@ -1,7 +1,4 @@
-import 'package:ansix/src/core/core.dart';
-import 'package:ansix/src/widgets/table/table.dart';
-import 'package:ansix/src/widgets/text/text.dart';
-import 'package:ansix/src/widgets/tree_view/theme.dart';
+import 'package:ansix/ansix.dart';
 
 export 'theme.dart';
 
@@ -84,7 +81,7 @@ class AnsiTreeView {
           .replaceRange(
             prefixLength,
             prefixLength + 1,
-            theme.anchorTheme.style.boxDrawingSet.middleTopEdge,
+            theme.classTheme.border.style.boxDrawingSet.middleTopEdge,
           )
           .colored(foreground: theme.classTheme.border.color);
       header = <String>[
@@ -131,7 +128,9 @@ class AnsiTreeView {
     final StringBuffer buffer = StringBuffer()
       ..write(prefix)
       ..write(isLast
-          ? theme.anchorTheme.style.boxDrawingSet.bottomLeftCorner
+          ? theme.anchorTheme.style == AnsiBorderStyle.ascii
+              ? theme.anchorTheme.style.boxDrawingSet.verticalLine
+              : theme.anchorTheme.style.boxDrawingSet.bottomLeftCorner
           : theme.anchorTheme.style.boxDrawingSet.middleLeftEdge);
     return buffer.toString().withForegroundColor(theme.anchorTheme.color);
   }

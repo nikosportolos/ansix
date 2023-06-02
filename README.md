@@ -668,15 +668,17 @@ factory AnsiTreeViewTheme.$default() {
       color: AnsiColor.deepSkyBlue5,
       style: AnsiBorderStyle.square,
     ),
-    keyTheme: const AnsiTreeNodeTheme(
+    keyTheme: const AnsiTreeNodeKeyTheme(
       color: AnsiColor.white,
       textStyle: AnsiTextStyle(bold: true),
     ),
-    valueTheme: const AnsiTreeNodeTheme(
+    valueTheme: const AnsiTreeNodeValueTheme(
       color: AnsiColor.grey69,
       textStyle: AnsiTextStyle(italic: true),
+      wrapText: true,
+      wrapLength: 120,
     ),
-    classTheme: AnsiTreeClassTheme(
+    headerTheme: AnsiTreeHeaderTheme(
       textTheme: AnsiTextTheme(
         style: const AnsiTextStyle(bold: true),
         padding: AnsiPadding.horizontal(2),

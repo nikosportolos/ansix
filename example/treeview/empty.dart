@@ -11,6 +11,8 @@ void main() {
       'list': <String>['This', 'is', 'AnsiX'],
       'empty_list': <String>[],
     },
-    theme: const AnsiTreeViewTheme(classTheme: AnsiTreeClassTheme(showHash: false)),
+    theme: const AnsiTreeViewTheme(
+      headerTheme: AnsiTreeHeaderTheme(showHash: false),
+    ),
   );
 }

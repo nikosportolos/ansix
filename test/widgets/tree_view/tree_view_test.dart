@@ -10,7 +10,7 @@ void main() {
     test('List<int>', () {
       final String actual = AnsiTreeView(
         theme: const AnsiTreeViewTheme(
-          classTheme: AnsiTreeClassTheme(showHash: false),
+          headerTheme: AnsiTreeHeaderTheme(showHash: false),
         ),
       ).format(<int>[1, 2, 3, 4, 5]);
       expect(actual, treeViewMock1);
@@ -19,7 +19,7 @@ void main() {
     test('Map<String, dynamic>', () {
       final String actual = AnsiTreeView(
         theme: const AnsiTreeViewTheme(
-          classTheme: AnsiTreeClassTheme(showHash: false),
+          headerTheme: AnsiTreeHeaderTheme(showHash: false),
         ),
       ).format(<String, dynamic>{'id': 12312, 'username': 'AnsiX'});
       expect(actual, treeViewMock2);
@@ -28,7 +28,7 @@ void main() {
     test('String', () {
       final String actual = AnsiTreeView(
         theme: const AnsiTreeViewTheme(
-          classTheme: AnsiTreeClassTheme(showHash: false),
+          headerTheme: AnsiTreeHeaderTheme(showHash: false),
         ),
       ).format('This is a test message');
       expect(actual, treeViewMock3);
@@ -61,7 +61,7 @@ void main() {
       );
       final String actual = AnsiTreeView(
         theme: const AnsiTreeViewTheme(
-          classTheme: AnsiTreeClassTheme(showHash: false),
+          headerTheme: AnsiTreeHeaderTheme(showHash: false),
         ),
       ).format(user);
       expect(actual.unformatted, treeViewMockObject);
@@ -96,7 +96,7 @@ void main() {
         theme: const AnsiTreeViewTheme(
           compact: false,
           sorted: true,
-          classTheme: AnsiTreeClassTheme(
+          headerTheme: AnsiTreeHeaderTheme(
             showHash: false,
             border: AnsiBorder(
               type: AnsiBorderType.all,
@@ -142,9 +142,110 @@ void main() {
       };
 
       final String actual = AnsiTreeView(
-        theme: const AnsiTreeViewTheme(classTheme: AnsiTreeClassTheme(showHash: false)),
+        theme: const AnsiTreeViewTheme(headerTheme: AnsiTreeHeaderTheme(showHash: false)),
       ).format(map);
       expect(actual.unformatted, treeviewEmptyMock);
     });
+
+    test('mixed borders', () {
+      final Map<String, dynamic> map = <String, dynamic>{
+        'map': <String, dynamic>{
+          'id': 123,
+          'username': 'AnsiX',
+        },
+        'empty_map': <String, String>{},
+        'list': <String>['This', 'is', 'AnsiX'],
+        'empty_list': <String>[],
+      };
+
+      final String actual = AnsiTreeView(
+        theme: const AnsiTreeViewTheme(
+          headerTheme: AnsiTreeHeaderTheme(
+            showHash: false,
+            border: AnsiBorder(type: AnsiBorderType.all),
+          ),
+          anchorTheme: AnsiTreeAnchorTheme(style: AnsiBorderStyle.ascii),
+        ),
+      ).format(map);
+      expect(actual.unformatted, treeviewMixedBordersMock);
+    });
+
+    test('long text', () {
+      final Map<String, dynamic> map = <String, dynamic>{
+        'id': 123,
+        'title': 'Lorem ipsum dolor sit amet',
+        'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+            'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
+            'nisi ut aliquip ex ea commodo consequat.'
+            'Excepteur sint occaecat cupidatat non proident, '
+            'sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        'postedOn': '2023-06-02T13:01:43.597697',
+        'body': '''
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
+      };
+
+      final String actual = AnsiTreeView(
+        theme: const AnsiTreeViewTheme(
+          headerTheme: AnsiTreeHeaderTheme(showHash: false),
+          valueTheme: AnsiTreeNodeValueTheme(wrapText: true, wrapLength: 120),
+        ),
+      ).format(map);
+      expect(actual.unformatted, treeviewLongTextMock);
+    });
+  });
+
+  test('mixed', () {
+    final Map<dynamic, dynamic> map = <dynamic, dynamic>{
+      'id': 123,
+      'map': <dynamic, dynamic>{
+        'num': 12,
+        'int': 4324,
+        'double': 43.24,
+        'bool': false,
+        'String': 'this is a test message',
+        'objectWithToString': const MockClassWithToString(id: 1, text: 'MockClassWithToString'),
+        'objectWithToJson': const MockClassWithToJson(id: 1, text: 'MockClassWithToJson'),
+        'objectWithToMap': const MockClassWithToMap(id: 1, text: 'MockClassWithToMap'),
+        'map': <String, dynamic>{'id': 44, 'email': 'test@email.com'},
+        'list': <int>[1, 2, 3, 4, 5],
+        'enum': MockEnum.value1,
+      },
+      123: 'this is a test message',
+      'enum': MockEnum.value2,
+      'objectWithToString': const MockClassWithToString(id: 2, text: 'MockClassWithToString'),
+      'objectWithToJson': const MockClassWithToJson(id: 2, text: 'MockClassWithToJson'),
+      'objectWithToMap': const MockClassWithToMap(id: 2, text: 'MockClassWithToMap'),
+      'list': <dynamic>[
+        true,
+        false,
+        null,
+        12,
+        232.2,
+        'text message',
+        <String, dynamic>{'objectWithToString': const MockClassWithToString(id: 3, text: 'MockClassWithToString')},
+        <String, dynamic>{'objectWithToJson': const MockClassWithToJson(id: 3, text: 'MockClassWithToJson')},
+        <String, dynamic>{'objectWithToMap': const MockClassWithToMap(id: 3, text: 'MockClassWithToMap')},
+        <String, dynamic>{'id': 44, 'email': 'test@email.com'},
+        <int>[1, 2, 3, 4, 5],
+        const MockClassWithToString(id: 4, text: 'MockClassWithToString'),
+        const MockClassWithToJson(id: 4, text: 'MockClassWithToJson'),
+        const MockClassWithToMap(id: 4, text: 'MockClassWithToMap'),
+        MockEnum.value3,
+      ],
+    };
+
+    final String actual = AnsiTreeView(
+      theme: const AnsiTreeViewTheme(
+        headerTheme: AnsiTreeHeaderTheme(showHash: false),
+        valueTheme: AnsiTreeNodeValueTheme(wrapText: true, wrapLength: 120),
+      ),
+    ).format(map);
+    expect(actual.unformatted, treeviewMixedMock);
   });
 }

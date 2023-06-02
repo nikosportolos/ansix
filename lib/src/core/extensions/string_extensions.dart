@@ -1,5 +1,13 @@
 import 'package:ansix/ansix.dart';
 
+extension StringX on String {
+  List<String> splitEvery(final int length) {
+    final RegExp regex = RegExp('.{1,$length}(?=\\s|\$)');
+    final Iterable<Match> matches = regex.allMatches(this);
+    return matches.map((Match match) => match.group(0)?.trim() ?? '').toList();
+  }
+}
+
 extension AnsiString on String {
   String get unformatted => replaceAll(AnsiText.ansiMatcher, '');
   int get unformattedLength => replaceAll(AnsiText.ansiMatcher, '').length;

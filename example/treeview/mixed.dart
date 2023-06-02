@@ -19,6 +19,12 @@ void main() {
       'enum': MockEnum.value1,
     },
     123: 'this is a test message',
+    'long-text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+        'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
+        'nisi ut aliquip ex ea commodo consequat.'
+        'Excepteur sint occaecat cupidatat non proident, '
+        'sunt in culpa qui officia deserunt mollit anim id est laborum.',
     'enum': MockEnum.value2,
     'objectWithToString': const MockClassWithToString(id: 2, text: 'MockClassWithToString'),
     'objectWithToJson': const MockClassWithToJson(id: 2, text: 'MockClassWithToJson'),
@@ -43,11 +49,5 @@ void main() {
   };
 
   AnsiX.allowPrint = true;
-  AnsiX.printTreeView(
-    map,
-    theme: const AnsiTreeViewTheme(
-      headerTheme: AnsiTreeHeaderTheme(showHash: false),
-      valueTheme: AnsiTreeNodeValueTheme(wrapText: true, wrapLength: 120),
-    ),
-  );
+  AnsiX.printTreeView(map, theme: AnsiTreeViewTheme.$default());
 }

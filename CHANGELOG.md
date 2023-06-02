@@ -1,3 +1,25 @@
+## v0.0.5-prerelease
+
+#### AnsiTreeView enhancements & bugfixes 
+
+- Refactor AnsiTreeViewTheme ([#75](https://github.com/nikosportolos/ansix/issues/75))
+  - Rename `TreeAnchorTheme` to `AnsiTreeAnchorTheme`
+  - Rename `TreeClassTheme` to `AnsiTreeClassTheme`
+  - Rename `TreeNodeTheme` to `AnsiTreeNodeTheme`
+  - Replace AnsiTreeAnchorTheme's `BoxDrawingSet` property with `AnsiBorderStyle`
+- AnsiTreeView - fix border & anchor issues ([#77](https://github.com/nikosportolos/ansix/issues/77))
+- Add copyWith on AnsiTreeViewTheme ([#79](https://github.com/nikosportolos/ansix/issues/79))
+- AnsiTreeView - fix class header border replacement ([#83](https://github.com/nikosportolos/ansix/issues/83))
+- Update AnsiTreeView examples on README.md ([#85](https://github.com/nikosportolos/ansix/issues/85))
+- AnsiTreeView: Handle new lines & long text ([#90](https://github.com/nikosportolos/ansix/issues/90))
+
+
+#### Misc
+- Export drawing enums ([#72](https://github.com/nikosportolos/ansix/issues/72))
+- AnsiBorder - Set 'none' as default type and 'square' as default style ([#81](https://github.com/nikosportolos/ansix/issues/81))
+- Detect terminal size ([#87](https://github.com/nikosportolos/ansix/issues/87))
+
+
 ## v0.0.4-prerelease
 
 #### New features

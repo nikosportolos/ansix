@@ -25,8 +25,7 @@ void main() {
         state: 'NV',
       ),
     ],
-    // child: child,
   );
 
-  AnsiX.printTreeView(user, theme: AnsiTreeViewTheme.$default());
+  AnsiX.printTreeView(user, theme: AnsiTreeViewTheme.$default().copyWith.showListItemIndex(false));
 }

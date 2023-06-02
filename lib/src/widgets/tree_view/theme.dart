@@ -16,9 +16,9 @@ abstract class AnsiTreeViewTheme {
     bool sorted,
     bool showListItemIndex,
     AnsiTreeAnchorTheme anchorTheme,
-    AnsiTreeNodeTheme keyTheme,
-    AnsiTreeNodeTheme valueTheme,
-    AnsiTreeClassTheme classTheme,
+    AnsiTreeNodeKeyTheme keyTheme,
+    AnsiTreeNodeValueTheme valueTheme,
+    AnsiTreeHeaderTheme headerTheme,
   }) = _$AnsiTreeViewThemeImpl;
 
   @DefaultValue(true)
@@ -33,16 +33,16 @@ abstract class AnsiTreeViewTheme {
   @DefaultValue(AnsiTreeAnchorTheme())
   AnsiTreeAnchorTheme get anchorTheme;
 
-  @DefaultValue(AnsiTreeNodeTheme(
+  @DefaultValue(AnsiTreeNodeKeyTheme(
     textStyle: AnsiTextStyle(bold: true),
   ))
-  AnsiTreeNodeTheme get keyTheme;
+  AnsiTreeNodeKeyTheme get keyTheme;
 
-  @DefaultValue(AnsiTreeNodeTheme())
-  AnsiTreeNodeTheme get valueTheme;
+  @DefaultValue(AnsiTreeNodeValueTheme())
+  AnsiTreeNodeValueTheme get valueTheme;
 
-  @DefaultValue(AnsiTreeClassTheme())
-  AnsiTreeClassTheme get classTheme;
+  @DefaultValue(AnsiTreeHeaderTheme())
+  AnsiTreeHeaderTheme get headerTheme;
 
   /// Default theme for [AnsiTreeView].
   factory AnsiTreeViewTheme.$default() {
@@ -54,15 +54,17 @@ abstract class AnsiTreeViewTheme {
         color: AnsiColor.deepSkyBlue5,
         style: AnsiBorderStyle.square,
       ),
-      keyTheme: const AnsiTreeNodeTheme(
+      keyTheme: const AnsiTreeNodeKeyTheme(
         color: AnsiColor.white,
         textStyle: AnsiTextStyle(bold: true),
       ),
-      valueTheme: const AnsiTreeNodeTheme(
+      valueTheme: const AnsiTreeNodeValueTheme(
         color: AnsiColor.grey69,
         textStyle: AnsiTextStyle(italic: true),
+        wrapText: true,
+        wrapLength: 120,
       ),
-      classTheme: AnsiTreeClassTheme(
+      headerTheme: AnsiTreeHeaderTheme(
         textTheme: AnsiTextTheme(
           style: const AnsiTextStyle(bold: true),
           padding: AnsiPadding.horizontal(2),
@@ -79,41 +81,118 @@ abstract class AnsiTreeViewTheme {
 }
 
 /// **AnsiTreeAnchorTheme**
-class AnsiTreeAnchorTheme {
-  /// Shorthand constructor
-  const AnsiTreeAnchorTheme({
-    this.style = AnsiBorderStyle.square,
-    this.color = AnsiColor.none,
-  });
+///
+/// The theme that is used for styling the lines and anchors of the [AnsiTreeView].
+@DataClass()
+abstract class AnsiTreeAnchorTheme {
+  const AnsiTreeAnchorTheme.ctor();
 
-  final AnsiBorderStyle style;
-  final AnsiColor color;
+  /// Default constructor
+  const factory AnsiTreeAnchorTheme({
+    AnsiBorderStyle style,
+    AnsiColor color,
+  }) = _$AnsiTreeAnchorThemeImpl;
+
+  @DefaultValue(AnsiBorderStyle.square)
+  AnsiBorderStyle get style;
+
+  @DefaultValue(AnsiColor.none)
+  AnsiColor get color;
 }
 
-/// **AnsiTreeClassTheme**
-class AnsiTreeClassTheme {
-  /// Shorthand constructor
-  const AnsiTreeClassTheme({
-    this.border = const AnsiBorder(),
-    this.textTheme = const AnsiTextTheme(),
-    this.showHash = true,
-  });
+/// **AnsiTreeHeaderTheme**
+///
+/// The theme that is used for displaying the runtime type of the input object.
+@DataClass()
+abstract class AnsiTreeHeaderTheme {
+  const AnsiTreeHeaderTheme.ctor();
 
-  final AnsiBorder border;
-  final AnsiTextTheme textTheme;
-  final bool showHash;
+  /// Default constructor
+  const factory AnsiTreeHeaderTheme({
+    AnsiBorder border,
+    AnsiTextTheme textTheme,
+    bool showHash,
+  }) = _$AnsiTreeHeaderThemeImpl;
+
+  @DefaultValue(AnsiBorder())
+  AnsiBorder get border;
+
+  @DefaultValue(AnsiTextTheme())
+  AnsiTextTheme get textTheme;
+
+  @DefaultValue(true)
+  bool get showHash;
 
   bool get hasBorder => border.style != AnsiBorderStyle.none;
 }
 
 /// **AnsiTreeNodeTheme**
-class AnsiTreeNodeTheme {
-  /// Shorthand constructor
-  const AnsiTreeNodeTheme({
-    this.textStyle = const AnsiTextStyle(),
-    this.color = AnsiColor.none,
-  });
+///
+/// The theme interface that is used for each tree node in an [AnsiTreeView] widget.
+@DataClass()
+abstract class AnsiTreeNodeTheme {
+  const AnsiTreeNodeTheme.ctor();
 
-  final AnsiTextStyle textStyle;
-  final AnsiColor color;
+  /// Default constructor
+  const factory AnsiTreeNodeTheme({
+    AnsiTextStyle textStyle,
+    AnsiColor color,
+  }) = _$AnsiTreeNodeThemeImpl;
+
+  @DefaultValue(AnsiTextStyle())
+  AnsiTextStyle get textStyle;
+
+  @DefaultValue(AnsiColor.none)
+  AnsiColor get color;
+}
+
+/// **AnsiTreeNodeKeyTheme**
+///
+/// The theme that is used for each tree node key in an [AnsiTreeView] widget.
+@DataClass()
+abstract class AnsiTreeNodeKeyTheme extends AnsiTreeNodeTheme {
+  const AnsiTreeNodeKeyTheme.ctor() : super.ctor();
+
+  /// Default constructor
+  const factory AnsiTreeNodeKeyTheme({
+    AnsiTextStyle textStyle,
+    AnsiColor color,
+  }) = _$AnsiTreeNodeKeyThemeImpl;
+
+  @override
+  @DefaultValue(AnsiTextStyle())
+  AnsiTextStyle get textStyle;
+
+  @override
+  @DefaultValue(AnsiColor.none)
+  AnsiColor get color;
+}
+
+/// **AnsiTreeNodeValueTheme**
+///
+/// The theme that is used for each tree node value in an [AnsiTreeView] widget.
+@DataClass()
+abstract class AnsiTreeNodeValueTheme extends AnsiTreeNodeTheme {
+  const AnsiTreeNodeValueTheme.ctor() : super.ctor();
+
+  /// Default constructor
+  const factory AnsiTreeNodeValueTheme({
+    AnsiTextStyle textStyle,
+    AnsiColor color,
+    bool wrapText,
+    int? wrapLength,
+  }) = _$AnsiTreeNodeValueThemeImpl;
+
+  @override
+  @DefaultValue(AnsiTextStyle())
+  AnsiTextStyle get textStyle;
+
+  @override
+  @DefaultValue(AnsiColor.none)
+  AnsiColor get color;
+
+  @DefaultValue(false)
+  bool get wrapText;
+
+  int? get wrapLength;
 }

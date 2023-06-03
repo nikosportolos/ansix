@@ -1,3 +1,6 @@
+/// **AnsiPadding**
+///
+/// Used to pad a string with lines and whitespaces.
 class AnsiPadding {
   const AnsiPadding._({
     required this.top,
@@ -6,11 +9,19 @@ class AnsiPadding {
     required this.right,
   });
 
+  /// Top padding - lines above the text.
   final int top;
+
+  /// Bottom padding - lines bellow the text.
   final int bottom;
+
+  /// Left padding - spaces before the text.
   final int left;
+
+  /// Right padding - spaces after the text.
   final int right;
 
+  /// Returns an [AnsiPadding] with no padding.
   static const AnsiPadding none = AnsiPadding._(
     bottom: 0,
     left: 0,

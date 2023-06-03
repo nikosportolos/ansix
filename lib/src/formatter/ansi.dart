@@ -5,6 +5,7 @@ import 'package:ansix/src/formatter/formatter.dart';
 ///
 /// Returns the given text with the specified styles and colors.
 class AnsiTextFormatter implements TextFormatter {
+  /// Returns the given [text] with the selected [style].
   @override
   String withStyle(
     final String text,
@@ -17,6 +18,7 @@ class AnsiTextFormatter implements TextFormatter {
     return '${style.startEscapeCode}$text${style.endEscapeCode}';
   }
 
+  /// Returns the given [text] with [foreground] or/and [background] colors.
   @override
   String withColor(
     final String text, {
@@ -34,6 +36,7 @@ class AnsiTextFormatter implements TextFormatter {
     return '${foreground.foreground}${background.background}$text${AnsiEscapeCodes.reset}';
   }
 
+  /// Returns the given [text] with [foreground] or/and [background] [Rgb] colors.
   @override
   String withColorRgb(
     final String text, {

@@ -3,6 +3,9 @@ import 'package:ansix/src/theme/border/border.dart';
 import 'package:ansix/src/widgets/table/theme.dart';
 import 'package:ansix/src/widgets/text/text.dart';
 
+/// **AnsiBorderBuilder**
+///
+/// This class is responsible for building a string representation of table row using the given [AnsiBorder].
 class AnsiBorderBuilder {
   const AnsiBorderBuilder();
 

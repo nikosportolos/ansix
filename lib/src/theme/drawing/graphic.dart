@@ -1,3 +1,4 @@
+/// **GraphicDrawingSet**
 enum GraphicDrawingSet {
   /// Graphic character, low density dotted (░)
   low('░'),
@@ -20,6 +21,7 @@ enum GraphicDrawingSet {
   /// Black square (■)
   square('■');
 
+  /// Default [GraphicDrawingSet] constructor.
   const GraphicDrawingSet(this.value);
 
   final String value;

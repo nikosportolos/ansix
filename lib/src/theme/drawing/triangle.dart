@@ -1,3 +1,4 @@
+/// **TriangleSet**
 enum TriangleSet {
   /// Black **up**-pointing triangle (▲)
   up('▲'),
@@ -11,6 +12,7 @@ enum TriangleSet {
   /// Black **right**-pointing pointer (►)
   right('►');
 
+  /// Default [TriangleSet] constructor.
   const TriangleSet(this.value);
 
   final String value;

@@ -6,14 +6,15 @@
 /// - https://learn.microsoft.com/en-us/windows/console/legacymode
 /// - https://techcult.com/enable-or-disable-legacy-console-for-command-prompt-and-powershell-in-windows-10/
 enum LegacyConsoleMode {
-  /// Legacy console mode is enabled
+  /// Legacy console mode is enabled.
   enabled,
 
-  /// Legacy console mode is disabled
+  /// Legacy console mode is disabled.
   disabled,
 
-  /// Unknown status of legacy console mode
+  /// Unknown status of legacy console mode.
   unknown;
 
+  /// Returns true if the legacy console mode is enabled.
   bool get isEnabled => this == LegacyConsoleMode.enabled;
 }

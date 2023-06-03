@@ -11,12 +11,25 @@ class AnsiTextStyle {
     this.underline = false,
   });
 
+  /// If set to true will add a bold ANSI style.
   final bool bold;
+
+  /// If set to true will add a bold underline ANSI style.
   final bool boldUnderline;
+
+  /// If set to true will add a dim ANSI style.
   final bool dim;
+
+  /// If set to true will add a inverse ANSI style.
   final bool inverse;
+
+  /// If set to true will add a italic ANSI style.
   final bool italic;
+
+  /// If set to true will add a strikethrough ANSI style.
   final bool strikethrough;
+
+  /// If set to true will add a underline style.
   final bool underline;
 
   factory AnsiTextStyle.fromStyle(final AnsiStyle style) {

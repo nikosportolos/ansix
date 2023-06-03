@@ -9,6 +9,7 @@ import 'package:ansix/src/controller.dart';
 import 'package:ansix/src/formatter/formatter.dart';
 import 'package:ansix/src/system/terminal.dart';
 
+/// **AnsiX**
 abstract class AnsiX {
   static final AnsiXController _controller = AnsiXController();
 

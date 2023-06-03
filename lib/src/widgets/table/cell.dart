@@ -3,6 +3,9 @@ import 'package:ansix/src/widgets/text/padding.dart';
 import 'package:ansix/src/widgets/text/text.dart';
 import 'package:ansix/src/widgets/text/text_style.dart';
 
+/// **AnsiTableCell**
+///
+/// Represents a cell of the table.
 class AnsiTableCell extends AnsiText {
   AnsiTableCell(
     super.text, {

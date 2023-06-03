@@ -21,26 +21,33 @@ abstract class AnsiTreeViewTheme {
     AnsiTreeHeaderTheme headerTheme,
   }) = _$AnsiTreeViewThemeImpl;
 
+  /// If set to false extra lines will be added between each node and anchor lines will be longer.
   @DefaultValue(true)
   bool get compact;
 
+  /// If set to true all tree nodes will be sorted based on their key.
   @DefaultValue(false)
   bool get sorted;
 
+  /// If set to true all an index will be displayed before list item.
   @DefaultValue(false)
   bool get showListItemIndex;
 
+  /// Defines the selected theme for the anchors.
   @DefaultValue(AnsiTreeAnchorTheme())
   AnsiTreeAnchorTheme get anchorTheme;
 
+  /// Defines the selected theme for the tree node keys.
   @DefaultValue(AnsiTreeNodeKeyTheme(
     textStyle: AnsiTextStyle(bold: true),
   ))
   AnsiTreeNodeKeyTheme get keyTheme;
 
+  /// Defines the selected theme for the tree node values.
   @DefaultValue(AnsiTreeNodeValueTheme())
   AnsiTreeNodeValueTheme get valueTheme;
 
+  /// Defines the selected theme for the tree node header.
   @DefaultValue(AnsiTreeHeaderTheme())
   AnsiTreeHeaderTheme get headerTheme;
 
@@ -93,9 +100,11 @@ abstract class AnsiTreeAnchorTheme {
     AnsiColor color,
   }) = _$AnsiTreeAnchorThemeImpl;
 
+  /// Defines the [AnsiBorderStyle] of the tree node's key.
   @DefaultValue(AnsiBorderStyle.square)
   AnsiBorderStyle get style;
 
+  /// Defines the foreground color of the tree node's key.
   @DefaultValue(AnsiColor.none)
   AnsiColor get color;
 }
@@ -139,9 +148,11 @@ abstract class AnsiTreeNodeTheme {
     AnsiColor color,
   }) = _$AnsiTreeNodeThemeImpl;
 
+  /// Defines the [AnsiTextStyle] of the tree node.
   @DefaultValue(AnsiTextStyle())
   AnsiTextStyle get textStyle;
 
+  /// Defines the foreground color of the tree node.
   @DefaultValue(AnsiColor.none)
   AnsiColor get color;
 }
@@ -159,10 +170,12 @@ abstract class AnsiTreeNodeKeyTheme extends AnsiTreeNodeTheme {
     AnsiColor color,
   }) = _$AnsiTreeNodeKeyThemeImpl;
 
+  /// Defines the [AnsiTextStyle] of the tree node.
   @override
   @DefaultValue(AnsiTextStyle())
   AnsiTextStyle get textStyle;
 
+  /// Defines the foreground color of the tree node.
   @override
   @DefaultValue(AnsiColor.none)
   AnsiColor get color;
@@ -183,16 +196,20 @@ abstract class AnsiTreeNodeValueTheme extends AnsiTreeNodeTheme {
     int? wrapLength,
   }) = _$AnsiTreeNodeValueThemeImpl;
 
+  /// Defines the [AnsiTextStyle] of the tree node.
   @override
   @DefaultValue(AnsiTextStyle())
   AnsiTextStyle get textStyle;
 
+  /// Defines the foreground color of the tree node.
   @override
   @DefaultValue(AnsiColor.none)
   AnsiColor get color;
 
+  /// If set to true all values that exceed the [wrapLength] will be wrapped.
   @DefaultValue(false)
   bool get wrapText;
 
+  /// Defines the maximum length of a tree node (including anchors & values).
   int? get wrapLength;
 }

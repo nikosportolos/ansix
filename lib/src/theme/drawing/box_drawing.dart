@@ -118,6 +118,7 @@ enum BoxDrawingSet {
   final String middleRightEdge;
   final String middleLeftEdge;
 
+  /// Returns a [BoxDrawingSet] based on the given [AnsiBorderStyle].
   factory BoxDrawingSet.fromBorderStyle(final AnsiBorderStyle style) {
     switch (style) {
       case AnsiBorderStyle.ascii:

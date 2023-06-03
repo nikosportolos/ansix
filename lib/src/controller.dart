@@ -15,6 +15,8 @@ class AnsiXController {
 
   final ProcessManager _processManager;
   final AnsiTerminal _terminal;
+
+  /// Provides information about the size of the attached terminal.
   late final TerminalSize terminalSize;
 
   /// Returns true if ANSI formatting is supported and enabled.

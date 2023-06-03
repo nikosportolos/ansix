@@ -15,9 +15,8 @@ enum AnsiBorderStyle {
   rounded(BoxDrawingSet.rounded),
   square(BoxDrawingSet.square);
 
-  const AnsiBorderStyle(
-    this.boxDrawingSet,
-  );
+  /// Default [AnsiBorderStyle] constructor.
+  const AnsiBorderStyle(this.boxDrawingSet);
 
   final BoxDrawingSet boxDrawingSet;
 }

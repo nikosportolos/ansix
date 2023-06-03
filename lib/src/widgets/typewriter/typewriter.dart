@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:ansix/ansix.dart';
 
 /// **Typewriter**
+@Deprecated('This widget is used for demo purposes only.')
 class Typewriter {
   Typewriter({
     required this.duration,

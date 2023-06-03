@@ -6,6 +6,7 @@ import 'package:ansix/src/widgets/text/text_theme.dart';
 
 export 'text_theme.dart';
 
+/// **AnsiText**
 class AnsiText {
   static final RegExp ansiMatcher = RegExp(r'\[(.*?)m');
 

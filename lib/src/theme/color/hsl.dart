@@ -29,8 +29,13 @@ class Hsl {
   /// The "brightness relative to the brightness of a similarly illuminated white".
   final int lightness;
 
+  /// Returns a string representation of the hue, using the format: `100°`.
   String get hueString => '$hue°';
+
+  /// Returns a string representation of the saturation, using the format: `100%`.
   String get saturationString => '$saturation%';
+
+  /// Returns a string representation of the lightness, using the format: `100%`.
   String get lightnessString => '$lightness%';
 
   @override

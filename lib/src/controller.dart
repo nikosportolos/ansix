@@ -46,10 +46,12 @@ class AnsiXController {
 
     if (!isSupported) {
       if (_terminal.runsOnWindows) {
-        return attachedToValidStream && _processManager.detectWindowsAnsiSupport();
+        return attachedToValidStream && //
+            _processManager.detectWindowsAnsiSupport();
       }
 
-      return attachedToValidStream || _processManager.determineTerminalType() == TerminalType.bash;
+      return attachedToValidStream || //
+          _processManager.determineTerminalType() == TerminalType.bash;
     }
 
     return isSupported;

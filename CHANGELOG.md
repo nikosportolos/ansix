@@ -1,3 +1,17 @@
+## v0.0.6-prerelease
+
+#### Bugfixes
+
+- AnsiTable uses external color if no border color is set ([#93](https://github.com/nikosportolos/ansix/issues/93))
+- Wrapped lines in AnsiTreeView lose their styling ([#98](https://github.com/nikosportolos/ansix/issues/98))
+
+#### Misc
+
+- Add missing tests ([#94](https://github.com/nikosportolos/ansix/issues/94))
+- Add more documentation on public API elements ([#97](https://github.com/nikosportolos/ansix/issues/97))
+- Update examples & README.md ([#102](https://github.com/nikosportolos/ansix/issues/102))
+
+
 ## v0.0.5-prerelease
 
 #### AnsiTreeView enhancements & bugfixes 

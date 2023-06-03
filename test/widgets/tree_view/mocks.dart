@@ -171,6 +171,31 @@ _Map<String, dynamic>
                    laborum.
 ''';
 
+const String treeviewLongTextWithColorsMock = '''
+_Map<String, dynamic>
+         ├── \x1B[1mid\x1B[22m: \x1B[38;5;72m123\x1B[0m
+         ├── \x1B[1mtitle\x1B[22m: \x1B[38;5;72mLorem ipsum dolor sit amet\x1B[0m
+         ├── \x1B[1mdescription\x1B[22m: \x1B[38;5;72mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\x1B[0m
+         │                \x1B[38;5;72mlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco\x1B[0m
+         │                \x1B[38;5;72mlaboris nisi ut aliquip ex ea commodo consequat.Excepteur sint occaecat cupidatat non\x1B[0m
+         │                \x1B[38;5;72mproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\x1B[0m
+         ├── \x1B[1mpostedOn\x1B[22m: \x1B[38;5;72m2023-06-02T13:01:43.597697\x1B[0m
+         └── \x1B[1mbody\x1B[22m: \x1B[38;5;72mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et\x1B[0m
+                   \x1B[38;5;72mdolore magna aliqua.\x1B[0m
+                   \x1B[38;5;72mUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\x1B[0m
+                   \x1B[38;5;72mconsequat.\x1B[0m
+                   \x1B[38;5;72mDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\x1B[0m
+                   \x1B[38;5;72mExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est\x1B[0m
+                   \x1B[38;5;72mlaborum.\x1B[0m
+                   \x1B[38;5;72mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\x1B[0m
+                   \x1B[38;5;72mdolore magna aliqua.\x1B[0m
+                   \x1B[38;5;72mUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\x1B[0m
+                   \x1B[38;5;72mconsequat.\x1B[0m
+                   \x1B[38;5;72mDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\x1B[0m
+                   \x1B[38;5;72mExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est\x1B[0m
+                   \x1B[38;5;72mlaborum.\x1B[0m
+''';
+
 const String treeviewMixedMock = '''
 _Map<dynamic, dynamic>
            ├── id: 123

@@ -107,8 +107,8 @@ class _$UserCopyWithProxy {
   @pragma('vm:prefer-inline')
   User name(String newValue) => this(name: newValue);
   @pragma('vm:prefer-inline')
-  $EmailCopyWithProxyChain<User> get email =>
-      $EmailCopyWithProxyChain<User>(_value.email, (Email update) => this(email: update));
+  $EmailCopyWithProxyChain<User> get email => $EmailCopyWithProxyChain<User>(
+      _value.email, (Email update) => this(email: update));
 
   @pragma('vm:prefer-inline')
   User age(int newValue) => this(age: newValue);
@@ -246,7 +246,8 @@ class _$AddressImpl extends Address {
   String toString() {
     String toStringOutput = 'Address{<optimized out>}';
     assert(() {
-      toStringOutput = 'Address@<$hexIdentity>{street: $street, city: $city, state: $state}';
+      toStringOutput =
+          'Address@<$hexIdentity>{street: $street, city: $city, state: $state}';
       return true;
     }());
     return toStringOutput;
@@ -366,7 +367,8 @@ class _$EmailImpl extends Email {
   String toString() {
     String toStringOutput = 'Email{<optimized out>}';
     assert(() {
-      toStringOutput = 'Email@<$hexIdentity>{primary: $primary, secondary: $secondary, personal: $personal}';
+      toStringOutput =
+          'Email@<$hexIdentity>{primary: $primary, secondary: $secondary, personal: $personal}';
       return true;
     }());
     return toStringOutput;
@@ -398,8 +400,12 @@ class _$EmailCopyWithProxy {
   }) {
     return _$EmailImpl(
       primary: primary ?? _value.primary,
-      secondary: identical(secondary, const Object()) ? _value.secondary : (secondary as String?),
-      personal: identical(personal, const Object()) ? _value.personal : (personal as String?),
+      secondary: identical(secondary, const Object())
+          ? _value.secondary
+          : (secondary as String?),
+      personal: identical(personal, const Object())
+          ? _value.personal
+          : (personal as String?),
     );
   }
 }
@@ -427,8 +433,12 @@ class $EmailCopyWithProxyChain<$Result> {
   }) {
     return _chain(_$EmailImpl(
       primary: primary ?? _value.primary,
-      secondary: identical(secondary, const Object()) ? _value.secondary : (secondary as String?),
-      personal: identical(personal, const Object()) ? _value.personal : (personal as String?),
+      secondary: identical(secondary, const Object())
+          ? _value.secondary
+          : (secondary as String?),
+      personal: identical(personal, const Object())
+          ? _value.personal
+          : (personal as String?),
     ));
   }
 }

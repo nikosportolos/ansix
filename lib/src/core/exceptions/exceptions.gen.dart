@@ -51,7 +51,9 @@ class AnsiNotSupported extends AnsiXException {
   @override
   bool operator ==(Object? other) {
     return identical(this, other) ||
-        other is AnsiNotSupported && runtimeType == other.runtimeType && message == other.message;
+        other is AnsiNotSupported &&
+            runtimeType == other.runtimeType &&
+            message == other.message;
   }
 
   @override
@@ -97,7 +99,8 @@ class WindowsLegacyModeError extends AnsiXException {
   String toString() {
     String toStringOutput = 'WindowsLegacyModeError{<optimized out>}';
     assert(() {
-      toStringOutput = 'WindowsLegacyModeError@<$hexIdentity>{message: $message, innerException: $innerException}';
+      toStringOutput =
+          'WindowsLegacyModeError@<$hexIdentity>{message: $message, innerException: $innerException}';
       return true;
     }());
     return toStringOutput;

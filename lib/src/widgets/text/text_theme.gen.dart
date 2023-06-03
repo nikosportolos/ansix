@@ -79,10 +79,12 @@ class _$AnsiTextThemeCopyWithProxy {
   final AnsiTextTheme _value;
 
   @pragma('vm:prefer-inline')
-  AnsiTextTheme foregroundColor(AnsiColor newValue) => this(foregroundColor: newValue);
+  AnsiTextTheme foregroundColor(AnsiColor newValue) =>
+      this(foregroundColor: newValue);
 
   @pragma('vm:prefer-inline')
-  AnsiTextTheme backgroundColor(AnsiColor newValue) => this(backgroundColor: newValue);
+  AnsiTextTheme backgroundColor(AnsiColor newValue) =>
+      this(backgroundColor: newValue);
 
   @pragma('vm:prefer-inline')
   AnsiTextTheme style(AnsiTextStyle newValue) => this(style: newValue);
@@ -91,7 +93,8 @@ class _$AnsiTextThemeCopyWithProxy {
   AnsiTextTheme padding(AnsiPadding newValue) => this(padding: newValue);
 
   @pragma('vm:prefer-inline')
-  AnsiTextTheme alignment(AnsiTextAlignment newValue) => this(alignment: newValue);
+  AnsiTextTheme alignment(AnsiTextAlignment newValue) =>
+      this(alignment: newValue);
 
   @pragma('vm:prefer-inline')
   AnsiTextTheme fixedWidth(int? newValue) => this(fixedWidth: newValue);
@@ -111,7 +114,9 @@ class _$AnsiTextThemeCopyWithProxy {
       style: style ?? _value.style,
       padding: padding ?? _value.padding,
       alignment: alignment ?? _value.alignment,
-      fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
+      fixedWidth: identical(fixedWidth, const Object())
+          ? _value.fixedWidth
+          : (fixedWidth as int?),
     );
   }
 }
@@ -123,10 +128,12 @@ class $AnsiTextThemeCopyWithProxyChain<$Result> {
   final $Result Function(AnsiTextTheme update) _chain;
 
   @pragma('vm:prefer-inline')
-  $Result foregroundColor(AnsiColor newValue) => this(foregroundColor: newValue);
+  $Result foregroundColor(AnsiColor newValue) =>
+      this(foregroundColor: newValue);
 
   @pragma('vm:prefer-inline')
-  $Result backgroundColor(AnsiColor newValue) => this(backgroundColor: newValue);
+  $Result backgroundColor(AnsiColor newValue) =>
+      this(backgroundColor: newValue);
 
   @pragma('vm:prefer-inline')
   $Result style(AnsiTextStyle newValue) => this(style: newValue);
@@ -155,11 +162,14 @@ class $AnsiTextThemeCopyWithProxyChain<$Result> {
       style: style ?? _value.style,
       padding: padding ?? _value.padding,
       alignment: alignment ?? _value.alignment,
-      fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
+      fixedWidth: identical(fixedWidth, const Object())
+          ? _value.fixedWidth
+          : (fixedWidth as int?),
     ));
   }
 }
 
 extension $AnsiTextThemeExtension on AnsiTextTheme {
-  _$AnsiTextThemeCopyWithProxy get copyWith => _$AnsiTextThemeCopyWithProxy(this);
+  _$AnsiTextThemeCopyWithProxy get copyWith =>
+      _$AnsiTextThemeCopyWithProxy(this);
 }

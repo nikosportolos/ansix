@@ -121,7 +121,8 @@ class _$ArticleCopyWithProxy {
   Article postedOn(DateTime newValue) => this(postedOn: newValue);
   @pragma('vm:prefer-inline')
   $UserCopyWithProxyChain<Article> get author =>
-      $UserCopyWithProxyChain<Article>(_value.author, (User update) => this(author: update));
+      $UserCopyWithProxyChain<Article>(
+          _value.author, (User update) => this(author: update));
 
   @pragma('vm:prefer-inline')
   Article tags(List<String> newValue) => this(tags: newValue);

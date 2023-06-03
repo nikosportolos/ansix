@@ -5,5 +5,5 @@ file_generation_paths:
   - "example/treeview/**"
   - "test/widgets/tree_view/models/**"
 
-generated_file_line_length: 120
+generated_file_line_length: 80
 

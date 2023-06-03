@@ -44,7 +44,8 @@ class _$AnsiBorderImpl extends AnsiBorder {
   String toString() {
     String toStringOutput = 'AnsiBorder{<optimized out>}';
     assert(() {
-      toStringOutput = 'AnsiBorder@<$hexIdentity>{type: $type, style: $style, color: $color}';
+      toStringOutput =
+          'AnsiBorder@<$hexIdentity>{type: $type, style: $style, color: $color}';
       return true;
     }());
     return toStringOutput;

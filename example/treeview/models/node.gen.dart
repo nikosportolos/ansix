@@ -56,7 +56,8 @@ class _$NodeImpl extends Node {
   String toString() {
     String toStringOutput = 'Node{<optimized out>}';
     assert(() {
-      toStringOutput = 'Node@<$hexIdentity>{id: $id, child: $child, nodes: $nodes}';
+      toStringOutput =
+          'Node@<$hexIdentity>{id: $id, child: $child, nodes: $nodes}';
       return true;
     }());
     return toStringOutput;
@@ -74,8 +75,10 @@ class _$NodeCopyWithProxy {
   @pragma('vm:prefer-inline')
   Node id(String newValue) => this(id: newValue);
   @pragma('vm:prefer-inline')
-  $NodeCopyWithProxyChain<Node>? get child =>
-      _value.child == null ? null : $NodeCopyWithProxyChain<Node>(_value.child!, (Node? update) => this(child: update));
+  $NodeCopyWithProxyChain<Node>? get child => _value.child == null
+      ? null
+      : $NodeCopyWithProxyChain<Node>(
+          _value.child!, (Node? update) => this(child: update));
 
   @pragma('vm:prefer-inline')
   Node nodes(List<Node> newValue) => this(nodes: newValue);

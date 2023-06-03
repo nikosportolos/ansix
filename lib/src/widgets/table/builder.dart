@@ -45,10 +45,7 @@ class AnsiBorderBuilder {
 
     buffer
       ..writeWithForegroundColor(theme.textLine.start, border.color)
-      ..writeWithForegroundColor(
-        data.join(theme.textLine.separator.colored(foreground: border.color)),
-        border.color,
-      )
+      ..write(data.join(theme.textLine.separator.colored(foreground: border.color)))
       ..writeWithForegroundColor(theme.textLine.end, border.color);
 
     if (isLastLine && theme.bottomBorder.isEmpty) {

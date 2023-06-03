@@ -443,6 +443,7 @@ to present data in a tabular format that is easy to read and analyze.
 AnsiTable({
   this.border = const AnsiBorder(),
   this.data = const <AnsiTableRow>[],
+  final bool transparent = true,
 })
 ```
 
@@ -471,12 +472,18 @@ Arguments:
 
   The default `AnsiTextAlignment` that will be used for all table cells.
 
+- `transparent`
+
+  If set to true any external formatting will affect the AnsiTable. Defaults to *true*.
+
+
 ```dart
 factory AnsiTable.fromList(
   final List<Object?> data, {
   final int? fixedWidth,
   final AnsiBorder border = const AnsiBorder(),
   final AnsiTextAlignment defaultAlignment = AnsiTextAlignment.left,
+  final bool transparent = true,
 })
 ```
 
@@ -508,6 +515,10 @@ Arguments:
 
   The `AnsiOrientation` that will be used to draw the table.
 
+- `transparent`
+
+  If set to true any external formatting will affect the AnsiTable. Defaults to *true*.
+
 
 ```dart
 factory AnsiTable.fromMap(
@@ -517,6 +528,7 @@ factory AnsiTable.fromMap(
   final AnsiBorder border = const AnsiBorder(),
   final AnsiTextAlignment defaultAlignment = AnsiTextAlignment.left,
   final AnsiOrientation orientation = AnsiOrientation.vertical,
+  final bool transparent = true,
 })
 ```
 

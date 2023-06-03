@@ -18,14 +18,20 @@ export 'row.dart';
 ///
 /// These tables are commonly used in command-line interfaces, log files, and other text-based applications
 /// to present data in a tabular format that is easy to read and analyze.
+///
+/// - [rows] A list of [AnsiTableRow] that will be used as data of the [AnsiTable].
+/// - [border] The [AnsiBorder] that will be used to draw the [AnsiTable].
+/// - [transparent] If set to true any external formatting will affect the [AnsiTable]. Defaults to *true*.
 class AnsiTable {
   AnsiTable({
     final List<AnsiTableRow> rows = const <AnsiTableRow>[],
     final AnsiBorder border = const AnsiBorder(),
+    final bool transparent = true,
   }) : builder = const AnsiBorderBuilder() {
     formattedText = (StringBuffer()
           ..writeAll(
             <String>[
+              if (!transparent) AnsiEscapeCodes.reset,
               builder.print(
                 border: border.type.hasHeader ? border.copyWith.type(AnsiBorderType.all) : border,
                 data: rows[0].data,
@@ -56,7 +62,10 @@ class AnsiTable {
         .toString();
   }
 
+  /// A formatted string representation of the [AnsiTable].
   late final String formattedText;
+
+  /// The [AnsiBorderBuilder] used to draw the [AnsiTable].
   final AnsiBorderBuilder builder;
 
   /// **AnsiTable.fromList**
@@ -67,11 +76,13 @@ class AnsiTable {
   /// - [fixedWidth] If set will use this value as default width for all table cells.
   /// - [border] The [AnsiBorder] that will be used to draw the table with.
   /// - [defaultAlignment] The default [AnsiTextAlignment] that will be used for all table cells.
+  /// - [transparent] If set to true any external formatting will affect the [AnsiTable]. Defaults to *true*.
   factory AnsiTable.fromList(
     final List<Object?> data, {
     final int? fixedWidth,
     final AnsiBorder border = const AnsiBorder(),
     final AnsiTextAlignment defaultAlignment = AnsiTextAlignment.left,
+    final bool transparent = true,
   }) {
     return AnsiTable(
       border: border,
@@ -80,6 +91,7 @@ class AnsiTable {
         fixedWidth: fixedWidth,
         defaultAlignment: defaultAlignment,
       ).rows,
+      transparent: transparent,
     );
   }
 
@@ -93,6 +105,7 @@ class AnsiTable {
   /// - [border] The [AnsiBorder] that will be used to draw the table with.
   /// - [defaultAlignment] The default [AnsiTextAlignment] that will be used for all table cells.
   /// - [orientation] The [AnsiOrientation] that will be used to draw the table.
+  /// - [transparent] If set to true any external formatting will affect the [AnsiTable]. Defaults to *true*.
   factory AnsiTable.fromMap(
     final Map<Object, List<Object?>> data, {
     final int? fixedWidth,
@@ -100,6 +113,7 @@ class AnsiTable {
     final AnsiBorder border = const AnsiBorder(),
     final AnsiTextAlignment defaultAlignment = AnsiTextAlignment.left,
     final AnsiOrientation orientation = AnsiOrientation.vertical,
+    final bool transparent = true,
   }) {
     int maxRows = 0;
     int maxColumnLength = 0;
@@ -138,6 +152,7 @@ class AnsiTable {
     return AnsiTable(
       border: border,
       rows: getRows(columns, maxRows, orientation),
+      transparent: transparent,
     );
   }
 

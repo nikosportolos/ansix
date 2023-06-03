@@ -1,7 +1,5 @@
-import 'package:ansix/src/theme/border/border.dart';
-import 'package:ansix/src/theme/color/color.dart';
+import 'package:ansix/ansix.dart';
 import 'package:ansix/src/widgets/table/cell.dart';
-import 'package:ansix/src/widgets/table/table.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -40,6 +38,19 @@ void main() {
       });
     });
   }
+
+  test('non-transparent', () {
+    final String actual = 'this is a table\n'
+        '${AnsiTable(
+      border: const AnsiBorder(
+        style: AnsiBorderStyle.square,
+        type: AnsiBorderType.all,
+      ),
+      transparent: false,
+      rows: <AnsiTableRow>[AnsiTableRow(data: headerData), ...data],
+    )}';
+    expect(actual.withForegroundColor(AnsiColor.indianRed), nonTransparentTableMock);
+  });
 }
 
 final Map<AnsiBorderType, String> tableMocks = <AnsiBorderType, String>{
@@ -144,3 +155,15 @@ const String footerBorderTableMock = '''
 ┌───────────────┬───────────────┬───────────────┐
 │Blue           │#0000ff        │(0, 0, 255)    │
 └───────────────┴───────────────┴───────────────┘''';
+
+const String nonTransparentTableMock = '''
+\x1B[38;5;131mthis is a table
+\x1B[0m┌───────────────┬───────────────┬───────────────┐
+│Name           │Hex            │RGB            │
+├───────────────┼───────────────┼───────────────┤
+│Red            │#ff0000        │(255, 0, 0)    │
+├───────────────┼───────────────┼───────────────┤
+│Green          │#008000        │(0, 128, 0)    │
+├───────────────┼───────────────┼───────────────┤
+│Blue           │#0000ff        │(0, 0, 255)    │
+└───────────────┴───────────────┴───────────────┘\x1B[0m''';

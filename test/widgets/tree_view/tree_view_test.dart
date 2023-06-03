@@ -200,6 +200,39 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
     });
   });
 
+  test('long text with colors', () {
+    final Map<String, dynamic> map = <String, dynamic>{
+      'id': 123,
+      'title': 'Lorem ipsum dolor sit amet',
+      'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+          'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+          'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
+          'nisi ut aliquip ex ea commodo consequat.'
+          'Excepteur sint occaecat cupidatat non proident, '
+          'sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'postedOn': '2023-06-02T13:01:43.597697',
+      'body': '''
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
+    };
+
+    final String actual = AnsiTreeView(
+      theme: const AnsiTreeViewTheme(
+        headerTheme: AnsiTreeHeaderTheme(showHash: false),
+        valueTheme: AnsiTreeNodeValueTheme(
+          wrapText: true,
+          wrapLength: 120,
+          color: AnsiColor.cadetBlue,
+        ),
+      ),
+    ).format(map);
+    expect(actual, treeviewLongTextWithColorsMock);
+  });
+
   test('mixed', () {
     final Map<dynamic, dynamic> map = <dynamic, dynamic>{
       'id': 123,

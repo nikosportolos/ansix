@@ -159,7 +159,7 @@ class AnsiTreeView {
     }
 
     String text = value.toString();
-    final List<String> lines = text.split(AnsiEscapeCodes.newLine);
+    List<String> lines = text.split(AnsiEscapeCodes.newLine);
     bool isMultiline = lines.length > 1;
     final int chunkSize = theme.valueTheme.wrapLength ?? AnsiX.size.columns;
     final int bufferLength = buffer.toString().unformattedLength;
@@ -177,7 +177,29 @@ class AnsiTreeView {
     if (isMultiline) {
       final int newTabSize = bufferLength - prefix.length + 1;
       final String separator = isLast ? _getTab(newTabSize) : '$_verticalLine${_getTab(newTabSize - 1)}';
-      text = text.replaceAll(AnsiEscapeCodes.newLine, '${AnsiEscapeCodes.newLine}$prefix$separator');
+      buffer.write(' ');
+      lines = text.split(AnsiEscapeCodes.newLine);
+      for (int i = 0; i < lines.length; i++) {
+        final String line = lines[i];
+        if (i == 0) {
+          buffer
+            ..writeStyled(
+              line,
+              textStyle: theme.valueTheme.textStyle,
+              foregroundColor: theme.valueTheme.color,
+            )
+            ..writeln();
+          continue;
+        }
+        buffer
+          ..write(prefix)
+          ..write(separator)
+          ..writeln(line.styled(
+            theme.valueTheme.textStyle,
+            theme.valueTheme.color,
+          ));
+      }
+      return buffer.toString();
     }
 
     buffer

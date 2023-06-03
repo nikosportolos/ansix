@@ -22,6 +22,17 @@ void main() {
   setUp(() => resetMocktailState());
 
   group('AnsiX', () {
+    test('buildExceptionMessage', () {
+      expect(
+        buildExceptionMessage(const AnsiXException.ansiNotSupported('error')),
+        '\nAnsiX Exception: error\n',
+      );
+      expect(
+        buildExceptionMessage(AnsiXException.windowsLegacyModeError('error', Exception('exception'))),
+        '\nAnsiX Exception: errorException: exception\n\n',
+      );
+    });
+
     group('checkAnsiSupport', () {
       group('windows', () {
         const List<bool> values = <bool>[true, false];

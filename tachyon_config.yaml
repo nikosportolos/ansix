@@ -1,0 +1,9 @@
+file_generation_paths:
+  - "lib/**"
+  - "example/treeview/**"
+  - "test/widgets/tree_view/models/**"
+
+generated_file_line_length: 120
+
+plugins:
+  - data_class_plugin

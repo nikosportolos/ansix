@@ -7,8 +7,6 @@ void main() {
       test(style.name, () {
         final String text = 'This is a test message with [${style.name}] style';
         final String value = text.withStyle(style);
-        // ignore: avoid_print
-        print(value);
         expect(value, '${style.startEscapeCode}$text${style.endEscapeCode}');
       });
     }
@@ -24,6 +22,18 @@ void main() {
       const String text = 'this is a demo text';
       expect(text.bold().unformattedLength, text.length);
       expect(text.red().unformattedLength, text.length);
+      expect('[38;5;209mThis is a text with vertical padding[0m'.unformattedLength, 36);
+    });
+  });
+
+  group('escape new lines', () {
+    test('removeNewLines', () {
+      const String text = '\n\nthis is \na demo text\n\n';
+      expect(text.removeNewLines, 'this is a demo text');
+    });
+    test('lengthWithoutNewLines', () {
+      const String text = '\n\nthis is \na demo text\n\n';
+      expect(text.lengthWithoutNewLines, 19);
     });
   });
 

@@ -1,5 +1,8 @@
 import 'package:ansix/src/theme/style.dart';
 
+/// **AnsiTextStyle**
+///
+/// Defines a set of [AnsiStyle]s for a text.
 class AnsiTextStyle {
   const AnsiTextStyle({
     this.bold = false,

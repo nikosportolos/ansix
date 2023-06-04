@@ -22,22 +22,19 @@ class AnsiBorderBuilder {
     final bool isLastLine = index == total - 1;
 
     String getBorder(final AnsiRowBorderSet set) {
-      final StringBuffer buffer = StringBuffer();
-      buffer.writeWithForegroundColor(set.start, border.color);
-
-      for (int i = 0; i < data.length; i++) {
-        buffer.writeWithForegroundColor(
-          set.line * (data[i].width),
-          border.color,
+      final StringBuffer buffer = StringBuffer()
+        ..writeAll(
+          <String>[
+            set.start,
+            for (int i = 0; i < data.length; i++) ...<String>[
+              set.line * (data[i].width),
+              if (i != data.length - 1) set.separator,
+            ],
+            set.end
+          ],
         );
-        if (i != data.length - 1) {
-          buffer.writeWithForegroundColor(set.separator, border.color);
-        }
-      }
 
-      buffer.writeWithForegroundColor(set.end, border.color);
-
-      return buffer.toString();
+      return buffer.toString().withForegroundColor(border.color);
     }
 
     if (isFirstLine && !theme.topBorder.isEmpty) {

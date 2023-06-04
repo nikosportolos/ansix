@@ -44,6 +44,7 @@ AnsiX makes it easy to add ANSI styling to your output with minimal effort and m
   - [Widgets](#widgets)
     - [AnsiText](#ansitext) 
       - [AnsiTextStyle](#ansitextstyle)
+    - [AnsiOutlinedText](#ansioutlinedtext)
     - [AnsiTable](#ansitable) 
       - [AnsiBorder](#ansiborder) 
       - [AnsiType](#ansitype)
@@ -428,6 +429,27 @@ AnsiTextStyle(
 )
 ```
 
+### AnsiOutlinedText
+
+ANSI outlined text refers to text that is bordered or outlined using ANSI escape sequences in a command-line interface.
+
+It can be customized with different colors and line styles to create visually appealing effects.
+
+```dart
+AnsiOutlinedText(
+  super.text, {
+  required final AnsiBorder border,
+  super.alignment = AnsiTextAlignment.left,
+  super.style = const AnsiTextStyle(),
+  super.foregroundColor = AnsiColor.none,
+  super.backgroundColor = AnsiColor.none,
+  super.padding = AnsiPadding.none,
+  final int? fixedWidth,
+})
+```
+
+Check the [examples](https://github.com/nikosportolos/ansix/tree/main/example/outlined_text).
+
 ### AnsiTable
 
 An ANSI table is a 2D table of data that is formatted with ANSI escape sequences to display borders
@@ -453,29 +475,14 @@ AnsiTable({
 Returns an `AnsiTable` build from the input list of data.
 
 Arguments:
-- `data` 
-  
-  Will use the input list of data to build an `AnsiTableColumn`.
 
-- `fixedWidth` 
-
-  If set will use this value as default width for all table cells.
-
-- `keepSameWidth` 
-
-  If set to true will find the max cell width and use it for the whole table.
-
-- `border` 
-
-  The `AnsiBorder` that will be used to draw the table with.
-
-- `defaultAlignment` 
-
-  The default `AnsiTextAlignment` that will be used for all table cells.
-
-- `transparent`
-
-  If set to true any external formatting will affect the AnsiTable. Defaults to *true*.
+| Argument           | Description                                                                 |
+|--------------------|-----------------------------------------------------------------------------|
+| `data`             | Will use the input list of data to build an `AnsiTableColumn`.              |
+| `fixedWidth`       | If set will use this value as default width for all table cells.            |
+| `keepSameWidth`    | If set to true will find the max cell width and use it for the whole table. |
+| `border`           | The `AnsiBorder` that will be used to draw the table with.                  |
+| `defaultAlignment` | The default `AnsiTextAlignment` that will be used for all table cells.      |
 
 
 ```dart
@@ -492,33 +499,16 @@ factory AnsiTable.fromList(
 Returns an `AnsiTable` build from the input map of data.
 
 Arguments:
-- `data` 
 
-  Will use the keys of the map as headers and their values as data.
-
-- `fixedWidth` 
-
-  If set will use this value as default width for all table cells.
-
-- `keepSameWidth` 
-
-  If set to true will find the max cell width and use it for the whole table.
-
-- `border` 
-
-  The `AnsiBorder` that will be used to draw the table with.
-
-- `defaultAlignment` 
-
-  The default `AnsiTextAlignment` that will be used for all table cells.
-
-- `orientation`
-
-  The `AnsiOrientation` that will be used to draw the table.
-
-- `transparent`
-
-  If set to true any external formatting will affect the AnsiTable. Defaults to *true*.
+| Argument           | Description                                                                           |
+|--------------------|---------------------------------------------------------------------------------------|
+| `data`             | Will use the keys of the map as headers and their values as data.                     |
+| `fixedWidth`       | If set will use this value as default width for all table cells.                      |
+| `keepSameWidth`    | If set to true will find the max cell width and use it for the whole table.           |
+| `border`           | The `AnsiBorder` that will be used to draw the table with.                            |
+| `defaultAlignment` | The default `AnsiTextAlignment` that will be used for all table cells.                |
+| `orientation`      | The `AnsiOrientation` that will be used to draw the table.                            |
+| `transparent`      | If set to true any external formatting will affect the AnsiTable. Defaults to *true*. |
 
 
 ```dart

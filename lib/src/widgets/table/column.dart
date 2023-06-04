@@ -1,10 +1,7 @@
 import 'dart:math';
 
-import 'package:ansix/src/core/core.dart';
-import 'package:ansix/src/theme/alignment.dart';
+import 'package:ansix/ansix.dart';
 import 'package:ansix/src/widgets/table/cell.dart';
-import 'package:ansix/src/widgets/table/row.dart';
-import 'package:ansix/src/widgets/text/text.dart';
 import 'package:collection/collection.dart';
 
 /// **AnsiTableColumn**
@@ -18,39 +15,69 @@ class AnsiTableColumn {
   }) {
     final List<String> list = <String>[];
     final List<AnsiTextAlignment> alignments = <AnsiTextAlignment>[];
-    int maxColumnWidth = fixedWidth ?? 0;
+    int maxRowWidth = fixedWidth ?? 0;
 
     for (final Object? object in data) {
       if (object is AnsiText) {
-        maxColumnWidth = max(object.width, maxColumnWidth);
-        list.addAll(object.formattedText.split(AnsiEscapeCodes.newLine));
+        final List<String> lines = object.formattedText.trim().split(AnsiEscapeCodes.newLine);
+
+        list.addAll(<String>[
+          for (int i = 0; i < object.padding.top; i++) '',
+          for (int i = 0; i < lines.length; i++)
+            if (lines[i].isNotEmpty)
+              AnsiText(
+                lines[i],
+                foregroundColor: object.foregroundColor,
+                style: object.style,
+                padding: AnsiPadding.only(
+                  right: object.padding.right,
+                  left: object.padding.left,
+                ),
+              ).formattedText,
+          for (int i = 0; i < object.padding.bottom; i++) '',
+        ]);
+
+        maxRowWidth = max(
+          lines.fold<int>(0, (int max, String s) {
+            final int length = s.unformattedLength + object.padding.right + object.padding.left;
+            return length > max ? length : max;
+          }),
+          maxRowWidth,
+        );
 
         alignments.addAll(<AnsiTextAlignment>[
           for (int i = 0; i < object.padding.top; i++) defaultAlignment,
-          object.alignment,
+          for (final String _ in lines) object.alignment,
           for (int i = 0; i < object.padding.bottom; i++) defaultAlignment,
         ]);
 
         // TODO: Wrap line if AnsiText.fixedWidth is set
       } else {
         final String text = object.toString();
-        maxColumnWidth = max(text.unformattedLength, maxColumnWidth);
-        final List<String> temp = text.split(AnsiEscapeCodes.newLine);
-        list.addAll(temp);
+        final List<String> lines = text.split(AnsiEscapeCodes.newLine);
+        list.addAll(lines);
+
+        maxRowWidth = max(
+          lines.fold<int>(0, (int max, String s) {
+            final int length = s.unformattedLength;
+            return length > max ? length : max;
+          }),
+          maxRowWidth,
+        );
 
         alignments.addAll(<AnsiTextAlignment>[
-          for (final String _ in temp) defaultAlignment,
+          for (final String _ in lines) defaultAlignment,
         ]);
       }
     }
 
-    width = maxColumnWidth;
+    width = maxRowWidth;
     rows = list.mapIndexed((int index, String text) {
       return AnsiTableRow(
         data: <AnsiText>[
           AnsiTableCell(
             text,
-            width: maxColumnWidth,
+            width: maxRowWidth,
             alignment: alignments[index],
           ),
         ],

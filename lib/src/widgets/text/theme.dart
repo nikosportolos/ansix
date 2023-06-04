@@ -1,10 +1,10 @@
 import 'package:ansix/src/theme/alignment.dart';
 import 'package:ansix/src/theme/color/color.dart';
 import 'package:ansix/src/widgets/text/padding.dart';
-import 'package:ansix/src/widgets/text/text_style.dart';
+import 'package:ansix/src/widgets/text/style.dart';
 import 'package:data_class_plugin/data_class_plugin.dart';
 
-part 'text_theme.gen.dart';
+part 'theme.gen.dart';
 
 @DataClass()
 abstract class AnsiTextTheme {

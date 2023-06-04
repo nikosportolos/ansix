@@ -2,7 +2,7 @@
 
 // ignore_for_file: library_private_types_in_public_api, unused_element, unused_field
 
-part of 'text_theme.dart';
+part of 'theme.dart';
 
 class _$AnsiTextThemeImpl extends AnsiTextTheme {
   const _$AnsiTextThemeImpl({

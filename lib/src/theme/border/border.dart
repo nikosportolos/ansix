@@ -37,4 +37,6 @@ abstract class AnsiBorder {
   /// Defaults to [AnsiColor.none].
   @DefaultValue(AnsiColor.none)
   AnsiColor get color;
+
+  static const AnsiBorder empty = AnsiBorder();
 }

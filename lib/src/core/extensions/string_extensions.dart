@@ -14,7 +14,13 @@ extension AnsiString on String {
   String get unformatted => replaceAll(AnsiText.ansiMatcher, '');
 
   /// Returns the length of the string with no ANSI styles and colors.
-  int get unformattedLength => replaceAll(AnsiText.ansiMatcher, '').length;
+  int get unformattedLength => unformatted.length;
+
+  /// Returns the string with no new line escape codes.
+  String get removeNewLines => replaceAll(AnsiEscapeCodes.newLine, '');
+
+  /// Returns the length of the string without counting any new line escape codes.
+  int get lengthWithoutNewLines => removeNewLines.length;
 
   /// Adds an [AnsiStyle].
   String withStyle(final AnsiStyle style) {

@@ -1,12 +1,17 @@
-import 'package:ansix/src/core/core.dart';
-import 'package:ansix/src/theme/theme.dart';
-import 'package:ansix/src/widgets/text/padding.dart';
-import 'package:ansix/src/widgets/text/text_style.dart';
-import 'package:ansix/src/widgets/text/text_theme.dart';
+import 'package:ansix/ansix.dart';
 
-export 'text_theme.dart';
+export 'padding.dart';
+export 'style.dart';
+export 'theme.dart';
 
 /// **AnsiText**
+///
+/// - [alignment] How the text should be aligned horizontally.
+/// - [style] Defines a set of text styles for the text.
+/// - [foregroundColor] Foreground color of the text.
+/// - [backgroundColor] Background color of the text.
+/// - [padding] Used to pad the text with lines and whitespaces.
+/// - [fixedWidth] Used as a min constrain for the length of the text.
 class AnsiText {
   static final RegExp ansiMatcher = RegExp(r'\[(.*?)m');
 
@@ -19,9 +24,8 @@ class AnsiText {
     this.padding = AnsiPadding.none,
     final int? fixedWidth,
   }) : text = text.unformatted {
-    final int minWidth = this.text.length + padding.left + padding.right;
+    final int minWidth = this.text.lengthWithoutNewLines + padding.left + padding.right;
     width = (fixedWidth == null || fixedWidth == 0 || fixedWidth < minWidth) ? minWidth : fixedWidth;
-    // width = fixedWidth ?? minWidth;
 
     final int topPadding = padding.top;
     final int bottomPadding = padding.bottom;

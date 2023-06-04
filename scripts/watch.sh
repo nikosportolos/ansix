@@ -2,4 +2,4 @@
 
 cd ..
 
-dart run data_class_plugin generate watch
+dart run tachyon watch

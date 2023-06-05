@@ -1,3 +1,5 @@
+typedef MyRecord = (int a, int b);
+
 const String treeViewMock1 = '''
 List<int>
    ├── 1
@@ -199,12 +201,16 @@ _Map<String, dynamic>
 const String treeviewMixedMock = '''
 _Map<dynamic, dynamic>
            ├── id: 123
+           ├── record
+           │      └── (1, 2)
            ├── map
            │    ├── num: 12
            │    ├── int: 4324
            │    ├── double: 43.24
            │    ├── bool: false
            │    ├── String: this is a test message
+           │    ├── record
+           │    │      └── (1, 2)
            │    ├── objectWithToString
            │    │            └── MockClassWithToString(1, MockClassWithToString)
            │    ├── objectWithToJson
@@ -247,34 +253,36 @@ _Map<dynamic, dynamic>
                 ├── 232.2
                 ├── text message
                 ├── 6
+                │   └── (1, 2)
+                ├── 7
                 │   └── objectWithToString
                 │                └── MockClassWithToString(3, MockClassWithToString)
-                ├── 7
+                ├── 8
                 │   └── objectWithToJson
                 │               ├── id: 3
                 │               └── text: MockClassWithToJson
-                ├── 8
+                ├── 9
                 │   └── objectWithToMap
                 │              ├── 3: 3
                 │              └── text: MockClassWithToMap
-                ├── 9
-                │   ├── id: 44
-                │   └── email: test@email.com
                 ├── 10
+                │    ├── id: 44
+                │    └── email: test@email.com
+                ├── 11
                 │    ├── 1
                 │    ├── 2
                 │    ├── 3
                 │    ├── 4
                 │    └── 5
-                ├── 11
-                │    └── MockClassWithToString(4, MockClassWithToString)
                 ├── 12
+                │    └── MockClassWithToString(4, MockClassWithToString)
+                ├── 13
                 │    ├── id: 4
                 │    └── text: MockClassWithToJson
-                ├── 13
+                ├── 14
                 │    ├── 4: 4
                 │    └── text: MockClassWithToMap
-                └── 14
+                └── 15
                      └── MockEnum.value3
 ''';
 

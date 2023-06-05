@@ -3,14 +3,17 @@ import 'package:ansix/ansix.dart';
 import '../../test/widgets/tree_view/mocks.dart';
 
 void main() {
+  const MyRecord myRecord = (1, 2);
   final Map<dynamic, dynamic> map = <dynamic, dynamic>{
     'id': 123,
+    'record': myRecord,
     'map': <dynamic, dynamic>{
       'num': 12,
       'int': 4324,
       'double': 43.24,
       'bool': false,
       'String': 'this is a test message',
+      'record': myRecord,
       'objectWithToString': const MockClassWithToString(id: 1, text: 'MockClassWithToString'),
       'objectWithToJson': const MockClassWithToJson(id: 1, text: 'MockClassWithToJson'),
       'objectWithToMap': const MockClassWithToMap(id: 1, text: 'MockClassWithToMap'),
@@ -36,6 +39,7 @@ void main() {
       12,
       232.2,
       'text message',
+      myRecord,
       <String, dynamic>{'objectWithToString': const MockClassWithToString(id: 3, text: 'MockClassWithToString')},
       <String, dynamic>{'objectWithToJson': const MockClassWithToJson(id: 3, text: 'MockClassWithToJson')},
       <String, dynamic>{'objectWithToMap': const MockClassWithToMap(id: 3, text: 'MockClassWithToMap')},

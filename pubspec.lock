@@ -29,10 +29,10 @@ packages:
     dependency: transitive
     description:
       name: args
-      sha256: "4cab82a83ffef80b262ddedf47a0a8e56ee6fbf7fe21e6e768b02792034dd440"
+      sha256: c372bb384f273f0c2a8aaaa226dad84dc27c8519a691b888725dec59518ad53a
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.0"
+    version: "2.4.1"
   async:
     dependency: transitive
     description:
@@ -85,18 +85,18 @@ packages:
     dependency: transitive
     description:
       name: dart_style
-      sha256: "6d691edde054969f0e0f26abb1b30834b5138b963793e56f69d3a9a4435e6352"
+      sha256: f4f1f73ab3fd2afcbcca165ee601fe980d966af6a21b5970c6c9376955c528ad
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   data_class_plugin:
     dependency: "direct main"
     description:
       name: data_class_plugin
-      sha256: "80722ce97c999545b474b94063d57db8beb3f447d5fee9d74646376462f309c0"
+      sha256: "86e67f0b0ec24f072bd1aafac98be33a22e6314bfbaea101d11fa367b222cf09"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.1"
+    version: "1.0.0"
   file:
     dependency: transitive
     description:
@@ -117,10 +117,10 @@ packages:
     dependency: transitive
     description:
       name: glob
-      sha256: "4515b5b6ddb505ebdd242a5f2cc5d22d3d6a80013789debfbda7777f47ea308c"
+      sha256: "0e7014b3b7d4dac1ca4d6114f82bf1782ee86745b9b42a92c9289c23d8a0ab63"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.2"
   http_multi_server:
     dependency: transitive
     description:
@@ -329,6 +329,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  tachyon:
+    dependency: transitive
+    description:
+      name: tachyon
+      sha256: b9acc6ccdfd8b920a60531b481b8ed10075e7e3a183af498371471629b4f52cc
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   term_glyph:
     dependency: transitive
     description:
@@ -405,9 +413,9 @@ packages:
     dependency: transitive
     description:
       name: yaml
-      sha256: "23812a9b125b48d4007117254bca50abb6c712352927eece9e155207b1db2370"
+      sha256: "75769501ea3489fca56601ff33454fe45507ea3bfb014161abc3b43ae25989d5"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.1"
+    version: "3.1.2"
 sdks:
   dart: ">=2.19.6 <4.0.0"

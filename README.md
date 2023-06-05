@@ -676,8 +676,9 @@ factory AnsiTreeViewTheme.$default() {
       textStyle: AnsiTextStyle(bold: true),
     ),
     valueTheme: const AnsiTreeNodeValueTheme(
-      color: AnsiColor.grey69,
       textStyle: AnsiTextStyle(italic: true),
+      alignment: AnsiTextAlignment.center,
+      color: AnsiColor.grey69,
       wrapText: true,
       wrapLength: 120,
     ),

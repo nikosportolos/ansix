@@ -1,37 +1,7 @@
 import 'package:ansix/ansix.dart';
 
+export 'node_type.dart';
 export 'theme.dart';
-
-/// **TreeNodeType**
-///
-/// Enumeration of the possible data types for each element of the tree.
-enum TreeNodeType {
-  primary,
-  map,
-  iterable,
-  object;
-
-  static TreeNodeType getType(final dynamic object) {
-    if (object == null || //
-        object is String ||
-        object is bool ||
-        object is num ||
-        object is double ||
-        object is int) {
-      return TreeNodeType.primary;
-    }
-
-    if (object is Map) {
-      return TreeNodeType.map;
-    }
-
-    if (object is Iterable) {
-      return TreeNodeType.iterable;
-    }
-
-    return TreeNodeType.object;
-  }
-}
 
 /// **AnsiTreeView**
 ///
@@ -231,12 +201,17 @@ class AnsiTreeView {
     }
 
     for (int i = 0; i < keys.length; i++) {
-      final dynamic key = keys[i];
-      final dynamic value = map[key];
+      final String key = keys[i].toString();
+      final dynamic value = map[keys[i]];
 
       final bool isLastValue = i == keys.length - 1;
       final bool isLast = isLastNode ?? isLastValue;
-      final int tabSize = 1 + _lineLength + key.toString().length ~/ 2;
+      final int tabSize = switch (theme.valueTheme.alignment) {
+        AnsiTextAlignment.left => 1 + _lineLength,
+        AnsiTextAlignment.center => 1 + _lineLength + key.length ~/ 2,
+        AnsiTextAlignment.right => _lineLength + key.length
+      };
+
       final String tab = ' ' * tabSize;
       final String anchor = _getAnchor(isLast: isLast);
 
@@ -251,10 +226,10 @@ class AnsiTreeView {
             ..write(anchor)
             ..write(_horizontalLine)
             ..write(' ')
-            ..writeln(key.toString().styled(theme.keyTheme.textStyle, theme.keyTheme.color))
+            ..writeln(key.styled(theme.keyTheme.textStyle, theme.keyTheme.color))
             ..write(_parseTreeList(
               value.toList(growable: false),
-              key.toString(),
+              key,
               isLast ? '$prefix$tab' : '$prefix$_verticalLine$tab',
             ));
           break;
@@ -266,7 +241,7 @@ class AnsiTreeView {
             ..write(_horizontalLine)
             ..write(' ')
             ..writeStyled(
-              key.toString(),
+              key,
               textStyle: theme.keyTheme.textStyle,
               foregroundColor: theme.keyTheme.color,
             )
@@ -290,7 +265,6 @@ class AnsiTreeView {
               isLast: isLast,
               prefix: isLast ? '$prefix$tab ' : '$prefix$_verticalLine$tab',
             ));
-          // buffer.write(_parseTreeNode(key, value, isLast: isLast, prefix: prefix)); // FIXME
           break;
       }
     }

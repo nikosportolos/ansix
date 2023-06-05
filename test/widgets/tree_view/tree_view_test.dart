@@ -6,30 +6,29 @@ import 'models/node.dart';
 import 'models/user.dart';
 
 void main() {
+  const AnsiTreeViewTheme theme = AnsiTreeViewTheme(
+    headerTheme: AnsiTreeHeaderTheme(showHash: false),
+    valueTheme: AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
+  );
+
   group('AnsiTreeView', () {
     test('List<int>', () {
       final String actual = AnsiTreeView(
-        theme: const AnsiTreeViewTheme(
-          headerTheme: AnsiTreeHeaderTheme(showHash: false),
-        ),
+        theme: theme,
       ).format(<int>[1, 2, 3, 4, 5]);
       expect(actual, treeViewMock1);
     });
 
     test('Map<String, dynamic>', () {
       final String actual = AnsiTreeView(
-        theme: const AnsiTreeViewTheme(
-          headerTheme: AnsiTreeHeaderTheme(showHash: false),
-        ),
+        theme: theme,
       ).format(<String, dynamic>{'id': 12312, 'username': 'AnsiX'});
       expect(actual, treeViewMock2);
     });
 
     test('String', () {
       final String actual = AnsiTreeView(
-        theme: const AnsiTreeViewTheme(
-          headerTheme: AnsiTreeHeaderTheme(showHash: false),
-        ),
+        theme: theme,
       ).format('This is a test message');
       expect(actual, treeViewMock3);
     });
@@ -60,9 +59,7 @@ void main() {
         // child: child,
       );
       final String actual = AnsiTreeView(
-        theme: const AnsiTreeViewTheme(
-          headerTheme: AnsiTreeHeaderTheme(showHash: false),
-        ),
+        theme: theme,
       ).format(user);
       expect(actual.unformatted, treeViewMockObject);
     });
@@ -103,6 +100,7 @@ void main() {
               style: AnsiBorderStyle.square,
             ),
           ),
+          valueTheme: AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
         ),
       ).format(user);
       expect(actual.unformatted, treeViewMockExpanded);
@@ -141,9 +139,7 @@ void main() {
         'empty_list': <String>[],
       };
 
-      final String actual = AnsiTreeView(
-        theme: const AnsiTreeViewTheme(headerTheme: AnsiTreeHeaderTheme(showHash: false)),
-      ).format(map);
+      final String actual = AnsiTreeView(theme: theme).format(map);
       expect(actual.unformatted, treeviewEmptyMock);
     });
 
@@ -165,6 +161,7 @@ void main() {
             border: AnsiBorder(type: AnsiBorderType.all),
           ),
           anchorTheme: AnsiTreeAnchorTheme(style: AnsiBorderStyle.ascii),
+          valueTheme: AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
         ),
       ).format(map);
       expect(actual.unformatted, treeviewMixedBordersMock);
@@ -193,7 +190,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
       final String actual = AnsiTreeView(
         theme: const AnsiTreeViewTheme(
           headerTheme: AnsiTreeHeaderTheme(showHash: false),
-          valueTheme: AnsiTreeNodeValueTheme(wrapText: true, wrapLength: 120),
+          valueTheme: AnsiTreeNodeValueTheme(
+            wrapText: true,
+            wrapLength: 120,
+            alignment: AnsiTextAlignment.center,
+          ),
         ),
       ).format(map);
       expect(actual.unformatted, treeviewLongTextMock);
@@ -233,7 +234,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
     expect(actual, treeviewLongTextWithColorsMock);
   });
 
-  test('mixed', () {
+  group('mixed', () {
     const MyRecord myRecord = (1, 2);
     final Map<dynamic, dynamic> map = <dynamic, dynamic>{
       'id': 123,
@@ -282,13 +283,21 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         MockEnum.value3,
       ],
     };
+    final AnsiTreeViewTheme theme = AnsiTreeViewTheme.$default().copyWith.headerTheme.showHash(false);
 
-    final String actual = AnsiTreeView(
-      theme: const AnsiTreeViewTheme(
-        headerTheme: AnsiTreeHeaderTheme(showHash: false),
-        valueTheme: AnsiTreeNodeValueTheme(wrapText: true, wrapLength: 120),
-      ),
-    ).format(map);
-    expect(actual.unformatted, treeviewMixedMock);
+    final Map<AnsiTextAlignment, String> testCases = <AnsiTextAlignment, String>{
+      AnsiTextAlignment.center: treeviewMixedMock,
+      AnsiTextAlignment.left: treeviewMixedMock1,
+      AnsiTextAlignment.right: treeviewMixedMock2,
+    };
+
+    for (final AnsiTextAlignment alignment in AnsiTextAlignment.values) {
+      test(alignment, () {
+        expect(
+          AnsiTreeView(theme: theme.copyWith.valueTheme.alignment(alignment)).format(map),
+          testCases[alignment],
+        );
+      });
+    }
   });
 }

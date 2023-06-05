@@ -66,8 +66,9 @@ abstract class AnsiTreeViewTheme {
         textStyle: AnsiTextStyle(bold: true),
       ),
       valueTheme: const AnsiTreeNodeValueTheme(
-        color: AnsiColor.grey69,
         textStyle: AnsiTextStyle(italic: true),
+        alignment: AnsiTextAlignment.center,
+        color: AnsiColor.grey69,
         wrapText: true,
         wrapLength: 120,
       ),
@@ -194,6 +195,7 @@ abstract class AnsiTreeNodeValueTheme extends AnsiTreeNodeTheme {
     AnsiColor color,
     bool wrapText,
     int? wrapLength,
+    AnsiTextAlignment alignment,
   }) = _$AnsiTreeNodeValueThemeImpl;
 
   /// Defines the [AnsiTextStyle] of the tree node.
@@ -212,4 +214,8 @@ abstract class AnsiTreeNodeValueTheme extends AnsiTreeNodeTheme {
 
   /// Defines the maximum length of a tree node (including anchors & values).
   int? get wrapLength;
+
+  /// Defines the alignment relative to the tree node key.
+  @DefaultValue(AnsiTextAlignment.left)
+  AnsiTextAlignment get alignment;
 }

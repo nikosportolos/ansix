@@ -1,6 +1,21 @@
+## v0.0.7-prerelease
+
+- Refactor extensions ([#67](https://github.com/nikosportolos/ansix/issues/67))
+- Migrate to [Tachyon](https://pub.dev/packages/tachyon) ([#71](https://github.com/nikosportolos/ansix/issues/71))
+- Enable Dart 3 ([#88](https://github.com/nikosportolos/ansix/issues/88))
+  - Bump minimum Dart SDK to 3.0.0
+  - Bump lints to 2.1.1
+  - AnsiTreeView: Add support for [records](https://dart.dev/language/records)
+  - Update GitHub workflows
+- **AnsiTreeView**: Add alignment for tree node value ([#105](https://github.com/nikosportolos/ansix/issues/105))
+- Create new Widget **AnsiOutlinedText** ([#106](https://github.com/nikosportolos/ansix/issues/106))
+- **AnsiOutlinedText**: Add text wrap options ([#115](https://github.com/nikosportolos/ansix/issues/115))
+- **AnsiTreeView**: Add wrap options ([#117](https://github.com/nikosportolos/ansix/issues/117))
+
+
 ## v0.0.6-prerelease
 
-#### Bugfixes
+#### Bug fixes
 
 - AnsiTable uses external color if no border color is set ([#93](https://github.com/nikosportolos/ansix/issues/93))
 - Wrapped lines in AnsiTreeView lose their styling ([#98](https://github.com/nikosportolos/ansix/issues/98))
@@ -14,7 +29,7 @@
 
 ## v0.0.5-prerelease
 
-#### AnsiTreeView enhancements & bugfixes 
+#### AnsiTreeView enhancements & bug fixes 
 
 - Refactor AnsiTreeViewTheme ([#75](https://github.com/nikosportolos/ansix/issues/75))
   - Rename `TreeAnchorTheme` to `AnsiTreeAnchorTheme`

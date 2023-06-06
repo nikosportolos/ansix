@@ -152,56 +152,145 @@ const String treeviewLongTextMock = '''
 _Map<String, dynamic>
          ├── id: 123
          ├── title: Lorem ipsum dolor sit amet
-         ├── description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-         │                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-         │                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-         │                commodo consequat.Excepteur sint occaecat cupidatat non proident, sunt in 
-         │                culpa qui officia deserunt mollit anim id est laborum.
+         ├── description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+         │                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+         │                aliquip ex ea commodo consequat.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+         │                officia deserunt mollit anim id est laborum.
          ├── postedOn: 2023-06-02T13:01:43.597697
-         └── body: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                   temporincididunt ut labore et dolore magna aliqua. 
+         └── body: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore 
+                   et dolore magna aliqua. 
+                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                   consequat. 
+                   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+                   pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
+                   anim id est laborum.
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                   et dolore magna aliqua. 
+                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                   consequat. 
+                   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+                   pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
+                   anim id est laborum.
+''';
+
+const String treeviewLongTextSplitMock = '''
+_Map<String, dynamic>
+         ├── [1mid[22m: 123
+         ├── [1mtitle[22m: Lorem ipsum dolor sit amet
+         ├── [1mdescription[22m: Lorem ipsum dolor sit amet, consectetur adipiscing
+         │                elit, sed do eiusmod tempor incididunt ut labore 
+         │                et dolore magna aliqua. Ut enim ad minim veniam, q
+         │                uis nostrud exercitation ullamco laboris nisi ut a
+         │                liquip ex ea commodo consequat.Excepteur sint occa
+         │                ecat cupidatat non proident, sunt in culpa qui off
+         │                icia deserunt mollit anim id est laborum.
+         ├── [1mpostedOn[22m: 2023-06-02T13:01:43.597697
+         └── [1mbody[22m: Lorem ipsum dolor sit amet, consectetur adipiscing
+                   elit, sed do eiusmod temporincididunt ut labore e
+                   t dolore magna aliqua. 
+                   Ut enim ad minim veniam, quis nostrud exercitation
+                   ullamco laboris nisi ut aliquip ex ea commodo con
+                   sequat. 
+                   Duis aute irure dolor in reprehenderit in voluptat
+                   e velit esse cillum dolore eu fugiat nulla pariatu
+                   r. Excepteur sint occaecat cupidatat non proident,
+                   sunt in culpa qui officia deserunt mollit anim id
+                   est laborum.
+                   Lorem ipsum dolor sit amet, consectetur adipiscing
+                   elit, sed do eiusmod tempor incididunt ut labore 
+                   et dolore magna aliqua. 
+                   Ut enim ad minim veniam, quis nostrud exercitation
+                   ullamco laboris nisi ut aliquip ex ea commodo con
+                   sequat. 
+                   Duis aute irure dolor in reprehenderit in voluptat
+                   e velit esse cillum dolore eu fugiat nulla pariatu
+                   r. Excepteur sint occaecat cupidatat non proident,
+                   sunt in culpa qui officia deserunt mollit anim id
+                   est laborum.
+''';
+
+const String treeviewLongTextSplitAndLineBreaksMock = '''_Map<String, dynamic>
+         ├── [1mid[22m: 123
+         ├── [1mtitle[22m: Lorem ipsum dolor sit amet
+         ├── [1mdescription[22m: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te-
+         │                mpor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+         │                uis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo con-
+         │                sequat.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui o-
+         │                fficia deserunt mollit anim id est laborum                                 
+         ├── [1mpostedOn[22m: 2023-06-02T13:01:43.597697
+         └── [1mbody[22m: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te-
+                   mporincididunt ut labore et dolore magna aliqua.                           
                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                   aliquip ex ea commodo consequat. 
-                   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-                   fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-                   culpa qui officia deserunt mollit anim id est laborum.
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                   incididunt ut labore et dolore magna aliqua. 
+                   aliquip ex ea commodo consequat.                                           
+                   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolo-
+                   re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proiden-
+                   t, sunt in culpa qui officia deserunt mollit anim id est laborum           
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te-
+                   mpor incididunt ut labore et dolore magna aliqua.                          
                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                   aliquip ex ea commodo consequat. 
-                   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-                   fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-                   culpa qui officia deserunt mollit anim id est laborum.
+                   aliquip ex ea commodo consequat.                                           
+                   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolo-
+                   re eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proiden-
+                   t, sunt in culpa qui officia deserunt mollit anim id est laborum           
+''';
+
+const String treeviewLongTextSplitLineBreaksFixedMock = '''_Map<String, dynamic>
+         ├── [1mid[22m: 123
+         ├── [1mtitle[22m: Lorem ipsum dolor sit amet
+         ├── [1mdescription[22m: Lorem ipsum dolor sit amet, consectetur adipisci-
+         │                ng elit, sed do eiusmod tempor incididunt ut lab-
+         │                ore et dolore magna aliqua. Ut enim ad minim ven-
+         │                iam, quis nostrud exercitation ullamco laboris n-
+         │                isi ut aliquip ex ea commodo consequat.Excepteur 
+         │                 occaecat cupidatat non proident, sunt in culpa  
+         │                qui officia deserunt mollit anim id est laborum  
+         ├── [1mpostedOn[22m: 2023-06-02T13:01:43.597697
+         └── [1mbody[22m: Lorem ipsum dolor sit amet, consectetur adipiscing elit-
+                   , sed do eiusmod temporincididunt ut labore et dolore m-
+                   agna aliqua.                                            
+                   Ut enim ad minim veniam, quis nostrud exercitation ulla-
+                   mco laboris nisi ut aliquip ex ea commodo consequat.    
+                   Duis aute irure dolor in reprehenderit in voluptate vel-
+                   it esse cillum dolore eu fugiat nulla pariatur. Excepte-
+                   ur sint occaecat cupidatat non proident, sunt in culpa  
+                   qui officia deserunt mollit anim id est laborum         
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit-
+                   , sed do eiusmod tempor incididunt ut labore et dolore  
+                   magna aliqua.                                           
+                   Ut enim ad minim veniam, quis nostrud exercitation ulla-
+                   mco laboris nisi ut aliquip ex ea commodo consequat.    
+                   Duis aute irure dolor in reprehenderit in voluptate vel-
+                   it esse cillum dolore eu fugiat nulla pariatur. Excepte-
+                   ur sint occaecat cupidatat non proident, sunt in culpa  
+                   qui officia deserunt mollit anim id est laborum         
 ''';
 
 const String treeviewLongTextWithColorsMock = '''
-[38;5;209m[48;5;234m[0m[38;5;209m[48;5;234m_Map<String, dynamic>[0m[48;5;234m[0m[0m
-         [38;5;100m├[0m[38;5;100m──[0m [38;5;166mid[0m: [38;5;72m123[0m
-         [38;5;100m├[0m[38;5;100m──[0m [38;5;166mtitle[0m: [38;5;72mLorem ipsum dolor sit amet[0m
-         [38;5;100m├[0m[38;5;100m──[0m [38;5;166mdescription[0m: [38;5;72mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod [0m
-         [38;5;100m│[0m                [38;5;72mtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim [0m
-         [38;5;100m│[0m                [38;5;72mveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea [0m
-         [38;5;100m│[0m                [38;5;72mcommodo consequat.Excepteur sint occaecat cupidatat non proident, sunt in [0m
-         [38;5;100m│[0m                [38;5;72mculpa qui officia deserunt mollit anim id est laborum.[0m
-         [38;5;100m├[0m[38;5;100m──[0m [38;5;166mpostedOn[0m: [38;5;72m2023-06-02T13:01:43.597697[0m
-         [38;5;100m└[0m[38;5;100m──[0m [38;5;166mbody[0m: [38;5;72mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod [0m
-                   [38;5;72mtemporincididunt ut labore et dolore magna aliqua. [0m
-                   [38;5;72mUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut [0m
-                   [38;5;72maliquip ex ea commodo consequat. [0m
-                   [38;5;72mDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu [0m
-                   [38;5;72mfugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in [0m
-                   [38;5;72mculpa qui officia deserunt mollit anim id est laborum.[0m
-                   [38;5;72mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor [0m
-                   [38;5;72mincididunt ut labore et dolore magna aliqua. [0m
-                   [38;5;72mUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut [0m
-                   [38;5;72maliquip ex ea commodo consequat. [0m
-                   [38;5;72mDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu [0m
-                   [38;5;72mfugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in [0m
-                   [38;5;72mculpa qui officia deserunt mollit anim id est laborum.[0m
+\x1B[38;5;209m\x1B[48;5;234m\x1B[0m\x1B[38;5;209m\x1B[48;5;234m_Map<String, dynamic>\x1B[0m\x1B[48;5;234m\x1B[0m\x1B[0m
+         \x1B[38;5;100m├\x1B[0m\x1B[38;5;100m──\x1B[0m \x1B[38;5;166mid\x1B[0m: \x1B[38;5;72m123\x1B[0m
+         \x1B[38;5;100m├\x1B[0m\x1B[38;5;100m──\x1B[0m \x1B[38;5;166mtitle\x1B[0m: \x1B[38;5;72mLorem ipsum dolor sit amet\x1B[0m
+         \x1B[38;5;100m├\x1B[0m\x1B[38;5;100m──\x1B[0m \x1B[38;5;166mdescription\x1B[0m: \x1B[38;5;72mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore \x1B[0m
+         \x1B[38;5;100m│\x1B[0m                \x1B[38;5;72met dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut \x1B[0m
+         \x1B[38;5;100m│\x1B[0m                \x1B[38;5;72maliquip ex ea commodo consequat.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui \x1B[0m
+         \x1B[38;5;100m│\x1B[0m                \x1B[38;5;72mofficia deserunt mollit anim id est laborum.\x1B[0m
+         \x1B[38;5;100m├\x1B[0m\x1B[38;5;100m──\x1B[0m \x1B[38;5;166mpostedOn\x1B[0m: \x1B[38;5;72m2023-06-02T13:01:43.597697\x1B[0m
+         \x1B[38;5;100m└\x1B[0m\x1B[38;5;100m──\x1B[0m \x1B[38;5;166mbody\x1B[0m: \x1B[38;5;72mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore \x1B[0m
+                   \x1B[38;5;72met dolore magna aliqua. \x1B[0m
+                   \x1B[38;5;72mUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo \x1B[0m
+                   \x1B[38;5;72mconsequat. \x1B[0m
+                   \x1B[38;5;72mDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla \x1B[0m
+                   \x1B[38;5;72mpariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit \x1B[0m
+                   \x1B[38;5;72manim id est laborum.\x1B[0m
+                   \x1B[38;5;72mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore \x1B[0m
+                   \x1B[38;5;72met dolore magna aliqua. \x1B[0m
+                   \x1B[38;5;72mUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo \x1B[0m
+                   \x1B[38;5;72mconsequat. \x1B[0m
+                   \x1B[38;5;72mDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla \x1B[0m
+                   \x1B[38;5;72mpariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit \x1B[0m
+                   \x1B[38;5;72manim id est laborum.\x1B[0m
 ''';
 
-const String treeviewMixedMockCenter = '''
-[38;5;31m┌──────────────────────────┐[0m
+const String treeviewMixedMockCenter = '''[38;5;31m┌──────────────────────────┐[0m
 [38;5;31m│[0m  [38;5;15m[1m[38;5;15m[1m_Map<dynamic, dynamic>[22m[0m[22m[0m  [38;5;31m│[0m
 [38;5;31m└────────────┬─────────────┘[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mid[22m[0m: [38;5;145m[3m123[23m[0m
@@ -235,10 +324,9 @@ const String treeviewMixedMockCenter = '''
              [38;5;31m│[0m    [38;5;31m└[0m[38;5;31m──[0m [38;5;15m[1menum[22m[0m
              [38;5;31m│[0m          [38;5;31m└[0m[38;5;31m──[0m [38;5;145m[3mMockEnum.value1[23m[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1m123[22m[0m: [38;5;145m[3mthis is a test message[23m[0m
-             [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mlong-text[22m[0m: [38;5;145m[3mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut[23m[0m
-             [38;5;31m│[0m              [38;5;145m[3mlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco [23m[0m
-             [38;5;31m│[0m              [38;5;145m[3mlaboris nisi ut aliquip ex ea commodo consequat.Excepteur sint occaecat cupidatat non [23m[0m
-             [38;5;31m│[0m              [38;5;145m[3mproident, sunt in culpa qui officia deserunt mollit anim id est laborum.[23m[0m
+             [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mlong-text[22m[0m: [38;5;145m[3mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna [23m[0m
+             [38;5;31m│[0m              [38;5;145m[3maliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.[23m[0m
+             [38;5;31m│[0m              [38;5;145m[3mExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[23m[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1menum[22m[0m
              [38;5;31m│[0m     [38;5;31m└[0m[38;5;31m──[0m [38;5;145m[3mMockEnum.value2[23m[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mobjectWithToString[22m[0m
@@ -290,8 +378,7 @@ const String treeviewMixedMockCenter = '''
                        [38;5;31m└[0m[38;5;31m──[0m [38;5;145m[3mMockEnum.value3[23m[0m
 ''';
 
-const String treeviewMixedMockLeft = '''
-[38;5;31m┌──────────────────────────┐[0m
+const String treeviewMixedMockLeft = '''[38;5;31m┌──────────────────────────┐[0m
 [38;5;31m│[0m  [38;5;15m[1m[38;5;15m[1m_Map<dynamic, dynamic>[22m[0m[22m[0m  [38;5;31m│[0m
 [38;5;31m└────────────┬─────────────┘[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mid[22m[0m: [38;5;145m[3m123[23m[0m
@@ -325,10 +412,9 @@ const String treeviewMixedMockLeft = '''
              [38;5;31m│[0m   [38;5;31m└[0m[38;5;31m──[0m [38;5;15m[1menum[22m[0m
              [38;5;31m│[0m       [38;5;31m└[0m[38;5;31m──[0m [38;5;145m[3mMockEnum.value1[23m[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1m123[22m[0m: [38;5;145m[3mthis is a test message[23m[0m
-             [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mlong-text[22m[0m: [38;5;145m[3mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut[23m[0m
-             [38;5;31m│[0m              [38;5;145m[3mlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco [23m[0m
-             [38;5;31m│[0m              [38;5;145m[3mlaboris nisi ut aliquip ex ea commodo consequat.Excepteur sint occaecat cupidatat non [23m[0m
-             [38;5;31m│[0m              [38;5;145m[3mproident, sunt in culpa qui officia deserunt mollit anim id est laborum.[23m[0m
+             [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mlong-text[22m[0m: [38;5;145m[3mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna [23m[0m
+             [38;5;31m│[0m              [38;5;145m[3maliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.[23m[0m
+             [38;5;31m│[0m              [38;5;145m[3mExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[23m[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1menum[22m[0m
              [38;5;31m│[0m   [38;5;31m└[0m[38;5;31m──[0m [38;5;145m[3mMockEnum.value2[23m[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mobjectWithToString[22m[0m
@@ -380,8 +466,7 @@ const String treeviewMixedMockLeft = '''
                     [38;5;31m└[0m[38;5;31m──[0m [38;5;145m[3mMockEnum.value3[23m[0m
 ''';
 
-const String treeviewMixedMockRight = '''
-[38;5;31m┌──────────────────────────┐[0m
+const String treeviewMixedMockRight = '''[38;5;31m┌──────────────────────────┐[0m
 [38;5;31m│[0m  [38;5;15m[1m[38;5;15m[1m_Map<dynamic, dynamic>[22m[0m[22m[0m  [38;5;31m│[0m
 [38;5;31m└────────────┬─────────────┘[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mid[22m[0m: [38;5;145m[3m123[23m[0m
@@ -415,10 +500,9 @@ const String treeviewMixedMockRight = '''
              [38;5;31m│[0m     [38;5;31m└[0m[38;5;31m──[0m [38;5;15m[1menum[22m[0m
              [38;5;31m│[0m            [38;5;31m└[0m[38;5;31m──[0m [38;5;145m[3mMockEnum.value1[23m[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1m123[22m[0m: [38;5;145m[3mthis is a test message[23m[0m
-             [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mlong-text[22m[0m: [38;5;145m[3mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut[23m[0m
-             [38;5;31m│[0m              [38;5;145m[3mlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco [23m[0m
-             [38;5;31m│[0m              [38;5;145m[3mlaboris nisi ut aliquip ex ea commodo consequat.Excepteur sint occaecat cupidatat non [23m[0m
-             [38;5;31m│[0m              [38;5;145m[3mproident, sunt in culpa qui officia deserunt mollit anim id est laborum.[23m[0m
+             [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mlong-text[22m[0m: [38;5;145m[3mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna [23m[0m
+             [38;5;31m│[0m              [38;5;145m[3maliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.[23m[0m
+             [38;5;31m│[0m              [38;5;145m[3mExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[23m[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1menum[22m[0m
              [38;5;31m│[0m      [38;5;31m└[0m[38;5;31m──[0m [38;5;145m[3mMockEnum.value2[23m[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mobjectWithToString[22m[0m

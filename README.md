@@ -682,7 +682,7 @@ factory AnsiTreeViewTheme.$default() {
       alignment: AnsiTextAlignment.center,
       color: AnsiColor.grey69,
       wrapText: true,
-      wrapLength: 120,
+      wrapOptions: WrapOptions(lineLength: 120),
     ),
     headerTheme: AnsiTreeHeaderTheme(
       textTheme: AnsiTextTheme(

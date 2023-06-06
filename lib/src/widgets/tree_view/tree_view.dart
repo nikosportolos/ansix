@@ -131,17 +131,21 @@ class AnsiTreeView {
     String text = value.toString();
     List<String> lines = text.split(AnsiEscapeCodes.newLine);
     bool isMultiline = lines.length > 1;
-    final int chunkSize = theme.valueTheme.wrapLength ?? AnsiX.size.columns;
     final int bufferLength = buffer.toString().unformattedLength;
 
     if (theme.valueTheme.wrapText) {
-      for (final String line in lines) {
-        if (bufferLength + line.length > chunkSize) {
-          final List<String> newLines = text.splitEvery(chunkSize - bufferLength - 1);
-          text = newLines.join(AnsiEscapeCodes.newLine);
-        }
-      }
-      isMultiline = text.split(AnsiEscapeCodes.newLine).length > 1;
+      final int chunkSize = theme.valueTheme.wrapOptions.lineLength ?? AnsiX.size.columns;
+      final int length = theme.valueTheme.fixedWidth == null //
+          ? chunkSize
+          : theme.valueTheme.fixedWidth! - bufferLength - 1;
+
+      text = text
+          .wrapText(
+            fixedWidth: theme.valueTheme.fixedWidth,
+            wrapOptions: theme.valueTheme.wrapOptions.copyWith.lineLength(length),
+          )
+          .join(AnsiEscapeCodes.newLine);
+      isMultiline = text.contains(AnsiEscapeCodes.newLine);
     }
 
     if (isMultiline) {

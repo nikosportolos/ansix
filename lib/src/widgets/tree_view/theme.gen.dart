@@ -592,7 +592,8 @@ class _$AnsiTreeNodeValueThemeImpl extends AnsiTreeNodeValueTheme {
     this.textStyle = const AnsiTextStyle(),
     this.color = AnsiColor.none,
     this.wrapText = false,
-    this.wrapLength,
+    this.fixedWidth,
+    this.wrapOptions = const WrapOptions(),
     this.alignment = AnsiTextAlignment.left,
   }) : super.ctor();
 
@@ -606,7 +607,10 @@ class _$AnsiTreeNodeValueThemeImpl extends AnsiTreeNodeValueTheme {
   final bool wrapText;
 
   @override
-  final int? wrapLength;
+  final int? fixedWidth;
+
+  @override
+  final WrapOptions wrapOptions;
 
   @override
   final AnsiTextAlignment alignment;
@@ -619,7 +623,8 @@ class _$AnsiTreeNodeValueThemeImpl extends AnsiTreeNodeValueTheme {
             textStyle == other.textStyle &&
             color == other.color &&
             wrapText == other.wrapText &&
-            wrapLength == other.wrapLength &&
+            fixedWidth == other.fixedWidth &&
+            wrapOptions == other.wrapOptions &&
             alignment == other.alignment;
   }
 
@@ -630,7 +635,8 @@ class _$AnsiTreeNodeValueThemeImpl extends AnsiTreeNodeValueTheme {
       textStyle,
       color,
       wrapText,
-      wrapLength,
+      fixedWidth,
+      wrapOptions,
       alignment,
     ]);
   }
@@ -640,7 +646,7 @@ class _$AnsiTreeNodeValueThemeImpl extends AnsiTreeNodeValueTheme {
     String toStringOutput = 'AnsiTreeNodeValueTheme{<optimized out>}';
     assert(() {
       toStringOutput =
-          'AnsiTreeNodeValueTheme@<$hexIdentity>{textStyle: $textStyle, color: $color, wrapText: $wrapText, wrapLength: $wrapLength, alignment: $alignment}';
+          'AnsiTreeNodeValueTheme@<$hexIdentity>{textStyle: $textStyle, color: $color, wrapText: $wrapText, fixedWidth: $fixedWidth, wrapOptions: $wrapOptions, alignment: $alignment}';
       return true;
     }());
     return toStringOutput;
@@ -665,7 +671,11 @@ class _$AnsiTreeNodeValueThemeCopyWithProxy {
   AnsiTreeNodeValueTheme wrapText(bool newValue) => this(wrapText: newValue);
 
   @pragma('vm:prefer-inline')
-  AnsiTreeNodeValueTheme wrapLength(int? newValue) => this(wrapLength: newValue);
+  AnsiTreeNodeValueTheme fixedWidth(int? newValue) => this(fixedWidth: newValue);
+  @pragma('vm:prefer-inline')
+  $WrapOptionsCopyWithProxyChain<AnsiTreeNodeValueTheme> get wrapOptions =>
+      $WrapOptionsCopyWithProxyChain<AnsiTreeNodeValueTheme>(
+          _value.wrapOptions, (WrapOptions update) => this(wrapOptions: update));
 
   @pragma('vm:prefer-inline')
   AnsiTreeNodeValueTheme alignment(AnsiTextAlignment newValue) => this(alignment: newValue);
@@ -675,14 +685,16 @@ class _$AnsiTreeNodeValueThemeCopyWithProxy {
     final AnsiTextStyle? textStyle,
     final AnsiColor? color,
     final bool? wrapText,
-    final Object? wrapLength = const Object(),
+    final Object? fixedWidth = const Object(),
+    final WrapOptions? wrapOptions,
     final AnsiTextAlignment? alignment,
   }) {
     return _$AnsiTreeNodeValueThemeImpl(
       textStyle: textStyle ?? _value.textStyle,
       color: color ?? _value.color,
       wrapText: wrapText ?? _value.wrapText,
-      wrapLength: identical(wrapLength, const Object()) ? _value.wrapLength : (wrapLength as int?),
+      fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
+      wrapOptions: wrapOptions ?? _value.wrapOptions,
       alignment: alignment ?? _value.alignment,
     );
   }
@@ -704,7 +716,10 @@ class $AnsiTreeNodeValueThemeCopyWithProxyChain<$Result> {
   $Result wrapText(bool newValue) => this(wrapText: newValue);
 
   @pragma('vm:prefer-inline')
-  $Result wrapLength(int? newValue) => this(wrapLength: newValue);
+  $Result fixedWidth(int? newValue) => this(fixedWidth: newValue);
+
+  @pragma('vm:prefer-inline')
+  $Result wrapOptions(WrapOptions newValue) => this(wrapOptions: newValue);
 
   @pragma('vm:prefer-inline')
   $Result alignment(AnsiTextAlignment newValue) => this(alignment: newValue);
@@ -714,14 +729,16 @@ class $AnsiTreeNodeValueThemeCopyWithProxyChain<$Result> {
     final AnsiTextStyle? textStyle,
     final AnsiColor? color,
     final bool? wrapText,
-    final Object? wrapLength = const Object(),
+    final Object? fixedWidth = const Object(),
+    final WrapOptions? wrapOptions,
     final AnsiTextAlignment? alignment,
   }) {
     return _chain(_$AnsiTreeNodeValueThemeImpl(
       textStyle: textStyle ?? _value.textStyle,
       color: color ?? _value.color,
       wrapText: wrapText ?? _value.wrapText,
-      wrapLength: identical(wrapLength, const Object()) ? _value.wrapLength : (wrapLength as int?),
+      fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
+      wrapOptions: wrapOptions ?? _value.wrapOptions,
       alignment: alignment ?? _value.alignment,
     ));
   }

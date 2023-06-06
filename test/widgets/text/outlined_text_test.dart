@@ -1,5 +1,4 @@
 import 'package:ansix/ansix.dart';
-import 'package:ansix/src/theme/wrap_options.dart';
 import 'package:test/test.dart';
 
 void main() {

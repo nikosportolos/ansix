@@ -1,3 +1,7 @@
+import 'package:data_class_plugin/data_class_plugin.dart';
+
+part 'wrap_options.gen.dart';
+
 /// **WrapOptions**
 ///
 /// Define how a text should be wrapped.
@@ -7,14 +11,22 @@
 ///
 /// - [lineBreak] If set to true, a '-' will be added
 ///   when words are split.
-class WrapOptions {
-  const WrapOptions({
-    this.splitWords = false,
-    this.lineBreak = false,
-    this.lineLength,
-  });
+@DataClass()
+abstract class WrapOptions {
+  const WrapOptions.ctor();
 
-  final int? lineLength;
-  final bool splitWords;
-  final bool lineBreak;
+  /// Default constructor
+  const factory WrapOptions({
+    int? lineLength,
+    bool splitWords,
+    bool lineBreak,
+  }) = _$WrapOptionsImpl;
+
+  int? get lineLength;
+
+  @DefaultValue(false)
+  bool get splitWords;
+
+  @DefaultValue(false)
+  bool get lineBreak;
 }

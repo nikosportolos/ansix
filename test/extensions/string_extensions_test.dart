@@ -28,12 +28,40 @@ void main() {
 
   group('escape new lines', () {
     test('removeNewLines', () {
-      const String text = '\n\nthis is \na demo text\n\n';
-      expect(text.removeNewLines, 'this is a demo text');
+      expect('\n\nthis is \na demo text\n\n'.removeNewLines, 'this is a demo text');
     });
     test('lengthWithoutNewLines', () {
-      const String text = '\n\nthis is \na demo text\n\n';
-      expect(text.lengthWithoutNewLines, 19);
+      expect('\n\nthis is \na demo text\n\n'.lengthWithoutNewLines, 19);
+    });
+  });
+
+  group('escape whitespaces', () {
+    test('removeNewLines', () {
+      expect('this is a demo text'.removeWhitespaces, 'thisisademotext');
+    });
+  });
+
+  void validateLines(final List<String> actualLines, final List<String> expectedLines, final int length) {
+    expect(actualLines, expectedLines);
+    for (final String line in actualLines) {
+      expect(line.length, length);
+    }
+  }
+
+  group('wrap text', () {
+    test('wrap', () {
+      validateLines('this is a demo text with rounded borders'.splitEvery(20, splitWords: false, lineBreak: false),
+          <String>['this is a demo text ', 'with rounded borders'], 20);
+    });
+
+    test('split words', () {
+      validateLines('this is a demo text with rounded borders'.splitEvery(5, splitWords: true, lineBreak: false),
+          <String>['this ', 'is a ', 'demo ', 'text ', 'with ', 'round', 'ed bo', 'rders'], 5);
+    });
+
+    test('line break', () {
+      validateLines('this is a demo text with rounded borders'.splitEvery(10, splitWords: true, lineBreak: true),
+          <String>['this is a ', 'demo text ', 'with roun-', 'ded borde-', 'r         '], 10);
     });
   });
 

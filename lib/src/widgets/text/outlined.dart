@@ -1,8 +1,5 @@
-import 'package:ansix/src/theme/alignment.dart';
-import 'package:ansix/src/theme/border/border.dart';
-import 'package:ansix/src/theme/color/color.dart';
-import 'package:ansix/src/widgets/table/table.dart';
-import 'package:ansix/src/widgets/text/text.dart';
+import 'package:ansix/ansix.dart';
+import 'package:ansix/src/theme/wrap_options.dart';
 
 /// **AnsiOutlinedText**
 ///
@@ -18,6 +15,10 @@ import 'package:ansix/src/widgets/text/text.dart';
 /// - [backgroundColor] Background color of the text.
 /// - [padding] Used to pad the text with lines and whitespaces.
 /// - [fixedWidth] Used as a min constrain for the length of the text.
+///   If [wrapText] is set to true, [fixedWidth] will be used as the maximum line length.
+/// - [wrapText] If set to true the text will be wrapped if it exceeds the value of [fixedWidth].
+/// - [wrapOptions] If [wrapText] is set to true, [wrapOptions] will be used to customize how a
+///   text should be wrapped.
 class AnsiOutlinedText extends AnsiText {
   AnsiOutlinedText(
     super.text, {
@@ -28,9 +29,15 @@ class AnsiOutlinedText extends AnsiText {
     super.backgroundColor = AnsiColor.none,
     super.padding = AnsiPadding.none,
     final int? fixedWidth,
+    final bool wrapText = false,
+    final WrapOptions wrapOptions = const WrapOptions(),
   }) {
     final AnsiText ansiText = AnsiText(
-      text,
+      wrapText
+          ? text //
+              .wrapText(fixedWidth: fixedWidth, wrapOptions: wrapOptions)
+              .join(AnsiEscapeCodes.newLine)
+          : text,
       alignment: alignment,
       style: style,
       foregroundColor: foregroundColor,

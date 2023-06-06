@@ -1,5 +1,4 @@
 import 'package:ansix/ansix.dart';
-import 'package:ansix/src/theme/wrap_options.dart';
 
 extension StringX on String {
   /// Wraps a text and returns the lines.
@@ -7,12 +6,27 @@ extension StringX on String {
     final int? fixedWidth,
     required final WrapOptions wrapOptions,
   }) {
+    int? lineLength;
+
     if (fixedWidth != null && length > fixedWidth) {
-      return splitEvery(
-        wrapOptions.lineLength ?? fixedWidth,
-        splitWords: wrapOptions.splitWords,
-        lineBreak: wrapOptions.lineBreak,
-      );
+      lineLength = fixedWidth;
+    }
+
+    if (wrapOptions.lineLength != null && length > wrapOptions.lineLength!) {
+      lineLength = wrapOptions.lineLength!;
+    }
+
+    if (lineLength != null) {
+      final List<String> lines = split(AnsiEscapeCodes.newLine);
+
+      return <String>[
+        for (final String line in lines)
+          ...line.splitEvery(
+            lineLength,
+            splitWords: wrapOptions.splitWords,
+            lineBreak: wrapOptions.lineBreak,
+          )
+      ];
     }
 
     return <String>[this];
@@ -49,7 +63,7 @@ extension StringX on String {
         if (segment.trimRight().length >= length) {
           endIndex--;
           final String line = substring(startIndex, endIndex);
-          result.add(line.endsWith(' ') ? line : '$line-');
+          result.add(line.endsWith(' ') ? line.padRight(length) : '$line-');
 
           if (endIndex >= this.length - 1) {
             finished = true;
@@ -59,7 +73,7 @@ extension StringX on String {
           startIndex = endIndex;
           endIndex += length;
         } else {
-          result.add(segment.padRight(length));
+          result.add(segment.trimLeft().padRight(length));
 
           if (endIndex >= this.length - 1) {
             finished = true;

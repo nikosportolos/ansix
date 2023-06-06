@@ -70,7 +70,7 @@ abstract class AnsiTreeViewTheme {
         alignment: AnsiTextAlignment.center,
         color: AnsiColor.grey69,
         wrapText: true,
-        wrapLength: 120,
+        wrapOptions: WrapOptions(lineLength: 120),
       ),
       headerTheme: AnsiTreeHeaderTheme(
         textTheme: AnsiTextTheme(
@@ -194,7 +194,8 @@ abstract class AnsiTreeNodeValueTheme extends AnsiTreeNodeTheme {
     AnsiTextStyle textStyle,
     AnsiColor color,
     bool wrapText,
-    int? wrapLength,
+    int? fixedWidth,
+    WrapOptions wrapOptions,
     AnsiTextAlignment alignment,
   }) = _$AnsiTreeNodeValueThemeImpl;
 
@@ -212,8 +213,13 @@ abstract class AnsiTreeNodeValueTheme extends AnsiTreeNodeTheme {
   @DefaultValue(false)
   bool get wrapText;
 
-  /// Defines the maximum length of a tree node (including anchors & values).
-  int? get wrapLength;
+  /// Used to define a fixed width for each line of the tree.
+  int? get fixedWidth;
+
+  /// Defines how the text value of the tree node should be wrapped, if [wrapText] is enabled.
+  /// If [fixedWidth] is not null, will be used as the maximum length for each line.
+  @DefaultValue(WrapOptions())
+  WrapOptions get wrapOptions;
 
   /// Defines the alignment relative to the tree node key.
   @DefaultValue(AnsiTextAlignment.left)

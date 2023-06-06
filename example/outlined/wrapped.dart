@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:ansix/ansix.dart';
-import 'package:ansix/src/theme/wrap_options.dart';
 
 void main() {
   AnsiX.ensureSupportsAnsi();

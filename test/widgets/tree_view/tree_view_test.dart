@@ -192,13 +192,130 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
           headerTheme: AnsiTreeHeaderTheme(showHash: false),
           valueTheme: AnsiTreeNodeValueTheme(
             wrapText: true,
-            wrapLength: 100,
+            wrapOptions: WrapOptions(lineLength: 100),
             alignment: AnsiTextAlignment.center,
           ),
         ),
       ).format(map);
       expect(actual.unformatted, treeviewLongTextMock);
     });
+  });
+
+  test('long text with split words', () {
+    final Map<String, dynamic> map = <String, dynamic>{
+      'id': 123,
+      'title': 'Lorem ipsum dolor sit amet',
+      'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+          'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+          'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
+          'nisi ut aliquip ex ea commodo consequat.'
+          'Excepteur sint occaecat cupidatat non proident, '
+          'sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'postedOn': '2023-06-02T13:01:43.597697',
+      'body': '''
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
+    };
+
+    expect(
+      AnsiTreeView(
+        theme: const AnsiTreeViewTheme(
+          headerTheme: AnsiTreeHeaderTheme(showHash: false),
+          valueTheme: AnsiTreeNodeValueTheme(
+            wrapText: true,
+            wrapOptions: WrapOptions(
+              lineLength: 50,
+              splitWords: true,
+            ),
+            alignment: AnsiTextAlignment.center,
+          ),
+        ),
+      ).format(map),
+      treeviewLongTextSplitMock,
+    );
+  });
+
+  test('long text with split words and line breaks', () {
+    final Map<String, dynamic> map = <String, dynamic>{
+      'id': 123,
+      'title': 'Lorem ipsum dolor sit amet',
+      'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+          'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+          'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
+          'nisi ut aliquip ex ea commodo consequat.'
+          'Excepteur sint occaecat cupidatat non proident, '
+          'sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'postedOn': '2023-06-02T13:01:43.597697',
+      'body': '''
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
+    };
+
+    expect(
+      AnsiTreeView(
+        theme: const AnsiTreeViewTheme(
+          headerTheme: AnsiTreeHeaderTheme(showHash: false),
+          valueTheme: AnsiTreeNodeValueTheme(
+            wrapText: true,
+            wrapOptions: WrapOptions(
+              lineLength: 75,
+              splitWords: true,
+              lineBreak: true,
+            ),
+            alignment: AnsiTextAlignment.center,
+          ),
+        ),
+      ).format(map),
+      treeviewLongTextSplitAndLineBreaksMock,
+    );
+  });
+
+  test('long text with split words, line breaks and fixed length', () {
+    final Map<String, dynamic> map = <String, dynamic>{
+      'id': 123,
+      'title': 'Lorem ipsum dolor sit amet',
+      'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+          'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+          'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
+          'nisi ut aliquip ex ea commodo consequat.'
+          'Excepteur sint occaecat cupidatat non proident, '
+          'sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'postedOn': '2023-06-02T13:01:43.597697',
+      'body': '''
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
+    };
+
+    expect(
+      AnsiTreeView(
+        theme: const AnsiTreeViewTheme(
+          headerTheme: AnsiTreeHeaderTheme(showHash: false),
+          valueTheme: AnsiTreeNodeValueTheme(
+            fixedWidth: 75,
+            wrapText: true,
+            wrapOptions: WrapOptions(
+              lineLength: 75,
+              splitWords: true,
+              lineBreak: true,
+            ),
+            alignment: AnsiTextAlignment.center,
+          ),
+        ),
+      ).format(map),
+      treeviewLongTextSplitLineBreaksFixedMock,
+    );
   });
 
   test('long text with colors', () {
@@ -234,7 +351,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
       keyTheme: AnsiTreeNodeKeyTheme(color: AnsiColor.darkOrange3),
       valueTheme: AnsiTreeNodeValueTheme(
         wrapText: true,
-        wrapLength: 100,
+        wrapOptions: WrapOptions(lineLength: 100),
         color: AnsiColor.cadetBlue,
       ),
     )).format(map);

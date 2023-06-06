@@ -192,7 +192,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
           headerTheme: AnsiTreeHeaderTheme(showHash: false),
           valueTheme: AnsiTreeNodeValueTheme(
             wrapText: true,
-            wrapLength: 120,
+            wrapLength: 100,
             alignment: AnsiTextAlignment.center,
           ),
         ),
@@ -222,15 +222,22 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
     };
 
     final String actual = AnsiTreeView(
-      theme: const AnsiTreeViewTheme(
-        headerTheme: AnsiTreeHeaderTheme(showHash: false),
-        valueTheme: AnsiTreeNodeValueTheme(
-          wrapText: true,
-          wrapLength: 120,
-          color: AnsiColor.cadetBlue,
+        theme: const AnsiTreeViewTheme(
+      headerTheme: AnsiTreeHeaderTheme(
+        showHash: false,
+        textTheme: AnsiTextTheme(
+          foregroundColor: AnsiColor.salmon1,
+          backgroundColor: AnsiColor.grey11,
         ),
       ),
-    ).format(map);
+      anchorTheme: AnsiTreeAnchorTheme(color: AnsiColor.yellow6),
+      keyTheme: AnsiTreeNodeKeyTheme(color: AnsiColor.darkOrange3),
+      valueTheme: AnsiTreeNodeValueTheme(
+        wrapText: true,
+        wrapLength: 100,
+        color: AnsiColor.cadetBlue,
+      ),
+    )).format(map);
     expect(actual, treeviewLongTextWithColorsMock);
   });
 
@@ -286,9 +293,9 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
     final AnsiTreeViewTheme theme = AnsiTreeViewTheme.$default().copyWith.headerTheme.showHash(false);
 
     final Map<AnsiTextAlignment, String> testCases = <AnsiTextAlignment, String>{
-      AnsiTextAlignment.center: treeviewMixedMock,
-      AnsiTextAlignment.left: treeviewMixedMock1,
-      AnsiTextAlignment.right: treeviewMixedMock2,
+      AnsiTextAlignment.center: treeviewMixedMockCenter,
+      AnsiTextAlignment.left: treeviewMixedMockLeft,
+      AnsiTextAlignment.right: treeviewMixedMockRight,
     };
 
     for (final AnsiTextAlignment alignment in AnsiTextAlignment.values) {

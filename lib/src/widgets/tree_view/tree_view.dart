@@ -137,7 +137,7 @@ class AnsiTreeView {
     if (theme.valueTheme.wrapText) {
       for (final String line in lines) {
         if (bufferLength + line.length > chunkSize) {
-          final List<String> newLines = text.splitEvery(chunkSize - bufferLength);
+          final List<String> newLines = text.splitEvery(chunkSize - bufferLength - 1);
           text = newLines.join(AnsiEscapeCodes.newLine);
         }
       }

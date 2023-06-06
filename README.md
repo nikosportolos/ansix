@@ -445,6 +445,8 @@ AnsiOutlinedText(
   super.backgroundColor = AnsiColor.none,
   super.padding = AnsiPadding.none,
   final int? fixedWidth,
+  final bool wrapText = false,
+  final WrapOptions wrapOptions = const WrapOptions(),
 })
 ```
 

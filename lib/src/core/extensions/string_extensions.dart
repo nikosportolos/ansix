@@ -1,11 +1,92 @@
 import 'package:ansix/ansix.dart';
+import 'package:ansix/src/theme/wrap_options.dart';
 
 extension StringX on String {
+  /// Wraps a text and returns the lines.
+  List<String> wrapText({
+    final int? fixedWidth,
+    required final WrapOptions wrapOptions,
+  }) {
+    if (fixedWidth != null && length > fixedWidth) {
+      return splitEvery(
+        wrapOptions.lineLength ?? fixedWidth,
+        splitWords: wrapOptions.splitWords,
+        lineBreak: wrapOptions.lineBreak,
+      );
+    }
+
+    return <String>[this];
+  }
+
   /// Used to split a string every X characters that are defined from the [length] parameter.
-  List<String> splitEvery(final int length) {
-    final RegExp regex = RegExp('.{1,$length}(?=\\s|\$)');
-    final Iterable<Match> matches = regex.allMatches(this);
-    return matches.map((Match match) => match.group(0)?.trim() ?? '').toList();
+  List<String> splitEvery(
+    final int length, {
+    final bool splitWords = false,
+    final bool lineBreak = false,
+  }) {
+    if (!splitWords) {
+      final RegExp regex = RegExp('.{1,$length}(?=\\s|\\b|\$)');
+      final Iterable<Match> matches = regex.allMatches(this);
+      return matches.map((Match match) => match.group(0)?.trimLeft() ?? '').toList();
+    }
+
+    final List<String> result = <String>[];
+
+    if (lineBreak) {
+      int index = 0;
+      int? startIndex;
+      int? endIndex;
+
+      bool finished = false;
+      while (!finished) {
+        startIndex ??= index * length;
+        endIndex ??= (index + 1) * length;
+        if (endIndex >= this.length - 1) {
+          endIndex = this.length - 1;
+        }
+
+        final String segment = substring(startIndex, endIndex);
+        if (segment.trimRight().length >= length) {
+          endIndex--;
+          final String line = substring(startIndex, endIndex);
+          result.add(line.endsWith(' ') ? line : '$line-');
+
+          if (endIndex >= this.length - 1) {
+            finished = true;
+            break;
+          }
+
+          startIndex = endIndex;
+          endIndex += length;
+        } else {
+          result.add(segment.padRight(length));
+
+          if (endIndex >= this.length - 1) {
+            finished = true;
+            break;
+          }
+
+          startIndex = null;
+          endIndex = null;
+        }
+
+        index++;
+      }
+
+      return result;
+    }
+
+    final int count = (this.length / length).ceil();
+
+    for (int i = 0; i < count; i++) {
+      final int startIndex = i * length;
+      final int endIndex = (i + 1) * length;
+      final bool isLastSegment = i == count - 1;
+      final String segment = isLastSegment ? substring(startIndex) : substring(startIndex, endIndex);
+      result.add(segment.trimLeft());
+    }
+
+    return result;
   }
 }
 
@@ -21,6 +102,9 @@ extension AnsiString on String {
 
   /// Returns the length of the string without counting any new line escape codes.
   int get lengthWithoutNewLines => removeNewLines.length;
+
+  /// Returns the string with no whitespaces.
+  String get removeWhitespaces => replaceAll(RegExp(r'\s'), '');
 
   /// Adds an [AnsiStyle].
   String withStyle(final AnsiStyle style) {

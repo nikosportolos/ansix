@@ -55,21 +55,39 @@ class _$WrapOptionsImpl extends WrapOptions {
   Type get runtimeType => WrapOptions;
 }
 
-class _$WrapOptionsCopyWithProxy {
-  _$WrapOptionsCopyWithProxy(this._value);
+abstract interface class _WrapOptionsCopyWithProxy {
+  WrapOptions lineLength(int? newValue);
+
+  WrapOptions splitWords(bool newValue);
+
+  WrapOptions lineBreak(bool newValue);
+
+  WrapOptions call({
+    final int? lineLength,
+    final bool splitWords,
+    final bool lineBreak,
+  });
+}
+
+class _WrapOptionsCopyWithProxyImpl implements _WrapOptionsCopyWithProxy {
+  _WrapOptionsCopyWithProxyImpl(this._value);
 
   final WrapOptions _value;
 
   @pragma('vm:prefer-inline')
+  @override
   WrapOptions lineLength(int? newValue) => this(lineLength: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   WrapOptions splitWords(bool newValue) => this(splitWords: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   WrapOptions lineBreak(bool newValue) => this(lineBreak: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   WrapOptions call({
     final Object? lineLength = const Object(),
     final bool? splitWords,
@@ -83,22 +101,43 @@ class _$WrapOptionsCopyWithProxy {
   }
 }
 
-class $WrapOptionsCopyWithProxyChain<$Result> {
-  $WrapOptionsCopyWithProxyChain(this._value, this._chain);
+sealed class $WrapOptionsCopyWithProxyChain<$Result> {
+  factory $WrapOptionsCopyWithProxyChain(final WrapOptions value, final $Result Function(WrapOptions update) chain) =
+      _WrapOptionsCopyWithProxyChainImpl<$Result>;
+
+  $Result lineLength(int? newValue);
+
+  $Result splitWords(bool newValue);
+
+  $Result lineBreak(bool newValue);
+
+  $Result call({
+    final int? lineLength,
+    final bool splitWords,
+    final bool lineBreak,
+  });
+}
+
+class _WrapOptionsCopyWithProxyChainImpl<$Result> implements $WrapOptionsCopyWithProxyChain<$Result> {
+  _WrapOptionsCopyWithProxyChainImpl(this._value, this._chain);
 
   final WrapOptions _value;
   final $Result Function(WrapOptions update) _chain;
 
   @pragma('vm:prefer-inline')
+  @override
   $Result lineLength(int? newValue) => this(lineLength: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result splitWords(bool newValue) => this(splitWords: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result lineBreak(bool newValue) => this(lineBreak: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result call({
     final Object? lineLength = const Object(),
     final bool? splitWords,
@@ -113,5 +152,5 @@ class $WrapOptionsCopyWithProxyChain<$Result> {
 }
 
 extension $WrapOptionsExtension on WrapOptions {
-  _$WrapOptionsCopyWithProxy get copyWith => _$WrapOptionsCopyWithProxy(this);
+  _WrapOptionsCopyWithProxy get copyWith => _WrapOptionsCopyWithProxyImpl(this);
 }

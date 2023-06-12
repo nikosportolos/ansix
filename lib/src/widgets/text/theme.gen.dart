@@ -73,30 +73,60 @@ class _$AnsiTextThemeImpl extends AnsiTextTheme {
   Type get runtimeType => AnsiTextTheme;
 }
 
-class _$AnsiTextThemeCopyWithProxy {
-  _$AnsiTextThemeCopyWithProxy(this._value);
+abstract interface class _AnsiTextThemeCopyWithProxy {
+  AnsiTextTheme foregroundColor(AnsiColor newValue);
+
+  AnsiTextTheme backgroundColor(AnsiColor newValue);
+
+  AnsiTextTheme style(AnsiTextStyle newValue);
+
+  AnsiTextTheme padding(AnsiPadding newValue);
+
+  AnsiTextTheme alignment(AnsiTextAlignment newValue);
+
+  AnsiTextTheme fixedWidth(int? newValue);
+
+  AnsiTextTheme call({
+    final AnsiColor foregroundColor,
+    final AnsiColor backgroundColor,
+    final AnsiTextStyle style,
+    final AnsiPadding padding,
+    final AnsiTextAlignment alignment,
+    final int? fixedWidth,
+  });
+}
+
+class _AnsiTextThemeCopyWithProxyImpl implements _AnsiTextThemeCopyWithProxy {
+  _AnsiTextThemeCopyWithProxyImpl(this._value);
 
   final AnsiTextTheme _value;
 
   @pragma('vm:prefer-inline')
+  @override
   AnsiTextTheme foregroundColor(AnsiColor newValue) => this(foregroundColor: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   AnsiTextTheme backgroundColor(AnsiColor newValue) => this(backgroundColor: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   AnsiTextTheme style(AnsiTextStyle newValue) => this(style: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   AnsiTextTheme padding(AnsiPadding newValue) => this(padding: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   AnsiTextTheme alignment(AnsiTextAlignment newValue) => this(alignment: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   AnsiTextTheme fixedWidth(int? newValue) => this(fixedWidth: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   AnsiTextTheme call({
     final AnsiColor? foregroundColor,
     final AnsiColor? backgroundColor,
@@ -116,31 +146,65 @@ class _$AnsiTextThemeCopyWithProxy {
   }
 }
 
-class $AnsiTextThemeCopyWithProxyChain<$Result> {
-  $AnsiTextThemeCopyWithProxyChain(this._value, this._chain);
+sealed class $AnsiTextThemeCopyWithProxyChain<$Result> {
+  factory $AnsiTextThemeCopyWithProxyChain(
+          final AnsiTextTheme value, final $Result Function(AnsiTextTheme update) chain) =
+      _AnsiTextThemeCopyWithProxyChainImpl<$Result>;
+
+  $Result foregroundColor(AnsiColor newValue);
+
+  $Result backgroundColor(AnsiColor newValue);
+
+  $Result style(AnsiTextStyle newValue);
+
+  $Result padding(AnsiPadding newValue);
+
+  $Result alignment(AnsiTextAlignment newValue);
+
+  $Result fixedWidth(int? newValue);
+
+  $Result call({
+    final AnsiColor foregroundColor,
+    final AnsiColor backgroundColor,
+    final AnsiTextStyle style,
+    final AnsiPadding padding,
+    final AnsiTextAlignment alignment,
+    final int? fixedWidth,
+  });
+}
+
+class _AnsiTextThemeCopyWithProxyChainImpl<$Result> implements $AnsiTextThemeCopyWithProxyChain<$Result> {
+  _AnsiTextThemeCopyWithProxyChainImpl(this._value, this._chain);
 
   final AnsiTextTheme _value;
   final $Result Function(AnsiTextTheme update) _chain;
 
   @pragma('vm:prefer-inline')
+  @override
   $Result foregroundColor(AnsiColor newValue) => this(foregroundColor: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result backgroundColor(AnsiColor newValue) => this(backgroundColor: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result style(AnsiTextStyle newValue) => this(style: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result padding(AnsiPadding newValue) => this(padding: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result alignment(AnsiTextAlignment newValue) => this(alignment: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result fixedWidth(int? newValue) => this(fixedWidth: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result call({
     final AnsiColor? foregroundColor,
     final AnsiColor? backgroundColor,
@@ -161,5 +225,5 @@ class $AnsiTextThemeCopyWithProxyChain<$Result> {
 }
 
 extension $AnsiTextThemeExtension on AnsiTextTheme {
-  _$AnsiTextThemeCopyWithProxy get copyWith => _$AnsiTextThemeCopyWithProxy(this);
+  _AnsiTextThemeCopyWithProxy get copyWith => _AnsiTextThemeCopyWithProxyImpl(this);
 }

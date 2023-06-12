@@ -54,21 +54,39 @@ class _$AnsiBorderImpl extends AnsiBorder {
   Type get runtimeType => AnsiBorder;
 }
 
-class _$AnsiBorderCopyWithProxy {
-  _$AnsiBorderCopyWithProxy(this._value);
+abstract interface class _AnsiBorderCopyWithProxy {
+  AnsiBorder type(AnsiBorderType newValue);
+
+  AnsiBorder style(AnsiBorderStyle newValue);
+
+  AnsiBorder color(AnsiColor newValue);
+
+  AnsiBorder call({
+    final AnsiBorderType type,
+    final AnsiBorderStyle style,
+    final AnsiColor color,
+  });
+}
+
+class _AnsiBorderCopyWithProxyImpl implements _AnsiBorderCopyWithProxy {
+  _AnsiBorderCopyWithProxyImpl(this._value);
 
   final AnsiBorder _value;
 
   @pragma('vm:prefer-inline')
+  @override
   AnsiBorder type(AnsiBorderType newValue) => this(type: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   AnsiBorder style(AnsiBorderStyle newValue) => this(style: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   AnsiBorder color(AnsiColor newValue) => this(color: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   AnsiBorder call({
     final AnsiBorderType? type,
     final AnsiBorderStyle? style,
@@ -82,22 +100,43 @@ class _$AnsiBorderCopyWithProxy {
   }
 }
 
-class $AnsiBorderCopyWithProxyChain<$Result> {
-  $AnsiBorderCopyWithProxyChain(this._value, this._chain);
+sealed class $AnsiBorderCopyWithProxyChain<$Result> {
+  factory $AnsiBorderCopyWithProxyChain(final AnsiBorder value, final $Result Function(AnsiBorder update) chain) =
+      _AnsiBorderCopyWithProxyChainImpl<$Result>;
+
+  $Result type(AnsiBorderType newValue);
+
+  $Result style(AnsiBorderStyle newValue);
+
+  $Result color(AnsiColor newValue);
+
+  $Result call({
+    final AnsiBorderType type,
+    final AnsiBorderStyle style,
+    final AnsiColor color,
+  });
+}
+
+class _AnsiBorderCopyWithProxyChainImpl<$Result> implements $AnsiBorderCopyWithProxyChain<$Result> {
+  _AnsiBorderCopyWithProxyChainImpl(this._value, this._chain);
 
   final AnsiBorder _value;
   final $Result Function(AnsiBorder update) _chain;
 
   @pragma('vm:prefer-inline')
+  @override
   $Result type(AnsiBorderType newValue) => this(type: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result style(AnsiBorderStyle newValue) => this(style: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result color(AnsiColor newValue) => this(color: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result call({
     final AnsiBorderType? type,
     final AnsiBorderStyle? style,
@@ -112,5 +151,5 @@ class $AnsiBorderCopyWithProxyChain<$Result> {
 }
 
 extension $AnsiBorderExtension on AnsiBorder {
-  _$AnsiBorderCopyWithProxy get copyWith => _$AnsiBorderCopyWithProxy(this);
+  _AnsiBorderCopyWithProxy get copyWith => _AnsiBorderCopyWithProxyImpl(this);
 }

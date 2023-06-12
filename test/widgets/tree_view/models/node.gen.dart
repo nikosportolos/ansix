@@ -47,21 +47,40 @@ class _$NodeImpl extends Node {
   Type get runtimeType => Node;
 }
 
-class _$NodeCopyWithProxy {
-  _$NodeCopyWithProxy(this._value);
+abstract interface class _NodeCopyWithProxy {
+  Node id(String newValue);
+
+  $NodeCopyWithProxyChain<Node>? get child;
+
+  Node nodes(List<Node> newValue);
+
+  Node call({
+    final String id,
+    final Node? child,
+    final List<Node> nodes,
+  });
+}
+
+class _NodeCopyWithProxyImpl implements _NodeCopyWithProxy {
+  _NodeCopyWithProxyImpl(this._value);
 
   final Node _value;
 
   @pragma('vm:prefer-inline')
+  @override
   Node id(String newValue) => this(id: newValue);
+
   @pragma('vm:prefer-inline')
+  @override
   $NodeCopyWithProxyChain<Node>? get child =>
       _value.child == null ? null : $NodeCopyWithProxyChain<Node>(_value.child!, (Node? update) => this(child: update));
 
   @pragma('vm:prefer-inline')
+  @override
   Node nodes(List<Node> newValue) => this(nodes: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   Node call({
     final String? id,
     final Object? child = const Object(),
@@ -75,22 +94,43 @@ class _$NodeCopyWithProxy {
   }
 }
 
-class $NodeCopyWithProxyChain<$Result> {
-  $NodeCopyWithProxyChain(this._value, this._chain);
+sealed class $NodeCopyWithProxyChain<$Result> {
+  factory $NodeCopyWithProxyChain(final Node value, final $Result Function(Node update) chain) =
+      _NodeCopyWithProxyChainImpl<$Result>;
+
+  $Result id(String newValue);
+
+  $Result child(Node? newValue);
+
+  $Result nodes(List<Node> newValue);
+
+  $Result call({
+    final String id,
+    final Node? child,
+    final List<Node> nodes,
+  });
+}
+
+class _NodeCopyWithProxyChainImpl<$Result> implements $NodeCopyWithProxyChain<$Result> {
+  _NodeCopyWithProxyChainImpl(this._value, this._chain);
 
   final Node _value;
   final $Result Function(Node update) _chain;
 
   @pragma('vm:prefer-inline')
+  @override
   $Result id(String newValue) => this(id: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result child(Node? newValue) => this(child: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result nodes(List<Node> newValue) => this(nodes: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result call({
     final String? id,
     final Object? child = const Object(),
@@ -105,5 +145,5 @@ class $NodeCopyWithProxyChain<$Result> {
 }
 
 extension $NodeExtension on Node {
-  _$NodeCopyWithProxy get copyWith => _$NodeCopyWithProxy(this);
+  _NodeCopyWithProxy get copyWith => _NodeCopyWithProxyImpl(this);
 }

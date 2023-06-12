@@ -96,33 +96,68 @@ class _$UserImpl extends User {
   Type get runtimeType => User;
 }
 
-class _$UserCopyWithProxy {
-  _$UserCopyWithProxy(this._value);
+abstract interface class _UserCopyWithProxy {
+  User id(String newValue);
+
+  User name(String newValue);
+
+  $EmailCopyWithProxyChain<User> get email;
+
+  User age(int newValue);
+
+  User phone(String newValue);
+
+  User addresses(List<Address> newValue);
+
+  User groups(List<String> newValue);
+
+  User call({
+    final String id,
+    final String name,
+    final Email email,
+    final int age,
+    final String phone,
+    final List<Address> addresses,
+    final List<String> groups,
+  });
+}
+
+class _UserCopyWithProxyImpl implements _UserCopyWithProxy {
+  _UserCopyWithProxyImpl(this._value);
 
   final User _value;
 
   @pragma('vm:prefer-inline')
+  @override
   User id(String newValue) => this(id: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   User name(String newValue) => this(name: newValue);
+
   @pragma('vm:prefer-inline')
+  @override
   $EmailCopyWithProxyChain<User> get email =>
       $EmailCopyWithProxyChain<User>(_value.email, (Email update) => this(email: update));
 
   @pragma('vm:prefer-inline')
+  @override
   User age(int newValue) => this(age: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   User phone(String newValue) => this(phone: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   User addresses(List<Address> newValue) => this(addresses: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   User groups(List<String> newValue) => this(groups: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   User call({
     final String? id,
     final String? name,
@@ -144,34 +179,71 @@ class _$UserCopyWithProxy {
   }
 }
 
-class $UserCopyWithProxyChain<$Result> {
-  $UserCopyWithProxyChain(this._value, this._chain);
+sealed class $UserCopyWithProxyChain<$Result> {
+  factory $UserCopyWithProxyChain(final User value, final $Result Function(User update) chain) =
+      _UserCopyWithProxyChainImpl<$Result>;
+
+  $Result id(String newValue);
+
+  $Result name(String newValue);
+
+  $Result email(Email newValue);
+
+  $Result age(int newValue);
+
+  $Result phone(String newValue);
+
+  $Result addresses(List<Address> newValue);
+
+  $Result groups(List<String> newValue);
+
+  $Result call({
+    final String id,
+    final String name,
+    final Email email,
+    final int age,
+    final String phone,
+    final List<Address> addresses,
+    final List<String> groups,
+  });
+}
+
+class _UserCopyWithProxyChainImpl<$Result> implements $UserCopyWithProxyChain<$Result> {
+  _UserCopyWithProxyChainImpl(this._value, this._chain);
 
   final User _value;
   final $Result Function(User update) _chain;
 
   @pragma('vm:prefer-inline')
+  @override
   $Result id(String newValue) => this(id: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result name(String newValue) => this(name: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result email(Email newValue) => this(email: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result age(int newValue) => this(age: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result phone(String newValue) => this(phone: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result addresses(List<Address> newValue) => this(addresses: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result groups(List<String> newValue) => this(groups: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result call({
     final String? id,
     final String? name,
@@ -194,7 +266,7 @@ class $UserCopyWithProxyChain<$Result> {
 }
 
 extension $UserExtension on User {
-  _$UserCopyWithProxy get copyWith => _$UserCopyWithProxy(this);
+  _UserCopyWithProxy get copyWith => _UserCopyWithProxyImpl(this);
 }
 
 class _$AddressImpl extends Address {
@@ -256,21 +328,39 @@ class _$AddressImpl extends Address {
   Type get runtimeType => Address;
 }
 
-class _$AddressCopyWithProxy {
-  _$AddressCopyWithProxy(this._value);
+abstract interface class _AddressCopyWithProxy {
+  Address street(String newValue);
+
+  Address city(String newValue);
+
+  Address state(String newValue);
+
+  Address call({
+    final String street,
+    final String city,
+    final String state,
+  });
+}
+
+class _AddressCopyWithProxyImpl implements _AddressCopyWithProxy {
+  _AddressCopyWithProxyImpl(this._value);
 
   final Address _value;
 
   @pragma('vm:prefer-inline')
+  @override
   Address street(String newValue) => this(street: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   Address city(String newValue) => this(city: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   Address state(String newValue) => this(state: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   Address call({
     final String? street,
     final String? city,
@@ -284,22 +374,43 @@ class _$AddressCopyWithProxy {
   }
 }
 
-class $AddressCopyWithProxyChain<$Result> {
-  $AddressCopyWithProxyChain(this._value, this._chain);
+sealed class $AddressCopyWithProxyChain<$Result> {
+  factory $AddressCopyWithProxyChain(final Address value, final $Result Function(Address update) chain) =
+      _AddressCopyWithProxyChainImpl<$Result>;
+
+  $Result street(String newValue);
+
+  $Result city(String newValue);
+
+  $Result state(String newValue);
+
+  $Result call({
+    final String street,
+    final String city,
+    final String state,
+  });
+}
+
+class _AddressCopyWithProxyChainImpl<$Result> implements $AddressCopyWithProxyChain<$Result> {
+  _AddressCopyWithProxyChainImpl(this._value, this._chain);
 
   final Address _value;
   final $Result Function(Address update) _chain;
 
   @pragma('vm:prefer-inline')
+  @override
   $Result street(String newValue) => this(street: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result city(String newValue) => this(city: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result state(String newValue) => this(state: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result call({
     final String? street,
     final String? city,
@@ -314,7 +425,7 @@ class $AddressCopyWithProxyChain<$Result> {
 }
 
 extension $AddressExtension on Address {
-  _$AddressCopyWithProxy get copyWith => _$AddressCopyWithProxy(this);
+  _AddressCopyWithProxy get copyWith => _AddressCopyWithProxyImpl(this);
 }
 
 class _$EmailImpl extends Email {
@@ -376,21 +487,39 @@ class _$EmailImpl extends Email {
   Type get runtimeType => Email;
 }
 
-class _$EmailCopyWithProxy {
-  _$EmailCopyWithProxy(this._value);
+abstract interface class _EmailCopyWithProxy {
+  Email primary(String newValue);
+
+  Email secondary(String? newValue);
+
+  Email personal(String? newValue);
+
+  Email call({
+    final String primary,
+    final String? secondary,
+    final String? personal,
+  });
+}
+
+class _EmailCopyWithProxyImpl implements _EmailCopyWithProxy {
+  _EmailCopyWithProxyImpl(this._value);
 
   final Email _value;
 
   @pragma('vm:prefer-inline')
+  @override
   Email primary(String newValue) => this(primary: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   Email secondary(String? newValue) => this(secondary: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   Email personal(String? newValue) => this(personal: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   Email call({
     final String? primary,
     final Object? secondary = const Object(),
@@ -404,22 +533,43 @@ class _$EmailCopyWithProxy {
   }
 }
 
-class $EmailCopyWithProxyChain<$Result> {
-  $EmailCopyWithProxyChain(this._value, this._chain);
+sealed class $EmailCopyWithProxyChain<$Result> {
+  factory $EmailCopyWithProxyChain(final Email value, final $Result Function(Email update) chain) =
+      _EmailCopyWithProxyChainImpl<$Result>;
+
+  $Result primary(String newValue);
+
+  $Result secondary(String? newValue);
+
+  $Result personal(String? newValue);
+
+  $Result call({
+    final String primary,
+    final String? secondary,
+    final String? personal,
+  });
+}
+
+class _EmailCopyWithProxyChainImpl<$Result> implements $EmailCopyWithProxyChain<$Result> {
+  _EmailCopyWithProxyChainImpl(this._value, this._chain);
 
   final Email _value;
   final $Result Function(Email update) _chain;
 
   @pragma('vm:prefer-inline')
+  @override
   $Result primary(String newValue) => this(primary: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result secondary(String? newValue) => this(secondary: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result personal(String? newValue) => this(personal: newValue);
 
   @pragma('vm:prefer-inline')
+  @override
   $Result call({
     final String? primary,
     final Object? secondary = const Object(),
@@ -434,5 +584,5 @@ class $EmailCopyWithProxyChain<$Result> {
 }
 
 extension $EmailExtension on Email {
-  _$EmailCopyWithProxy get copyWith => _$EmailCopyWithProxy(this);
+  _EmailCopyWithProxy get copyWith => _EmailCopyWithProxyImpl(this);
 }

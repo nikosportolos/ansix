@@ -13,7 +13,7 @@ inputs:
   dart_sdk:
     description: "Specify the Dart SDK version."
     required: false
-    default: "2.19.6"
+    default: "3.0.3"
   analyze_directories:
     description: "Specify the directories to run dart analyze."
     required: false

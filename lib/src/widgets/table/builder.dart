@@ -1,3 +1,4 @@
+import 'package:ansix/src/core/escape_codes.dart';
 import 'package:ansix/src/core/extensions/extensions.dart';
 import 'package:ansix/src/theme/border/border.dart';
 import 'package:ansix/src/widgets/table/theme.dart';
@@ -14,6 +15,7 @@ class AnsiBorderBuilder {
     required final List<AnsiText> data,
     required final int index,
     required final int total,
+    required final bool transparent,
   }) {
     final BorderBuilderTheme theme = BorderBuilderTheme.fromBorder(border);
     final StringBuffer buffer = StringBuffer();
@@ -25,6 +27,7 @@ class AnsiBorderBuilder {
       final StringBuffer buffer = StringBuffer()
         ..writeAll(
           <String>[
+            if (!transparent) AnsiEscapeCodes.reset,
             set.start,
             for (int i = 0; i < data.length; i++) ...<String>[
               set.line * (data[i].width),
@@ -41,6 +44,10 @@ class AnsiBorderBuilder {
       buffer
         ..write(getBorder(theme.topBorder))
         ..writeln();
+    }
+
+    if (!transparent) {
+      buffer.write(AnsiEscapeCodes.reset);
     }
 
     buffer

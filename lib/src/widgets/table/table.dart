@@ -31,12 +31,12 @@ class AnsiTable {
     formattedText = (StringBuffer()
           ..writeAll(
             <String>[
-              if (!transparent) AnsiEscapeCodes.reset,
               builder.print(
                 border: border.type.hasHeader ? border.copyWith.type(AnsiBorderType.all) : border,
                 data: rows[0].data,
                 index: 0,
                 total: border.type.hasHeader ? 1 : rows.length,
+                transparent: transparent,
               ),
               if (rows.length > 1) ...<String>[
                 if (border.type.hasHeader) AnsiEscapeCodes.newLine,
@@ -47,6 +47,7 @@ class AnsiTable {
                         data: rows[i].data,
                         index: i,
                         total: border.type.hasFooter ? rows.length - 1 : rows.length,
+                        transparent: transparent,
                       )
                       .toString(),
                 if (border.type.hasFooter) AnsiEscapeCodes.newLine,
@@ -55,6 +56,7 @@ class AnsiTable {
                   data: rows[rows.length - 1].data,
                   index: border.type.hasFooter ? 0 : rows.length - 1,
                   total: border.type.hasFooter ? 1 : rows.length,
+                  transparent: transparent,
                 ),
               ],
             ],

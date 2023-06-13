@@ -18,9 +18,8 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v3
-      - uses: nikosportolos/dart_package@v0.0.5
+      - uses: nikosportolos/dart_package@v0.0.6
         with:
-          dart_sdk: 3.0.0
           coverage: ${{ inputs.coverage }}
           codecov: true
           codecov_token: ${{ secrets.codecov_token }}

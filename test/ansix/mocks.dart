@@ -3,6 +3,9 @@ part of 'ansix_test.dart';
 class MockProcessManager extends Mock implements ProcessManager {
   @override
   bool detectWindowsAnsiSupport();
+
+  @override
+  TerminalType determineTerminalType();
 }
 
 class MockAnsiTerminal extends Mock implements AnsiTerminal {

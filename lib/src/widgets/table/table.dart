@@ -77,13 +77,21 @@ class AnsiTable {
   /// - [data] Will use the input list of data to build an [AnsiTableColumn].
   /// - [fixedWidth] If set will use this value as default width for all table cells.
   /// - [border] The [AnsiBorder] that will be used to draw the table with.
-  /// - [defaultAlignment] The default [AnsiTextAlignment] that will be used for all table cells.
+  /// - [headerTextTheme] The default [AnsiTextTheme] that will be used for styling the table header cells
+  ///   that are not of type [AnsiText].
+  /// - [cellTextTheme] The default [AnsiTextTheme] that will be used for styling all table cells
+  ///   that are not of type [AnsiText].
+  /// - [footerTextTheme] The default [AnsiTextTheme] that will be used for styling the table footer cells
+  ///   that are not of type [AnsiText].
   /// - [transparent] If set to true any external formatting will affect the [AnsiTable]. Defaults to *true*.
   factory AnsiTable.fromList(
     final List<Object?> data, {
     final int? fixedWidth,
     final AnsiBorder border = const AnsiBorder(),
     final AnsiTextAlignment defaultAlignment = AnsiTextAlignment.left,
+    final AnsiTextTheme headerTextTheme = const AnsiTextTheme(),
+    final AnsiTextTheme cellTextTheme = const AnsiTextTheme(),
+    final AnsiTextTheme footerTextTheme = const AnsiTextTheme(),
     final bool transparent = true,
   }) {
     return AnsiTable(
@@ -91,7 +99,9 @@ class AnsiTable {
       rows: AnsiTableColumn(
         data: data,
         fixedWidth: fixedWidth,
-        defaultAlignment: defaultAlignment,
+        headerTextTheme: headerTextTheme,
+        cellTextTheme: cellTextTheme,
+        footerTextTheme: footerTextTheme,
       ).rows,
       transparent: transparent,
     );
@@ -105,7 +115,12 @@ class AnsiTable {
   /// - [fixedWidth] If set will use this value as default width for all table cells.
   /// - [keepSameWidth] If set to true will find the max cell width and use it for the whole table.
   /// - [border] The [AnsiBorder] that will be used to draw the table with.
-  /// - [defaultAlignment] The default [AnsiTextAlignment] that will be used for all table cells.
+  /// - [headerTextTheme] The default [AnsiTextTheme] that will be used for styling the table header cells
+  ///   that are not of type [AnsiText].
+  /// - [cellTextTheme] The default [AnsiTextTheme] that will be used for styling all table cells
+  ///   that are not of type [AnsiText].
+  /// - [footerTextTheme] The default [AnsiTextTheme] that will be used for styling the table footer cells
+  ///   that are not of type [AnsiText].
   /// - [orientation] The [AnsiOrientation] that will be used to draw the table.
   /// - [transparent] If set to true any external formatting will affect the [AnsiTable]. Defaults to *true*.
   factory AnsiTable.fromMap(
@@ -113,8 +128,10 @@ class AnsiTable {
     final int? fixedWidth,
     final bool keepSameWidth = false,
     final AnsiBorder border = const AnsiBorder(),
-    final AnsiTextAlignment defaultAlignment = AnsiTextAlignment.left,
     final AnsiOrientation orientation = AnsiOrientation.vertical,
+    final AnsiTextTheme headerTextTheme = const AnsiTextTheme(),
+    final AnsiTextTheme cellTextTheme = const AnsiTextTheme(),
+    final AnsiTextTheme footerTextTheme = const AnsiTextTheme(),
     final bool transparent = true,
   }) {
     int maxRows = 0;
@@ -141,7 +158,9 @@ class AnsiTable {
       for (final MapEntry<Object, List<Object?>> column in data.entries)
         AnsiTableColumn(
           data: <Object?>[column.key, ...column.value],
-          defaultAlignment: defaultAlignment,
+          headerTextTheme: headerTextTheme,
+          cellTextTheme: cellTextTheme,
+          footerTextTheme: footerTextTheme,
           fixedWidth: fixedWidth ??
               (keepSameWidth
                   ? maxColumnLength

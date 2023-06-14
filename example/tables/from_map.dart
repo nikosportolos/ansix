@@ -22,11 +22,22 @@ void main() {
     fixedWidth: 20,
   ));
 
+  const AnsiTextTheme headerTheme = AnsiTextTheme(
+    foregroundColor: AnsiColor.darkSeaGreen4,
+    style: AnsiTextStyle(bold: true),
+  );
+
   print(AnsiTable.fromMap(
     <Object, List<Object?>>{
       'Column 1': <Object?>[1, 2, 3, 4, 5, 6],
       'Column 2'.bold(): <Object?>[1, 2, 3, 4, 5],
-      AnsiText('Column 3'): <Object?>['row 1', 'row 2', 'this is a long text'.red(), '', 'row 5'],
+      AnsiText.withTheme('Column 3', headerTheme): <Object?>[
+        'row 1',
+        'row 2',
+        'this is a long text'.red(),
+        '',
+        'row 5'
+      ],
     },
     border: const AnsiBorder(
       type: AnsiBorderType.all,
@@ -34,5 +45,9 @@ void main() {
     ),
     orientation: AnsiOrientation.vertical,
     keepSameWidth: true,
+    headerTextTheme: headerTheme,
+    cellTextTheme: const AnsiTextTheme(
+      foregroundColor: AnsiColor.cadetBlue,
+    ),
   ));
 }

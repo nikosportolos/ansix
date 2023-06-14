@@ -1,5 +1,10 @@
 import 'package:ansix/ansix.dart';
 
+extension NullableStringX on String? {
+  /// Returns true if the string is null or empty.
+  bool get isNullOrEmpty => (this == null || this!.isEmpty);
+}
+
 extension StringX on String {
   /// Returns the string with no new line escape codes.
   String get removeNewLines => replaceAll(AnsiEscapeCodes.newLine, '');

@@ -1,3 +1,22 @@
+## v0.0.8-prerelease
+
+#### Dependencies
+
+- Bump data_class_plugin from 1.0.1 to 1.0.2 ([#122](https://github.com/nikosportolos/ansix/pull/122))
+
+#### Documentation
+
+- Add screenshots & topics in pubspec.yaml ([#126](https://github.com/nikosportolos/ansix/issues/126))
+
+#### AnsiTable
+
+- Fix transparency ([#128](https://github.com/nikosportolos/ansix/issues/128))
+  - Add the ANSI reset escape code in every line if the transparent flag is set to true.
+
+- Add default AnsiTextTheme for cell values ([#130](https://github.com/nikosportolos/ansix/issues/130))
+  - Provide different `AnsiTextTheme` for headers, footers and all other cells.
+
+
 ## v0.0.7-prerelease
 
 - Refactor extensions ([#67](https://github.com/nikosportolos/ansix/issues/67))

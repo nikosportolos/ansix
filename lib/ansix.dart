@@ -2,7 +2,7 @@
 /// for adding ANSI color and styling support to your Dart & Flutter applications.
 library ansix;
 
-export 'src/ansix.dart';
+export 'src/ansix.dart' hide initializeAnsiX;
 export 'src/core/core.dart';
 export 'src/theme/theme.dart';
 export 'src/widgets/widgets.dart';

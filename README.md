@@ -478,13 +478,15 @@ Returns an `AnsiTable` build from the input list of data.
 
 Arguments:
 
-| Argument           | Description                                                                 |
-|--------------------|-----------------------------------------------------------------------------|
-| `data`             | Will use the input list of data to build an `AnsiTableColumn`.              |
-| `fixedWidth`       | If set will use this value as default width for all table cells.            |
-| `keepSameWidth`    | If set to true will find the max cell width and use it for the whole table. |
-| `border`           | The `AnsiBorder` that will be used to draw the table with.                  |
-| `defaultAlignment` | The default `AnsiTextAlignment` that will be used for all table cells.      |
+| Argument          | Description                                                                                                       |
+|-------------------|-------------------------------------------------------------------------------------------------------------------|
+| `data`            | Will use the input list of data to build an `AnsiTableColumn`.                                                    |
+| `fixedWidth`      | If set will use this value as default width for all table cells.                                                  |
+| `keepSameWidth`   | If set to true will find the max cell width and use it for the whole table.                                       |
+| `border`          | The `AnsiBorder` that will be used to draw the table with.                                                        |
+| `headerTextTheme` | The default `AnsiTextTheme` that will be used for styling the table header cells that are not of type `AnsiText`. |
+| `cellTextTheme`   | The default `AnsiTextTheme` that will be used for styling all table cells that are not of type `AnsiText`.        |
+| `footerTextTheme` | The default `AnsiTextTheme` that will be used for styling the table footer cells that are not of type `AnsiText`. |
 
 
 ```dart
@@ -492,7 +494,9 @@ factory AnsiTable.fromList(
   final List<Object?> data, {
   final int? fixedWidth,
   final AnsiBorder border = const AnsiBorder(),
-  final AnsiTextAlignment defaultAlignment = AnsiTextAlignment.left,
+  final AnsiTextTheme headerTextTheme = const AnsiTextTheme(),
+  final AnsiTextTheme cellTextTheme = const AnsiTextTheme(),
+  final AnsiTextTheme footerTextTheme = const AnsiTextTheme(),
   final bool transparent = true,
 })
 ```
@@ -502,15 +506,17 @@ Returns an `AnsiTable` build from the input map of data.
 
 Arguments:
 
-| Argument           | Description                                                                           |
-|--------------------|---------------------------------------------------------------------------------------|
-| `data`             | Will use the keys of the map as headers and their values as data.                     |
-| `fixedWidth`       | If set will use this value as default width for all table cells.                      |
-| `keepSameWidth`    | If set to true will find the max cell width and use it for the whole table.           |
-| `border`           | The `AnsiBorder` that will be used to draw the table with.                            |
-| `defaultAlignment` | The default `AnsiTextAlignment` that will be used for all table cells.                |
-| `orientation`      | The `AnsiOrientation` that will be used to draw the table.                            |
-| `transparent`      | If set to true any external formatting will affect the AnsiTable. Defaults to *true*. |
+| Argument          | Description                                                                                                       |
+|-------------------|-------------------------------------------------------------------------------------------------------------------|
+| `data`            | Will use the keys of the map as headers and their values as data.                                                 |
+| `fixedWidth`      | If set will use this value as default width for all table cells.                                                  |
+| `keepSameWidth`   | If set to true will find the max cell width and use it for the whole table.                                       |
+| `border`          | The `AnsiBorder` that will be used to draw the table with.                                                        |
+| `headerTextTheme` | The default `AnsiTextTheme` that will be used for styling the table header cells that are not of type `AnsiText`. |
+| `cellTextTheme`   | The default `AnsiTextTheme` that will be used for styling all table cells that are not of type `AnsiText`.        |
+| `footerTextTheme` | The default `AnsiTextTheme` that will be used for styling the table footer cells that are not of type `AnsiText`. |
+| `orientation`     | The `AnsiOrientation` that will be used to draw the table.                                                        |
+| `transparent`     | If set to true any external formatting will affect the AnsiTable. Defaults to *true*.                             |
 
 
 ```dart
@@ -519,7 +525,9 @@ factory AnsiTable.fromMap(
   final int? fixedWidth,
   final bool keepSameWidth = false,
   final AnsiBorder border = const AnsiBorder(),
-  final AnsiTextAlignment defaultAlignment = AnsiTextAlignment.left,
+  final AnsiTextTheme headerTextTheme = const AnsiTextTheme(),
+  final AnsiTextTheme cellTextTheme = const AnsiTextTheme(),
+  final AnsiTextTheme footerTextTheme = const AnsiTextTheme(),
   final AnsiOrientation orientation = AnsiOrientation.vertical,
   final bool transparent = true,
 })

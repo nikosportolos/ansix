@@ -14,18 +14,18 @@ import 'package:collection/collection.dart';
 /// - [data] The list of data of the column.
 /// - [fixedWidth] If set will use this value as default width for all table cells.
 /// - [headerTextTheme] The default [AnsiTextTheme] that will be used for styling the table header cells
-///   that are not of type [AnsiText].
+///   that are not of type [AnsiText]. If not set will use the [cellTextStyle].
 /// - [cellTextTheme] The default [AnsiTextTheme] that will be used for styling all table cells
 ///   that are not of type [AnsiText].
 /// - [footerTextTheme] The default [AnsiTextTheme] that will be used for styling the table footer cells
-///   that are not of type [AnsiText].
+///   that are not of type [AnsiText]. If not set will use the [cellTextStyle].
 class AnsiTableColumn {
   AnsiTableColumn({
     required this.data,
     this.fixedWidth,
-    this.headerTextTheme = const AnsiTextTheme(),
+    this.headerTextTheme,
     this.cellTextTheme = const AnsiTextTheme(),
-    this.footerTextTheme = const AnsiTextTheme(),
+    this.footerTextTheme,
   }) {
     final List<String> list = <String>[];
     final List<AnsiTextAlignment> alignments = <AnsiTextAlignment>[];
@@ -33,9 +33,9 @@ class AnsiTableColumn {
 
     for (int i = 0; i < data.length; i++) {
       final AnsiTextTheme defaultTextTheme = i == 0
-          ? headerTextTheme
+          ? (headerTextTheme ?? cellTextTheme)
           : i == data.length - 1
-              ? footerTextTheme
+              ? (footerTextTheme ?? cellTextTheme)
               : cellTextTheme;
 
       // TODO: Wrap line if AnsiText.fixedWidth is set
@@ -102,9 +102,9 @@ class AnsiTableColumn {
 
   final List<Object?> data;
   final int? fixedWidth;
-  final AnsiTextTheme headerTextTheme;
+  final AnsiTextTheme? headerTextTheme;
   final AnsiTextTheme cellTextTheme;
-  final AnsiTextTheme footerTextTheme;
+  final AnsiTextTheme? footerTextTheme;
 
   late final List<AnsiTableRow> rows;
   late final int width;

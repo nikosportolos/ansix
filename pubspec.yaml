@@ -1,6 +1,6 @@
 name: ansix
 description: AnsiX is a powerful and easy-to-use library that provides tools and extensions for adding ANSI color and styling support to your Dart & Flutter applications.
-version: 0.0.7-prerelease
+version: 0.0.8-prerelease
 
 homepage: https://github.com/nikosportolos/ansix
 repository: https://github.com/nikosportolos/ansix
@@ -38,4 +38,3 @@ topics:
   - console
   - style
   - color
-  - log

@@ -1,6 +1,7 @@
 /.githooks/*
 /.github/*
-/assets/*
+/assets/images/colors/*
+/assets/images/tables/*
 /coverage/*
 /docs/*
 /scripts/*

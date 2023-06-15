@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/widgets/table/builder.dart';
+import 'package:ansix/src/widgets/table/cell.dart';
 import 'package:ansix/src/widgets/table/column.dart';
 import 'package:meta/meta.dart';
 
@@ -186,12 +187,12 @@ class AnsiTable {
     final List<AnsiTableRow> rows = <AnsiTableRow>[];
     if (orientation == AnsiOrientation.vertical) {
       for (int j = 0; j < maxRows; j++) {
-        final List<AnsiText> rowData = <AnsiText>[];
+        final List<AnsiTableCell> rowData = <AnsiTableCell>[];
         for (int i = 0; i < columns.length; i++) {
           if (columns[i].rows.length > j) {
             rowData.add(columns[i].rows[j].data[0]);
           } else {
-            rowData.add(AnsiText('', fixedWidth: columns[i].width));
+            rowData.add(AnsiTableCell('', fixedWidth: columns[i].width));
           }
         }
         rows.add(AnsiTableRow(data: rowData));
@@ -201,12 +202,12 @@ class AnsiTable {
     }
 
     for (int i = 0; i < columns.length; i++) {
-      final List<AnsiText> rowData = <AnsiText>[];
+      final List<AnsiTableCell> rowData = <AnsiTableCell>[];
       for (int j = 0; j < maxRows; j++) {
         if (columns[i].rows.length > j) {
           rowData.add(columns[i].rows[j].data[0]);
         } else {
-          rowData.add(AnsiText('', fixedWidth: columns[i].width));
+          rowData.add(AnsiTableCell('', fixedWidth: columns[i].width));
         }
       }
       rows.add(AnsiTableRow(data: rowData));

@@ -35,7 +35,7 @@ void main() {
         'row 1',
         'row 2',
         'this is a long text'.red(),
-        '',
+        'this is a\nmultine text',
         'row 5'
       ],
     },

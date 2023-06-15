@@ -1,8 +1,8 @@
 import 'package:ansix/src/core/escape_codes.dart';
 import 'package:ansix/src/core/extensions/extensions.dart';
 import 'package:ansix/src/theme/border/border.dart';
+import 'package:ansix/src/widgets/table/cell.dart';
 import 'package:ansix/src/widgets/table/theme.dart';
-import 'package:ansix/src/widgets/text/text.dart';
 
 /// **AnsiBorderBuilder**
 ///
@@ -12,7 +12,7 @@ class AnsiBorderBuilder {
 
   String print({
     required final AnsiBorder border,
-    required final List<AnsiText> data,
+    required final List<AnsiTableCell> data,
     required final int index,
     required final int total,
     required final bool transparent,
@@ -54,6 +54,24 @@ class AnsiBorderBuilder {
       ..writeWithForegroundColor(theme.textLine.start, border.color)
       ..write(data.join(theme.textLine.separator.colored(foreground: border.color)))
       ..writeWithForegroundColor(theme.textLine.end, border.color);
+
+    // final List<List<String>> lines = data.map((AnsiText e) {
+    //   return e.formattedText.split(AnsiEscapeCodes.newLine);
+    // }).toList(growable: false);
+    //
+    // buffer.writeWithForegroundColor(theme.textLine.start, border.color);
+    // for (int i = 0; i < lines.length; i++) {
+    //   final List<String> cells = lines[i];
+    //   for (int j = 0; j < cells.length; j++) {
+    //     final String cell = cells[j];
+    //     buffer
+    //       ..write(cell)
+    //       ..writeWithForegroundColor(
+    //         j == cells.length - 1 ? theme.textLine.separator : theme.textLine.end,
+    //         border.color,
+    //       );
+    //   }
+    // }
 
     if (isLastLine && theme.bottomBorder.isEmpty) {
     } else {

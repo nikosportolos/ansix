@@ -23,7 +23,8 @@ class AnsiText {
     this.backgroundColor = AnsiColor.none,
     this.padding = AnsiPadding.none,
     final int? fixedWidth,
-  }) : text = text.unformatted {
+  })  : text = text.unformatted,
+        isMultiline = text.contains(AnsiEscapeCodes.newLine) {
     final int minWidth = this.text.lengthWithoutNewLines + padding.left + padding.right;
     width = (fixedWidth == null || fixedWidth == 0 || fixedWidth < minWidth) ? minWidth : fixedWidth;
 
@@ -63,6 +64,7 @@ class AnsiText {
   }
 
   final String text;
+  final bool isMultiline;
   final AnsiColor foregroundColor;
   final AnsiColor backgroundColor;
   final AnsiTextStyle style;

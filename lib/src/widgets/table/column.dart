@@ -53,35 +53,17 @@ class AnsiTableColumn {
         text = AnsiText.withTheme('$object', defaultTextTheme);
       }
 
-      final List<String> lines = text.formattedText.trim().split(AnsiEscapeCodes.newLine);
-
       list.addAll(<String>[
         for (int i = 0; i < text.padding.top; i++) '',
-        for (int i = 0; i < lines.length; i++)
-          if (lines[i].isNotEmpty)
-            AnsiText(
-              lines[i],
-              foregroundColor: text.foregroundColor,
-              style: text.style,
-              padding: AnsiPadding.only(
-                right: text.padding.right,
-                left: text.padding.left,
-              ),
-            ).formattedText,
+        text.formattedText,
         for (int i = 0; i < text.padding.bottom; i++) '',
       ]);
 
-      maxRowWidth = max(
-        lines.fold<int>(0, (int max, String s) {
-          final int length = s.unformattedLength + text.padding.right + text.padding.left;
-          return length > max ? length : max;
-        }),
-        maxRowWidth,
-      );
+      maxRowWidth = max(text.width, maxRowWidth);
 
       alignments.addAll(<AnsiTextAlignment>[
         for (int i = 0; i < text.padding.top; i++) defaultTextTheme.alignment,
-        for (final String _ in lines) text.alignment,
+        text.alignment,
         for (int i = 0; i < text.padding.bottom; i++) defaultTextTheme.alignment,
       ]);
     }
@@ -89,10 +71,10 @@ class AnsiTableColumn {
     width = maxRowWidth;
     rows = list.mapIndexed((int index, String text) {
       return AnsiTableRow(
-        data: <AnsiText>[
+        data: <AnsiTableCell>[
           AnsiTableCell(
             text,
-            width: maxRowWidth,
+            fixedWidth: maxRowWidth,
             alignment: alignments[index],
           ),
         ],

@@ -9,18 +9,9 @@ void main() {
   const int fixedWidth = 15;
 
   final List<AnsiTableCell> headerData = <AnsiTableCell>[
-    AnsiTableCell(
-      'Name',
-      width: fixedWidth,
-    ),
-    AnsiTableCell(
-      'Hex',
-      width: fixedWidth,
-    ),
-    AnsiTableCell(
-      'RGB',
-      width: fixedWidth,
-    ),
+    AnsiTableCell('Name', fixedWidth: fixedWidth),
+    AnsiTableCell('Hex', fixedWidth: fixedWidth),
+    AnsiTableCell('RGB', fixedWidth: fixedWidth),
   ];
 
   final List<AnsiTableRow> data = <AnsiColor>[
@@ -30,18 +21,9 @@ void main() {
   ].map((AnsiColor color) {
     return AnsiTableRow(
       data: <AnsiTableCell>[
-        AnsiTableCell(
-          color.name,
-          width: fixedWidth,
-        ),
-        AnsiTableCell(
-          color.hex,
-          width: fixedWidth,
-        ),
-        AnsiTableCell(
-          color.rgb.toString(),
-          width: fixedWidth,
-        ),
+        AnsiTableCell(color.name, fixedWidth: fixedWidth),
+        AnsiTableCell(color.hex, fixedWidth: fixedWidth),
+        AnsiTableCell(color.rgb.toString(), fixedWidth: fixedWidth),
       ],
     );
   }).toList(growable: false);

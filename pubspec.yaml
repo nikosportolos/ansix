@@ -20,7 +20,7 @@ dev_dependencies:
   lints: ^2.1.1
   mocktail: ^0.3.0
   tachyon: ^0.0.6
-  test: ^1.24.3
+  test: ^1.24.4
 
 screenshots:
   - description: 'An animated demonstration of AnsiX'

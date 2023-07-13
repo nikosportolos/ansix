@@ -1,3 +1,16 @@
+## v0.0.9-prerelease
+
+#### Changes/Improvements
+
+- AnsiTable: Set headerTextStyle & footerTextStyle as optional ([#134](https://github.com/nikosportolos/ansix/pull/134))
+- Refactor AnsiX class library ([#136](https://github.com/nikosportolos/ansix/pull/136))
+
+#### Dependencies
+
+- Bump tachyon to 0.0.7 ([#142](https://github.com/nikosportolos/ansix/pull/142))
+- Bump test to 1.24.4 ([#143](https://github.com/nikosportolos/ansix/pull/143))
+
+
 ## v0.0.8-prerelease
 
 #### Dependencies

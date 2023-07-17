@@ -118,14 +118,14 @@ abstract interface class _ArticleCopyWithProxy {
   Article notes(String newValue);
 
   Article call({
-    final int id,
-    final String title,
-    final String description,
-    final String body,
-    final DateTime postedOn,
-    final User author,
-    final List<String> tags,
-    final String notes,
+    final int? id,
+    final String? title,
+    final String? description,
+    final String? body,
+    final DateTime? postedOn,
+    final User? author,
+    final List<String>? tags,
+    final String? notes,
   });
 }
 
@@ -213,14 +213,14 @@ sealed class $ArticleCopyWithProxyChain<$Result> {
   $Result notes(String newValue);
 
   $Result call({
-    final int id,
-    final String title,
-    final String description,
-    final String body,
-    final DateTime postedOn,
-    final User author,
-    final List<String> tags,
-    final String notes,
+    final int? id,
+    final String? title,
+    final String? description,
+    final String? body,
+    final DateTime? postedOn,
+    final User? author,
+    final List<String>? tags,
+    final String? notes,
   });
 }
 

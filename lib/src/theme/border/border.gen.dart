@@ -62,9 +62,9 @@ abstract interface class _AnsiBorderCopyWithProxy {
   AnsiBorder color(AnsiColor newValue);
 
   AnsiBorder call({
-    final AnsiBorderType type,
-    final AnsiBorderStyle style,
-    final AnsiColor color,
+    final AnsiBorderType? type,
+    final AnsiBorderStyle? style,
+    final AnsiColor? color,
   });
 }
 
@@ -111,9 +111,9 @@ sealed class $AnsiBorderCopyWithProxyChain<$Result> {
   $Result color(AnsiColor newValue);
 
   $Result call({
-    final AnsiBorderType type,
-    final AnsiBorderStyle style,
-    final AnsiColor color,
+    final AnsiBorderType? type,
+    final AnsiBorderStyle? style,
+    final AnsiColor? color,
   });
 }
 

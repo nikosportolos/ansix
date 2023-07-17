@@ -55,9 +55,9 @@ abstract interface class _NodeCopyWithProxy {
   Node nodes(List<Node> newValue);
 
   Node call({
-    final String id,
+    final String? id,
     final Node? child,
-    final List<Node> nodes,
+    final List<Node>? nodes,
   });
 }
 
@@ -105,9 +105,9 @@ sealed class $NodeCopyWithProxyChain<$Result> {
   $Result nodes(List<Node> newValue);
 
   $Result call({
-    final String id,
+    final String? id,
     final Node? child,
-    final List<Node> nodes,
+    final List<Node>? nodes,
   });
 }
 

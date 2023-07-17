@@ -112,13 +112,13 @@ abstract interface class _UserCopyWithProxy {
   User groups(List<String> newValue);
 
   User call({
-    final String id,
-    final String name,
-    final Email email,
-    final int age,
-    final String phone,
-    final List<Address> addresses,
-    final List<String> groups,
+    final String? id,
+    final String? name,
+    final Email? email,
+    final int? age,
+    final String? phone,
+    final List<Address>? addresses,
+    final List<String>? groups,
   });
 }
 
@@ -198,13 +198,13 @@ sealed class $UserCopyWithProxyChain<$Result> {
   $Result groups(List<String> newValue);
 
   $Result call({
-    final String id,
-    final String name,
-    final Email email,
-    final int age,
-    final String phone,
-    final List<Address> addresses,
-    final List<String> groups,
+    final String? id,
+    final String? name,
+    final Email? email,
+    final int? age,
+    final String? phone,
+    final List<Address>? addresses,
+    final List<String>? groups,
   });
 }
 
@@ -336,9 +336,9 @@ abstract interface class _AddressCopyWithProxy {
   Address state(String newValue);
 
   Address call({
-    final String street,
-    final String city,
-    final String state,
+    final String? street,
+    final String? city,
+    final String? state,
   });
 }
 
@@ -385,9 +385,9 @@ sealed class $AddressCopyWithProxyChain<$Result> {
   $Result state(String newValue);
 
   $Result call({
-    final String street,
-    final String city,
-    final String state,
+    final String? street,
+    final String? city,
+    final String? state,
   });
 }
 
@@ -495,7 +495,7 @@ abstract interface class _EmailCopyWithProxy {
   Email personal(String? newValue);
 
   Email call({
-    final String primary,
+    final String? primary,
     final String? secondary,
     final String? personal,
   });
@@ -544,7 +544,7 @@ sealed class $EmailCopyWithProxyChain<$Result> {
   $Result personal(String? newValue);
 
   $Result call({
-    final String primary,
+    final String? primary,
     final String? secondary,
     final String? personal,
   });

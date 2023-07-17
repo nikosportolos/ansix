@@ -87,11 +87,11 @@ abstract interface class _AnsiTextThemeCopyWithProxy {
   AnsiTextTheme fixedWidth(int? newValue);
 
   AnsiTextTheme call({
-    final AnsiColor foregroundColor,
-    final AnsiColor backgroundColor,
-    final AnsiTextStyle style,
-    final AnsiPadding padding,
-    final AnsiTextAlignment alignment,
+    final AnsiColor? foregroundColor,
+    final AnsiColor? backgroundColor,
+    final AnsiTextStyle? style,
+    final AnsiPadding? padding,
+    final AnsiTextAlignment? alignment,
     final int? fixedWidth,
   });
 }
@@ -164,11 +164,11 @@ sealed class $AnsiTextThemeCopyWithProxyChain<$Result> {
   $Result fixedWidth(int? newValue);
 
   $Result call({
-    final AnsiColor foregroundColor,
-    final AnsiColor backgroundColor,
-    final AnsiTextStyle style,
-    final AnsiPadding padding,
-    final AnsiTextAlignment alignment,
+    final AnsiColor? foregroundColor,
+    final AnsiColor? backgroundColor,
+    final AnsiTextStyle? style,
+    final AnsiPadding? padding,
+    final AnsiTextAlignment? alignment,
     final int? fixedWidth,
   });
 }

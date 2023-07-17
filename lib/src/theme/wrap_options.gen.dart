@@ -64,8 +64,8 @@ abstract interface class _WrapOptionsCopyWithProxy {
 
   WrapOptions call({
     final int? lineLength,
-    final bool splitWords,
-    final bool lineBreak,
+    final bool? splitWords,
+    final bool? lineBreak,
   });
 }
 
@@ -113,8 +113,8 @@ sealed class $WrapOptionsCopyWithProxyChain<$Result> {
 
   $Result call({
     final int? lineLength,
-    final bool splitWords,
-    final bool lineBreak,
+    final bool? splitWords,
+    final bool? lineBreak,
   });
 }
 

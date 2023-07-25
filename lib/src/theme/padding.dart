@@ -21,6 +21,12 @@ class AnsiPadding {
   /// Right padding - spaces after the text.
   final int right;
 
+  /// Returns the total horizontal padding (left + right)
+  int get horizontalPadding => left + right;
+
+  /// Returns the total vertical padding (top + bottom)
+  int get verticalPadding => top + bottom;
+
   /// Returns an [AnsiPadding] with no padding.
   static const AnsiPadding none = AnsiPadding._(
     bottom: 0,
@@ -73,4 +79,24 @@ class AnsiPadding {
   String toString() {
     return '$top;$bottom;$left;$right';
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (other is! AnsiPadding) {
+      return false;
+    }
+    return top == other.top && bottom == other.bottom && right == other.right && left == other.left;
+  }
+
+  AnsiPadding operator +(final AnsiPadding padding) {
+    return AnsiPadding._(
+      top: top + padding.top,
+      bottom: bottom + padding.bottom,
+      right: right + padding.right,
+      left: left + padding.left,
+    );
+  }
+
+  @override
+  int get hashCode => super.hashCode + top + bottom + right + left;
 }

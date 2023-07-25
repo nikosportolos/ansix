@@ -7,8 +7,8 @@
     - [AnsiTextStyle](#ansitextstyle)
 - [AnsiOutlinedText](#ansioutlinedtext)
 - [AnsiTable](#ansitable)
+- [AnsiGrid](#ansigrid)
     - [AnsiBorder](#ansiborder)
-    - [AnsiType](#ansitype)
 - [AnsiTreeView](#ansitreeview)
     - [Default theme](#default-theme)
 
@@ -31,7 +31,6 @@ AnsiText(
 );
 ```
 
-
 ### AnsiTextStyle
 
 ```dart
@@ -45,6 +44,10 @@ AnsiTextStyle(
   underline: false,
 )
 ```
+
+### AnsiPadding
+
+
 
 ### AnsiOutlinedText
 
@@ -69,86 +72,129 @@ AnsiOutlinedText(
 
 Check the [examples](https://github.com/nikosportolos/ansix/tree/main/example/outlined_text).
 
-### AnsiTable
 
-An ANSI table is a 2D table of data that is formatted with ANSI escape sequences to display borders
+### AnsiGrid
+
+An ANSI Grid is a 2D table of data that is formatted with ANSI escape sequences to display borders
 and optionally add colors or styles in certain cells or text.
 
 The borders are drawn using ASCII or Unicode characters that simulate table lines and corners,
 and the cells can be colored or styled with different foreground and background colors
 to improve readability and visual appeal.
 
-These tables are commonly used in command-line interfaces, log files, and other text-based applications
+Grids are commonly used in command-line interfaces, log files, and other text-based applications
 to present data in a tabular format that is easy to read and analyze.
 
-```dart
-AnsiTable({
-  this.border = const AnsiBorder(),
-  this.data = const <AnsiTableRow>[],
-  final bool transparent = true,
-})
-```
+> **Each cell of an AnsiGrid can have multiple lines.**
 
-- #### AnsiTable.fromList
-
-Returns an `AnsiTable` build from the input list of data.
-
-Arguments:
-
-| Argument          | Description                                                                                                                                                |
-|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `data`            | Will use the input list of data to build an `AnsiTableColumn`.                                                                                             |
-| `fixedWidth`      | If set will use this value as default width for all table cells.                                                                                           |
-| `keepSameWidth`   | If set to true will find the max cell width and use it for the whole table.                                                                                |
-| `border`          | The `AnsiBorder` that will be used to draw the table with.                                                                                                 |
-| `headerTextTheme` | The default `AnsiTextTheme` that will be used for styling the table header cells that are not of type `AnsiText`. If not set will use the [cellTextStyle]. |
-| `cellTextTheme`   | The default `AnsiTextTheme` that will be used for styling all table cells that are not of type `AnsiText`.                                                 |
-| `footerTextTheme` | The default `AnsiTextTheme` that will be used for styling the table footer cells that are not of type `AnsiText`. If not set will use the [cellTextStyle]. |
+- [data]
+  A list of columns that will be used as data of the [AnsiGrid].
+- [theme]
+  The [AnsiGridTheme] that will be used to draw the [AnsiGrid].
 
 
 ```dart
-factory AnsiTable.fromList(
-  final List<Object?> data, {
-  final int? fixedWidth,
-  final AnsiBorder border = const AnsiBorder(),
-  final AnsiTextTheme? headerTextTheme,
-  final AnsiTextTheme cellTextTheme = const AnsiTextTheme(),
-  final AnsiTextTheme? footerTextTheme,
-  final bool transparent = true,
+AnsiGrid(
+  final List<List<Object?>> data, {
+  this.theme = const AnsiGridTheme(),
 })
 ```
 
-- #### AnsiTable.fromMap
-Returns an `AnsiTable` build from the input map of data.
+### AnsiGridTheme
 
-Arguments:
-
-| Argument          | Description                                                                                                                                                |
-|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `data`            | Will use the keys of the map as headers and their values as data.                                                                                          |
-| `fixedWidth`      | If set will use this value as default width for all table cells.                                                                                           |
-| `keepSameWidth`   | If set to true will find the max cell width and use it for the whole table.                                                                                |
-| `border`          | The `AnsiBorder` that will be used to draw the table with.                                                                                                 |
-| `headerTextTheme` | The default `AnsiTextTheme` that will be used for styling the table header cells that are not of type `AnsiText`. If not set will use the [cellTextStyle]. |
-| `cellTextTheme`   | The default `AnsiTextTheme` that will be used for styling all table cells that are not of type `AnsiText`.                                                 |
-| `footerTextTheme` | The default `AnsiTextTheme` that will be used for styling the table footer cells that are not of type `AnsiText`. If not set will use the [cellTextStyle]. |
-| `orientation`     | The `AnsiOrientation` that will be used to draw the table.                                                                                                 |
-| `transparent`     | If set to true any external formatting will affect the AnsiTable. Defaults to *true*.                                                                      |
-
+A collection of styling properties, borders and colors, that will be used to style an AnsiGrid.
 
 ```dart
-factory AnsiTable.fromMap(
-  final Map<Object, List<Object?>> data, {
-  final int? fixedWidth,
-  final bool keepSameWidth = false,
-  final AnsiBorder border = const AnsiBorder(),
-  final AnsiTextTheme? headerTextTheme,
-  final AnsiTextTheme cellTextTheme = const AnsiTextTheme(),
-  final AnsiTextTheme? footerTextTheme,
-  final AnsiOrientation orientation = AnsiOrientation.vertical,
-  final bool transparent = true,
+const factory AnsiGridTheme({
+  AnsiBorder border,
+  AnsiTextTheme? headerTextTheme,
+  AnsiTextTheme cellTextTheme,
+  AnsiTextTheme? footerTextTheme,
+  int? fixedCellWidth,
+  bool keepSameWidth,
+  AnsiOrientation orientation,
+  bool transparent,
+  bool overrideTheme,
+  bool wrapText,
+  WrapOptions wrapOptions,
 })
 ```
+
+
+- [border]
+
+  The [AnsiBorder](#ansiborder) that will be used to draw the AnsiGrid with.
+
+- [headerTextTheme]
+
+  The default AnsiTextTheme that will be used for styling the grid header cells
+  that are not of type AnsiText.
+
+  If **overrideTheme** is set to true and the cell content is of type AnsiText then this
+  text theme will be overridden by the cell's original theme.
+
+  If not set, the cellTextStyle will be used instead.
+
+  Defaults to *null*.
+
+- [cellTextTheme]
+  
+  The default **AnsiTextTheme** that will be used for styling all grid cells that are not of type AnsiText.
+
+- [footerTextTheme]
+
+  The default **AnsiTextTheme** that will be used for styling the grid footer cells
+  that are not of type **AnsiText**.
+
+  If **overrideTheme** is set to true and the cell content is of type AnsiText then this
+  text theme will be overridden by the cell's original theme.
+
+  If not set, the **cellTextStyle** will be used instead.
+
+  Defaults to *null*.
+
+- [fixedCellWidth]
+
+  If set will use this value as default width for all grid cells.
+
+  Defaults to *null*.
+
+- [keepSameWidth]
+
+  If set to true will find the max cell width and use it for the whole **AnsiGrid**.
+
+  Defaults to *false*.
+
+- [orientation]
+
+  The [AnsiOrientation] that will be used to draw the **AnsiGrid**.
+
+  Defaults to *false*.
+
+- [transparent]
+
+  If set to true any external formatting will affect the **AnsiGrid**.
+
+  Defaults to *false*.
+
+- [overrideTheme]
+
+  Enabling this will prevent **AnsiGrid** from using the given **AnsiTextTheme** to the cells
+  with custom styles and colors and allow them to keep their original styling.
+
+  Defaults to *false*.
+
+- [wrapText]
+
+  If set to true all values that exceed the wrapLength will be wrapped.
+
+  Defaults to *false*.
+
+- [wrapOptions]
+
+  Defines how the text value of the tree node should be wrapped, if **wrapText** is enabled.
+
+  If **fixedWidth** is not null, will be used as the maximum length for each line.
 
 ### AnsiBorder
 
@@ -173,78 +219,57 @@ and frames around text or other content in terminal-based applications.
 
 - AnsiBorderType.all
 
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/all.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/all.png" width="400" alt="all-border-type">
-</a>
-
-
-- AnsiBorderType.header
-
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/header.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/header.png" width="400" alt="header-border-type">
-</a>
-
-
-- AnsiBorderType.headerFooter
-
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/header-footer.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/header-footer.png" width="400" alt="header-footer-border-type">
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/all.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/all.png" width="400" alt="all-border-type">
 </a>
 
 
 - AnsiBorderType.inside
 
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside.png" width="400" alt="inside-border-type">
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/inside.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/inside.png" width="400" alt="inside-border-type">
 </a>
 
 
 - AnsiBorderType.insideHorizontal
 
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside-horizontal.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside-horizontal.png" width="400" alt="inside-horizontal-border-type">
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/inside-horizontal.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/inside-horizontal.png" width="400" alt="inside-horizontal-border-type">
 </a>
 
 
 - AnsiBorderType.insideVertical
 
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside-vertical.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/inside-vertical.png" width="400" alt="inside-vertical-border-type">
-</a>
-
-
-- AnsiBorderType.footer
-
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/footer.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/footer.png" width="400" alt="footer-border-type">
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/inside-vertical.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/inside-vertical.png" width="400" alt="inside-vertical-border-type">
 </a>
 
 
 - AnsiBorderType.none
 
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/none.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/none.png" width="400" alt="none-border-type">
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/none.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/none.png" width="400" alt="none-border-type">
 </a>
 
 
 - AnsiBorderType.outside
 
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/outside.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/outside.png" width="400" alt="outside-border-type">
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/outside.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/outside.png" width="400" alt="outside-border-type">
 </a>
 
 
 - AnsiBorderType.outsideHorizontal
 
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/outside-horizontal.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/outside-horizontal.png" width="400" alt="outside-horizontal-border-type">
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/outside-horizontal.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/outside-horizontal.png" width="400" alt="outside-horizontal-border-type">
 </a>
 
 
 - AnsiBorderType.outsideVertical
 
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/outside-vertical.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/outside-vertical.png" width="400" alt="outside-vertical-border-type">
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/outside-vertical.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/border-types/outside-vertical.png" width="400" alt="outside-vertical-border-type">
 </a>
 
 

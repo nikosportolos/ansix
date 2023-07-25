@@ -1,6 +1,10 @@
 // ignore_for_file: avoid_print
 
-import 'package:ansix/ansix.dart';
+import 'package:ansix/src/ansix.dart';
+import 'package:ansix/src/core/extensions/extensions.dart';
+import 'package:ansix/src/theme/theme.dart';
+import 'package:ansix/src/widgets/grid/grid.dart';
+import 'package:ansix/src/widgets/text/text.dart';
 
 void main() {
   AnsiX.ensureSupportsAnsi();
@@ -38,7 +42,7 @@ void main() {
   }
 
   print(
-    AnsiTable.fromList(
+    AnsiGrid.single(
       <Object?>[
         true,
         242,
@@ -46,12 +50,14 @@ void main() {
         'lalala',
         'this is a line',
       ],
-      border: const AnsiBorder(
-        style: AnsiBorderStyle.rounded,
-        color: AnsiColor.fuchsia,
-        type: AnsiBorderType.all,
+      theme: const AnsiGridTheme(
+        border: AnsiBorder(
+          style: AnsiBorderStyle.rounded,
+          color: AnsiColor.fuchsia,
+          type: AnsiBorderType.all,
+        ),
+        // defaultAlignment: AnsiTextAlignment.center,
       ),
-      defaultAlignment: AnsiTextAlignment.center,
     ).toString(),
   );
 }

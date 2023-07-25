@@ -74,13 +74,14 @@ abstract class AnsiTreeViewTheme {
       ),
       headerTheme: AnsiTreeHeaderTheme(
         textTheme: AnsiTextTheme(
+          alignment: AnsiTextAlignment.center,
           style: const AnsiTextStyle(bold: true),
           padding: AnsiPadding.horizontal(2),
           foregroundColor: AnsiColor.white,
         ),
         border: const AnsiBorder(
           style: AnsiBorderStyle.square,
-          type: AnsiBorderType.header,
+          type: AnsiBorderType.all,
           color: AnsiColor.deepSkyBlue5,
         ),
       ),

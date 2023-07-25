@@ -1,0 +1,14 @@
+data_class:
+  options_config:
+    copy_with:
+      default: true
+    hash_and_equals:
+      default: true
+    to_string:
+      default: true
+    from_json:
+      default: false
+    to_json:
+      default: false
+    unmodifiable_collections:
+      default: false

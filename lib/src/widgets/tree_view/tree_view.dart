@@ -33,6 +33,7 @@ class AnsiTreeView extends AnsiWidget {
     _horizontalLine = (theme.anchorTheme.style.boxDrawingSet.horizontalLine * _lineLength).withForegroundColor(
       theme.anchorTheme.color,
     );
+
     _verticalLine = theme.anchorTheme.style.boxDrawingSet.verticalLine.withForegroundColor(
       theme.anchorTheme.color,
     );
@@ -42,15 +43,16 @@ class AnsiTreeView extends AnsiWidget {
 
     if (!theme.headerTheme.hideHeader) {
       final String hash = theme.headerTheme.showHash ? '<${data.hashCode.toString().italic()}>'.dim() : '';
-      String header = AnsiTable.fromList(
-        <AnsiText>[
-          AnsiText.withTheme(
-              theme.headerTheme.customHeader.isNullOrEmpty
-                  ? '${data.runtimeType}$hash'
-                  : theme.headerTheme.customHeader!,
-              theme.headerTheme.textTheme),
+
+      String header = AnsiGrid.single(
+        <String>[
+          theme.headerTheme.customHeader.isNullOrEmpty ? '${data.runtimeType}$hash' : theme.headerTheme.customHeader!,
         ],
-        border: theme.headerTheme.border,
+        theme: AnsiGridTheme(
+          border: theme.headerTheme.border,
+          transparent: true,
+          headerTextTheme: theme.headerTheme.textTheme,
+        ),
       ).formattedText;
 
       final List<String> headerRows = header.split(AnsiEscapeCodes.newLine).where((String line) {

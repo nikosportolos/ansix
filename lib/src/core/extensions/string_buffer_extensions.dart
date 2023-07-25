@@ -3,6 +3,10 @@ import 'package:ansix/ansix.dart';
 extension StringBufferX on StringBuffer {
   /// Writes empty lines.
   void writeLines(final int lines) {
+    if (lines == 0) {
+      return;
+    }
+
     write(AnsiEscapeCodes.newLine * lines);
   }
 
@@ -11,6 +15,10 @@ extension StringBufferX on StringBuffer {
     final int length, [
     final AnsiColor backgroundColor = AnsiColor.none,
   ]) {
+    if (length == 0) {
+      return;
+    }
+
     write((' ' * length).styled(
       const AnsiTextStyle(),
       AnsiColor.none,
@@ -24,6 +32,10 @@ extension StringBufferX on StringBuffer {
     final AnsiColor foregroundColor = AnsiColor.none,
     final AnsiColor backgroundColor = AnsiColor.none,
   }) {
+    if (text.isEmpty) {
+      return;
+    }
+
     write(text.colored(
       foreground: foregroundColor,
       background: backgroundColor,
@@ -36,6 +48,10 @@ extension StringBufferX on StringBuffer {
     final Rgb? foreground,
     final Rgb? background,
   }) {
+    if (text.isEmpty) {
+      return;
+    }
+
     write(text.coloredRgb(
       foreground: foreground,
       background: background,
@@ -44,11 +60,19 @@ extension StringBufferX on StringBuffer {
 
   /// Adds foreground color on the given [text].
   void writeWithForegroundColor(final String text, final AnsiColor color) {
+    if (text.isEmpty) {
+      return;
+    }
+
     write(text.withForegroundColor(color));
   }
 
   /// Adds background color on the given [text].
   void writeWithBackgroundColor(final String text, final AnsiColor color) {
+    if (text.isEmpty) {
+      return;
+    }
+
     write(text.withBackgroundColor(color));
   }
 
@@ -59,6 +83,10 @@ extension StringBufferX on StringBuffer {
     final AnsiColor foregroundColor = AnsiColor.none,
     final AnsiColor backgroundColor = AnsiColor.none,
   }) {
+    if (text.isEmpty) {
+      return;
+    }
+
     write(text.styled(
       textStyle,
       foregroundColor,

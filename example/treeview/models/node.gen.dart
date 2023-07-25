@@ -8,9 +8,8 @@ class _$NodeImpl extends Node {
   _$NodeImpl({
     required this.id,
     this.child,
-    List<Node> nodes = const <Node>[],
-  })  : _nodes = nodes,
-        super.ctor();
+    this.nodes = const <Node>[],
+  }) : super.ctor();
 
   @override
   final String id;
@@ -19,8 +18,7 @@ class _$NodeImpl extends Node {
   final Node? child;
 
   @override
-  List<Node> get nodes => List<Node>.unmodifiable(_nodes);
-  final List<Node> _nodes;
+  final List<Node> nodes;
 
   @override
   Map<String, dynamic> toJson() {
@@ -49,6 +47,7 @@ class _$NodeImpl extends Node {
       runtimeType,
       id,
       child,
+      nodes,
     ]);
   }
 

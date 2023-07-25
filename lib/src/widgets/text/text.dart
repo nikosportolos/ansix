@@ -1,9 +1,10 @@
+import 'package:ansix/src/core/escape_codes.dart';
 import 'package:ansix/src/core/extensions/extensions.dart';
 import 'package:ansix/src/theme/theme.dart';
 import 'package:ansix/src/widgets/text/text.dart';
 import 'package:ansix/src/widgets/widget.dart';
 
-export 'padding.dart';
+export '../../theme/padding.dart';
 export 'style.dart';
 export 'theme.dart';
 
@@ -25,10 +26,10 @@ class AnsiText extends AnsiWidget {
     this.foregroundColor = AnsiColor.none,
     this.backgroundColor = AnsiColor.none,
     this.padding = AnsiPadding.none,
-    final int? fixedWidth,
+    this.fixedWidth,
   }) : text = text.unformatted {
     final int minWidth = this.text.lengthWithoutNewLines + padding.left + padding.right;
-    width = (fixedWidth == null || fixedWidth == 0 || fixedWidth < minWidth) ? minWidth : fixedWidth;
+    width = (fixedWidth == null || fixedWidth == 0 || fixedWidth! < minWidth) ? minWidth : fixedWidth!;
 
     final int topPadding = padding.top;
     final int bottomPadding = padding.bottom;
@@ -51,18 +52,33 @@ class AnsiText extends AnsiWidget {
         break;
     }
 
-    formattedText = (StringBuffer()
-          ..writeLines(topPadding)
-          ..writeSpaces(leftPadding, backgroundColor)
-          ..writeStyled(
-            text,
-            textStyle: style,
-            foregroundColor: foregroundColor,
-            backgroundColor: backgroundColor,
-          )
-          ..writeSpaces(rightPadding, backgroundColor)
-          ..writeLines(bottomPadding))
-        .toString();
+    final StringBuffer buffer = StringBuffer();
+
+    buffer.writeLines(topPadding);
+    if (backgroundColor != AnsiColor.none) {
+      buffer.write(backgroundColor.background);
+    }
+
+    buffer
+      ..writeSpaces(leftPadding)
+      ..writeAll(style.styles.map((AnsiStyle s) => s.startEscapeCode));
+
+    if (foregroundColor != AnsiColor.none && text.isNotEmpty) {
+      buffer.write(foregroundColor.foreground);
+    }
+
+    buffer
+      ..write(text)
+      ..writeAll(style.styles.map((AnsiStyle s) => s.endEscapeCode))
+      ..writeSpaces(rightPadding);
+
+    if ((backgroundColor != AnsiColor.none || foregroundColor != AnsiColor.none) && text.isNotEmpty) {
+      buffer.write(AnsiEscapeCodes.reset);
+    }
+
+    buffer.writeLines(bottomPadding);
+
+    formattedText = buffer.toString();
   }
 
   final String text;
@@ -73,9 +89,21 @@ class AnsiText extends AnsiWidget {
   final AnsiTextAlignment alignment;
 
   late final int width;
+  final int? fixedWidth;
 
   @override
   late final String formattedText;
+
+  bool get isMultiline => formattedText.contains('\n');
+
+  AnsiTextTheme get theme => AnsiTextTheme(
+        alignment: alignment,
+        style: style,
+        padding: padding,
+        foregroundColor: foregroundColor,
+        backgroundColor: backgroundColor,
+        fixedWidth: fixedWidth,
+      );
 
   factory AnsiText.withTheme(final String text, final AnsiTextTheme theme) {
     return AnsiText(

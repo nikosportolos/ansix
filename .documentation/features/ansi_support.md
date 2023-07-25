@@ -28,7 +28,7 @@ For example, when running an application in a terminal that doesn't support ANSI
 the formatted text looks like this:
 
 ```shell
-> dart run example/styles.dart
+> dart run example/border_types.dart
 
 [1mThis is a sample text with [bold] style[22m
 [21mThis is a sample text with [boldUnderline] style[24m
@@ -53,7 +53,7 @@ AnsiX.ensureSupportsAnsi(silent: true);
 This will result to displaying the text with no ANSI formatting and ensure the quality and readability of your console messages:
 
 ```shell
-> dart run example/styles.dart
+> dart run example/border_types.dart
 
 This is a sample text with [bold] style
 This is a sample text with [boldUnderline] style

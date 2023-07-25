@@ -1,7 +1,7 @@
 import 'package:ansix/ansix.dart';
 
 void main() {
-  final AnsiTable table = AnsiTable.fromList(
+  final AnsiGrid grid = AnsiGrid.single(
     <Object?>[
       AnsiText(
         'A N S I X',
@@ -17,14 +17,16 @@ void main() {
         padding: AnsiPadding.only(right: 2, left: 2, bottom: 1),
       ),
     ],
-    border: const AnsiBorder(
-      type: AnsiBorderType.all,
-      style: AnsiBorderStyle.rounded,
-      color: AnsiColor.aqua,
+    theme: const AnsiGridTheme(
+      overrideTheme: true,
+      border: AnsiBorder(
+        type: AnsiBorderType.all,
+        style: AnsiBorderStyle.rounded,
+        color: AnsiColor.aqua,
+      ),
     ),
-    defaultAlignment: AnsiTextAlignment.center,
   );
 
   // ignore: avoid_print
-  print(table);
+  print(grid);
 }

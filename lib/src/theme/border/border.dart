@@ -1,6 +1,8 @@
 import 'package:ansix/ansix.dart';
 import 'package:data_class_plugin/data_class_plugin.dart';
 
+export 'set.dart';
+
 part 'border.gen.dart';
 part 'style.dart';
 part 'type.dart';
@@ -39,4 +41,8 @@ abstract class AnsiBorder {
   AnsiColor get color;
 
   static const AnsiBorder empty = AnsiBorder();
+  static const AnsiBorder $default = AnsiBorder(
+    style: AnsiBorderStyle.square,
+    type: AnsiBorderType.all,
+  );
 }

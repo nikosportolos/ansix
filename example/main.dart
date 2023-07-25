@@ -40,19 +40,21 @@ void main() {
   print('TreeView'.bold().colored(foreground: AnsiColor.deepSkyBlue5));
   AnsiX.printTreeView(json, theme: AnsiTreeViewTheme.$default());
 
-  print('Table'.italic().colored(background: AnsiColor.darkBlue));
+  print('Grid'.italic().colored(background: AnsiColor.darkBlue));
   print(
-    AnsiTable.fromMap(
-      <Object, List<Object?>>{
-        'Name': <Object?>[AnsiColor.red.name, AnsiColor.green.name, AnsiColor.blue.name],
-        'Hex': <Object?>[AnsiColor.red.hex, AnsiColor.green.hex, AnsiColor.blue.hex],
-        'RGB': <Object?>[AnsiColor.red.rgb, AnsiColor.green.rgb, AnsiColor.blue.rgb],
-      },
-      border: const AnsiBorder(
-        style: AnsiBorderStyle.square,
-        type: AnsiBorderType.all,
+    AnsiGrid.fromColumns(
+      <List<Object?>>[
+        <Object?>['Name', AnsiColor.red.name, AnsiColor.green.name, AnsiColor.blue.name],
+        <Object?>['Hex', AnsiColor.red.hex, AnsiColor.green.hex, AnsiColor.blue.hex],
+        <Object?>['RGB', AnsiColor.red.rgb, AnsiColor.green.rgb, AnsiColor.blue.rgb],
+      ],
+      theme: const AnsiGridTheme(
+        border: AnsiBorder(
+          style: AnsiBorderStyle.square,
+          type: AnsiBorderType.all,
+        ),
+        fixedCellWidth: 15,
       ),
-      fixedWidth: 15,
     ),
   );
 }

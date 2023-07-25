@@ -20,26 +20,32 @@ void main() {
     });
 
     test('withColor', () {
-      final String output = formatter.withColor(
-        testMessage,
-        foreground: foregroundColor,
-        background: backgroundColor,
+      expect(
+        formatter.withColor(testMessage, foreground: foregroundColor, background: backgroundColor),
+        '\x1B[38;5;25m\x1B[48;5;43m$testMessage\x1B[0m',
       );
       expect(
-        output,
-        '\x1B[38;5;25m\x1B[48;5;43m$testMessage\x1B[0m',
+        formatter.withColor(testMessage, foreground: foregroundColor),
+        '\x1B[38;5;25m$testMessage\x1B[0m',
+      );
+      expect(
+        formatter.withColor(testMessage, background: backgroundColor),
+        '\x1B[48;5;43m$testMessage\x1B[0m',
       );
     });
 
     test('withColorRgb', () {
-      final String output = formatter.withColorRgb(
-        testMessage,
-        foreground: foregroundColor,
-        background: backgroundColor,
+      expect(
+        formatter.withColorRgb(testMessage, foreground: foregroundColor, background: backgroundColor),
+        '\x1B[38;2;0;95;175m\x1B[48;2;0;215;175m$testMessage\x1B[0m',
       );
       expect(
-        output,
-        '\x1B[38;2;0;95;175m\x1B[48;2;0;215;175m$testMessage\x1B[0m',
+        formatter.withColorRgb(testMessage, background: backgroundColor),
+        '\x1B[48;2;0;215;175m$testMessage\x1B[0m',
+      );
+      expect(
+        formatter.withColorRgb(testMessage, foreground: foregroundColor),
+        '\x1B[38;2;0;95;175m$testMessage\x1B[0m',
       );
     });
   });

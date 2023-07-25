@@ -12,10 +12,9 @@ class _$ArticleImpl extends Article {
     required this.body,
     required this.postedOn,
     required this.author,
-    required List<String> tags,
+    required this.tags,
     required this.notes,
-  })  : _tags = tags,
-        super.ctor();
+  }) : super.ctor();
 
   @override
   final int id;
@@ -36,8 +35,7 @@ class _$ArticleImpl extends Article {
   final User author;
 
   @override
-  List<String> get tags => List<String>.unmodifiable(_tags);
-  final List<String> _tags;
+  final List<String> tags;
 
   @override
   final String notes;
@@ -81,6 +79,7 @@ class _$ArticleImpl extends Article {
       body,
       postedOn,
       author,
+      tags,
       notes,
     ]);
   }

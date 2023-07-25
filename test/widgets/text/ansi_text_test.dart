@@ -52,9 +52,9 @@ void main() {
                               );
 
                               final StringBuffer buffer = StringBuffer()
-                                ..write(AnsiEscapeCodes.newLine * padding.top)
-                                ..write(backgroundColor.background)
-                                ..write(' ' * padding.left)
+                                ..writeLines(padding.top)
+                                ..write(backgroundColor != AnsiColor.none ? backgroundColor.background : '')
+                                ..writeSpaces(padding.left)
                                 ..write(
                                   ' ' *
                                       (alignment == AnsiTextAlignment.right
@@ -67,19 +67,11 @@ void main() {
                                           ? (width ?? 0) ~/ 2 - testMessage.length ~/ 2 - padding.left - padding.right
                                           : 0),
                                 )
-                                ..write(backgroundColor == AnsiColor.none ? '' : AnsiEscapeCodes.reset)
-                                ..write(foregroundColor.foreground)
-                                ..write(backgroundColor.background)
                                 ..write(style.startEscapeCode)
+                                ..write(foregroundColor == AnsiColor.none ? '' : foregroundColor.foreground)
                                 ..write(testMessage)
                                 ..write(style.endEscapeCode)
-                                ..write(
-                                  foregroundColor == AnsiColor.none && backgroundColor == AnsiColor.none //
-                                      ? ''
-                                      : AnsiEscapeCodes.reset,
-                                )
-                                ..write(backgroundColor.background)
-                                ..write(' ' * padding.right)
+                                ..writeSpaces(padding.right)
                                 ..write(
                                   ' ' *
                                       (alignment == AnsiTextAlignment.left
@@ -92,8 +84,12 @@ void main() {
                                           ? (width ?? 0) ~/ 2 - testMessage.length ~/ 2 - padding.left - padding.right
                                           : 0),
                                 )
-                                ..write(backgroundColor == AnsiColor.none ? '' : AnsiEscapeCodes.reset)
-                                ..write(AnsiEscapeCodes.newLine * padding.bottom);
+                                ..write(
+                                  foregroundColor == AnsiColor.none && backgroundColor == AnsiColor.none
+                                      ? ''
+                                      : AnsiEscapeCodes.reset,
+                                )
+                                ..writeLines(padding.bottom);
 
                               expect(ansiText.toString(), buffer.toString());
 

@@ -451,9 +451,9 @@ class _$AnsiTreeHeaderThemeImpl extends AnsiTreeHeaderTheme {
 }
 
 abstract interface class _AnsiTreeHeaderThemeCopyWithProxy {
-  AnsiTreeHeaderTheme border(AnsiBorder newValue);
+  $AnsiBorderCopyWithProxyChain<AnsiTreeHeaderTheme> get border;
 
-  AnsiTreeHeaderTheme textTheme(AnsiTextTheme newValue);
+  $AnsiTextThemeCopyWithProxyChain<AnsiTreeHeaderTheme> get textTheme;
 
   AnsiTreeHeaderTheme customHeader(String? newValue);
 
@@ -477,11 +477,14 @@ class _AnsiTreeHeaderThemeCopyWithProxyImpl implements _AnsiTreeHeaderThemeCopyW
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTreeHeaderTheme border(AnsiBorder newValue) => this(border: newValue);
+  $AnsiBorderCopyWithProxyChain<AnsiTreeHeaderTheme> get border =>
+      $AnsiBorderCopyWithProxyChain<AnsiTreeHeaderTheme>(_value.border, (AnsiBorder update) => this(border: update));
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTreeHeaderTheme textTheme(AnsiTextTheme newValue) => this(textTheme: newValue);
+  $AnsiTextThemeCopyWithProxyChain<AnsiTreeHeaderTheme> get textTheme =>
+      $AnsiTextThemeCopyWithProxyChain<AnsiTreeHeaderTheme>(
+          _value.textTheme, (AnsiTextTheme update) => this(textTheme: update));
 
   @pragma('vm:prefer-inline')
   @override
@@ -919,7 +922,7 @@ abstract interface class _AnsiTreeNodeValueThemeCopyWithProxy {
 
   AnsiTreeNodeValueTheme fixedWidth(int? newValue);
 
-  AnsiTreeNodeValueTheme wrapOptions(WrapOptions newValue);
+  $WrapOptionsCopyWithProxyChain<AnsiTreeNodeValueTheme> get wrapOptions;
 
   AnsiTreeNodeValueTheme alignment(AnsiTextAlignment newValue);
 
@@ -956,7 +959,9 @@ class _AnsiTreeNodeValueThemeCopyWithProxyImpl implements _AnsiTreeNodeValueThem
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTreeNodeValueTheme wrapOptions(WrapOptions newValue) => this(wrapOptions: newValue);
+  $WrapOptionsCopyWithProxyChain<AnsiTreeNodeValueTheme> get wrapOptions =>
+      $WrapOptionsCopyWithProxyChain<AnsiTreeNodeValueTheme>(
+          _value.wrapOptions, (WrapOptions update) => this(wrapOptions: update));
 
   @pragma('vm:prefer-inline')
   @override

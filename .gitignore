@@ -36,3 +36,4 @@ build/
 .idea/**/libraries
 
 coverage
+doc

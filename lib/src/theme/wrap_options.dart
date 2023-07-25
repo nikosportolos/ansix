@@ -4,13 +4,25 @@ part 'wrap_options.gen.dart';
 
 /// **WrapOptions**
 ///
-/// Define how a text should be wrapped.
+/// A collection of properties that specify how a text should be wrapped.
 ///
-/// - [splitWords] If set to true words will be split
-///   when a line needs to be wrapped.
+/// - [lineLength]
 ///
-/// - [lineBreak] If set to true, a '-' will be added
-///   when words are split.
+///   If this field has a value, it will be used to calculate the wrapping limits.
+///
+///   Defaults to *null*.
+///
+/// - [splitWords]
+///
+///   If set to true words will be split when a line needs to be wrapped.
+///
+///   Defaults to *false*.
+///
+/// - [lineBreak]
+///
+///   If set to true, a '-' will be added when words are split.
+///
+///   Defaults to *false*.
 @DataClass()
 abstract class WrapOptions {
   const WrapOptions.ctor();
@@ -22,11 +34,20 @@ abstract class WrapOptions {
     bool lineBreak,
   }) = _$WrapOptionsImpl;
 
+  /// If this field has a value, it will be used to calculate the wrapping limits.
+  ///
+  /// Defaults to *null*.
   int? get lineLength;
 
+  /// If set to true words will be split when a line needs to be wrapped.
+  ///
+  /// Defaults to *false*.
   @DefaultValue(false)
   bool get splitWords;
 
+  /// If set to true, a '-' will be added when words are split.
+  ///
+  /// Defaults to *false*.
   @DefaultValue(false)
   bool get lineBreak;
 }

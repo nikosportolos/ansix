@@ -55,5 +55,22 @@ void main() {
         expect(text.isNullOrEmpty, false);
       });
     });
+
+    group('alignCenterForWidth', () {
+      test('even char length', () {
+        const String text = 'This is a test text.';
+
+        expect(text.alignCenterForWidth(text.length), (0, 0));
+        expect(text.alignCenterForWidth(30), (5, 5));
+        expect(text.alignCenterForWidth(50), (15, 15));
+      });
+      test('odd char length', () {
+        const String text = 'This is a test text';
+
+        expect(text.alignCenterForWidth(text.length), (0, 0));
+        expect(text.alignCenterForWidth(30), (5, 6));
+        expect(text.alignCenterForWidth(50), (15, 16));
+      });
+    });
   });
 }

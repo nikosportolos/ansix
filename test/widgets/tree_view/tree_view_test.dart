@@ -333,23 +333,26 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
       };
 
-      final String actual = AnsiTreeView(map,
-          theme: const AnsiTreeViewTheme(
-            headerTheme: AnsiTreeHeaderTheme(
-              showHash: false,
-              textTheme: AnsiTextTheme(
-                foregroundColor: AnsiColor.salmon1,
-                backgroundColor: AnsiColor.grey11,
-              ),
+      final String actual = AnsiTreeView(
+        map,
+        theme: const AnsiTreeViewTheme(
+          headerTheme: AnsiTreeHeaderTheme(
+            showHash: false,
+            textTheme: AnsiTextTheme(
+              foregroundColor: AnsiColor.salmon1,
+              backgroundColor: AnsiColor.grey11,
             ),
-            anchorTheme: AnsiTreeAnchorTheme(color: AnsiColor.yellow6),
-            keyTheme: AnsiTreeNodeKeyTheme(color: AnsiColor.darkOrange3),
-            valueTheme: AnsiTreeNodeValueTheme(
-              wrapText: true,
-              wrapOptions: WrapOptions(lineLength: 100),
-              color: AnsiColor.cadetBlue,
-            ),
-          )).toString();
+          ),
+          anchorTheme: AnsiTreeAnchorTheme(color: AnsiColor.yellow6),
+          keyTheme: AnsiTreeNodeKeyTheme(color: AnsiColor.darkOrange3),
+          valueTheme: AnsiTreeNodeValueTheme(
+            wrapText: true,
+            wrapOptions: WrapOptions(lineLength: 100),
+            color: AnsiColor.cadetBlue,
+          ),
+        ),
+      ).toString();
+
       expect(actual, treeviewLongTextWithColorsMock);
     });
 
@@ -412,10 +415,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
       for (final AnsiTextAlignment alignment in AnsiTextAlignment.values) {
         test(alignment, () {
-          expect(
-            AnsiTreeView(map, theme: theme.copyWith.valueTheme.alignment(alignment)).toString(),
-            testCases[alignment],
-          );
+          final String actual = AnsiTreeView(
+            map,
+            theme: theme.copyWith.valueTheme.alignment(alignment),
+          ).toString();
+          expect(actual, testCases[alignment]);
         });
       }
     });

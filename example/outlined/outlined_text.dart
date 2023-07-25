@@ -11,7 +11,7 @@ void main() {
       'This is a text with rounded borders',
       border: const AnsiBorder(
         color: AnsiColor.deepSkyBlue4,
-        type: AnsiBorderType.header,
+        type: AnsiBorderType.all,
         style: AnsiBorderStyle.rounded,
       ),
       foregroundColor: AnsiColor.salmon1,
@@ -34,7 +34,7 @@ void main() {
 
   print(
     AnsiOutlinedText(
-      'This is a demo \ntable with multiple\n\nlines',
+      'This is a demo \noutlined text with multiple\n\nlines',
       padding: AnsiPadding.symmetric(
         vertical: 1,
         horizontal: 5,

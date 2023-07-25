@@ -124,4 +124,10 @@ extension StringX on String {
 
     return result;
   }
+
+  (int, int) alignCenterForWidth(final int width) {
+    final int leftPadding = (width / 2 - length / 2).floor();
+    final int rightPadding = width - length - leftPadding;
+    return (leftPadding, rightPadding);
+  }
 }

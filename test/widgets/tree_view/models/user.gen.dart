@@ -11,11 +11,9 @@ class _$UserImpl extends User {
     required this.email,
     required this.age,
     required this.phone,
-    required List<Address> addresses,
-    required List<String> groups,
-  })  : _addresses = addresses,
-        _groups = groups,
-        super.ctor();
+    required this.addresses,
+    required this.groups,
+  }) : super.ctor();
 
   @override
   final String id;
@@ -33,12 +31,10 @@ class _$UserImpl extends User {
   final String phone;
 
   @override
-  List<Address> get addresses => List<Address>.unmodifiable(_addresses);
-  final List<Address> _addresses;
+  final List<Address> addresses;
 
   @override
-  List<String> get groups => List<String>.unmodifiable(_groups);
-  final List<String> _groups;
+  final List<String> groups;
 
   @override
   Map<String, dynamic> toJson() {
@@ -78,6 +74,8 @@ class _$UserImpl extends User {
       email,
       age,
       phone,
+      addresses,
+      groups,
     ]);
   }
 

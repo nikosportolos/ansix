@@ -1,6 +1,6 @@
 import 'package:ansix/src/theme/alignment.dart';
 import 'package:ansix/src/theme/color/color.dart';
-import 'package:ansix/src/widgets/text/padding.dart';
+import 'package:ansix/src/theme/padding.dart';
 import 'package:ansix/src/widgets/text/style.dart';
 import 'package:data_class_plugin/data_class_plugin.dart';
 
@@ -36,4 +36,6 @@ abstract class AnsiTextTheme {
   AnsiTextAlignment get alignment;
 
   int? get fixedWidth;
+
+  bool get hasColors => foregroundColor != AnsiColor.none || backgroundColor != AnsiColor.none;
 }

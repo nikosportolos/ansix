@@ -13,12 +13,12 @@ void main() {
   );
 
   String getHeaderText(final String text) {
-    return AnsiTable.fromList(
-      <Object>[text.bold()],
+    return AnsiOutlinedText(
+      text,
       border: border,
+      alignment: AnsiTextAlignment.center,
       fixedWidth: 30,
-      defaultAlignment: AnsiTextAlignment.center,
-    ).toString();
+    ).formattedText;
   }
 
   const Map<String, dynamic> jsonMap = <String, dynamic>{

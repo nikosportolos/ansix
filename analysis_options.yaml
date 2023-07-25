@@ -12,6 +12,7 @@ linter:
     always_specify_types: true
     always_use_package_imports: true
     avoid_print: true
+    avoid_multiple_declarations_per_line: true
     cancel_subscriptions: true
     directives_ordering: true
     prefer_const_constructors: true
@@ -23,3 +24,4 @@ linter:
     prefer_single_quotes: true
     sized_box_for_whitespace: true
     unawaited_futures: true
+    deprecated_member_use_from_same_package: false

@@ -266,7 +266,7 @@ const String treeviewLongTextSplitLineBreaksFixedMock = '''_Map<String, dynamic>
 ''';
 
 const String treeviewLongTextWithColorsMock = '''
-\x1B[38;5;209m\x1B[48;5;234m\x1B[0m\x1B[38;5;209m\x1B[48;5;234m_Map<String, dynamic>\x1B[0m\x1B[48;5;234m\x1B[0m\x1B[0m
+\x1B[48;5;234m\x1B[38;5;209m_Map<String, dynamic>\x1B[0m
          \x1B[38;5;100m├\x1B[0m\x1B[38;5;100m──\x1B[0m \x1B[38;5;166mid\x1B[0m: \x1B[38;5;72m123\x1B[0m
          \x1B[38;5;100m├\x1B[0m\x1B[38;5;100m──\x1B[0m \x1B[38;5;166mtitle\x1B[0m: \x1B[38;5;72mLorem ipsum dolor sit amet\x1B[0m
          \x1B[38;5;100m├\x1B[0m\x1B[38;5;100m──\x1B[0m \x1B[38;5;166mdescription\x1B[0m: \x1B[38;5;72mLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore \x1B[0m
@@ -291,7 +291,7 @@ const String treeviewLongTextWithColorsMock = '''
 ''';
 
 const String treeviewMixedMockCenter = '''[38;5;31m┌──────────────────────────┐[0m
-[38;5;31m│[0m  [38;5;15m[1m[38;5;15m[1m_Map<dynamic, dynamic>[22m[0m[22m[0m  [38;5;31m│[0m
+[38;5;31m│[0m  [1m[38;5;15m_Map<dynamic, dynamic>[22m  [0m[38;5;31m│[0m
 [38;5;31m└────────────┬─────────────┘[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mid[22m[0m: [38;5;145m[3m123[23m[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mrecord[22m[0m
@@ -379,7 +379,7 @@ const String treeviewMixedMockCenter = '''[38;5;31m┌────────�
 ''';
 
 const String treeviewMixedMockLeft = '''[38;5;31m┌──────────────────────────┐[0m
-[38;5;31m│[0m  [38;5;15m[1m[38;5;15m[1m_Map<dynamic, dynamic>[22m[0m[22m[0m  [38;5;31m│[0m
+[38;5;31m│[0m  [1m[38;5;15m_Map<dynamic, dynamic>[22m  [0m[38;5;31m│[0m
 [38;5;31m└────────────┬─────────────┘[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mid[22m[0m: [38;5;145m[3m123[23m[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mrecord[22m[0m
@@ -467,7 +467,7 @@ const String treeviewMixedMockLeft = '''[38;5;31m┌─────────
 ''';
 
 const String treeviewMixedMockRight = '''[38;5;31m┌──────────────────────────┐[0m
-[38;5;31m│[0m  [38;5;15m[1m[38;5;15m[1m_Map<dynamic, dynamic>[22m[0m[22m[0m  [38;5;31m│[0m
+[38;5;31m│[0m  [1m[38;5;15m_Map<dynamic, dynamic>[22m  [0m[38;5;31m│[0m
 [38;5;31m└────────────┬─────────────┘[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mid[22m[0m: [38;5;145m[3m123[23m[0m
              [38;5;31m├[0m[38;5;31m──[0m [38;5;15m[1mrecord[22m[0m

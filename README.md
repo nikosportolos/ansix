@@ -45,10 +45,12 @@ AnsiX makes it easy to add ANSI styling to your output with minimal effort and m
     - [AnsiText](./.documentation/features/widgets.md#ansitext) 
       - [AnsiTextStyle](./.documentation/features/widgets.md#ansitextstyle)
     - [AnsiOutlinedText](./.documentation/features/widgets.md#ansioutlinedtext)
-    - [AnsiTable](./.documentation/features/widgets.md#ansitable) 
+    - [AnsiGrid](./.documentation/features/widgets.md#ansigrid) 
       - [AnsiBorder](./.documentation/features/widgets.md#ansiborder) 
-      - [AnsiType](./.documentation/features/widgets.md#ansitype)
+      - [AnsiBorderStyle](./.documentation/features/widgets.md#ansiborderstyle)
+      - [AnsiBorderType](./.documentation/features/widgets.md#ansibordertype)
     - [AnsiTreeView](./.documentation/features/widgets.md#ansitreeview)
+      - [Usage](./.documentation/features/widgets.md#usage)
       - [Default theme](./.documentation/features/widgets.md#default-theme)
   - [Print](./.documentation/features/print.md#print)
     - [printStyled](./.documentation/features/print.md#printStyled)
@@ -112,8 +114,7 @@ void main() {
 }
 ```
 
-
-- Print json/map
+- Print data grid
 
 ```dart
 import 'package:ansix/ansix.dart';
@@ -121,17 +122,36 @@ import 'package:ansix/ansix.dart';
 void main() {
   // Ensure that the attached terminal supports ANSI formatting
   AnsiX.ensureSupportsAnsi();
-  
-  final Map<String, dynamic> json = <String, dynamic>{
-    'field1': 'value',
-    'field2': 3.0,
-    'field3': true,
-  };
 
-  print('Json'.underline().colored(background: AnsiColor.darkSeaGreen, foreground: AnsiColor.black));
-  AnsiX.printJson(json, foreground: AnsiColor.cadetBlue);
+  final List<List<Object?>> rows = <List<Object?>>[
+    <Object?>['#', 'Title', 'Release Year', 'IMDb Rate'],
+    ...movies.mapIndexed((int i, Movie m) {
+      return <Object>[i, m.title, m.releaseYear, m.rate];
+    }).toList(growable: false),
+    <Object?>['Average', '', '', movies.map((Movie m) => m.rate).toList(growable: false).average],
+  ];
+ 
+  final AnsiGrid verticalGrid = AnsiGrid.fromRows(rows, theme: verticalTheme);
+  
+  print(verticalGrid);
 }
 ```
+
+- Vertical grid
+
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/vertical-grid-example.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/vertical-grid-example.png" width="400" alt="vertical-grid-example">
+</a>
+
+
+- Horizontal grid
+
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/horizontal-grid-example.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/horizontal-grid-example.png" width="400" alt="horizontal-grid-example">
+</a>
+
+
+You can also check the [example](https://github.com/nikosportolos/ansix/tree/main/example) folder for more samples.
 
 
 - Print tree view
@@ -163,7 +183,8 @@ void main() {
 </a>
 
 
-- Print table
+
+- Print json/map
 
 ```dart
 import 'package:ansix/ansix.dart';
@@ -171,32 +192,22 @@ import 'package:ansix/ansix.dart';
 void main() {
   // Ensure that the attached terminal supports ANSI formatting
   AnsiX.ensureSupportsAnsi();
+  
+  final Map<String, dynamic> json = <String, dynamic>{
+    'field1': 'value',
+    'field2': 3.0,
+    'field3': true,
+  };
 
-
-  print(
-    AnsiTable.fromMap(
-      <Object, List<Object?>>{
-        'Name': <Object?>[AnsiColor.red.name, AnsiColor.green.name, AnsiColor.blue.name],
-        'Hex': <Object?>[AnsiColor.red.hex, AnsiColor.green.hex, AnsiColor.blue.hex],
-        'RGB': <Object?>[AnsiColor.red.rgb, AnsiColor.green.rgb, AnsiColor.blue.rgb],
-      },
-      border: const AnsiBorder(
-        style: AnsiBorderStyle.square,
-        type: AnsiBorderType.all,
-      ),
-      fixedWidth: 15,
-    ),
-  );
+  print('Json'.underline().colored(background: AnsiColor.darkSeaGreen, foreground: AnsiColor.black));
+  AnsiX.printJson(json, foreground: AnsiColor.cadetBlue);
 }
 ```
 
 
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/all.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/tables/all.png" width="400" alt="all-border-type">
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/json-example.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/json-example.png" width="400" alt="json-example">
 </a>
-
-
-You can also check the [example](https://github.com/nikosportolos/ansix/tree/main/example) folder for more samples. 
 
 
 ## Contribution

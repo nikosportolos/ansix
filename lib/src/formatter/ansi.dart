@@ -11,9 +11,9 @@ class AnsiTextFormatter implements TextFormatter {
     final String text,
     final AnsiStyle style,
   ) {
-    // if (text.isEmpty) {
-    //   return '';
-    // }
+    if (text.isEmpty) {
+      return '';
+    }
 
     return '${style.startEscapeCode}$text${style.endEscapeCode}';
   }
@@ -25,12 +25,20 @@ class AnsiTextFormatter implements TextFormatter {
     final AnsiColor foreground = AnsiColor.none,
     final AnsiColor background = AnsiColor.none,
   }) {
-    // if (text.isEmpty) {
-    //   return '';
-    // }
+    if (text.isEmpty) {
+      return '';
+    }
 
     if (foreground == AnsiColor.none && background == AnsiColor.none) {
       return text;
+    }
+
+    if (background == AnsiColor.none) {
+      return '${foreground.foreground}$text${AnsiEscapeCodes.reset}';
+    }
+
+    if (foreground == AnsiColor.none) {
+      return '${background.background}$text${AnsiEscapeCodes.reset}';
     }
 
     return '${foreground.foreground}${background.background}$text${AnsiEscapeCodes.reset}';
@@ -43,12 +51,20 @@ class AnsiTextFormatter implements TextFormatter {
     final AnsiColor foreground = AnsiColor.none,
     final AnsiColor background = AnsiColor.none,
   }) {
-    // if (text.isEmpty) {
-    //   return '';
-    // }
+    if (text.isEmpty) {
+      return '';
+    }
 
     if (foreground == AnsiColor.none && background == AnsiColor.none) {
       return text;
+    }
+
+    if (background == AnsiColor.none) {
+      return '${foreground.foregroundRgb}$text${AnsiEscapeCodes.reset}';
+    }
+
+    if (foreground == AnsiColor.none) {
+      return '${background.backgroundRgb}$text${AnsiEscapeCodes.reset}';
     }
 
     return '${foreground.foregroundRgb}${background.backgroundRgb}$text${AnsiEscapeCodes.reset}';

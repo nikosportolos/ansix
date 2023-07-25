@@ -1,69 +1,78 @@
-import 'package:ansix/src/theme/theme.dart';
+import 'package:ansix/ansix.dart';
 
-class AnsiRowBorderSet {
-  const AnsiRowBorderSet({
-    this.start = '',
-    this.line = '',
-    this.separator = '',
-    this.end = '',
-  });
-
-  final String start;
-  final String line;
-  final String separator;
-  final String end;
-
-  static const AnsiRowBorderSet empty = AnsiRowBorderSet();
-  bool get isEmpty => this == empty;
-}
-
-class BorderBuilderTheme {
-  const BorderBuilderTheme({
+/// **AnsiGridBorderSet**
+///
+/// This class contains sets of properties required to
+/// draw the borders of an [AnsiGrid].
+///
+/// - [topBorder]
+///
+///   The [AnsiBorderSet] used to draw the top border of an [AnsiGrid].
+///
+/// - [textLine]
+///
+///   The [AnsiBorderSet] used to draw borders between the columns of an [AnsiGrid].
+///
+/// - [middleBorder]
+///
+///   The [AnsiBorderSet] used to draw borders between the rows of an [AnsiGrid].
+///
+/// - [bottomBorder]
+///
+///   The [AnsiBorderSet] used to draw the bottom border of an [AnsiGrid].
+class AnsiGridBorderSet {
+  const AnsiGridBorderSet({
     required this.topBorder,
-    this.headerLine,
     required this.textLine,
-    this.footerLine,
     required this.middleBorder,
     required this.bottomBorder,
   });
 
-  final AnsiRowBorderSet topBorder;
-  final AnsiRowBorderSet? headerLine;
-  final AnsiRowBorderSet textLine;
-  final AnsiRowBorderSet? footerLine;
-  final AnsiRowBorderSet middleBorder;
-  final AnsiRowBorderSet bottomBorder;
+  /// The [AnsiBorderSet] used to draw the top border of an [AnsiGrid].
+  final AnsiBorderSet topBorder;
 
-  factory BorderBuilderTheme.fromBorder(
+  /// The [AnsiBorderSet] used to draw borders between the columns of an [AnsiGrid].
+  final AnsiBorderSet textLine;
+
+  /// The [AnsiBorderSet] used to draw borders between the rows of an [AnsiGrid].
+  final AnsiBorderSet middleBorder;
+
+  /// The [AnsiBorderSet] used to draw the bottom border of an [AnsiGrid].
+  final AnsiBorderSet bottomBorder;
+
+  factory AnsiGridBorderSet.fromBorder(
     final AnsiBorder border,
   ) {
     switch (border.type) {
       case AnsiBorderType.all:
-        return BorderBuilderTheme.all(border.style);
+        return AnsiGridBorderSet.all(border.style);
+
       case AnsiBorderType.inside:
-        return BorderBuilderTheme.inside(border.style);
+        return AnsiGridBorderSet.inside(border.style);
+
       case AnsiBorderType.insideHorizontal:
-        return BorderBuilderTheme.insideHorizontal(border.style);
+        return AnsiGridBorderSet.insideHorizontal(border.style);
+
       case AnsiBorderType.insideVertical:
-        return BorderBuilderTheme.insideVertical(border.style);
+        return AnsiGridBorderSet.insideVertical(border.style);
+
       case AnsiBorderType.none:
-        return BorderBuilderTheme.none();
+        return AnsiGridBorderSet.none();
+
       case AnsiBorderType.outside:
-        return BorderBuilderTheme.outside(border.style);
+        return AnsiGridBorderSet.outside(border.style);
+
       case AnsiBorderType.outsideHorizontal:
-        return BorderBuilderTheme.outsideHorizontal(border.style);
+        return AnsiGridBorderSet.outsideHorizontal(border.style);
+
       case AnsiBorderType.outsideVertical:
-        return BorderBuilderTheme.outsideVertical(border.style);
-      case AnsiBorderType.header:
-      case AnsiBorderType.headerFooter:
-      case AnsiBorderType.footer:
-        return BorderBuilderTheme.header(border.style);
+        return AnsiGridBorderSet.outsideVertical(border.style);
     }
   }
 
-  /// **[BorderBuilderTheme.none]**
+  /// **[AnsiGridBorderSet.none]**
   ///
-  /// Builds a table with no borders.
+  /// Builds an [AnsiGrid] with no borders.
   ///
   /// Example:
   /// ```dart
@@ -72,39 +81,18 @@ class BorderBuilderTheme {
   /// Green          #008000        (0, 128, 0)
   /// Blue           #0000ff        (0, 0, 255)
   /// ```
-  factory BorderBuilderTheme.none() {
-    return const BorderBuilderTheme(
-      topBorder: AnsiRowBorderSet.empty,
-      textLine: AnsiRowBorderSet(
-        start: '',
-        separator: ' ',
-        line: '',
-        end: '',
-      ),
-      middleBorder: AnsiRowBorderSet.empty,
-      bottomBorder: AnsiRowBorderSet.empty,
+  factory AnsiGridBorderSet.none() {
+    return const AnsiGridBorderSet(
+      topBorder: AnsiBorderSet.empty,
+      textLine: AnsiBorderSet.empty,
+      middleBorder: AnsiBorderSet.empty,
+      bottomBorder: AnsiBorderSet.empty,
     );
   }
 
-  factory BorderBuilderTheme.header(
-    final AnsiBorderStyle style,
-  ) {
-    return const BorderBuilderTheme(
-      topBorder: AnsiRowBorderSet.empty,
-      textLine: AnsiRowBorderSet(
-        start: ' ',
-        separator: ' ',
-        line: '',
-        end: ' ',
-      ),
-      middleBorder: AnsiRowBorderSet.empty,
-      bottomBorder: AnsiRowBorderSet.empty,
-    );
-  }
-
-  /// **[BorderBuilderTheme.all]**
+  /// **[AnsiGridBorderSet.all]**
   ///
-  /// Builds a table with all borders.
+  /// Builds an [AnsiGrid] with all borders.
   ///
   /// Example:
   /// ```dart
@@ -118,28 +106,28 @@ class BorderBuilderTheme {
   /// │Blue           │#0000ff        │(0, 0, 255)    │
   /// └───────────────┴───────────────┴───────────────┘
   /// ```
-  factory BorderBuilderTheme.all(
+  factory AnsiGridBorderSet.all(
     final AnsiBorderStyle style,
   ) {
-    return BorderBuilderTheme(
-      topBorder: AnsiRowBorderSet(
+    return AnsiGridBorderSet(
+      topBorder: AnsiBorderSet(
         start: style.boxDrawingSet.topLeftCorner,
         separator: style.boxDrawingSet.middleTopEdge,
         line: style.boxDrawingSet.horizontalLine,
         end: style.boxDrawingSet.topRightCorner,
       ),
-      textLine: AnsiRowBorderSet(
+      textLine: AnsiBorderSet(
         start: style.boxDrawingSet.verticalLine,
         separator: style.boxDrawingSet.verticalLine,
         end: style.boxDrawingSet.verticalLine,
       ),
-      middleBorder: AnsiRowBorderSet(
+      middleBorder: AnsiBorderSet(
         start: style.boxDrawingSet.middleLeftEdge,
         line: style.boxDrawingSet.horizontalLine,
         separator: style.boxDrawingSet.intersection,
         end: style.boxDrawingSet.middleRightEdge,
       ),
-      bottomBorder: AnsiRowBorderSet(
+      bottomBorder: AnsiBorderSet(
         start: style.boxDrawingSet.bottomLeftCorner,
         separator: style.boxDrawingSet.middleBottomEdge,
         line: style.boxDrawingSet.horizontalLine,
@@ -148,9 +136,9 @@ class BorderBuilderTheme {
     );
   }
 
-  /// **[BorderBuilderTheme.inside]**
+  /// **[AnsiGridBorderSet.inside]**
   ///
-  /// Builds a table with inside vertical and horizontal borders.
+  /// Builds an [AnsiGrid] with inside vertical and horizontal borders.
   ///
   /// Example:
   /// ```dart
@@ -162,25 +150,25 @@ class BorderBuilderTheme {
   /// ───────────────┼───────────────┼───────────────
   /// Blue           │#0000ff        │(0, 0, 255)
   /// ```
-  factory BorderBuilderTheme.inside(
+  factory AnsiGridBorderSet.inside(
     final AnsiBorderStyle style,
   ) {
-    return BorderBuilderTheme(
-      topBorder: AnsiRowBorderSet.empty,
-      textLine: AnsiRowBorderSet(
+    return AnsiGridBorderSet(
+      topBorder: AnsiBorderSet.empty,
+      textLine: AnsiBorderSet(
         separator: style.boxDrawingSet.verticalLine,
       ),
-      middleBorder: AnsiRowBorderSet(
+      middleBorder: AnsiBorderSet(
         line: style.boxDrawingSet.horizontalLine,
         separator: style.boxDrawingSet.intersection,
       ),
-      bottomBorder: AnsiRowBorderSet.empty,
+      bottomBorder: AnsiBorderSet.empty,
     );
   }
 
-  /// **[BorderBuilderTheme.insideHorizontal]**
+  /// **[AnsiGridBorderSet.insideHorizontal]**
   ///
-  /// Builds a table with inside horizontal borders.
+  /// Builds an [AnsiGrid] with inside horizontal borders.
   ///
   /// Example:
   /// ```dart
@@ -192,25 +180,25 @@ class BorderBuilderTheme {
   /// ───────────────────────────────────────────────
   /// Blue            #0000ff         (0, 0, 255)
   /// ```
-  factory BorderBuilderTheme.insideHorizontal(
+  factory AnsiGridBorderSet.insideHorizontal(
     final AnsiBorderStyle style,
   ) {
-    return BorderBuilderTheme(
-      topBorder: AnsiRowBorderSet.empty,
-      textLine: const AnsiRowBorderSet(
+    return AnsiGridBorderSet(
+      topBorder: AnsiBorderSet.empty,
+      textLine: const AnsiBorderSet(
         separator: ' ',
       ),
-      middleBorder: AnsiRowBorderSet(
+      middleBorder: AnsiBorderSet(
         line: style.boxDrawingSet.horizontalLine,
         separator: style.boxDrawingSet.horizontalLine,
       ),
-      bottomBorder: AnsiRowBorderSet.empty,
+      bottomBorder: AnsiBorderSet.empty,
     );
   }
 
-  /// **[BorderBuilderTheme.insideVertical]**
+  /// **[AnsiGridBorderSet.insideVertical]**
   ///
-  /// Builds a table with inside vertical borders.
+  /// Builds an [AnsiGrid] with inside vertical borders.
   ///
   /// Example:
   /// ```dart
@@ -219,22 +207,22 @@ class BorderBuilderTheme {
   /// Green          │#008000        │(0, 128, 0)
   /// Blue           │#0000ff        │(0, 0, 255)
   /// ```
-  factory BorderBuilderTheme.insideVertical(
+  factory AnsiGridBorderSet.insideVertical(
     final AnsiBorderStyle style,
   ) {
-    return BorderBuilderTheme(
-      topBorder: AnsiRowBorderSet.empty,
-      textLine: AnsiRowBorderSet(
+    return AnsiGridBorderSet(
+      topBorder: AnsiBorderSet.empty,
+      textLine: AnsiBorderSet(
         separator: style.boxDrawingSet.verticalLine,
       ),
-      middleBorder: AnsiRowBorderSet.empty,
-      bottomBorder: AnsiRowBorderSet.empty,
+      middleBorder: AnsiBorderSet.empty,
+      bottomBorder: AnsiBorderSet.empty,
     );
   }
 
-  /// **[BorderBuilderTheme.outside]**
+  /// **[AnsiGridBorderSet.outside]**
   ///
-  /// Builds a table with outside borders only.
+  /// Builds an [AnsiGrid] with outside borders only.
   ///
   /// Example:
   /// ```dart
@@ -245,21 +233,21 @@ class BorderBuilderTheme {
   /// │Blue           #0000ff        (0, 0, 255)    │
   /// └─────────────────────────────────────────────┘
   /// ```
-  factory BorderBuilderTheme.outside(
+  factory AnsiGridBorderSet.outside(
     final AnsiBorderStyle style,
   ) {
-    return BorderBuilderTheme(
-      topBorder: AnsiRowBorderSet(
+    return AnsiGridBorderSet(
+      topBorder: AnsiBorderSet(
         start: style.boxDrawingSet.topLeftCorner,
         line: style.boxDrawingSet.horizontalLine,
         end: style.boxDrawingSet.topRightCorner,
       ),
-      textLine: AnsiRowBorderSet(
+      textLine: AnsiBorderSet(
         start: style.boxDrawingSet.verticalLine,
         end: style.boxDrawingSet.verticalLine,
       ),
-      middleBorder: AnsiRowBorderSet.empty,
-      bottomBorder: AnsiRowBorderSet(
+      middleBorder: AnsiBorderSet.empty,
+      bottomBorder: AnsiBorderSet(
         start: style.boxDrawingSet.bottomLeftCorner,
         line: style.boxDrawingSet.horizontalLine,
         end: style.boxDrawingSet.bottomRightCorner,
@@ -267,9 +255,9 @@ class BorderBuilderTheme {
     );
   }
 
-  /// **[BorderBuilderTheme.outsideHorizontal]**
+  /// **[AnsiGridBorderSet.outsideHorizontal]**
   ///
-  /// Builds a table with outside top and bottom borders only.
+  /// Builds an [AnsiGrid] with outside top and bottom borders only.
   ///
   /// Example:
   /// ```dart
@@ -280,26 +268,24 @@ class BorderBuilderTheme {
   ///  Blue           #0000ff        (0, 0, 255)
   /// ───────────────────────────────────────────────
   /// ```
-  factory BorderBuilderTheme.outsideHorizontal(
+  factory AnsiGridBorderSet.outsideHorizontal(
     final AnsiBorderStyle style,
   ) {
-    return BorderBuilderTheme(
-      topBorder: AnsiRowBorderSet(
+    return AnsiGridBorderSet(
+      topBorder: AnsiBorderSet(
         line: style.boxDrawingSet.horizontalLine,
       ),
-      textLine: const AnsiRowBorderSet(
-        separator: ' ',
-      ),
-      middleBorder: AnsiRowBorderSet.empty,
-      bottomBorder: AnsiRowBorderSet(
+      textLine: AnsiBorderSet.empty,
+      middleBorder: AnsiBorderSet.empty,
+      bottomBorder: AnsiBorderSet(
         line: style.boxDrawingSet.horizontalLine,
       ),
     );
   }
 
-  /// **[BorderBuilderTheme.outsideVertical]**
+  /// **[AnsiGridBorderSet.outsideVertical]**
   ///
-  /// Builds a table with outside left and right borders only.
+  /// Builds an [AnsiGrid] with outside left and right borders only.
   ///
   /// Example:
   /// ```dart
@@ -308,18 +294,18 @@ class BorderBuilderTheme {
   /// │Green          #008000        (0, 128, 0)    │
   /// │Blue           #0000ff        (0, 0, 255)    │
   /// ```
-  factory BorderBuilderTheme.outsideVertical(
+  factory AnsiGridBorderSet.outsideVertical(
     final AnsiBorderStyle style,
   ) {
-    return BorderBuilderTheme(
-      topBorder: AnsiRowBorderSet.empty,
-      textLine: AnsiRowBorderSet(
+    return AnsiGridBorderSet(
+      topBorder: AnsiBorderSet.empty,
+      textLine: AnsiBorderSet(
         start: style.boxDrawingSet.verticalLine,
         separator: ' ',
         end: style.boxDrawingSet.verticalLine,
       ),
-      middleBorder: AnsiRowBorderSet.empty,
-      bottomBorder: AnsiRowBorderSet.empty,
+      middleBorder: AnsiBorderSet.empty,
+      bottomBorder: AnsiBorderSet.empty,
     );
   }
 }

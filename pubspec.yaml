@@ -11,7 +11,7 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  collection: ^1.17.2
+  collection: ^1.18.0
   data_class_plugin: ^1.0.3
   meta: ^1.9.1
   path: ^1.8.3

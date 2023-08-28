@@ -1,3 +1,30 @@
+## v0.1.0
+
+#### Dependencies
+
+- Bump data_class_plugin from 1.0.2 to 1.0.3 ([#148](https://github.com/nikosportolos/ansix/pull/148))
+- Bump collection from 1.17.2 to 1.18.0 ([#149](https://github.com/nikosportolos/ansix/pull/149))
+- Bump nikosportolos/dart_package from 0.0.6 to 0.1.0 ([#150](https://github.com/nikosportolos/ansix/pull/150))
+- Bump mocktail from 0.3.0 to 1.0.0 ([#152](https://github.com/nikosportolos/ansix/pull/152))
+- Bump test from 1.24.4 to 1.24.6 ([#154](https://github.com/nikosportolos/ansix/pull/154))
+- Bump test from 1.24.4 to 1.24.6 in /tool/export_docs ([#155](https://github.com/nikosportolos/ansix/pull/155))
+- Bump tachyon from 0.0.7 to 0.0.8 ([#156](https://github.com/nikosportolos/ansix/pull/156))
+- Bump data_class_plugin from 1.0.3 to 1.0.4 ([#157](https://github.com/nikosportolos/ansix/pull/157))
+- Bump min dart SDK to 3.1.0 ([#158](https://github.com/nikosportolos/ansix/pull/158))
+- Bump 'dart-package' action to 0.1.1 ([#160](https://github.com/nikosportolos/ansix/pull/160))
+
+
+#### Documentation
+
+- Update README.md ([#162](https://github.com/nikosportolos/ansix/pull/162))
+
+
+#### Changes/Improvements
+
+- Modify header theme of AnsiTreeView ([#164](https://github.com/nikosportolos/ansix/pull/164))
+
+
+
 ## v0.0.9-prerelease
 
 #### Changes/Improvements

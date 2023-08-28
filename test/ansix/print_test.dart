@@ -17,9 +17,9 @@ void main() {
     ],
   };
 
-  group('print', () {
+  group('print.md', () {
     group('printStyles', () {
-      test('print styled text', () {
+      test('print.md styled text', () {
         String printLine = '';
         runZoned(
           () {
@@ -42,7 +42,7 @@ void main() {
           '${AnsiStyle.bold.endEscapeCode}',
         );
       });
-      test("don't print", () {
+      test("don't print.md", () {
         String printLine = '';
         runZoned(
           () {
@@ -63,7 +63,7 @@ void main() {
     });
 
     group('printJson', () {
-      test('print formatted json', () {
+      test('print.md formatted json', () {
         String printLine = '';
         runZoned(
           () {
@@ -86,7 +86,7 @@ void main() {
           '${AnsiStyle.bold.endEscapeCode}',
         );
       });
-      test("don't print", () {
+      test("don't print.md", () {
         String printLine = '';
         runZoned(
           () {
@@ -107,7 +107,7 @@ void main() {
     });
 
     group('printTreeView', () {
-      test('print formatted TreeView', () {
+      test('print.md formatted TreeView', () {
         String printLine = '';
         runZoned(
           () {
@@ -136,7 +136,7 @@ void main() {
         );
         expect(printLine, _mockTreeView);
       });
-      test("don't print", () {
+      test("don't print.md", () {
         String printLine = '';
         runZoned(
           () {

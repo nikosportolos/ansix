@@ -27,5 +27,8 @@ void main() {
     ],
   );
 
-  AnsiX.printTreeView(user, theme: AnsiTreeViewTheme.$default().copyWith.showListItemIndex(false));
+  AnsiX.printTreeView(
+    user,
+    theme: AnsiTreeViewTheme.$default().copyWith.showListItemIndex(false),
+  );
 }

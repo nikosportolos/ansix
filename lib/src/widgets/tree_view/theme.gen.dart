@@ -391,6 +391,8 @@ class _$AnsiTreeHeaderThemeImpl extends AnsiTreeHeaderTheme {
   const _$AnsiTreeHeaderThemeImpl({
     this.border = const AnsiBorder(),
     this.textTheme = const AnsiTextTheme(),
+    this.customHeader = null,
+    this.hideHeader = false,
     this.showHash = true,
   }) : super.ctor();
 
@@ -399,6 +401,12 @@ class _$AnsiTreeHeaderThemeImpl extends AnsiTreeHeaderTheme {
 
   @override
   final AnsiTextTheme textTheme;
+
+  @override
+  final String? customHeader;
+
+  @override
+  final bool hideHeader;
 
   @override
   final bool showHash;
@@ -410,6 +418,8 @@ class _$AnsiTreeHeaderThemeImpl extends AnsiTreeHeaderTheme {
             runtimeType == other.runtimeType &&
             border == other.border &&
             textTheme == other.textTheme &&
+            customHeader == other.customHeader &&
+            hideHeader == other.hideHeader &&
             showHash == other.showHash;
   }
 
@@ -419,6 +429,8 @@ class _$AnsiTreeHeaderThemeImpl extends AnsiTreeHeaderTheme {
       runtimeType,
       border,
       textTheme,
+      customHeader,
+      hideHeader,
       showHash,
     ]);
   }
@@ -428,7 +440,7 @@ class _$AnsiTreeHeaderThemeImpl extends AnsiTreeHeaderTheme {
     String toStringOutput = 'AnsiTreeHeaderTheme{<optimized out>}';
     assert(() {
       toStringOutput =
-          'AnsiTreeHeaderTheme@<$hexIdentity>{border: $border, textTheme: $textTheme, showHash: $showHash}';
+          'AnsiTreeHeaderTheme@<$hexIdentity>{border: $border, textTheme: $textTheme, customHeader: $customHeader, hideHeader: $hideHeader, showHash: $showHash}';
       return true;
     }());
     return toStringOutput;
@@ -443,11 +455,17 @@ abstract interface class _AnsiTreeHeaderThemeCopyWithProxy {
 
   AnsiTreeHeaderTheme textTheme(AnsiTextTheme newValue);
 
+  AnsiTreeHeaderTheme customHeader(String? newValue);
+
+  AnsiTreeHeaderTheme hideHeader(bool newValue);
+
   AnsiTreeHeaderTheme showHash(bool newValue);
 
   AnsiTreeHeaderTheme call({
     final AnsiBorder? border,
     final AnsiTextTheme? textTheme,
+    final String? customHeader,
+    final bool? hideHeader,
     final bool? showHash,
   });
 }
@@ -467,6 +485,14 @@ class _AnsiTreeHeaderThemeCopyWithProxyImpl implements _AnsiTreeHeaderThemeCopyW
 
   @pragma('vm:prefer-inline')
   @override
+  AnsiTreeHeaderTheme customHeader(String? newValue) => this(customHeader: newValue);
+
+  @pragma('vm:prefer-inline')
+  @override
+  AnsiTreeHeaderTheme hideHeader(bool newValue) => this(hideHeader: newValue);
+
+  @pragma('vm:prefer-inline')
+  @override
   AnsiTreeHeaderTheme showHash(bool newValue) => this(showHash: newValue);
 
   @pragma('vm:prefer-inline')
@@ -474,11 +500,15 @@ class _AnsiTreeHeaderThemeCopyWithProxyImpl implements _AnsiTreeHeaderThemeCopyW
   AnsiTreeHeaderTheme call({
     final AnsiBorder? border,
     final AnsiTextTheme? textTheme,
+    final Object? customHeader = const Object(),
+    final bool? hideHeader,
     final bool? showHash,
   }) {
     return _$AnsiTreeHeaderThemeImpl(
       border: border ?? _value.border,
       textTheme: textTheme ?? _value.textTheme,
+      customHeader: identical(customHeader, const Object()) ? _value.customHeader : (customHeader as String?),
+      hideHeader: hideHeader ?? _value.hideHeader,
       showHash: showHash ?? _value.showHash,
     );
   }
@@ -493,11 +523,17 @@ sealed class $AnsiTreeHeaderThemeCopyWithProxyChain<$Result> {
 
   $Result textTheme(AnsiTextTheme newValue);
 
+  $Result customHeader(String? newValue);
+
+  $Result hideHeader(bool newValue);
+
   $Result showHash(bool newValue);
 
   $Result call({
     final AnsiBorder? border,
     final AnsiTextTheme? textTheme,
+    final String? customHeader,
+    final bool? hideHeader,
     final bool? showHash,
   });
 }
@@ -518,6 +554,14 @@ class _AnsiTreeHeaderThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeHe
 
   @pragma('vm:prefer-inline')
   @override
+  $Result customHeader(String? newValue) => this(customHeader: newValue);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Result hideHeader(bool newValue) => this(hideHeader: newValue);
+
+  @pragma('vm:prefer-inline')
+  @override
   $Result showHash(bool newValue) => this(showHash: newValue);
 
   @pragma('vm:prefer-inline')
@@ -525,11 +569,15 @@ class _AnsiTreeHeaderThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeHe
   $Result call({
     final AnsiBorder? border,
     final AnsiTextTheme? textTheme,
+    final Object? customHeader = const Object(),
+    final bool? hideHeader,
     final bool? showHash,
   }) {
     return _chain(_$AnsiTreeHeaderThemeImpl(
       border: border ?? _value.border,
       textTheme: textTheme ?? _value.textTheme,
+      customHeader: identical(customHeader, const Object()) ? _value.customHeader : (customHeader as String?),
+      hideHeader: hideHeader ?? _value.hideHeader,
       showHash: showHash ?? _value.showHash,
     ));
   }

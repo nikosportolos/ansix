@@ -32,56 +32,66 @@ class AnsiTreeView {
 
   String format(final dynamic data) {
     final StringBuffer buffer = StringBuffer();
-    final String hash = theme.headerTheme.showHash ? '<${data.hashCode.toString().italic()}>'.dim() : '';
-    String header = AnsiTable.fromList(
-      <AnsiText>[AnsiText.withTheme('${data.runtimeType}$hash', theme.headerTheme.textTheme)],
-      border: theme.headerTheme.border,
-    ).formattedText;
+    String prefix = '';
 
-    final List<String> headerRows = header.split(AnsiEscapeCodes.newLine).where((String line) {
-      return line.isNotEmpty;
-    }).toList(growable: false);
-    int prefixLength = headerRows[0].unformattedLength ~/ 2;
-    if (prefixLength % 2 == 0) {
-      prefixLength--;
+    if (!theme.headerTheme.hideHeader) {
+      final String hash = theme.headerTheme.showHash ? '<${data.hashCode.toString().italic()}>'.dim() : '';
+      String header = AnsiTable.fromList(
+        <AnsiText>[
+          AnsiText.withTheme(
+              theme.headerTheme.customHeader.isNullOrEmpty
+                  ? '${data.runtimeType}$hash'
+                  : theme.headerTheme.customHeader!,
+              theme.headerTheme.textTheme),
+        ],
+        border: theme.headerTheme.border,
+      ).formattedText;
+
+      final List<String> headerRows = header.split(AnsiEscapeCodes.newLine).where((String line) {
+        return line.isNotEmpty;
+      }).toList(growable: false);
+      int prefixLength = headerRows[0].unformattedLength ~/ 2;
+      if (prefixLength % 2 == 0) {
+        prefixLength--;
+      }
+      prefix = ' ' * prefixLength;
+
+      if (headerRows.length > 2 && theme.headerTheme.hasBorder) {
+        final String newChar = theme.headerTheme.border.style.boxDrawingSet.middleTopEdge;
+        final String temp = newChar.isEmpty
+            ? ''
+            : headerRows[2]
+                .unformatted
+                .replaceRange(prefixLength, prefixLength + 1, newChar)
+                .colored(foreground: theme.headerTheme.border.color);
+
+        header = <String>[
+          headerRows[0],
+          headerRows[1],
+          temp,
+        ].join(AnsiEscapeCodes.newLine);
+      }
+
+      buffer
+        ..write(header)
+        ..writeln();
     }
-    final String prefix = ' ' * prefixLength;
-
-    if (headerRows.length > 2 && theme.headerTheme.hasBorder) {
-      final String newChar = theme.headerTheme.border.style.boxDrawingSet.middleTopEdge;
-      final String temp = newChar.isEmpty
-          ? ''
-          : headerRows[2]
-              .unformatted
-              .replaceRange(prefixLength, prefixLength + 1, newChar)
-              .colored(foreground: theme.headerTheme.border.color);
-
-      header = <String>[
-        headerRows[0],
-        headerRows[1],
-        temp,
-      ].join(AnsiEscapeCodes.newLine);
-    }
-
-    buffer
-      ..write(header)
-      ..writeln();
 
     switch (TreeNodeType.getType(data)) {
       case TreeNodeType.primary:
-        buffer.write(_parseTreeNode('', data, prefix: prefix, isLast: true));
+        buffer.write(_parseTreeNode('', data, prefix: prefix, isLast: true, isFirstNode: true));
         break;
 
       case TreeNodeType.iterable:
-        buffer.write(_parseTreeList(data, data.runtimeType.toString(), prefix));
+        buffer.write(_parseTreeList(data, data.runtimeType.toString(), prefix, true));
         break;
 
       case TreeNodeType.map:
-        buffer.write(_parseTreeMap(data, prefix: prefix));
+        buffer.write(_parseTreeMap(data, prefix: prefix, isFirstNode: true));
         break;
 
       case TreeNodeType.object:
-        buffer.write(_parseObject(data, prefix: prefix, isLast: true));
+        buffer.write(_parseObject(data, prefix: prefix, isLast: true, isFirstNode: true));
         break;
     }
 
@@ -90,15 +100,20 @@ class AnsiTreeView {
 
   String _getAnchor({
     required final bool isLast,
+    final bool isFirstNode = false,
     final String prefix = '',
   }) {
     final StringBuffer buffer = StringBuffer()
       ..write(prefix)
       ..write(isLast
-          ? theme.anchorTheme.style == AnsiBorderStyle.ascii
-              ? theme.anchorTheme.style.boxDrawingSet.verticalLine
-              : theme.anchorTheme.style.boxDrawingSet.bottomLeftCorner
-          : theme.anchorTheme.style.boxDrawingSet.middleLeftEdge);
+          ? isFirstNode && theme.headerTheme.hideHeader
+              ? theme.anchorTheme.style.boxDrawingSet.horizontalLine
+              : theme.anchorTheme.style == AnsiBorderStyle.ascii
+                  ? theme.anchorTheme.style.boxDrawingSet.verticalLine
+                  : theme.anchorTheme.style.boxDrawingSet.bottomLeftCorner
+          : isFirstNode && theme.headerTheme.hideHeader
+              ? theme.anchorTheme.style.boxDrawingSet.topLeftCorner
+              : theme.anchorTheme.style.boxDrawingSet.middleLeftEdge);
     return buffer.toString().withForegroundColor(theme.anchorTheme.color);
   }
 
@@ -112,12 +127,13 @@ class AnsiTreeView {
     final bool isLast = false,
     final String prefix = '',
     final bool hasAnchor = false,
+    final bool isFirstNode = false,
   }) {
     final StringBuffer buffer = StringBuffer();
     if (!hasAnchor) {
       buffer
         ..write(prefix)
-        ..write(_getAnchor(isLast: isLast))
+        ..write(_getAnchor(isLast: isLast, isFirstNode: isFirstNode))
         ..write(_horizontalLine);
     }
 
@@ -191,6 +207,7 @@ class AnsiTreeView {
     final String prefix = '',
     final bool isMemberOfList = false,
     final bool? isLastNode,
+    final bool isFirstNode = false,
   }) {
     final StringBuffer buffer = StringBuffer();
     final List<dynamic> keys = map.keys.map((dynamic e) => e).toList(growable: false);
@@ -207,6 +224,7 @@ class AnsiTreeView {
     for (int i = 0; i < keys.length; i++) {
       final String key = keys[i].toString();
       final dynamic value = map[keys[i]];
+      final bool isFirstNodeAndEntry = i == 0 && isFirstNode;
 
       final bool isLastValue = i == keys.length - 1;
       final bool isLast = isLastNode ?? isLastValue;
@@ -217,7 +235,7 @@ class AnsiTreeView {
       };
 
       final String tab = ' ' * tabSize;
-      final String anchor = _getAnchor(isLast: isLast);
+      final String anchor = _getAnchor(isLast: isLast, isFirstNode: isFirstNodeAndEntry);
 
       if (!theme.compact) {
         buffer.writeln('$prefix$_verticalLine');
@@ -250,11 +268,21 @@ class AnsiTreeView {
               foregroundColor: theme.keyTheme.color,
             )
             ..writeln();
-          buffer.write(_parseTreeMap(value, prefix: isLast ? '$prefix$tab ' : '$prefix$_verticalLine$tab'));
+          buffer.write(_parseTreeMap(
+            value,
+            prefix: isLast ? '$prefix$tab ' : '$prefix$_verticalLine$tab',
+            isFirstNode: isFirstNodeAndEntry,
+          ));
           break;
 
         case TreeNodeType.primary:
-          buffer.write(_parseTreeNode(key, value, isLast: isLast, prefix: prefix));
+          buffer.write(_parseTreeNode(
+            key,
+            value,
+            isLast: isLast,
+            prefix: prefix,
+            isFirstNode: isFirstNodeAndEntry,
+          ));
           break;
 
         case TreeNodeType.object:
@@ -268,6 +296,7 @@ class AnsiTreeView {
               value,
               isLast: isLast,
               prefix: isLast ? '$prefix$tab ' : '$prefix$_verticalLine$tab',
+              isFirstNode: isFirstNodeAndEntry,
             ));
           break;
       }
@@ -280,6 +309,7 @@ class AnsiTreeView {
     final List<dynamic> list,
     final String key, [
     final String prefix = '',
+    final bool isFirstNode = false,
   ]) {
     final StringBuffer buffer = StringBuffer();
 
@@ -287,6 +317,7 @@ class AnsiTreeView {
 
     for (int i = 0; i < values.length; i++) {
       final bool isLast = i == values.length - 1;
+      final bool isFirstNodeAndEntry = i == 0 && isFirstNode;
 
       switch (TreeNodeType.getType(values[i])) {
         case TreeNodeType.primary:
@@ -299,6 +330,7 @@ class AnsiTreeView {
               values[i],
               isLast: isLast,
               prefix: prefix,
+              isFirstNode: isFirstNodeAndEntry,
             ),
           );
           break;
@@ -311,6 +343,7 @@ class AnsiTreeView {
             prefix: prefix,
             isLastNode: isLast,
             isMemberOfList: true,
+            isFirstNode: isFirstNodeAndEntry,
           ));
           break;
       }
@@ -323,14 +356,23 @@ class AnsiTreeView {
     final dynamic object, {
     final String prefix = '',
     final bool isLast = false,
+    final bool isFirstNode = false,
     final bool hasAnchor = false,
   }) {
     try {
-      return _parseTreeMap(object.toJson(), prefix: prefix);
+      return _parseTreeMap(
+        object.toJson(),
+        prefix: prefix,
+        isFirstNode: isFirstNode,
+      );
     } catch (_) {}
 
     try {
-      return _parseTreeMap(object.toMap(), prefix: prefix);
+      return _parseTreeMap(
+        object.toMap(),
+        prefix: prefix,
+        isFirstNode: isFirstNode,
+      );
     } catch (_) {}
 
     try {
@@ -340,6 +382,7 @@ class AnsiTreeView {
         prefix: prefix,
         hasAnchor: hasAnchor,
         isLast: true,
+        isFirstNode: isFirstNode,
       );
     } catch (_) {}
 

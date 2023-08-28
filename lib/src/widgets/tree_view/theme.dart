@@ -121,6 +121,8 @@ abstract class AnsiTreeHeaderTheme {
   const factory AnsiTreeHeaderTheme({
     AnsiBorder border,
     AnsiTextTheme textTheme,
+    String? customHeader,
+    bool hideHeader,
     bool showHash,
   }) = _$AnsiTreeHeaderThemeImpl;
 
@@ -129,6 +131,12 @@ abstract class AnsiTreeHeaderTheme {
 
   @DefaultValue(AnsiTextTheme())
   AnsiTextTheme get textTheme;
+
+  @DefaultValue(null)
+  String? get customHeader;
+
+  @DefaultValue(false)
+  bool get hideHeader;
 
   @DefaultValue(true)
   bool get showHash;

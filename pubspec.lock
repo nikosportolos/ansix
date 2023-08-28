@@ -93,10 +93,10 @@ packages:
     dependency: "direct main"
     description:
       name: data_class_plugin
-      sha256: adb0fb7b77d142dfe57e9fd328d73c56e4d4089aad602fcda4c2e04e6d02f178
+      sha256: "521b30b8830cd33f85d49a886be10f097e132957d7297a6dd34e34a7d37184a9"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.3"
+    version: "1.0.4"
   file:
     dependency: transitive
     description:

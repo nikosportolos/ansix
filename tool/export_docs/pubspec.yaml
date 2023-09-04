@@ -8,6 +8,7 @@ environment:
 dependencies:
   ansix:
     path: ../..
+    version: 0.1.0
   image: ^4.0.17
   path: ^1.8.3
 

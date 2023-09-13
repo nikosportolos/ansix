@@ -13,24 +13,33 @@ void main() {
 
   group('AnsiTreeView', () {
     test('List<int>', () {
-      final String actual = AnsiTreeView(
-        theme: theme,
-      ).format(<int>[1, 2, 3, 4, 5]);
-      expect(actual, treeViewMock1);
+      expect(
+        AnsiTreeView(
+          <int>[1, 2, 3, 4, 5],
+          theme: theme,
+        ).toString(),
+        treeViewMock1,
+      );
     });
 
     test('Map<String, dynamic>', () {
-      final String actual = AnsiTreeView(
-        theme: theme,
-      ).format(<String, dynamic>{'id': 12312, 'username': 'AnsiX'});
-      expect(actual, treeViewMock2);
+      expect(
+        AnsiTreeView(
+          <String, dynamic>{'id': 12312, 'username': 'AnsiX'},
+          theme: theme,
+        ).toString(),
+        treeViewMock2,
+      );
     });
 
     test('String', () {
-      final String actual = AnsiTreeView(
-        theme: theme,
-      ).format('This is a test message');
-      expect(actual, treeViewMock3);
+      expect(
+        AnsiTreeView(
+          'This is a test message',
+          theme: theme,
+        ).toString(),
+        treeViewMock3,
+      );
     });
 
     test('Object', () {
@@ -45,22 +54,13 @@ void main() {
         age: 30,
         groups: <String>['moderator', 'author', 'tester'],
         addresses: <Address>[
-          Address(
-            street: '123 Main St',
-            city: 'New York',
-            state: 'NY',
-          ),
-          Address(
-            street: '56 Flutter Avenue',
-            city: 'Las Vegas',
-            state: 'LV',
-          ),
+          Address(street: '123 Main St', city: 'New York', state: 'NY'),
+          Address(street: '56 Flutter Avenue', city: 'Las Vegas', state: 'LV'),
         ],
         // child: child,
       );
-      final String actual = AnsiTreeView(
-        theme: theme,
-      ).format(user);
+
+      final String actual = AnsiTreeView(user, theme: theme).toString();
       expect(actual.unformatted, treeViewMockObject);
     });
 
@@ -76,20 +76,13 @@ void main() {
         age: 30,
         groups: <String>['moderator', 'author', 'tester'],
         addresses: <Address>[
-          Address(
-            street: '123 Main St',
-            city: 'New York',
-            state: 'NY',
-          ),
-          Address(
-            street: '56 Flutter Avenue',
-            city: 'Las Vegas',
-            state: 'LV',
-          ),
+          Address(street: '123 Main St', city: 'New York', state: 'NY'),
+          Address(street: '56 Flutter Avenue', city: 'Las Vegas', state: 'LV'),
         ],
         // child: child,
       );
       final String actual = AnsiTreeView(
+        user,
         theme: const AnsiTreeViewTheme(
           compact: false,
           sorted: true,
@@ -102,7 +95,7 @@ void main() {
           ),
           valueTheme: AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
         ),
-      ).format(user);
+      ).toString();
       expect(actual.unformatted, treeViewMockExpanded);
     });
 
@@ -122,9 +115,7 @@ void main() {
         ],
       );
 
-      final String actual = AnsiTreeView(
-        theme: AnsiTreeViewTheme.$default(),
-      ).format(node3);
+      final String actual = AnsiTreeView(node3, theme: AnsiTreeViewTheme.$default()).toString();
       expect(actual.unformatted, treeviewNestedMock);
     });
 
@@ -139,7 +130,7 @@ void main() {
         'empty_list': <String>[],
       };
 
-      final String actual = AnsiTreeView(theme: theme).format(map);
+      final String actual = AnsiTreeView(map, theme: theme).toString();
       expect(actual.unformatted, treeviewEmptyMock);
     });
 
@@ -155,6 +146,7 @@ void main() {
       };
 
       final String actual = AnsiTreeView(
+        map,
         theme: const AnsiTreeViewTheme(
           headerTheme: AnsiTreeHeaderTheme(
             showHash: false,
@@ -163,7 +155,7 @@ void main() {
           anchorTheme: AnsiTreeAnchorTheme(style: AnsiBorderStyle.ascii),
           valueTheme: AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
         ),
-      ).format(map);
+      ).toString();
       expect(actual.unformatted, treeviewMixedBordersMock);
     });
 
@@ -188,6 +180,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
       };
 
       final String actual = AnsiTreeView(
+        map,
         theme: const AnsiTreeViewTheme(
           headerTheme: AnsiTreeHeaderTheme(showHash: false),
           valueTheme: AnsiTreeNodeValueTheme(
@@ -196,7 +189,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             alignment: AnsiTextAlignment.center,
           ),
         ),
-      ).format(map);
+      ).toString();
       expect(actual.unformatted, treeviewLongTextMock);
     });
 
@@ -222,6 +215,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
       expect(
         AnsiTreeView(
+          map,
           theme: const AnsiTreeViewTheme(
             headerTheme: AnsiTreeHeaderTheme(showHash: false),
             valueTheme: AnsiTreeNodeValueTheme(
@@ -233,7 +227,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
               alignment: AnsiTextAlignment.center,
             ),
           ),
-        ).format(map),
+        ).toString(),
         treeviewLongTextSplitMock,
       );
     });
@@ -260,6 +254,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
       expect(
         AnsiTreeView(
+          map,
           theme: const AnsiTreeViewTheme(
             headerTheme: AnsiTreeHeaderTheme(showHash: false),
             valueTheme: AnsiTreeNodeValueTheme(
@@ -272,7 +267,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
               alignment: AnsiTextAlignment.center,
             ),
           ),
-        ).format(map),
+        ).toString(),
         treeviewLongTextSplitAndLineBreaksMock,
       );
     });
@@ -299,6 +294,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
       expect(
         AnsiTreeView(
+          map,
           theme: const AnsiTreeViewTheme(
             headerTheme: AnsiTreeHeaderTheme(showHash: false),
             valueTheme: AnsiTreeNodeValueTheme(
@@ -312,7 +308,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
               alignment: AnsiTextAlignment.center,
             ),
           ),
-        ).format(map),
+        ).toString(),
         treeviewLongTextSplitLineBreaksFixedMock,
       );
     });
@@ -337,23 +333,23 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
       };
 
-      final String actual = AnsiTreeView(
+      final String actual = AnsiTreeView(map,
           theme: const AnsiTreeViewTheme(
-        headerTheme: AnsiTreeHeaderTheme(
-          showHash: false,
-          textTheme: AnsiTextTheme(
-            foregroundColor: AnsiColor.salmon1,
-            backgroundColor: AnsiColor.grey11,
-          ),
-        ),
-        anchorTheme: AnsiTreeAnchorTheme(color: AnsiColor.yellow6),
-        keyTheme: AnsiTreeNodeKeyTheme(color: AnsiColor.darkOrange3),
-        valueTheme: AnsiTreeNodeValueTheme(
-          wrapText: true,
-          wrapOptions: WrapOptions(lineLength: 100),
-          color: AnsiColor.cadetBlue,
-        ),
-      )).format(map);
+            headerTheme: AnsiTreeHeaderTheme(
+              showHash: false,
+              textTheme: AnsiTextTheme(
+                foregroundColor: AnsiColor.salmon1,
+                backgroundColor: AnsiColor.grey11,
+              ),
+            ),
+            anchorTheme: AnsiTreeAnchorTheme(color: AnsiColor.yellow6),
+            keyTheme: AnsiTreeNodeKeyTheme(color: AnsiColor.darkOrange3),
+            valueTheme: AnsiTreeNodeValueTheme(
+              wrapText: true,
+              wrapOptions: WrapOptions(lineLength: 100),
+              color: AnsiColor.cadetBlue,
+            ),
+          )).toString();
       expect(actual, treeviewLongTextWithColorsMock);
     });
 
@@ -417,7 +413,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
       for (final AnsiTextAlignment alignment in AnsiTextAlignment.values) {
         test(alignment, () {
           expect(
-            AnsiTreeView(theme: theme.copyWith.valueTheme.alignment(alignment)).format(map),
+            AnsiTreeView(map, theme: theme.copyWith.valueTheme.alignment(alignment)).toString(),
             testCases[alignment],
           );
         });
@@ -454,38 +450,42 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
       );
 
       test('list with no header', () {
-        final String actual = AnsiTreeView(theme: theme).format(<int>[1, 2, 3, 4]);
-        expect(actual, noHeaderList);
+        expect(
+          AnsiTreeView(<int>[1, 2, 3, 4], theme: theme).toString(),
+          noHeaderList,
+        );
       });
 
       test('map with no header', () {
-        final String actual = AnsiTreeView(theme: theme).format(
-          <String, Object>{'UUID': 1, 'user': user},
+        expect(
+          AnsiTreeView(<String, Object>{'UUID': 1, 'user': user}, theme: theme).toString(),
+          noHeaderMap,
         );
-        expect(actual, noHeaderMap);
       });
 
       test('map with no header and single entry', () {
-        final String actual = AnsiTreeView(theme: theme).format(user);
-        expect(actual, noHeaderMapSingleEntry);
+        expect(
+          AnsiTreeView(user, theme: theme).toString(),
+          noHeaderMapSingleEntry,
+        );
       });
 
       test('map with no header and single entry', () {
-        final String actual = AnsiTreeView(theme: theme).format(<String, int>{'a': 2});
-        expect(actual, '''[38;5;31m─[0m[38;5;31m──[0m [38;5;15m[1ma[22m[0m: [38;5;145m[3m2[23m[0m\n''');
+        expect(
+          AnsiTreeView(<String, int>{'a': 2}, theme: theme).toString(),
+          '''[38;5;31m─[0m[38;5;31m──[0m [38;5;15m[1ma[22m[0m: [38;5;145m[3m2[23m[0m\n''',
+        );
       });
     });
 
     test('custom header', () {
-      final String actual = AnsiTreeView(
-        theme: const AnsiTreeViewTheme(
-          headerTheme: AnsiTreeHeaderTheme(customHeader: 'AnsiX'),
-        ),
-      ).format(
-        <int>[1, 2, 3, 4, 5],
-      );
       expect(
-        actual,
+        AnsiTreeView(
+          <int>[1, 2, 3, 4, 5],
+          theme: const AnsiTreeViewTheme(
+            headerTheme: AnsiTreeHeaderTheme(customHeader: 'AnsiX'),
+          ),
+        ).toString(),
         '''AnsiX
  ├── 1
  ├── 2

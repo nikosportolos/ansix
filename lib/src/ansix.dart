@@ -145,7 +145,7 @@ class AnsiX {
     if (allowPrint) {
       // ignore: avoid_print
       print(
-        AnsiTreeView(theme: theme).format(data),
+        AnsiTreeView(data, theme: theme),
       );
     }
   }

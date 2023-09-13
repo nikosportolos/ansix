@@ -257,6 +257,12 @@ It shows the relationships between different elements or categories, where each 
 The tree view provides a visual way to understand the structure and hierarchy of the data,
 using indentation and/or graphical symbols to indicate levels and connections between the elements.
 
+```dart
+AnsiTreeView(
+  final dynamic data, {
+  this.theme = const AnsiTreeViewTheme(),
+})
+```
 
 <a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/treeview/class.png" target="_blank">
   <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/treeview/class.png" width="400" alt="class-treeview">
@@ -279,6 +285,17 @@ final User user = User(
 AnsiX.printTreeView(
   user, 
   theme: AnsiTreeViewTheme.$default(),
+);
+```
+
+Or just use the TreeView object as a string:
+
+```dart
+print(
+  AnsiTreeView(
+    user,
+    theme: AnsiTreeViewTheme.$default(),
+  ),
 );
 ```
 

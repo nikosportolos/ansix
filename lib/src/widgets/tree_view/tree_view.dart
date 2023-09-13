@@ -12,15 +12,11 @@ export 'theme.dart';
 /// The tree view provides a visual way to understand the structure and hierarchy of the data,
 /// using indentation and/or graphical symbols to indicate levels and connections between the elements.
 class AnsiTreeView {
-  AnsiTreeView({
+  AnsiTreeView(
+    final dynamic data, {
     this.theme = const AnsiTreeViewTheme(),
   }) : _lineLength = theme.compact ? 2 : 4 {
-    _horizontalLine = (theme.anchorTheme.style.boxDrawingSet.horizontalLine * _lineLength).withForegroundColor(
-      theme.anchorTheme.color,
-    );
-    _verticalLine = theme.anchorTheme.style.boxDrawingSet.verticalLine.withForegroundColor(
-      theme.anchorTheme.color,
-    );
+    formattedText = _build(data);
   }
 
   /// The theme of the tree view that will be used for styling.
@@ -30,7 +26,19 @@ class AnsiTreeView {
   late final String _horizontalLine;
   late final String _verticalLine;
 
-  String format(final dynamic data) {
+  late final String formattedText;
+
+  @override
+  String toString() => formattedText;
+
+  String _build(final dynamic data) {
+    _horizontalLine = (theme.anchorTheme.style.boxDrawingSet.horizontalLine * _lineLength).withForegroundColor(
+      theme.anchorTheme.color,
+    );
+    _verticalLine = theme.anchorTheme.style.boxDrawingSet.verticalLine.withForegroundColor(
+      theme.anchorTheme.color,
+    );
+
     final StringBuffer buffer = StringBuffer();
     String prefix = '';
 

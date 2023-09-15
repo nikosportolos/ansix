@@ -22,7 +22,7 @@ export 'row.dart';
 /// - [rows] A list of [AnsiTableRow] that will be used as data of the [AnsiTable].
 /// - [border] The [AnsiBorder] that will be used to draw the [AnsiTable].
 /// - [transparent] If set to true any external formatting will affect the [AnsiTable]. Defaults to *true*.
-class AnsiTable {
+class AnsiTable extends AnsiWidget {
   AnsiTable({
     final List<AnsiTableRow> rows = const <AnsiTableRow>[],
     final AnsiBorder border = const AnsiBorder(),
@@ -65,6 +65,7 @@ class AnsiTable {
   }
 
   /// A formatted string representation of the [AnsiTable].
+  @override
   late final String formattedText;
 
   /// The [AnsiBorderBuilder] used to draw the [AnsiTable].
@@ -213,10 +214,5 @@ class AnsiTable {
     }
 
     return rows;
-  }
-
-  @override
-  String toString() {
-    return formattedText;
   }
 }

@@ -1,4 +1,7 @@
-import 'package:ansix/ansix.dart';
+import 'package:ansix/src/core/extensions/extensions.dart';
+import 'package:ansix/src/theme/theme.dart';
+import 'package:ansix/src/widgets/text/text.dart';
+import 'package:ansix/src/widgets/widget.dart';
 
 export 'padding.dart';
 export 'style.dart';
@@ -12,7 +15,7 @@ export 'theme.dart';
 /// - [backgroundColor] Background color of the text.
 /// - [padding] Used to pad the text with lines and whitespaces.
 /// - [fixedWidth] Used as a min constrain for the length of the text.
-class AnsiText {
+class AnsiText extends AnsiWidget {
   static final RegExp ansiMatcher = RegExp(r'\[(.*?)m');
 
   AnsiText(
@@ -70,6 +73,8 @@ class AnsiText {
   final AnsiTextAlignment alignment;
 
   late final int width;
+
+  @override
   late final String formattedText;
 
   factory AnsiText.withTheme(final String text, final AnsiTextTheme theme) {
@@ -82,10 +87,5 @@ class AnsiText {
       padding: theme.padding,
       fixedWidth: theme.fixedWidth,
     );
-  }
-
-  @override
-  String toString() {
-    return formattedText;
   }
 }

@@ -11,7 +11,7 @@ export 'theme.dart';
 ///
 /// The tree view provides a visual way to understand the structure and hierarchy of the data,
 /// using indentation and/or graphical symbols to indicate levels and connections between the elements.
-class AnsiTreeView {
+class AnsiTreeView extends AnsiWidget {
   AnsiTreeView(
     final dynamic data, {
     this.theme = const AnsiTreeViewTheme(),
@@ -26,10 +26,8 @@ class AnsiTreeView {
   late final String _horizontalLine;
   late final String _verticalLine;
 
-  late final String formattedText;
-
   @override
-  String toString() => formattedText;
+  late final String formattedText;
 
   String _build(final dynamic data) {
     _horizontalLine = (theme.anchorTheme.style.boxDrawingSet.horizontalLine * _lineLength).withForegroundColor(

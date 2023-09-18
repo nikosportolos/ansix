@@ -239,9 +239,8 @@ class AnsiGrid extends AnsiWidget {
 
         case AnsiTextAlignment.center:
           final (int, int) paddings = ansiText.text.alignCenterForWidth(
-              theme.fixedCellWidth != null && column.width < theme.fixedCellWidth!
-                  ? theme.fixedCellWidth!
-                  : column.width);
+            _calculateSpacesForColumn(column.width, maxColumnWidth),
+          );
           _buffer.writeSpaces(paddings.$1 - ansiText.padding.left, backgroundColor);
           _buffer.write(ansiText.formattedText);
           _buffer.writeSpaces(paddings.$2 - ansiText.padding.right, backgroundColor);
@@ -254,7 +253,7 @@ class AnsiGrid extends AnsiWidget {
       }
     } else {
       _buffer.writeSpaces(
-        _calculateSpacesForColumn(column, maxColumnWidth),
+        _calculateSpacesForColumn(column.width, maxColumnWidth),
         backgroundColor,
       );
     }
@@ -272,22 +271,19 @@ class AnsiGrid extends AnsiWidget {
     required final int maxColumnWidth,
     required final int textWidth,
   }) {
-    if (theme.fixedCellWidth != null && columnWidth < theme.fixedCellWidth!) {
-      if (theme.keepSameWidth) {
-        return (maxColumnWidth > theme.fixedCellWidth! ? maxColumnWidth : theme.fixedCellWidth!) - textWidth;
-      }
-
-      return theme.fixedCellWidth! - textWidth;
-    }
-
-    return (theme.keepSameWidth ? maxColumnWidth : columnWidth) - textWidth;
+    return _calculateSpacesForColumn(columnWidth, maxColumnWidth) - textWidth;
   }
 
-  int _calculateSpacesForColumn(final AnsiGridColumn column, final int maxColumnWidth) {
-    if (theme.fixedCellWidth != null && column.width < theme.fixedCellWidth!) {
-      return theme.keepSameWidth && maxColumnWidth > theme.fixedCellWidth! ? maxColumnWidth : theme.fixedCellWidth!;
+  int _calculateSpacesForColumn(
+    final int columnWidth,
+    final int maxColumnWidth,
+  ) {
+    if (theme.fixedCellWidth != null && columnWidth < theme.fixedCellWidth!) {
+      return theme.keepSameWidth && maxColumnWidth > theme.fixedCellWidth! //
+          ? maxColumnWidth
+          : theme.fixedCellWidth!;
     }
 
-    return theme.keepSameWidth ? maxColumnWidth : column.width;
+    return theme.keepSameWidth ? maxColumnWidth : columnWidth;
   }
 }

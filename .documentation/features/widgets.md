@@ -48,7 +48,6 @@ AnsiTextStyle(
 ### AnsiPadding
 
 
-
 ### AnsiOutlinedText
 
 ANSI outlined text refers to text that is bordered or outlined using ANSI escape sequences in a command-line interface.
@@ -70,7 +69,22 @@ AnsiOutlinedText(
 })
 ```
 
-Check the [examples](https://github.com/nikosportolos/ansix/tree/main/example/outlined_text).
+#### Examples
+
+- Outlined text with various border styles
+
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/outlined-text-example-1.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/outlined-text-example-1.png" width="600" alt="outlined-text-example-1">
+</a>
+
+- Outlined text with wrapping
+
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/outlined-text-example-2.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/outlined-text-example-2.png" width="600" alt="outlined-text-example-2">
+</a>
+
+
+Check the [examples](https://github.com/nikosportolos/ansix/tree/main/example/outlined_text) folder for more.
 
 
 ### AnsiGrid
@@ -85,12 +99,16 @@ to improve readability and visual appeal.
 Grids are commonly used in command-line interfaces, log files, and other text-based applications
 to present data in a tabular format that is easy to read and analyze.
 
-> **Each cell of an AnsiGrid can have multiple lines.**
+> The difference between the **AnsiGrid** and the deprecated **AnsiTable** is that 
+> each cell of an AnsiGrid can have multiple lines and auto text-wrapping is supported.
 
 - [data]
-  A list of columns that will be used as data of the [AnsiGrid].
+
+  A list of columns that will be used as data of the **AnsiGrid**.
+
 - [theme]
-  The [AnsiGridTheme] that will be used to draw the [AnsiGrid].
+
+  The **AnsiGridTheme** that will be used to draw the **AnsiGrid**.
 
 
 ```dart
@@ -102,7 +120,7 @@ AnsiGrid(
 
 ### AnsiGridTheme
 
-A collection of styling properties, borders and colors, that will be used to style an AnsiGrid.
+A collection of styling properties, borders and colors, that will be used to style an **AnsiGrid**.
 
 ```dart
 const factory AnsiGridTheme({

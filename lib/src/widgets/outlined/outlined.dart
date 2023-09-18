@@ -65,16 +65,13 @@ class AnsiOutlinedText extends AnsiWidget {
     final bool transparent = true,
   }) {
     _formattedText = AnsiGrid.single(
-      wrapText
-          ? text.wrapText(
-              fixedWidth: fixedWidth,
-              wrapOptions: wrapOptions,
-            )
-          : <Object?>[text],
+      <Object?>[text],
       theme: AnsiGridTheme(
         border: border,
         transparent: transparent,
         orientation: AnsiOrientation.vertical,
+        wrapText: wrapText,
+        wrapOptions: wrapOptions,
         cellTextTheme: AnsiTextTheme(
           alignment: alignment,
           style: style,

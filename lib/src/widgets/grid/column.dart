@@ -60,7 +60,7 @@ class AnsiGridColumn {
     required final AnsiGridTheme theme,
     required final AnsiGridCellType type,
   }) {
-    if (object == null || object.toString().trim().isEmpty) {
+    if (object == null || object.toString().isEmpty) {
       return AnsiGridCell(
         position: position,
         lines: <AnsiText>[AnsiText('')],

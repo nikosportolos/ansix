@@ -140,14 +140,14 @@ void main() {
 - Vertical grid
 
 <a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/vertical-grid-example.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/vertical-grid-example.png" width="400" alt="vertical-grid-example">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/vertical-grid-example.png" width="600" alt="vertical-grid-example">
 </a>
 
 
 - Horizontal grid
 
 <a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/horizontal-grid-example.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/horizontal-grid-example.png" width="400" alt="horizontal-grid-example">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/horizontal-grid-example.png" width="750" alt="horizontal-grid-example">
 </a>
 
 

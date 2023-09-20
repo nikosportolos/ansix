@@ -53,7 +53,9 @@ void main() {
           style: AnsiBorderStyle.square,
           type: AnsiBorderType.all,
         ),
-        fixedCellWidth: 15,
+        cellTextTheme: AnsiTextTheme(
+          fixedWidth: 15,
+        ),
       ),
     ),
   );

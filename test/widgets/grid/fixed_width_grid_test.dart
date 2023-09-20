@@ -14,7 +14,9 @@ void main() {
         final AnsiGrid grid = AnsiGrid.fromColumns(
           data,
           theme: AnsiGridTheme(
-            fixedCellWidth: 15,
+            cellTextTheme: const AnsiTextTheme(
+              fixedWidth: 15,
+            ),
             transparent: true,
             border: AnsiBorder(
               style: AnsiBorderStyle.square,
@@ -32,8 +34,10 @@ void main() {
     final AnsiGrid grid = AnsiGrid.fromColumns(
       data,
       theme: const AnsiGridTheme(
-        fixedCellWidth: 15,
         transparent: false,
+        cellTextTheme: AnsiTextTheme(
+          fixedWidth: 15,
+        ),
         border: AnsiBorder(
           style: AnsiBorderStyle.square,
           type: AnsiBorderType.all,
@@ -50,7 +54,9 @@ void main() {
       data,
       theme: const AnsiGridTheme(
         transparent: false,
-        fixedCellWidth: 15,
+        cellTextTheme: AnsiTextTheme(
+          fixedWidth: 15,
+        ),
         border: AnsiBorder(
           style: AnsiBorderStyle.square,
           type: AnsiBorderType.all,

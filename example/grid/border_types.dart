@@ -18,10 +18,12 @@ void main() {
     final AnsiGrid grid = AnsiGrid.fromColumns(
       data,
       theme: AnsiGridTheme(
-        fixedCellWidth: 15,
         border: AnsiBorder(
           style: AnsiBorderStyle.square,
           type: type,
+        ),
+        cellTextTheme: const AnsiTextTheme(
+          fixedWidth: 15,
         ),
       ),
     );

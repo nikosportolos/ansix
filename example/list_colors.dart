@@ -22,7 +22,6 @@ void main() {
       AnsiGrid.fromRows(
         data,
         theme: AnsiGridTheme(
-          fixedCellWidth: 20,
           overrideTheme: true,
           border: const AnsiBorder(
             style: AnsiBorderStyle.bold,
@@ -38,6 +37,7 @@ void main() {
           cellTextTheme: AnsiTextTheme(
             alignment: AnsiTextAlignment.center,
             padding: AnsiPadding.horizontal(2),
+            fixedWidth: 20,
           ),
         ),
       ),

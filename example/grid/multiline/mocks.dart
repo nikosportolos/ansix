@@ -9,6 +9,7 @@ final AnsiGridTheme horizontalTheme = AnsiGridTheme(
   wrapOptions: const WrapOptions(
     lineBreak: false,
     splitWords: false,
+    lineLength: 15,
   ),
   orientation: AnsiOrientation.horizontal,
   keepSameWidth: false,
@@ -17,25 +18,31 @@ final AnsiGridTheme horizontalTheme = AnsiGridTheme(
     style: const AnsiTextStyle(bold: true),
     backgroundColor: AnsiColor.deepSkyBlue7,
     alignment: AnsiTextAlignment.center,
-    padding: AnsiPadding.vertical(1),
+    padding: AnsiPadding.vertical(1) + AnsiPadding.horizontal(2),
     fixedWidth: 7,
   ),
   cellTextTheme: AnsiTextTheme(
     foregroundColor: AnsiColor.cadetBlue,
     alignment: AnsiTextAlignment.center,
     padding: AnsiPadding.horizontal(1),
-    fixedWidth: 12,
   ),
   footerTextTheme: AnsiTextTheme(
     foregroundColor: AnsiColor.grey0,
     style: const AnsiTextStyle(italic: true),
     alignment: AnsiTextAlignment.center,
     backgroundColor: AnsiColor.deepSkyBlue5,
-    padding: AnsiPadding.horizontal(1),
+    padding: AnsiPadding.horizontal(2),
   ),
 );
 
-final AnsiGridTheme verticalTheme = horizontalTheme.copyWith.orientation(AnsiOrientation.vertical);
+final AnsiGridTheme verticalTheme = horizontalTheme.copyWith(
+  orientation: AnsiOrientation.vertical,
+  wrapOptions: const WrapOptions(
+    lineBreak: false,
+    splitWords: false,
+    lineLength: 22,
+  ),
+);
 
 const List<Movie> movies = <Movie>[
   Movie(title: 'The Shawshank Redemption', releaseYear: 1994, rate: 9.3),

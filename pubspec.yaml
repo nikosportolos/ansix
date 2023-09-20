@@ -1,6 +1,6 @@
 name: ansix
 description: AnsiX is a powerful and easy-to-use library that provides tools and extensions for adding ANSI color and styling support to your Dart & Flutter applications.
-version: 0.1.0
+version: 0.2.0
 
 homepage: https://github.com/nikosportolos/ansix
 repository: https://github.com/nikosportolos/ansix
@@ -23,18 +23,30 @@ dev_dependencies:
   test: ^1.24.6
 
 screenshots:
-  - description: 'An animated demonstration of AnsiX'
-    path: assets/images/AnsiX.gif
+  - description: 'This is an AnsiTreeView usage example'
+    path: assets/images/treeview/class.png
+  - description: 'This is a vertical AnsiGrid usage example'
+    path: assets/images/vertical-grid-example.png
+  - description: 'This is a horizontal AnsiGrid usage example'
+    path: assets/images/horizontal-grid-example.png
+  - description: 'This is an OutlinedText usage example with various borders'
+    path: assets/images/outlined-text-example-1.png
+  - description: 'This is an OutlinedText usage example with auto-wrapped text'
+    path: assets/images/outlined-text-example-2.png
   - description: 'Supported ANSI colors'
     path: assets/images/color-tables.png
   - description: 'Supported ANSI text styles'
     path: assets/images/text-styles.png
-  - description: 'AnsiTreeView'
-    path: assets/images/treeview/class.png
+  - description: 'Supported ANSI border styles'
+    path: assets/images/border-styles.png
+  - description: 'Supported ANSI border types'
+    path: assets/images/border-types.png
+  - description: 'This is an animated demonstration of AnsiX text styles'
+    path: assets/images/AnsiX.gif
 
 topics:
   - ansi
   - cli
   - console
-  - style
-  - color
+  - grid
+  - treeview

@@ -1,3 +1,51 @@
+## v0.2.0
+
+**BREAKING CHANGES**
+
+> **Refactor AnsiTable to AnsiGrid**
+> 
+> _AnsiTable_ gets deprecated and replaced with 
+> [**AnsiGrid**](./.documentation/features/widgets.md#ansigrid) which supports text-wrapping and
+> multiple lines of text in each grid cell.
+
+
+#### Changes/Improvements
+
+- AnsiTable: Wrap line if AnsiText.fixedWidth is set ([#3](https://github.com/nikosportolos/ansix/issues/3))
+- AnsiTable: Support multiline cells ([#138](https://github.com/nikosportolos/ansix/issues/138))
+- Refactor AnsiTreeView ([#171](https://github.com/nikosportolos/ansix/issues/171))
+- Create 'AnsiWidget' interface ([#173](https://github.com/nikosportolos/ansix/issues/173))
+- Refactor AnsiOutlinedText ([#176](https://github.com/nikosportolos/ansix/issues/176))
+- AnsiGridTheme: Remove 'fixedCellWidth' ([#185](https://github.com/nikosportolos/ansix/issues/185))
+- Set AnsiBorderType.all as default border type ([#187](https://github.com/nikosportolos/ansix/issues/187))
+- Create 'writeTabs' string buffer extension ([#191](https://github.com/nikosportolos/ansix/issues/191))
+
+
+#### Bug fixes
+
+- AnsiGrid: Wrong cell width when keepSameWidth is true with center alignment ([#178](https://github.com/nikosportolos/ansix/issues/178))
+- Fix AnsiGrid issues ([#180](https://github.com/nikosportolos/ansix/issues/180))
+  - Fix wrong calculation for AnsiText content with horizontal padding and center alignment
+  - Fix border color
+  - Fix background color with vertical padding
+- AnsiTreeView: Fix header issues ([#189](https://github.com/nikosportolos/ansix/issues/189))
+
+
+#### Documentation
+
+- Update badges on README.md ([#181](https://github.com/nikosportolos/ansix/issues/181))
+- Update topics and screenshots for [pub.dev](https://pub.dev/packages/ansix)
+- Update outdated examples & tests
+
+
+#### Dependencies
+
+- Bump ansix from 0.0.9-prerelease to 0.1.0 in /tool/export_docs ([#168](https://github.com/nikosportolos/ansix/pull/168))
+- Bump tachyon from 0.0.8 to 0.0.9 ([#169](https://github.com/nikosportolos/ansix/pull/169))
+- Bump meta from 1.9.1 to 1.10.0 ([#170](https://github.com/nikosportolos/ansix/pull/170))
+
+
+
 ## v0.1.0
 
 #### Dependencies
@@ -10,18 +58,18 @@
 - Bump test from 1.24.4 to 1.24.6 in /tool/export_docs ([#155](https://github.com/nikosportolos/ansix/pull/155))
 - Bump tachyon from 0.0.7 to 0.0.8 ([#156](https://github.com/nikosportolos/ansix/pull/156))
 - Bump data_class_plugin from 1.0.3 to 1.0.4 ([#157](https://github.com/nikosportolos/ansix/pull/157))
-- Bump min dart SDK to 3.1.0 ([#158](https://github.com/nikosportolos/ansix/pull/158))
-- Bump 'dart-package' action to 0.1.1 ([#160](https://github.com/nikosportolos/ansix/pull/160))
+- Bump min dart SDK to 3.1.0 ([#158](https://github.com/nikosportolos/ansix/issues/158))
+- Bump 'dart-package' action to 0.1.1 ([#160](https://github.com/nikosportolos/ansix/issues/160))
 
 
 #### Documentation
 
-- Update README.md ([#162](https://github.com/nikosportolos/ansix/pull/162))
+- Update README.md ([#162](https://github.com/nikosportolos/ansix/issues/162))
 
 
 #### Changes/Improvements
 
-- Modify header theme of AnsiTreeView ([#164](https://github.com/nikosportolos/ansix/pull/164))
+- Modify header theme of AnsiTreeView ([#164](https://github.com/nikosportolos/ansix/issues/164))
 
 
 
@@ -29,13 +77,13 @@
 
 #### Changes/Improvements
 
-- AnsiTable: Set headerTextStyle & footerTextStyle as optional ([#134](https://github.com/nikosportolos/ansix/pull/134))
-- Refactor AnsiX class library ([#136](https://github.com/nikosportolos/ansix/pull/136))
+- AnsiTable: Set headerTextStyle & footerTextStyle as optional ([#134](https://github.com/nikosportolos/ansix/issues/134))
+- Refactor AnsiX class library ([#136](https://github.com/nikosportolos/ansix/issues/136))
 
 #### Dependencies
 
-- Bump tachyon to 0.0.7 ([#142](https://github.com/nikosportolos/ansix/pull/142))
-- Bump test to 1.24.4 ([#143](https://github.com/nikosportolos/ansix/pull/143))
+- Bump tachyon to 0.0.7 ([#142](https://github.com/nikosportolos/ansix/issues/142))
+- Bump test to 1.24.4 ([#143](https://github.com/nikosportolos/ansix/issues/143))
 
 
 ## v0.0.8-prerelease

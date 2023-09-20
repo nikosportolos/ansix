@@ -64,7 +64,7 @@ class AnsiOutlinedText extends AnsiWidget {
     final WrapOptions wrapOptions = const WrapOptions(),
     final bool transparent = true,
   }) {
-    _formattedText = AnsiGrid.single(
+    _formattedText = AnsiGrid.list(
       <Object?>[text],
       theme: AnsiGridTheme(
         border: border,

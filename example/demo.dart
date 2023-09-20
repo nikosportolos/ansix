@@ -42,7 +42,7 @@ void main() {
   }
 
   print(
-    AnsiGrid.single(
+    AnsiGrid.list(
       <Object?>[
         true,
         242,

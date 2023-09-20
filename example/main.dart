@@ -6,10 +6,7 @@ void main() {
   // Ensure that the attached terminal supports ANSI formatting
   AnsiX.ensureSupportsAnsi();
 
-  // String extensions
-  print('This is a bold text'.bold());
-  print('This is a text with red foreground color'.red());
-
+  // StringBuffer extensions
   final StringBuffer buffer = StringBuffer()
     ..writeWithForegroundColor('Hello ', AnsiColor.blue)
     ..writeStyled(
@@ -20,11 +17,11 @@ void main() {
     ..writeWithForegroundColor('!', AnsiColor.red)
     ..writeWithForegroundColor('!', AnsiColor.green)
     ..writeWithForegroundColor('!', AnsiColor.blue);
-
-  // StringBuffer extensions
   print(buffer);
 
-  print('');
+  // String extensions
+  print('This is a bold text'.bold());
+  print('This is a text with red foreground color'.blue());
 
   final Map<String, dynamic> json = <String, dynamic>{
     'field1': 'value',
@@ -33,14 +30,14 @@ void main() {
   };
 
   print('');
-  print('Json'.underline().colored(background: AnsiColor.darkSeaGreen, foreground: AnsiColor.black));
-  AnsiX.printJson(json, foreground: AnsiColor.cadetBlue);
+  print('Json'.underline().colored(foreground: AnsiColor.deepSkyBlue5));
+  AnsiX.printJson(json, foreground: AnsiColor.cyan3);
 
   print('');
-  print('TreeView'.bold().colored(foreground: AnsiColor.deepSkyBlue5));
+  print('Tree View'.bold().colored(foreground: AnsiColor.deepSkyBlue5));
   AnsiX.printTreeView(json, theme: AnsiTreeViewTheme.$default());
 
-  print('Grid'.italic().colored(background: AnsiColor.darkBlue));
+  print('Data Grid'.italic().colored(foreground: AnsiColor.deepSkyBlue5));
   print(
     AnsiGrid.fromColumns(
       <List<Object?>>[
@@ -53,8 +50,14 @@ void main() {
           style: AnsiBorderStyle.square,
           type: AnsiBorderType.all,
         ),
+        headerTextTheme: AnsiTextTheme(
+          alignment: AnsiTextAlignment.center,
+          style: AnsiTextStyle(bold: true),
+          foregroundColor: AnsiColor.cyan3,
+        ),
         cellTextTheme: AnsiTextTheme(
           fixedWidth: 15,
+          alignment: AnsiTextAlignment.center,
         ),
       ),
     ),

@@ -34,7 +34,7 @@ void main() {
     });
 
     group('Validate generated color markdown files', () {
-      final String basePath = join('docs', 'colors');
+      final String basePath = join('.documentation', 'docs', 'colors');
 
       test(basePath, () {
         final Directory dir = Directory(join(Directory.current.path, basePath));

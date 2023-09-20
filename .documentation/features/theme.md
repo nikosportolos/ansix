@@ -44,7 +44,7 @@ Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors.
 
 #### ANSI Color sets
 
-- [System colors](https://github.com/nikosportolos/ansix/tree/main/docs/colors/system.md)
+- [System colors](https://github.com/nikosportolos/ansix/tree/main/.documentation/docs/colors/system.md)
 
   The 16 ANSI colors are a set of standardized colors used by early computer terminals,
   and are still commonly used today in various terminal applications.
@@ -52,7 +52,7 @@ Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors.
   They consist of eight basic colors and their corresponding "bright" versions.
 
 
-- [Extended colors](https://github.com/nikosportolos/ansix/tree/main/docs/colors/extended.md)
+- [Extended colors](https://github.com/nikosportolos/ansix/tree/main/.documentation/docs/colors/extended.md)
 
   Extended colors are a range of additional colors beyond the standard 16-color and 256-color palettes in the ANSI color space.
 
@@ -66,7 +66,7 @@ Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors.
   displaying text and graphics in a terminal environment.
 
 
-- [Greyscale colors](https://github.com/nikosportolos/ansix/tree/main/docs/colors/greyscale.md)
+- [Greyscale colors](https://github.com/nikosportolos/ansix/tree/main/.documentation/docs/colors/greyscale.md)
 
   Greyscale colors are a range of neutral colors that range from black to white, passing through shades of grey.
 
@@ -76,7 +76,7 @@ Most terminals support 8 and 16 colors, as well as 256 (8-bit) colors.
   to white, with a total of 24 different shades available.
 
 
-- [All colors](https://github.com/nikosportolos/ansix/tree/main/docs/colors/all.md)
+- [All colors](https://github.com/nikosportolos/ansix/tree/main/.documentation/docs/colors/all.md)
 
   Includes all 256 available terminal ANSI colors.
 

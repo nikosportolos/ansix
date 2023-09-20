@@ -32,7 +32,7 @@ void main() {
     theme: AnsiTreeViewTheme.$default().copyWith(
       showListItemIndex: false,
       headerTheme: AnsiTreeHeaderTheme(
-        border: AnsiBorder(
+        border: const AnsiBorder(
           style: AnsiBorderStyle.square,
           type: AnsiBorderType.all,
         ),

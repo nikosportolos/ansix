@@ -47,6 +47,6 @@ void main() {
 
   print('');
   printColorSetTable(AnsiColorSet.system, 'System colors', 8, 12);
-  printColorSetTable(AnsiColorSet.extended, 'Extended colors', 36, 6);
+  printColorSetTable(AnsiColorSet.extended, 'Extended colors', 36, 5);
   printColorSetTable(AnsiColorSet.greyscale, 'Greyscale colors', 12, 12);
 }

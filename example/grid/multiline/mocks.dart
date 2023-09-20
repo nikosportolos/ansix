@@ -1,6 +1,6 @@
 import 'package:ansix/ansix.dart';
 
-AnsiGridTheme horizontalTheme = AnsiGridTheme(
+final AnsiGridTheme horizontalTheme = AnsiGridTheme(
   border: const AnsiBorder(
     style: AnsiBorderStyle.rounded,
     type: AnsiBorderType.all,
@@ -11,22 +11,20 @@ AnsiGridTheme horizontalTheme = AnsiGridTheme(
     splitWords: false,
   ),
   orientation: AnsiOrientation.horizontal,
-  // fixedCellWidth: 12,
   keepSameWidth: false,
-  overrideTheme: true,
   headerTextTheme: AnsiTextTheme(
     foregroundColor: AnsiColor.white,
     style: const AnsiTextStyle(bold: true),
     backgroundColor: AnsiColor.deepSkyBlue7,
     alignment: AnsiTextAlignment.center,
-    padding: AnsiPadding.horizontal(2),
-    // fixedWidth: 8,
+    padding: AnsiPadding.vertical(1),
+    fixedWidth: 7,
   ),
   cellTextTheme: AnsiTextTheme(
     foregroundColor: AnsiColor.cadetBlue,
     alignment: AnsiTextAlignment.center,
     padding: AnsiPadding.horizontal(1),
-    // fixedWidth: 8,
+    fixedWidth: 12,
   ),
   footerTextTheme: AnsiTextTheme(
     foregroundColor: AnsiColor.grey0,
@@ -53,7 +51,6 @@ const List<Movie> movies = <Movie>[
 ];
 
 class Movie {
-  /// Shorthand constructor
   const Movie({
     required this.title,
     required this.releaseYear,

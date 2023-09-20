@@ -44,7 +44,7 @@ class AnsiTreeView extends AnsiWidget {
     if (!theme.headerTheme.hideHeader) {
       final String hash = theme.headerTheme.showHash ? '<${data.hashCode.toString().italic()}>'.dim() : '';
 
-      String header = AnsiGrid.single(
+      String header = AnsiGrid.list(
         <String>[
           theme.headerTheme.customHeader.isNullOrEmpty ? '${data.runtimeType}$hash' : theme.headerTheme.customHeader!,
         ],

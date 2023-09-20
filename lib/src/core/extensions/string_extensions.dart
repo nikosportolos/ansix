@@ -42,7 +42,8 @@ extension StringX on String {
     return <String>[this];
   }
 
-  /// Used to split a string every X characters that are defined from the [length] parameter.
+  /// Used to split a string every X characters that
+  /// are defined from the [length] parameter.
   List<String> splitEvery(
     final int length, {
     final bool splitWords = false,
@@ -126,8 +127,12 @@ extension StringX on String {
   }
 
   (int, int) alignCenterForWidth(final int width) {
-    final int leftPadding = (width / 2 - length / 2).floor();
-    final int rightPadding = width - length - leftPadding;
-    return (leftPadding, rightPadding);
+    return alignCenter(length, width);
   }
+}
+
+(int, int) alignCenter(final int textLength, final int width) {
+  final int leftPadding = (width / 2 - textLength / 2).floor();
+  final int rightPadding = width - textLength - leftPadding;
+  return (leftPadding, rightPadding);
 }

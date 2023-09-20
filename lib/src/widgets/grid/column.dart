@@ -93,6 +93,7 @@ class AnsiGridColumn {
       if (wrapLength != null && wrapLength < text.length) {
         text = text //
             .wrapText(wrapOptions: theme.wrapOptions, fixedWidth: wrapLength)
+            .map((String s) => s.trim())
             .join(AnsiEscapeCodes.newLine);
       }
     }
@@ -134,12 +135,12 @@ class AnsiGridColumn {
     required final AnsiGridTheme theme,
     required final AnsiGridCellType type,
   }) {
-    final AnsiTextTheme textTheme = theme.overrideTheme ? ansiText.theme : type.getTextTheme(theme);
+    AnsiTextTheme textTheme = theme.overrideTheme ? ansiText.theme : type.getTextTheme(theme);
     final AnsiPadding padding = textTheme.padding;
-    // textTheme = textTheme.copyWith.padding(AnsiPadding.only(
-    //   left: textTheme.padding.left,
-    //   right: textTheme.padding.right,
-    // ));
+    textTheme = textTheme.copyWith.padding(AnsiPadding.only(
+      left: textTheme.padding.left,
+      right: textTheme.padding.right,
+    ));
     final AnsiText emptyAnsiText = AnsiText.withTheme('', textTheme);
 
     if (theme.wrapText) {
@@ -148,6 +149,7 @@ class AnsiGridColumn {
               .wrapText(
                   wrapOptions: theme.wrapOptions,
                   fixedWidth: theme.wrapOptions.lineLength ?? theme.fixedCellWidth ?? textTheme.fixedWidth)
+              .map((String s) => s.trim())
               .join(AnsiEscapeCodes.newLine),
           textTheme);
     }

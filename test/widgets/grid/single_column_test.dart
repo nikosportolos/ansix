@@ -19,7 +19,7 @@ void main() {
 
       test('AnsiGrid.single - horizontal', () {
         expect(
-          AnsiGrid.single(
+          AnsiGrid.list(
             data,
             theme: AnsiGridTheme(
               border: border,
@@ -33,7 +33,7 @@ void main() {
 
       test('AnsiGrid.single - vertical', () {
         expect(
-          AnsiGrid.single(
+          AnsiGrid.list(
             data,
             theme: AnsiGridTheme(
               border: border,

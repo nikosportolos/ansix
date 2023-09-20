@@ -1,7 +1,7 @@
 import 'package:ansix/ansix.dart';
 
 void main() {
-  final AnsiGrid grid = AnsiGrid.single(
+  final AnsiGrid grid = AnsiGrid.list(
     <Object?>[
       AnsiText(
         'A N S I X',

@@ -19,11 +19,10 @@ extension StringBufferX on StringBuffer {
       return;
     }
 
-    write((' ' * length).styled(
-      const AnsiTextStyle(),
-      AnsiColor.none,
-      backgroundColor,
-    ));
+    writeColored(
+      (' ' * length),
+      backgroundColor: backgroundColor,
+    );
   }
 
   /// Adds colors on the given [text].

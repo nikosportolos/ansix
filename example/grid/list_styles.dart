@@ -9,7 +9,7 @@ void main() {
     print('');
     print(type.name.bold());
 
-    final AnsiGrid grid = AnsiGrid.single(
+    final AnsiGrid grid = AnsiGrid.list(
       <Object?>[
         'Name',
         'red',

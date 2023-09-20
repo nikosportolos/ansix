@@ -1,9 +1,12 @@
 # AnsiX
 
-[![Language](https://img.shields.io/badge/language-Dart-blue.svg)](https://dart.dev)
 [![Pub Version](https://img.shields.io/pub/v/ansix?color=blue&logo=dart)](https://pub.dev/packages/ansix)
+[![Pub Publisher](https://img.shields.io/pub/publisher/ansix)](https://pub.dev/publishers/nikosportolos.com/packages)
+[![Pub Points](https://img.shields.io/pub/points/ansix?color=blue&logo=dart)](https://pub.dev/packages/ansix)
+
 [![Build](https://github.com/nikosportolos/ansix/actions/workflows/build.yml/badge.svg)](https://github.com/nikosportolos/ansix/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/nikosportolos/ansix/branch/main/graph/badge.svg?token=RBU7C1V1UO)](https://codecov.io/gh/nikosportolos/ansix)
+[![Language](https://img.shields.io/badge/language-Dart-blue.svg)](https://dart.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
@@ -18,11 +21,7 @@ wide range of ANSI-compatible terminals.
 Whether you're building a CLI tool, a dart server, or a Flutter application, 
 AnsiX makes it easy to add ANSI styling to your output with minimal effort and maximum flexibility. 
 
-
-<!--
-[![Pub Points](https://img.shields.io/pub/points/ansix?color=blue&logo=dart)](https://pub.dev/packages/ansix)
-[![Pub Publisher](https://img.shields.io/pub/publisher/nikosportolos)](https://github.com/nikosportolos)
--->
+ 
 
 ## Table of contents
 
@@ -206,7 +205,7 @@ void main() {
 
 
 <a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/json-example.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/json-example.png" width="400" alt="json-example">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/json-example.png" width="275" alt="json-example">
 </a>
 
 

@@ -83,7 +83,6 @@ final AnsiGridTheme horizontalTheme = AnsiGridTheme(
 final AnsiGridTheme verticalTheme = horizontalTheme.copyWith(
   orientation: AnsiOrientation.vertical,
   keepSameWidth: true,
-  fixedCellWidth: null,
 );
 
 const List<Movie> movies = <Movie>[

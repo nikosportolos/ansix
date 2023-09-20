@@ -40,12 +40,6 @@ part 'theme.gen.dart';
 ///
 ///   Defaults to *null*.
 ///
-///  - [fixedCellWidth]
-///
-///   If set will use this value as default width for all grid cells.
-///
-///   Defaults to *null*.
-///
 /// - [keepSameWidth]
 ///
 ///   If set to true will find the max cell width and use it for the whole [AnsiGrid].
@@ -92,7 +86,6 @@ abstract class AnsiGridTheme {
     AnsiTextTheme? headerTextTheme,
     AnsiTextTheme cellTextTheme,
     AnsiTextTheme? footerTextTheme,
-    int? fixedCellWidth,
     bool keepSameWidth,
     AnsiOrientation orientation,
     bool transparent,
@@ -131,11 +124,6 @@ abstract class AnsiGridTheme {
   ///
   /// Defaults to *null*.
   AnsiTextTheme? get footerTextTheme;
-
-  /// If set will use this value as default width for all grid cells.
-  ///
-  /// Defaults to *null*.
-  int? get fixedCellWidth;
 
   /// If set to true will find the max cell width and use it for the whole [AnsiGrid].
   ///

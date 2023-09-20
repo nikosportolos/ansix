@@ -36,7 +36,9 @@ void main() {
                 style: AnsiBorderStyle.rounded,
               ),
               orientation: AnsiOrientation.horizontal,
-              fixedCellWidth: 20,
+              cellTextTheme: AnsiTextTheme(
+                fixedWidth: 20,
+              ),
               transparent: true,
             ),
           ).toString(),

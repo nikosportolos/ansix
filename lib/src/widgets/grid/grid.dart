@@ -268,32 +268,12 @@ class AnsiGrid extends AnsiWidget {
     }
   }
 
-  int _calculateColumnWidthDiff({
-    required final int columnWidth,
-    required final int maxColumnWidth,
-    required final int textWidth,
-  }) {
-    // if (theme.fixedCellWidth != null && columnWidth < theme.fixedCellWidth!) {
-    //   if (theme.keepSameWidth) {
-    //     return (maxColumnWidth > theme.fixedCellWidth! ? maxColumnWidth : theme.fixedCellWidth!) - textWidth;
-    //   }
-    //   return theme.fixedCellWidth! - textWidth;
-    // }
-    // return (theme.keepSameWidth ? maxColumnWidth : columnWidth) - textWidth;
-
+  int _calculateColumnWidthDiff(
+      {required final int columnWidth, required final int maxColumnWidth, required final int textWidth}) {
     return _calculateSpacesForColumn(columnWidth, maxColumnWidth) - textWidth;
   }
 
-  int _calculateSpacesForColumn(
-    final int columnWidth,
-    final int maxColumnWidth,
-  ) {
-    if (theme.fixedCellWidth != null && columnWidth < theme.fixedCellWidth!) {
-      return theme.keepSameWidth && maxColumnWidth > theme.fixedCellWidth! //
-          ? maxColumnWidth
-          : theme.fixedCellWidth!;
-    }
-
+  int _calculateSpacesForColumn(final int columnWidth, final int maxColumnWidth) {
     return theme.keepSameWidth ? maxColumnWidth : columnWidth;
   }
 }

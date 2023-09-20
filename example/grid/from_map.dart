@@ -3,33 +3,37 @@
 import 'package:ansix/ansix.dart';
 
 void main() {
-  print(AnsiGrid.fromColumns(
-    <List<Object?>>[
-      <Object?>['Row 1'.red(), 145, 342, 53, 3454, 655, 346],
-      <Object?>['Row 2', 51, 235, 35, 434, 5354, 645, 75],
-      <Object?>[
-        AnsiText(
-          'Row 3',
-          style: const AnsiTextStyle(strikethrough: true),
-          foregroundColor: AnsiColor.deepSkyBlue5,
-        ),
-        '43',
-        '234'.bold(),
-        '5345435345345345'.red(),
-        '34534',
-        '234234'
+  print(
+    AnsiGrid.fromColumns(
+      <List<Object?>>[
+        <Object?>['Row 1'.red(), 145, 342, 53, 3454, 655, 346],
+        <Object?>['Row 2', 51, 235, 35, 434, 5354, 645, 75],
+        <Object?>[
+          AnsiText(
+            'Row 3',
+            style: const AnsiTextStyle(strikethrough: true),
+            foregroundColor: AnsiColor.deepSkyBlue5,
+          ),
+          '43',
+          '234'.bold(),
+          '5345435345345345'.red(),
+          '34534',
+          '234234'
+        ],
       ],
-    ],
-    theme: const AnsiGridTheme(
-      border: AnsiBorder(
-        type: AnsiBorderType.all,
-        style: AnsiBorderStyle.rounded,
+      theme: const AnsiGridTheme(
+        border: AnsiBorder(
+          type: AnsiBorderType.all,
+          style: AnsiBorderStyle.rounded,
+        ),
+        orientation: AnsiOrientation.horizontal,
+        keepSameWidth: true,
+        cellTextTheme: AnsiTextTheme(
+          fixedWidth: 20,
+        ),
       ),
-      orientation: AnsiOrientation.horizontal,
-      keepSameWidth: true,
-      fixedCellWidth: 20,
     ),
-  ));
+  );
 
   const AnsiTextTheme headerTheme = AnsiTextTheme(
     foregroundColor: AnsiColor.darkSeaGreen4,

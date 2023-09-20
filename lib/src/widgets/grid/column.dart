@@ -89,7 +89,7 @@ class AnsiGridColumn {
 
     String text = theme.overrideTheme ? object.toString() : object.toString().unformatted;
     if (theme.wrapText) {
-      final int? wrapLength = theme.wrapOptions.lineLength ?? theme.fixedCellWidth ?? textTheme.fixedWidth;
+      final int? wrapLength = theme.wrapOptions.lineLength ?? textTheme.fixedWidth;
       if (wrapLength != null && wrapLength < text.length) {
         text = text //
             .wrapText(wrapOptions: theme.wrapOptions, fixedWidth: wrapLength)
@@ -147,8 +147,9 @@ class AnsiGridColumn {
       ansiText = AnsiText.withTheme(
           ansiText.text
               .wrapText(
-                  wrapOptions: theme.wrapOptions,
-                  fixedWidth: theme.wrapOptions.lineLength ?? theme.fixedCellWidth ?? textTheme.fixedWidth)
+                wrapOptions: theme.wrapOptions,
+                fixedWidth: theme.wrapOptions.lineLength ?? textTheme.fixedWidth,
+              )
               .map((String s) => s.trim())
               .join(AnsiEscapeCodes.newLine),
           textTheme);

@@ -10,7 +10,6 @@ class _$AnsiGridThemeImpl extends AnsiGridTheme {
     this.headerTextTheme,
     this.cellTextTheme = const AnsiTextTheme(),
     this.footerTextTheme,
-    this.fixedCellWidth,
     this.keepSameWidth = true,
     this.orientation = AnsiOrientation.vertical,
     this.transparent = false,
@@ -30,9 +29,6 @@ class _$AnsiGridThemeImpl extends AnsiGridTheme {
 
   @override
   final AnsiTextTheme? footerTextTheme;
-
-  @override
-  final int? fixedCellWidth;
 
   @override
   final bool keepSameWidth;
@@ -61,7 +57,6 @@ class _$AnsiGridThemeImpl extends AnsiGridTheme {
             headerTextTheme == other.headerTextTheme &&
             cellTextTheme == other.cellTextTheme &&
             footerTextTheme == other.footerTextTheme &&
-            fixedCellWidth == other.fixedCellWidth &&
             keepSameWidth == other.keepSameWidth &&
             orientation == other.orientation &&
             transparent == other.transparent &&
@@ -78,7 +73,6 @@ class _$AnsiGridThemeImpl extends AnsiGridTheme {
       headerTextTheme,
       cellTextTheme,
       footerTextTheme,
-      fixedCellWidth,
       keepSameWidth,
       orientation,
       transparent,
@@ -93,7 +87,7 @@ class _$AnsiGridThemeImpl extends AnsiGridTheme {
     String toStringOutput = 'AnsiGridTheme{<optimized out>}';
     assert(() {
       toStringOutput =
-          'AnsiGridTheme@<$hexIdentity>{border: $border, headerTextTheme: $headerTextTheme, cellTextTheme: $cellTextTheme, footerTextTheme: $footerTextTheme, fixedCellWidth: $fixedCellWidth, keepSameWidth: $keepSameWidth, orientation: $orientation, transparent: $transparent, overrideTheme: $overrideTheme, wrapText: $wrapText, wrapOptions: $wrapOptions}';
+          'AnsiGridTheme@<$hexIdentity>{border: $border, headerTextTheme: $headerTextTheme, cellTextTheme: $cellTextTheme, footerTextTheme: $footerTextTheme, keepSameWidth: $keepSameWidth, orientation: $orientation, transparent: $transparent, overrideTheme: $overrideTheme, wrapText: $wrapText, wrapOptions: $wrapOptions}';
       return true;
     }());
     return toStringOutput;
@@ -112,8 +106,6 @@ abstract interface class _AnsiGridThemeCopyWithProxy {
 
   $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>? get footerTextTheme;
 
-  AnsiGridTheme fixedCellWidth(int? newValue);
-
   AnsiGridTheme keepSameWidth(bool newValue);
 
   AnsiGridTheme orientation(AnsiOrientation newValue);
@@ -131,7 +123,6 @@ abstract interface class _AnsiGridThemeCopyWithProxy {
     final AnsiTextTheme? headerTextTheme,
     final AnsiTextTheme? cellTextTheme,
     final AnsiTextTheme? footerTextTheme,
-    final int? fixedCellWidth,
     final bool? keepSameWidth,
     final AnsiOrientation? orientation,
     final bool? transparent,
@@ -172,10 +163,6 @@ class _AnsiGridThemeCopyWithProxyImpl implements _AnsiGridThemeCopyWithProxy {
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiGridTheme fixedCellWidth(int? newValue) => this(fixedCellWidth: newValue);
-
-  @pragma('vm:prefer-inline')
-  @override
   AnsiGridTheme keepSameWidth(bool newValue) => this(keepSameWidth: newValue);
 
   @pragma('vm:prefer-inline')
@@ -206,7 +193,6 @@ class _AnsiGridThemeCopyWithProxyImpl implements _AnsiGridThemeCopyWithProxy {
     final Object? headerTextTheme = const Object(),
     final AnsiTextTheme? cellTextTheme,
     final Object? footerTextTheme = const Object(),
-    final Object? fixedCellWidth = const Object(),
     final bool? keepSameWidth,
     final AnsiOrientation? orientation,
     final bool? transparent,
@@ -221,7 +207,6 @@ class _AnsiGridThemeCopyWithProxyImpl implements _AnsiGridThemeCopyWithProxy {
       cellTextTheme: cellTextTheme ?? _value.cellTextTheme,
       footerTextTheme:
           identical(footerTextTheme, const Object()) ? _value.footerTextTheme : (footerTextTheme as AnsiTextTheme?),
-      fixedCellWidth: identical(fixedCellWidth, const Object()) ? _value.fixedCellWidth : (fixedCellWidth as int?),
       keepSameWidth: keepSameWidth ?? _value.keepSameWidth,
       orientation: orientation ?? _value.orientation,
       transparent: transparent ?? _value.transparent,
@@ -245,8 +230,6 @@ sealed class $AnsiGridThemeCopyWithProxyChain<$Result> {
 
   $Result footerTextTheme(AnsiTextTheme? newValue);
 
-  $Result fixedCellWidth(int? newValue);
-
   $Result keepSameWidth(bool newValue);
 
   $Result orientation(AnsiOrientation newValue);
@@ -264,7 +247,6 @@ sealed class $AnsiGridThemeCopyWithProxyChain<$Result> {
     final AnsiTextTheme? headerTextTheme,
     final AnsiTextTheme? cellTextTheme,
     final AnsiTextTheme? footerTextTheme,
-    final int? fixedCellWidth,
     final bool? keepSameWidth,
     final AnsiOrientation? orientation,
     final bool? transparent,
@@ -298,10 +280,6 @@ class _AnsiGridThemeCopyWithProxyChainImpl<$Result> implements $AnsiGridThemeCop
 
   @pragma('vm:prefer-inline')
   @override
-  $Result fixedCellWidth(int? newValue) => this(fixedCellWidth: newValue);
-
-  @pragma('vm:prefer-inline')
-  @override
   $Result keepSameWidth(bool newValue) => this(keepSameWidth: newValue);
 
   @pragma('vm:prefer-inline')
@@ -331,7 +309,6 @@ class _AnsiGridThemeCopyWithProxyChainImpl<$Result> implements $AnsiGridThemeCop
     final Object? headerTextTheme = const Object(),
     final AnsiTextTheme? cellTextTheme,
     final Object? footerTextTheme = const Object(),
-    final Object? fixedCellWidth = const Object(),
     final bool? keepSameWidth,
     final AnsiOrientation? orientation,
     final bool? transparent,
@@ -346,7 +323,6 @@ class _AnsiGridThemeCopyWithProxyChainImpl<$Result> implements $AnsiGridThemeCop
       cellTextTheme: cellTextTheme ?? _value.cellTextTheme,
       footerTextTheme:
           identical(footerTextTheme, const Object()) ? _value.footerTextTheme : (footerTextTheme as AnsiTextTheme?),
-      fixedCellWidth: identical(fixedCellWidth, const Object()) ? _value.fixedCellWidth : (fixedCellWidth as int?),
       keepSameWidth: keepSameWidth ?? _value.keepSameWidth,
       orientation: orientation ?? _value.orientation,
       transparent: transparent ?? _value.transparent,

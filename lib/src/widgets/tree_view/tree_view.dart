@@ -44,15 +44,16 @@ class AnsiTreeView extends AnsiWidget {
     if (!theme.headerTheme.hideHeader) {
       final String hash = theme.headerTheme.showHash ? '<${data.hashCode.toString().italic()}>'.dim() : '';
 
-      String header = AnsiGrid.list(
-        <String>[
-          theme.headerTheme.customHeader.isNullOrEmpty ? '${data.runtimeType}$hash' : theme.headerTheme.customHeader!,
-        ],
-        theme: AnsiGridTheme(
-          border: theme.headerTheme.border,
-          transparent: true,
-          headerTextTheme: theme.headerTheme.textTheme,
-        ),
+      String header = AnsiOutlinedText(
+        theme.headerTheme.customHeader.isNullOrEmpty ? '${data.runtimeType}$hash' : theme.headerTheme.customHeader!,
+        border: theme.headerTheme.border,
+        transparent: true,
+        foregroundColor: theme.headerTheme.textTheme.foregroundColor,
+        backgroundColor: theme.headerTheme.textTheme.backgroundColor,
+        padding: theme.headerTheme.textTheme.padding,
+        style: theme.headerTheme.textTheme.style,
+        alignment: theme.headerTheme.textTheme.alignment,
+        fixedWidth: theme.headerTheme.textTheme.fixedWidth,
       ).formattedText;
 
       final List<String> headerRows = header.split(AnsiEscapeCodes.newLine).where((String line) {
@@ -68,14 +69,12 @@ class AnsiTreeView extends AnsiWidget {
         final String newChar = theme.headerTheme.border.style.boxDrawingSet.middleTopEdge;
         final String temp = newChar.isEmpty
             ? ''
-            : headerRows[2]
-                .unformatted
+            : headerRows.last.unformatted
                 .replaceRange(prefixLength, prefixLength + 1, newChar)
                 .colored(foreground: theme.headerTheme.border.color);
 
         header = <String>[
-          headerRows[0],
-          headerRows[1],
+          ...headerRows.sublist(0, headerRows.length - 1),
           temp,
         ].join(AnsiEscapeCodes.newLine);
       }

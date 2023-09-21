@@ -122,6 +122,33 @@ void main() {
       expect(actual.unformatted, treeviewNestedMock);
     });
 
+    test('header with vertical padding', () {
+      final Node node1 = Node(
+        id: '1231231231',
+        nodes: <Node>[
+          Node(id: '34454354453'),
+        ],
+      );
+      final Node node2 = Node(id: '5463456343');
+      final Node node3 = Node(
+        id: '7845445335',
+        nodes: <Node>[
+          node1,
+          node2,
+        ],
+      );
+
+      final String actual = AnsiTreeView(
+        node3,
+        theme: AnsiTreeViewTheme.$default().copyWith.headerTheme.textTheme(
+              AnsiTextTheme(
+                padding: AnsiPadding.vertical(1),
+              ),
+            ),
+      ).toString();
+      expect(actual.toString(), treeviewWithVerticalPaddedHeaderMock);
+    });
+
     test('empty', () {
       final Map<String, dynamic> map = <String, dynamic>{
         'map': <String, dynamic>{

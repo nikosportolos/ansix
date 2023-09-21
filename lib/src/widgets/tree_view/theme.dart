@@ -142,7 +142,7 @@ abstract class AnsiTreeHeaderTheme {
   @DefaultValue(true)
   bool get showHash;
 
-  bool get hasBorder => border.style != AnsiBorderStyle.none;
+  bool get hasBorder => border.style != AnsiBorderStyle.none && border.type != AnsiBorderType.none;
 }
 
 /// **AnsiTreeNodeTheme**

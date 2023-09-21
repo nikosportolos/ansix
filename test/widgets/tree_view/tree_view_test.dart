@@ -7,7 +7,10 @@ import 'models/user.dart';
 
 void main() {
   const AnsiTreeViewTheme theme = AnsiTreeViewTheme(
-    headerTheme: AnsiTreeHeaderTheme(showHash: false),
+    headerTheme: AnsiTreeHeaderTheme(
+      showHash: false,
+      border: AnsiBorder.none,
+    ),
     valueTheme: AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
   );
 
@@ -182,7 +185,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
       final String actual = AnsiTreeView(
         map,
         theme: const AnsiTreeViewTheme(
-          headerTheme: AnsiTreeHeaderTheme(showHash: false),
+          headerTheme: AnsiTreeHeaderTheme(
+            showHash: false,
+            border: AnsiBorder.none,
+          ),
           valueTheme: AnsiTreeNodeValueTheme(
             wrapText: true,
             wrapOptions: WrapOptions(lineLength: 100),
@@ -217,7 +223,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         AnsiTreeView(
           map,
           theme: const AnsiTreeViewTheme(
-            headerTheme: AnsiTreeHeaderTheme(showHash: false),
+            headerTheme: AnsiTreeHeaderTheme(
+              showHash: false,
+              border: AnsiBorder.none,
+            ),
             valueTheme: AnsiTreeNodeValueTheme(
               wrapText: true,
               wrapOptions: WrapOptions(
@@ -256,7 +265,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         AnsiTreeView(
           map,
           theme: const AnsiTreeViewTheme(
-            headerTheme: AnsiTreeHeaderTheme(showHash: false),
+            headerTheme: AnsiTreeHeaderTheme(
+              showHash: false,
+              border: AnsiBorder.none,
+            ),
             valueTheme: AnsiTreeNodeValueTheme(
               wrapText: true,
               wrapOptions: WrapOptions(
@@ -296,7 +308,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         AnsiTreeView(
           map,
           theme: const AnsiTreeViewTheme(
-            headerTheme: AnsiTreeHeaderTheme(showHash: false),
+            headerTheme: AnsiTreeHeaderTheme(
+              showHash: false,
+              border: AnsiBorder.none,
+            ),
             valueTheme: AnsiTreeNodeValueTheme(
               fixedWidth: 75,
               wrapText: true,
@@ -337,6 +352,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         map,
         theme: const AnsiTreeViewTheme(
           headerTheme: AnsiTreeHeaderTheme(
+            border: AnsiBorder.none,
             showHash: false,
             textTheme: AnsiTextTheme(
               foregroundColor: AnsiColor.salmon1,
@@ -426,7 +442,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
     group('no header', () {
       final AnsiTreeViewTheme theme = AnsiTreeViewTheme.$default().copyWith.showListItemIndex(false).copyWith(
-            headerTheme: const AnsiTreeHeaderTheme(hideHeader: true),
+            headerTheme: const AnsiTreeHeaderTheme(
+              hideHeader: true,
+              border: AnsiBorder.none,
+            ),
           );
 
       final User user = User(
@@ -487,7 +506,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         AnsiTreeView(
           <int>[1, 2, 3, 4, 5],
           theme: const AnsiTreeViewTheme(
-            headerTheme: AnsiTreeHeaderTheme(customHeader: 'AnsiX'),
+            headerTheme: AnsiTreeHeaderTheme(
+              customHeader: 'AnsiX',
+              border: AnsiBorder.none,
+            ),
           ),
         ).toString(),
         '''AnsiX

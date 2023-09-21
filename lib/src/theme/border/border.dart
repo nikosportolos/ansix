@@ -9,8 +9,8 @@ part 'type.dart';
 
 /// **AnsiBorder**
 ///
-/// If AnsiBorderType is set to [AnsiBorderType.none] and
-/// AnsiBorderStyle is set to [AnsiBorderStyle.none] no borders will be drawn.
+/// If [AnsiBorderType] is set to [AnsiBorderType.none] and
+/// [AnsiBorderStyle] is set to [AnsiBorderStyle.none] no borders will be drawn.
 @DataClass()
 abstract class AnsiBorder {
   const AnsiBorder.ctor();
@@ -24,8 +24,8 @@ abstract class AnsiBorder {
 
   /// The selected [AnsiBorderType] of the border.
   ///
-  /// Defaults to [AnsiBorderType.none].
-  @DefaultValue(AnsiBorderType.none)
+  /// Defaults to [AnsiBorderType.all].
+  @DefaultValue(AnsiBorderType.all)
   AnsiBorderType get type;
 
   /// The selected [AnsiBorderStyle] of the border.
@@ -40,9 +40,15 @@ abstract class AnsiBorder {
   @DefaultValue(AnsiColor.none)
   AnsiColor get color;
 
-  static const AnsiBorder empty = AnsiBorder();
+  static const AnsiBorder none = AnsiBorder(
+    style: AnsiBorderStyle.none,
+    type: AnsiBorderType.none,
+    color: AnsiColor.none,
+  );
+
   static const AnsiBorder $default = AnsiBorder(
     style: AnsiBorderStyle.square,
     type: AnsiBorderType.all,
+    color: AnsiColor.white,
   );
 }

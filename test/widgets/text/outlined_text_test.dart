@@ -82,7 +82,7 @@ void main() {
             horizontal: 5,
           ),
           foregroundColor: AnsiColor.darkKhaki,
-          border: AnsiBorder.empty,
+          border: AnsiBorder.none,
         ).formattedText,
         '''
                                   

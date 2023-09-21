@@ -6,7 +6,7 @@ part of 'border.dart';
 
 class _$AnsiBorderImpl extends AnsiBorder {
   const _$AnsiBorderImpl({
-    this.type = AnsiBorderType.none,
+    this.type = AnsiBorderType.all,
     this.style = AnsiBorderStyle.square,
     this.color = AnsiColor.none,
   }) : super.ctor();

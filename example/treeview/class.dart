@@ -29,6 +29,17 @@ void main() {
 
   AnsiX.printTreeView(
     user,
-    theme: AnsiTreeViewTheme.$default().copyWith.showListItemIndex(false),
+    theme: AnsiTreeViewTheme.$default().copyWith(
+      showListItemIndex: false,
+      headerTheme: AnsiTreeHeaderTheme(
+        border: AnsiBorder(
+          style: AnsiBorderStyle.square,
+          type: AnsiBorderType.all,
+        ),
+        textTheme: AnsiTextTheme(
+          padding: AnsiPadding.symmetric(vertical: 1, horizontal: 2),
+        ),
+      ),
+    ),
   );
 }

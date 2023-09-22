@@ -25,6 +25,21 @@ extension StringBufferX on StringBuffer {
     );
   }
 
+  /// Adds tabs of the given [length].
+  void writeTabs(
+    final int length, [
+    final AnsiColor backgroundColor = AnsiColor.none,
+  ]) {
+    if (length == 0) {
+      return;
+    }
+
+    writeColored(
+      AnsiEscapeCodes.tab * length,
+      backgroundColor: backgroundColor,
+    );
+  }
+
   /// Adds colors on the given [text].
   void writeColored(
     final String text, {

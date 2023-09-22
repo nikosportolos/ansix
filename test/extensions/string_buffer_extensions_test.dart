@@ -12,9 +12,14 @@ void main() {
       expect(buffer.toString(), ' ' * 10);
     });
 
-    test('writeSpaces', () {
+    test('writeLines', () {
       buffer.writeLines(10);
       expect(buffer.toString(), AnsiEscapeCodes.newLine * 10);
+    });
+
+    test('writeTabs', () {
+      buffer.writeTabs(10);
+      expect(buffer.toString(), AnsiEscapeCodes.tab * 10);
     });
 
     test('writeWithForegroundColor', () {

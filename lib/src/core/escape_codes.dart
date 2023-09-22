@@ -15,6 +15,7 @@ abstract class AnsiEscapeCodes {
   /// All attributes become turned off.
   static const String reset = '$escape[0m';
   static const String newLine = '\n';
+  static const String tab = '\t';
 
   /// Starting ANSI code for bold style.
   static const String boldStartCode = '$escape[1m';

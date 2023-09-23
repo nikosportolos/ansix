@@ -118,6 +118,20 @@ AnsiGrid(
 })
 ```
 
+- **Vertical grid**
+
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/grid/vertical-grid-example.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/grid/vertical-grid-example.png" width="600" alt="vertical-grid-example">
+</a>
+
+
+- **Horizontal grid**
+
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/grid/horizontal-grid-example.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/grid/horizontal-grid-example.png" width="750" alt="horizontal-grid-example">
+</a>
+
+
 ### AnsiGridTheme
 
 A collection of styling properties, borders and colors, that will be used to style an **AnsiGrid**.

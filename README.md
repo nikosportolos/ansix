@@ -115,7 +115,7 @@ void main() {
 }
 ```
 
-- Print data grid
+- **Print data grid**
 
 ```dart
 import 'package:ansix/ansix.dart';
@@ -138,24 +138,24 @@ void main() {
 }
 ```
 
-- Vertical grid
+- **Vertical grid**
 
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/vertical-grid-example.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/vertical-grid-example.png" width="600" alt="vertical-grid-example">
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/grid/vertical-grid-example.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/grid/vertical-grid-example.png" width="600" alt="vertical-grid-example">
 </a>
 
 
-- Horizontal grid
+- **Horizontal grid**
 
-<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/horizontal-grid-example.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/horizontal-grid-example.png" width="750" alt="horizontal-grid-example">
+<a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/grid/horizontal-grid-example.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/grid/horizontal-grid-example.png" width="750" alt="horizontal-grid-example">
 </a>
 
 
 You can also check the [example](https://github.com/nikosportolos/ansix/tree/main/example) folder for more samples.
 
 
-- Print tree view
+- **Print tree view**
 
 ```dart
 import 'package:ansix/ansix.dart';
@@ -185,7 +185,7 @@ void main() {
 
 
 
-- Print json/map
+- **Print json/map**
 
 ```dart
 import 'package:ansix/ansix.dart';

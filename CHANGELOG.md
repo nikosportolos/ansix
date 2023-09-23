@@ -35,6 +35,7 @@
 
 - Update badges on README.md ([#181](https://github.com/nikosportolos/ansix/issues/181))
 - Update topics and screenshots for [pub.dev](https://pub.dev/packages/ansix)
+- Update screenshots ([#194](https://github.com/nikosportolos/ansix/issues/194))
 - Update outdated examples & tests
 
 

@@ -26,9 +26,9 @@ screenshots:
   - description: 'This is an AnsiTreeView usage example'
     path: assets/images/treeview/class.png
   - description: 'This is a vertical AnsiGrid usage example'
-    path: assets/images/vertical-grid-example.png
+    path: assets/images/grid/vertical-grid-example.png
   - description: 'This is a horizontal AnsiGrid usage example'
-    path: assets/images/horizontal-grid-example.png
+    path: assets/images/grid/horizontal-grid-example.png
   - description: 'This is an OutlinedText usage example with various borders'
     path: assets/images/outlined-text-example-1.png
   - description: 'This is an OutlinedText usage example with auto-wrapped text'

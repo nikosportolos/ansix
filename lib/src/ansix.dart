@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/formatter/formatters.dart';
 import 'package:ansix/src/system/process_manager.dart';
-import 'package:ansix/src/system/terminal.dart';
+import 'package:ansix/src/system/terminal/terminal.dart';
 import 'package:meta/meta.dart';
 
 /// **AnsiX**
@@ -14,8 +14,8 @@ class AnsiX {
   AnsiX._({
     final ProcessManager? processManager,
     final AnsiTerminal? terminal,
-  })  : _processManager = processManager ?? const ProcessManager(),
-        _terminal = terminal ?? AnsiTerminal();
+  })  : _processManager = processManager ?? ProcessManager(),
+        _terminal = terminal ?? AnsiTerminal.create();
 
   static AnsiX? _instance;
   static AnsiX get _ansix => _instance ?? AnsiX._();
@@ -79,6 +79,11 @@ class AnsiX {
     final bool silent = false,
     final bool force = false,
   }) {
+    if (force) {
+      enable();
+      return;
+    }
+
     try {
       if (!checkAnsiSupport()) {
         throw const AnsiXException.ansiNotSupported(
@@ -88,11 +93,6 @@ class AnsiX {
 
       enable();
     } on AnsiXException catch (e) {
-      if (force) {
-        enable();
-        return;
-      }
-
       disable();
       if (silent) {
         handleException(e);

@@ -6,9 +6,9 @@ import 'package:meta/meta.dart';
 ///
 /// A library that provides tools and info using bash commands.
 class ProcessManager {
-  const ProcessManager({
+  ProcessManager({
     final Shell? shell,
-  }) : _shell = shell ?? const Shell();
+  }) : _shell = shell ?? Shell.create();
 
   final Shell _shell;
 

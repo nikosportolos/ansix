@@ -1,6 +1,7 @@
 import 'dart:io' if (dart.library.html) 'dart:html';
 
-import 'package:ansix/src/system/terminal.dart';
+import 'package:ansix/src/system/terminal/io.dart';
+import 'package:ansix/src/system/terminal/terminal.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -23,7 +24,7 @@ void main() {
 
   setUp(() => resetMocktailState());
 
-  final AnsiTerminal terminal = AnsiTerminal(out: stdOut);
+  final AnsiTerminal terminal = AnsiTerminalImpl(out: stdOut);
 
   group('AnsiTerminal', () {
     test('runsOnWindows', () {

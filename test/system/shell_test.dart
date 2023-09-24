@@ -1,8 +1,8 @@
-import 'package:ansix/src/system/shell.dart';
+import 'package:ansix/src/system/shell/shell.dart';
 import 'package:test/test.dart';
 
 void main() {
-  const Shell shell = Shell();
+  final Shell shell = Shell.create();
   const String message = 'AnsiX';
 
   group('Shell', () {

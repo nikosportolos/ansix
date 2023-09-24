@@ -1,25 +1,3 @@
-import 'dart:io' if (dart.library.html) 'dart:html';
-
-/// **Shell**
-///
-/// A library that wraps Dart's [Process] features.
-class Shell {
-  const Shell();
-
-  /// Runs the given [ShellCommand].
-  String runCommand(final ShellCommand command) {
-    try {
-      return Process.runSync(
-        command.executable,
-        command.arguments,
-        runInShell: command.runInShell,
-      ).stdout.toString();
-    } catch (_) {
-      return '';
-    }
-  }
-}
-
 /// **ShellCommand**
 ///
 /// A class that contains all required information for a

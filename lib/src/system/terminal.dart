@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:io' if (dart.library.html) 'dart:html';
 
 /// **TerminalType**
 enum TerminalType { unknown, bash, cmd, powershell }

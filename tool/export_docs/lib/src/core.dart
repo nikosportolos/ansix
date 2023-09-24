@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:io' if (dart.library.html) 'dart:html';
 
 import 'package:ansix/ansix.dart';
 import 'package:path/path.dart';

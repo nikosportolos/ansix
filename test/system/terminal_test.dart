@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:io' if (dart.library.html) 'dart:html';
 
 import 'package:ansix/src/system/terminal.dart';
 import 'package:mocktail/mocktail.dart';

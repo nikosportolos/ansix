@@ -73,10 +73,10 @@ abstract class AnsiTreeViewTheme {
       ),
       valueTheme: const AnsiTreeNodeValueTheme(
         textStyle: AnsiTextStyle(italic: true),
-        alignment: AnsiTextAlignment.center,
+        alignment: AnsiTextAlignment.left,
         color: AnsiColor.grey69,
         wrapText: true,
-        wrapOptions: WrapOptions(lineLength: 120),
+        wrapOptions: WrapOptions(lineLength: 100),
       ),
       headerTheme: AnsiTreeHeaderTheme(
         textTheme: AnsiTextTheme(

@@ -18,17 +18,19 @@ void main() {
         for (final AnsiTextAlignment? valueNodeAlignment in <AnsiTextAlignment?>[null, ...AnsiTextAlignment.values]) {
           group('valueNodeAlignment: ${valueNodeAlignment?.name}', () {
             test('${treeAlignment.name}-${valueNodeAlignment?.name}', () {
-              expect(
-                AnsiTreeView(
-                  data,
-                  theme: AnsiTreeViewTheme(
-                    alignment: treeAlignment,
-                    headerTheme: const AnsiTreeHeaderTheme(showHash: false),
-                    valueTheme: AnsiTreeNodeValueTheme(
-                      alignment: valueNodeAlignment,
-                    ),
+              final AnsiTreeView tree = AnsiTreeView(
+                data,
+                theme: AnsiTreeViewTheme(
+                  alignment: treeAlignment,
+                  headerTheme: const AnsiTreeHeaderTheme(showHash: false),
+                  keyTheme: const AnsiTreeNodeKeyTheme(),
+                  valueTheme: AnsiTreeNodeValueTheme(
+                    alignment: valueNodeAlignment,
                   ),
-                ).formattedText,
+                ),
+              );
+              expect(
+                tree.formattedText,
                 _mocks[treeAlignment]?[valueNodeAlignment],
               );
             });
@@ -61,194 +63,206 @@ const Map<AnsiTextAlignment, Map<AnsiTextAlignment?, String>> _mocks =
   },
 };
 
-const String _leftTreeLeftValueMock = '''┌─────────────────────┐
+const String _leftTreeLeftValueMock = '''
+┌─────────────────────┐
 │_Map<String, dynamic>│
 ├─────────────────────┘
-├── [1mmap[22m
-│   ├── [1mid[22m: 123
-│   └── [1musername[22m: AnsiX
-├── [1mempty_map[22m
+├── map
+│   ├── id: 123
+│   └── username: AnsiX
+├── empty_map
 │   └── (empty)
-├── [1mlist[22m
+├── list
 │   ├── This
 │   ├── is
 │   └── AnsiX
-└── [1mempty_list[22m
-   └── (empty)
+└── empty_list
+    └── (empty)
 ''';
 
-const String _leftTreeCenterValueMock = '''┌─────────────────────┐
+const String _leftTreeCenterValueMock = '''
+┌─────────────────────┐
 │_Map<String, dynamic>│
 ├─────────────────────┘
-├── [1mmap[22m
-│    ├── [1mid[22m: 123
-│    └── [1musername[22m: AnsiX
-├── [1mempty_map[22m
+├── map
+│    ├── id: 123
+│    └── username: AnsiX
+├── empty_map
 │       └── (empty)
-├── [1mlist[22m
+├── list
 │     ├── This
 │     ├── is
 │     └── AnsiX
-└── [1mempty_list[22m
+└── empty_list
         └── (empty)
 ''';
 
-const String _leftTreeRightValueMock = '''┌─────────────────────┐
+const String _leftTreeRightValueMock = '''
+┌─────────────────────┐
 │_Map<String, dynamic>│
 ├─────────────────────┘
-├── [1mmap[22m
-│     ├── [1mid[22m: 123
-│     └── [1musername[22m: AnsiX
-├── [1mempty_map[22m
+├── map
+│     ├── id: 123
+│     └── username: AnsiX
+├── empty_map
 │           └── (empty)
-├── [1mlist[22m
+├── list
 │      ├── This
 │      ├── is
 │      └── AnsiX
-└── [1mempty_list[22m
-            └── (empty)
+└── empty_list
+             └── (empty)
 ''';
 
-const String _leftTreeNullValueMock = '''┌─────────────────────┐
+const String _leftTreeNullValueMock = '''
+┌─────────────────────┐
 │_Map<String, dynamic>│
 ├─────────────────────┘
-├── [1mmap[22m
-│   ├── [1mid[22m: 123
-│   └── [1musername[22m: AnsiX
-├── [1mempty_map[22m
+├── map
+│   ├── id: 123
+│   └── username: AnsiX
+├── empty_map
 │   └── (empty)
-├── [1mlist[22m
+├── list
 │   ├── This
 │   ├── is
 │   └── AnsiX
-└── [1mempty_list[22m
-   └── (empty)
+└── empty_list
+    └── (empty)
 ''';
 
-const String _centerTreeLeftValueMock = '''┌─────────────────────┐
+const String _centerTreeLeftValueMock = '''
+┌─────────────────────┐
 │_Map<String, dynamic>│
 └──────────┬──────────┘
-           ├── [1mmap[22m
-           │   ├── [1mid[22m: 123
-           │   └── [1musername[22m: AnsiX
-           ├── [1mempty_map[22m
+           ├── map
+           │   ├── id: 123
+           │   └── username: AnsiX
+           ├── empty_map
            │   └── (empty)
-           ├── [1mlist[22m
+           ├── list
            │   ├── This
            │   ├── is
            │   └── AnsiX
-           └── [1mempty_list[22m
-              └── (empty)
+           └── empty_list
+               └── (empty)
 ''';
 
-const String _centerTreeCenterValueMock = '''┌─────────────────────┐
+const String _centerTreeCenterValueMock = '''
+┌─────────────────────┐
 │_Map<String, dynamic>│
 └──────────┬──────────┘
-           ├── [1mmap[22m
-           │    ├── [1mid[22m: 123
-           │    └── [1musername[22m: AnsiX
-           ├── [1mempty_map[22m
+           ├── map
+           │    ├── id: 123
+           │    └── username: AnsiX
+           ├── empty_map
            │       └── (empty)
-           ├── [1mlist[22m
+           ├── list
            │     ├── This
            │     ├── is
            │     └── AnsiX
-           └── [1mempty_list[22m
+           └── empty_list
                    └── (empty)
 ''';
 
-const String _centerTreeRightValueMock = '''┌─────────────────────┐
+const String _centerTreeRightValueMock = '''
+┌─────────────────────┐
 │_Map<String, dynamic>│
 └──────────┬──────────┘
-           ├── [1mmap[22m
-           │     ├── [1mid[22m: 123
-           │     └── [1musername[22m: AnsiX
-           ├── [1mempty_map[22m
+           ├── map
+           │     ├── id: 123
+           │     └── username: AnsiX
+           ├── empty_map
            │           └── (empty)
-           ├── [1mlist[22m
+           ├── list
            │      ├── This
            │      ├── is
            │      └── AnsiX
-           └── [1mempty_list[22m
-                       └── (empty)
+           └── empty_list
+                        └── (empty)
 ''';
 
-const String _centerTreeNullValueMock = '''┌─────────────────────┐
+const String _centerTreeNullValueMock = '''
+┌─────────────────────┐
 │_Map<String, dynamic>│
 └──────────┬──────────┘
-           ├── [1mmap[22m
-           │    ├── [1mid[22m: 123
-           │    └── [1musername[22m: AnsiX
-           ├── [1mempty_map[22m
+           ├── map
+           │    ├── id: 123
+           │    └── username: AnsiX
+           ├── empty_map
            │       └── (empty)
-           ├── [1mlist[22m
+           ├── list
            │     ├── This
            │     ├── is
            │     └── AnsiX
-           └── [1mempty_list[22m
+           └── empty_list
                    └── (empty)
 ''';
 
-const String _rightTreeLeftValueMock = '''┌─────────────────────┐
+const String _rightTreeLeftValueMock = '''
+┌─────────────────────┐
 │_Map<String, dynamic>│
 └─────────────────────┤
-                      ├── [1mmap[22m
-                      │   ├── [1mid[22m: 123
-                      │   └── [1musername[22m: AnsiX
-                      ├── [1mempty_map[22m
+                      ├── map
+                      │   ├── id: 123
+                      │   └── username: AnsiX
+                      ├── empty_map
                       │   └── (empty)
-                      ├── [1mlist[22m
+                      ├── list
                       │   ├── This
                       │   ├── is
                       │   └── AnsiX
-                      └── [1mempty_list[22m
-                         └── (empty)
+                      └── empty_list
+                          └── (empty)
 ''';
 
-const String _rightTreeCenterValueMock = '''┌─────────────────────┐
+const String _rightTreeCenterValueMock = '''
+┌─────────────────────┐
 │_Map<String, dynamic>│
 └─────────────────────┤
-                      ├── [1mmap[22m
-                      │    ├── [1mid[22m: 123
-                      │    └── [1musername[22m: AnsiX
-                      ├── [1mempty_map[22m
+                      ├── map
+                      │    ├── id: 123
+                      │    └── username: AnsiX
+                      ├── empty_map
                       │       └── (empty)
-                      ├── [1mlist[22m
+                      ├── list
                       │     ├── This
                       │     ├── is
                       │     └── AnsiX
-                      └── [1mempty_list[22m
+                      └── empty_list
                               └── (empty)
 ''';
 
-const String _rightTreeRightValueMock = '''┌─────────────────────┐
+const String _rightTreeRightValueMock = '''
+┌─────────────────────┐
 │_Map<String, dynamic>│
 └─────────────────────┤
-                      ├── [1mmap[22m
-                      │     ├── [1mid[22m: 123
-                      │     └── [1musername[22m: AnsiX
-                      ├── [1mempty_map[22m
+                      ├── map
+                      │     ├── id: 123
+                      │     └── username: AnsiX
+                      ├── empty_map
                       │           └── (empty)
-                      ├── [1mlist[22m
+                      ├── list
                       │      ├── This
                       │      ├── is
                       │      └── AnsiX
-                      └── [1mempty_list[22m
-                                  └── (empty)
+                      └── empty_list
+                                   └── (empty)
 ''';
 
-const String _rightTreeNullValueMock = '''┌─────────────────────┐
+const String _rightTreeNullValueMock = '''
+┌─────────────────────┐
 │_Map<String, dynamic>│
 └─────────────────────┤
-                      ├── [1mmap[22m
-                      │     ├── [1mid[22m: 123
-                      │     └── [1musername[22m: AnsiX
-                      ├── [1mempty_map[22m
+                      ├── map
+                      │     ├── id: 123
+                      │     └── username: AnsiX
+                      ├── empty_map
                       │           └── (empty)
-                      ├── [1mlist[22m
+                      ├── list
                       │      ├── This
                       │      ├── is
                       │      └── AnsiX
-                      └── [1mempty_list[22m
-                                  └── (empty)
+                      └── empty_list
+                                   └── (empty)
 ''';

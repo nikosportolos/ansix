@@ -12,7 +12,12 @@ void main() {
       'empty_list': <String>[],
     },
     theme: const AnsiTreeViewTheme(
+      alignment: AnsiTextAlignment.center,
+      showListItemIndex: true,
       headerTheme: AnsiTreeHeaderTheme(showHash: false),
+      valueTheme: AnsiTreeNodeValueTheme(
+        alignment: AnsiTextAlignment.left,
+      ),
     ),
   );
 }

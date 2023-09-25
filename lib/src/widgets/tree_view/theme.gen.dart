@@ -13,6 +13,7 @@ class _$AnsiTreeViewThemeImpl extends AnsiTreeViewTheme {
     this.keyTheme = const AnsiTreeNodeKeyTheme(textStyle: AnsiTextStyle(bold: true)),
     this.valueTheme = const AnsiTreeNodeValueTheme(),
     this.headerTheme = const AnsiTreeHeaderTheme(),
+    this.alignment = AnsiTextAlignment.center,
   }) : super.ctor();
 
   @override
@@ -37,6 +38,9 @@ class _$AnsiTreeViewThemeImpl extends AnsiTreeViewTheme {
   final AnsiTreeHeaderTheme headerTheme;
 
   @override
+  final AnsiTextAlignment alignment;
+
+  @override
   bool operator ==(Object? other) {
     return identical(this, other) ||
         other is AnsiTreeViewTheme &&
@@ -47,7 +51,8 @@ class _$AnsiTreeViewThemeImpl extends AnsiTreeViewTheme {
             anchorTheme == other.anchorTheme &&
             keyTheme == other.keyTheme &&
             valueTheme == other.valueTheme &&
-            headerTheme == other.headerTheme;
+            headerTheme == other.headerTheme &&
+            alignment == other.alignment;
   }
 
   @override
@@ -61,6 +66,7 @@ class _$AnsiTreeViewThemeImpl extends AnsiTreeViewTheme {
       keyTheme,
       valueTheme,
       headerTheme,
+      alignment,
     ]);
   }
 
@@ -69,7 +75,7 @@ class _$AnsiTreeViewThemeImpl extends AnsiTreeViewTheme {
     String toStringOutput = 'AnsiTreeViewTheme{<optimized out>}';
     assert(() {
       toStringOutput =
-          'AnsiTreeViewTheme@<$hexIdentity>{compact: $compact, sorted: $sorted, showListItemIndex: $showListItemIndex, anchorTheme: $anchorTheme, keyTheme: $keyTheme, valueTheme: $valueTheme, headerTheme: $headerTheme}';
+          'AnsiTreeViewTheme@<$hexIdentity>{compact: $compact, sorted: $sorted, showListItemIndex: $showListItemIndex, anchorTheme: $anchorTheme, keyTheme: $keyTheme, valueTheme: $valueTheme, headerTheme: $headerTheme, alignment: $alignment}';
       return true;
     }());
     return toStringOutput;
@@ -94,6 +100,8 @@ abstract interface class _AnsiTreeViewThemeCopyWithProxy {
 
   $AnsiTreeHeaderThemeCopyWithProxyChain<AnsiTreeViewTheme> get headerTheme;
 
+  AnsiTreeViewTheme alignment(AnsiTextAlignment newValue);
+
   AnsiTreeViewTheme call({
     final bool? compact,
     final bool? sorted,
@@ -102,6 +110,7 @@ abstract interface class _AnsiTreeViewThemeCopyWithProxy {
     final AnsiTreeNodeKeyTheme? keyTheme,
     final AnsiTreeNodeValueTheme? valueTheme,
     final AnsiTreeHeaderTheme? headerTheme,
+    final AnsiTextAlignment? alignment,
   });
 }
 
@@ -148,6 +157,10 @@ class _AnsiTreeViewThemeCopyWithProxyImpl implements _AnsiTreeViewThemeCopyWithP
 
   @pragma('vm:prefer-inline')
   @override
+  AnsiTreeViewTheme alignment(AnsiTextAlignment newValue) => this(alignment: newValue);
+
+  @pragma('vm:prefer-inline')
+  @override
   AnsiTreeViewTheme call({
     final bool? compact,
     final bool? sorted,
@@ -156,6 +169,7 @@ class _AnsiTreeViewThemeCopyWithProxyImpl implements _AnsiTreeViewThemeCopyWithP
     final AnsiTreeNodeKeyTheme? keyTheme,
     final AnsiTreeNodeValueTheme? valueTheme,
     final AnsiTreeHeaderTheme? headerTheme,
+    final AnsiTextAlignment? alignment,
   }) {
     return _$AnsiTreeViewThemeImpl(
       compact: compact ?? _value.compact,
@@ -165,6 +179,7 @@ class _AnsiTreeViewThemeCopyWithProxyImpl implements _AnsiTreeViewThemeCopyWithP
       keyTheme: keyTheme ?? _value.keyTheme,
       valueTheme: valueTheme ?? _value.valueTheme,
       headerTheme: headerTheme ?? _value.headerTheme,
+      alignment: alignment ?? _value.alignment,
     );
   }
 }
@@ -188,6 +203,8 @@ sealed class $AnsiTreeViewThemeCopyWithProxyChain<$Result> {
 
   $Result headerTheme(AnsiTreeHeaderTheme newValue);
 
+  $Result alignment(AnsiTextAlignment newValue);
+
   $Result call({
     final bool? compact,
     final bool? sorted,
@@ -196,6 +213,7 @@ sealed class $AnsiTreeViewThemeCopyWithProxyChain<$Result> {
     final AnsiTreeNodeKeyTheme? keyTheme,
     final AnsiTreeNodeValueTheme? valueTheme,
     final AnsiTreeHeaderTheme? headerTheme,
+    final AnsiTextAlignment? alignment,
   });
 }
 
@@ -235,6 +253,10 @@ class _AnsiTreeViewThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeView
 
   @pragma('vm:prefer-inline')
   @override
+  $Result alignment(AnsiTextAlignment newValue) => this(alignment: newValue);
+
+  @pragma('vm:prefer-inline')
+  @override
   $Result call({
     final bool? compact,
     final bool? sorted,
@@ -243,6 +265,7 @@ class _AnsiTreeViewThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeView
     final AnsiTreeNodeKeyTheme? keyTheme,
     final AnsiTreeNodeValueTheme? valueTheme,
     final AnsiTreeHeaderTheme? headerTheme,
+    final AnsiTextAlignment? alignment,
   }) {
     return _chain(_$AnsiTreeViewThemeImpl(
       compact: compact ?? _value.compact,
@@ -252,6 +275,7 @@ class _AnsiTreeViewThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeView
       keyTheme: keyTheme ?? _value.keyTheme,
       valueTheme: valueTheme ?? _value.valueTheme,
       headerTheme: headerTheme ?? _value.headerTheme,
+      alignment: alignment ?? _value.alignment,
     ));
   }
 }
@@ -851,7 +875,7 @@ class _$AnsiTreeNodeValueThemeImpl extends AnsiTreeNodeValueTheme {
     this.wrapText = false,
     this.fixedWidth,
     this.wrapOptions = const WrapOptions(),
-    this.alignment = AnsiTextAlignment.left,
+    this.alignment,
   }) : super.ctor();
 
   @override
@@ -870,7 +894,7 @@ class _$AnsiTreeNodeValueThemeImpl extends AnsiTreeNodeValueTheme {
   final WrapOptions wrapOptions;
 
   @override
-  final AnsiTextAlignment alignment;
+  final AnsiTextAlignment? alignment;
 
   @override
   bool operator ==(Object? other) {
@@ -924,7 +948,7 @@ abstract interface class _AnsiTreeNodeValueThemeCopyWithProxy {
 
   $WrapOptionsCopyWithProxyChain<AnsiTreeNodeValueTheme> get wrapOptions;
 
-  AnsiTreeNodeValueTheme alignment(AnsiTextAlignment newValue);
+  AnsiTreeNodeValueTheme alignment(AnsiTextAlignment? newValue);
 
   AnsiTreeNodeValueTheme call({
     final AnsiTextStyle? textStyle,
@@ -965,7 +989,7 @@ class _AnsiTreeNodeValueThemeCopyWithProxyImpl implements _AnsiTreeNodeValueThem
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTreeNodeValueTheme alignment(AnsiTextAlignment newValue) => this(alignment: newValue);
+  AnsiTreeNodeValueTheme alignment(AnsiTextAlignment? newValue) => this(alignment: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -975,7 +999,7 @@ class _AnsiTreeNodeValueThemeCopyWithProxyImpl implements _AnsiTreeNodeValueThem
     final bool? wrapText,
     final Object? fixedWidth = const Object(),
     final WrapOptions? wrapOptions,
-    final AnsiTextAlignment? alignment,
+    final Object? alignment = const Object(),
   }) {
     return _$AnsiTreeNodeValueThemeImpl(
       textStyle: textStyle ?? _value.textStyle,
@@ -983,7 +1007,7 @@ class _AnsiTreeNodeValueThemeCopyWithProxyImpl implements _AnsiTreeNodeValueThem
       wrapText: wrapText ?? _value.wrapText,
       fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
       wrapOptions: wrapOptions ?? _value.wrapOptions,
-      alignment: alignment ?? _value.alignment,
+      alignment: identical(alignment, const Object()) ? _value.alignment : (alignment as AnsiTextAlignment?),
     );
   }
 }
@@ -1003,7 +1027,7 @@ sealed class $AnsiTreeNodeValueThemeCopyWithProxyChain<$Result> {
 
   $Result wrapOptions(WrapOptions newValue);
 
-  $Result alignment(AnsiTextAlignment newValue);
+  $Result alignment(AnsiTextAlignment? newValue);
 
   $Result call({
     final AnsiTextStyle? textStyle,
@@ -1044,7 +1068,7 @@ class _AnsiTreeNodeValueThemeCopyWithProxyChainImpl<$Result>
 
   @pragma('vm:prefer-inline')
   @override
-  $Result alignment(AnsiTextAlignment newValue) => this(alignment: newValue);
+  $Result alignment(AnsiTextAlignment? newValue) => this(alignment: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -1054,7 +1078,7 @@ class _AnsiTreeNodeValueThemeCopyWithProxyChainImpl<$Result>
     final bool? wrapText,
     final Object? fixedWidth = const Object(),
     final WrapOptions? wrapOptions,
-    final AnsiTextAlignment? alignment,
+    final Object? alignment = const Object(),
   }) {
     return _chain(_$AnsiTreeNodeValueThemeImpl(
       textStyle: textStyle ?? _value.textStyle,
@@ -1062,7 +1086,7 @@ class _AnsiTreeNodeValueThemeCopyWithProxyChainImpl<$Result>
       wrapText: wrapText ?? _value.wrapText,
       fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
       wrapOptions: wrapOptions ?? _value.wrapOptions,
-      alignment: alignment ?? _value.alignment,
+      alignment: identical(alignment, const Object()) ? _value.alignment : (alignment as AnsiTextAlignment?),
     ));
   }
 }

@@ -368,6 +368,7 @@ factory AnsiTreeViewTheme.$default() {
     compact: true,
     sorted: false,
     showListItemIndex: true,
+    alignment: AnsiTextAlignment.center,
     anchorTheme: const AnsiTreeAnchorTheme(
       color: AnsiColor.deepSkyBlue5,
       style: AnsiBorderStyle.square,

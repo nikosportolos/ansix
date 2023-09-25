@@ -19,6 +19,7 @@ abstract class AnsiTreeViewTheme {
     AnsiTreeNodeKeyTheme keyTheme,
     AnsiTreeNodeValueTheme valueTheme,
     AnsiTreeHeaderTheme headerTheme,
+    AnsiTextAlignment alignment,
   }) = _$AnsiTreeViewThemeImpl;
 
   /// If set to false extra lines will be added between each node and anchor lines will be longer.
@@ -51,12 +52,17 @@ abstract class AnsiTreeViewTheme {
   @DefaultValue(AnsiTreeHeaderTheme())
   AnsiTreeHeaderTheme get headerTheme;
 
+  /// Defines the main alignment of the tree view body.
+  @DefaultValue(AnsiTextAlignment.center)
+  AnsiTextAlignment get alignment;
+
   /// Default theme for [AnsiTreeView].
   factory AnsiTreeViewTheme.$default() {
     return AnsiTreeViewTheme(
       compact: true,
       sorted: false,
       showListItemIndex: true,
+      alignment: AnsiTextAlignment.center,
       anchorTheme: const AnsiTreeAnchorTheme(
         color: AnsiColor.deepSkyBlue5,
         style: AnsiBorderStyle.square,
@@ -205,7 +211,7 @@ abstract class AnsiTreeNodeValueTheme extends AnsiTreeNodeTheme {
     bool wrapText,
     int? fixedWidth,
     WrapOptions wrapOptions,
-    AnsiTextAlignment alignment,
+    AnsiTextAlignment? alignment,
   }) = _$AnsiTreeNodeValueThemeImpl;
 
   /// Defines the [AnsiTextStyle] of the tree node.
@@ -231,6 +237,7 @@ abstract class AnsiTreeNodeValueTheme extends AnsiTreeNodeTheme {
   WrapOptions get wrapOptions;
 
   /// Defines the alignment relative to the tree node key.
-  @DefaultValue(AnsiTextAlignment.left)
-  AnsiTextAlignment get alignment;
+  ///
+  /// If not set, the root [AnsiTextAlignment] of the [AnsiTreeViewTheme] will be used instead.
+  AnsiTextAlignment? get alignment;
 }

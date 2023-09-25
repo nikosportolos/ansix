@@ -1,3 +1,20 @@
+## v0.2.1
+
+#### Changes/Improvements
+
+- Enable web platform support ([#196](https://github.com/nikosportolos/ansix/issues/196))
+
+  - Conditional import between `dart:io` and `dart:html` depending on the platform  
+  - Create separate implementations for io-dependant functions  
+
+#### Dependencies
+
+- Bump data_class_plugin from 1.0.4 to 1.0.5 ([#198](https://github.com/nikosportolos/ansix/issues/198))
+- Bump nikosportolos/dart_package from 0.1.1 to 0.1.2  ([#201](https://github.com/nikosportolos/ansix/issues/201))
+- Bump checkout  from 3.6.0 to 4.1.0  ([#203](https://github.com/nikosportolos/ansix/issues/203))
+
+
+
 ## v0.2.0
 
 **BREAKING CHANGES**

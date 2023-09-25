@@ -310,4 +310,26 @@ abstract class AnsiColorSet {
     AnsiColor.cornsilk1,
     AnsiColor.grey100,
   ];
+
+  static const List<AnsiColor> redBased = <AnsiColor>[
+    AnsiColor.maroon,
+    AnsiColor.red,
+    AnsiColor.red1,
+    AnsiColor.red2,
+    AnsiColor.red3,
+    AnsiColor.darkRed,
+    AnsiColor.darkRed2,
+    AnsiColor.deepPink1,
+    AnsiColor.deepPink2,
+    AnsiColor.deepPink3,
+    AnsiColor.deepPink4,
+    AnsiColor.deepPink5,
+    AnsiColor.deepPink6,
+    AnsiColor.magenta2,
+    AnsiColor.fuchsia,
+    AnsiColor.indianRed1,
+    AnsiColor.indianRed2,
+    AnsiColor.indianRed4,
+    AnsiColor.orangeRed1,
+  ];
 }

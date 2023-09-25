@@ -59,14 +59,25 @@ class AnsiTreeView extends AnsiWidget {
       final List<String> headerRows = header.split(AnsiEscapeCodes.newLine).where((String line) {
         return line.isNotEmpty;
       }).toList(growable: false);
-      int prefixLength = headerRows[0].unformattedLength ~/ 2;
-      if (prefixLength % 2 == 0) {
+      int prefixLength = switch (theme.alignment) {
+        AnsiTextAlignment.left => 0,
+        AnsiTextAlignment.center => headerRows[0].unformattedLength ~/ 2,
+        AnsiTextAlignment.right => headerRows[0].unformattedLength,
+      };
+
+      if (prefixLength > 0 && (prefixLength % 2 == 0 || prefixLength >= headerRows[0].unformattedLength)) {
         prefixLength--;
       }
+
       prefix = ' ' * prefixLength;
 
       if (headerRows.length > 2 && theme.headerTheme.hasBorder) {
-        final String newChar = theme.headerTheme.border.style.boxDrawingSet.middleTopEdge;
+        final String newChar = switch (theme.alignment) {
+          AnsiTextAlignment.left => theme.headerTheme.border.style.boxDrawingSet.middleLeftEdge,
+          AnsiTextAlignment.center => theme.headerTheme.border.style.boxDrawingSet.middleTopEdge,
+          AnsiTextAlignment.right => theme.headerTheme.border.style.boxDrawingSet.middleRightEdge,
+        };
+
         final String temp = newChar.isEmpty
             ? ''
             : headerRows.last.unformatted
@@ -235,7 +246,7 @@ class AnsiTreeView extends AnsiWidget {
 
       final bool isLastValue = i == keys.length - 1;
       final bool isLast = isLastNode ?? isLastValue;
-      final int tabSize = switch (theme.valueTheme.alignment) {
+      final int tabSize = switch (theme.valueTheme.alignment ?? theme.alignment) {
         AnsiTextAlignment.left => 1 + _lineLength,
         AnsiTextAlignment.center => 1 + _lineLength + key.length ~/ 2,
         AnsiTextAlignment.right => _lineLength + key.length

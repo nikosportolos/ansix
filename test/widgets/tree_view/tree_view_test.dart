@@ -460,7 +460,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         test(alignment, () {
           final String actual = AnsiTreeView(
             map,
-            theme: theme.copyWith.valueTheme.alignment(alignment),
+            theme: theme.copyWith.valueTheme(
+              alignment: alignment,
+              wrapOptions: const WrapOptions(lineLength: 120),
+            ),
           ).toString();
           expect(actual, testCases[alignment]);
         });

@@ -247,8 +247,8 @@ class AnsiTreeView extends AnsiWidget {
       final bool isLastValue = i == keys.length - 1;
       final bool isLast = isLastNode ?? isLastValue;
       final int tabSize = switch (theme.valueTheme.alignment ?? theme.alignment) {
-        AnsiTextAlignment.left => 1 + _lineLength,
-        AnsiTextAlignment.center => 1 + _lineLength + key.length ~/ 2,
+        AnsiTextAlignment.left => _lineLength + 1,
+        AnsiTextAlignment.center => _lineLength + 1 + key.length ~/ 2,
         AnsiTextAlignment.right => _lineLength + key.length
       };
 
@@ -261,6 +261,8 @@ class AnsiTreeView extends AnsiWidget {
 
       switch (TreeNodeType.getType(value)) {
         case TreeNodeType.iterable:
+          final String extraTab =
+              (theme.valueTheme.alignment ?? theme.alignment) != AnsiTextAlignment.center ? ' ' : '';
           buffer
             ..write(prefix)
             ..write(anchor)
@@ -270,7 +272,7 @@ class AnsiTreeView extends AnsiWidget {
             ..write(_parseTreeList(
               value.toList(growable: false),
               key,
-              isLast ? '$prefix$tab' : '$prefix$_verticalLine$tab',
+              isLast ? '$prefix$tab$extraTab' : '$prefix$_verticalLine$tab',
             ));
           break;
 

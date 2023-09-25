@@ -17,4 +17,4 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v3.6.0
-      - uses: nikosportolos/dart_package@v0.1.1
+      - uses: nikosportolos/dart_package@v0.1.2

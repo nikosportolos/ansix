@@ -1,3 +1,12 @@
+## v0.2.2
+
+
+#### Improvements & Fixes on [AnsiTreeView](https://github.com/nikosportolos/ansix/blob/main/.documentation/features/widgets.md#ansitreeview)
+
+- Fix tree alignment ([#206](https://github.com/nikosportolos/ansix/issues/206))
+- Increase the prefix of the last node if it's a List ([#208](https://github.com/nikosportolos/ansix/issues/208))
+
+
 ## v0.2.1
 
 #### Changes/Improvements

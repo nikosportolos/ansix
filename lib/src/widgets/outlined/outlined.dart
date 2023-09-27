@@ -53,7 +53,7 @@ import 'package:ansix/ansix.dart';
 class AnsiOutlinedText extends AnsiWidget {
   AnsiOutlinedText(
     final String text, {
-    required final AnsiBorder border,
+    final AnsiBorder border = AnsiBorder.$default,
     final AnsiTextAlignment alignment = AnsiTextAlignment.left,
     final AnsiTextStyle style = const AnsiTextStyle(),
     final AnsiColor foregroundColor = AnsiColor.none,

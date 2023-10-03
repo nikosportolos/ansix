@@ -54,7 +54,8 @@ class AnsiX {
   /// Returns true if ANSI escape characters are supported in the attached terminal.
   static bool checkAnsiSupport() {
     final bool attachedToValidStream = _ansix._terminal.attachedToValidStream;
-    final bool isSupported = attachedToValidStream && _ansix._terminal.supportsAnsi;
+    final bool isSupported =
+        attachedToValidStream && _ansix._terminal.supportsAnsi;
 
     if (!isSupported) {
       if (_ansix._terminal.runsOnWindows) {

@@ -124,7 +124,8 @@ void main() {
                     style: AnsiBorderStyle.square,
                   ),
                 ),
-                valueTheme: AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
+                valueTheme:
+                    AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
               ),
             ); // , theme: AnsiTreeViewTheme.$default()
           },

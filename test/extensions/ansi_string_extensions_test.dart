@@ -13,14 +13,18 @@ void main() {
         const String text = 'this is a demo text';
         expect(text.bold().unformattedLength, text.length);
         expect(text.red().unformattedLength, text.length);
-        expect('[38;5;209mThis is a text with vertical padding[0m'.unformattedLength, 36);
+        expect(
+            '[38;5;209mThis is a text with vertical padding[0m'
+                .unformattedLength,
+            36);
       });
     });
 
     group('withStyle', () {
       for (final AnsiStyle style in AnsiStyle.values) {
         test(style.name, () {
-          final String text = 'This is a test message with [${style.name}] style';
+          final String text =
+              'This is a test message with [${style.name}] style';
           final String value = text.withStyle(style);
           expect(value, '${style.startEscapeCode}$text${style.endEscapeCode}');
         });

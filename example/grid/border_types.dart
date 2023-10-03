@@ -6,9 +6,24 @@ void main() {
   AnsiX.ensureSupportsAnsi();
 
   final List<List<dynamic>> data = <List<dynamic>>[
-    <dynamic>['Name', AnsiColor.red.name, AnsiColor.green.name, AnsiColor.blue.name],
-    <dynamic>['Hex', AnsiColor.red.hex, AnsiColor.green.hex, AnsiColor.blue.hex],
-    <dynamic>['RGB', AnsiColor.red.rgb, AnsiColor.green.rgb, AnsiColor.blue.rgb],
+    <dynamic>[
+      'Name',
+      AnsiColor.red.name,
+      AnsiColor.green.name,
+      AnsiColor.blue.name
+    ],
+    <dynamic>[
+      'Hex',
+      AnsiColor.red.hex,
+      AnsiColor.green.hex,
+      AnsiColor.blue.hex
+    ],
+    <dynamic>[
+      'RGB',
+      AnsiColor.red.rgb,
+      AnsiColor.green.rgb,
+      AnsiColor.blue.rgb
+    ],
   ];
 
   for (final AnsiBorderType type in AnsiBorderType.values) {

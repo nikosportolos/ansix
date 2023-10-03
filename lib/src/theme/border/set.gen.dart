@@ -50,7 +50,8 @@ class _$AnsiBorderSetImpl extends AnsiBorderSet {
   String toString() {
     String toStringOutput = 'AnsiBorderSet{<optimized out>}';
     assert(() {
-      toStringOutput = 'AnsiBorderSet@<$hexIdentity>{start: $start, line: $line, separator: $separator, end: $end}';
+      toStringOutput =
+          'AnsiBorderSet@<$hexIdentity>{start: $start, line: $line, separator: $separator, end: $end}';
       return true;
     }());
     return toStringOutput;
@@ -116,8 +117,8 @@ class _AnsiBorderSetCopyWithProxyImpl implements _AnsiBorderSetCopyWithProxy {
 }
 
 sealed class $AnsiBorderSetCopyWithProxyChain<$Result> {
-  factory $AnsiBorderSetCopyWithProxyChain(
-          final AnsiBorderSet value, final $Result Function(AnsiBorderSet update) chain) =
+  factory $AnsiBorderSetCopyWithProxyChain(final AnsiBorderSet value,
+          final $Result Function(AnsiBorderSet update) chain) =
       _AnsiBorderSetCopyWithProxyChainImpl<$Result>;
 
   $Result start(String newValue);
@@ -136,7 +137,8 @@ sealed class $AnsiBorderSetCopyWithProxyChain<$Result> {
   });
 }
 
-class _AnsiBorderSetCopyWithProxyChainImpl<$Result> implements $AnsiBorderSetCopyWithProxyChain<$Result> {
+class _AnsiBorderSetCopyWithProxyChainImpl<$Result>
+    implements $AnsiBorderSetCopyWithProxyChain<$Result> {
   _AnsiBorderSetCopyWithProxyChainImpl(this._value, this._chain);
 
   final AnsiBorderSet _value;
@@ -176,5 +178,6 @@ class _AnsiBorderSetCopyWithProxyChainImpl<$Result> implements $AnsiBorderSetCop
 }
 
 extension $AnsiBorderSetExtension on AnsiBorderSet {
-  _AnsiBorderSetCopyWithProxy get copyWith => _AnsiBorderSetCopyWithProxyImpl(this);
+  _AnsiBorderSetCopyWithProxy get copyWith =>
+      _AnsiBorderSetCopyWithProxyImpl(this);
 }

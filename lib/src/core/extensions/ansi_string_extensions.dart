@@ -98,8 +98,10 @@ extension AnsiString on String {
   }) {
     return AnsiX.formatter.withColorRgb(
       this,
-      foreground: foreground == null ? AnsiColor.none : AnsiColor.fromRgb(foreground),
-      background: background == null ? AnsiColor.none : AnsiColor.fromRgb(background),
+      foreground:
+          foreground == null ? AnsiColor.none : AnsiColor.fromRgb(foreground),
+      background:
+          background == null ? AnsiColor.none : AnsiColor.fromRgb(background),
     );
   }
 }

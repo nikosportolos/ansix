@@ -32,8 +32,10 @@ class AnsiGridColumn {
     ];
 
     rowCount = data.length;
-    lineCount = cells.fold<int>(0, (int m, AnsiGridCell cell) => m + cell.lineCount);
-    width = cells.fold<int>(0, (int m, AnsiGridCell cell) => max(m, cell.width));
+    lineCount =
+        cells.fold<int>(0, (int m, AnsiGridCell cell) => m + cell.lineCount);
+    width =
+        cells.fold<int>(0, (int m, AnsiGridCell cell) => max(m, cell.width));
   }
 
   /// The list of [AnsiGridCell] of the column.
@@ -87,9 +89,11 @@ class AnsiGridColumn {
 
     final AnsiText emptyAnsiText = AnsiText.withTheme('', textTheme);
 
-    String text = theme.overrideTheme ? object.toString() : object.toString().unformatted;
+    String text =
+        theme.overrideTheme ? object.toString() : object.toString().unformatted;
     if (theme.wrapText) {
-      final int? wrapLength = theme.wrapOptions.lineLength ?? textTheme.fixedWidth;
+      final int? wrapLength =
+          theme.wrapOptions.lineLength ?? textTheme.fixedWidth;
       if (wrapLength != null && wrapLength < text.length) {
         text = text //
             .wrapText(wrapOptions: theme.wrapOptions, fixedWidth: wrapLength)
@@ -135,7 +139,8 @@ class AnsiGridColumn {
     required final AnsiGridTheme theme,
     required final AnsiGridCellType type,
   }) {
-    AnsiTextTheme textTheme = theme.overrideTheme ? ansiText.theme : type.getTextTheme(theme);
+    AnsiTextTheme textTheme =
+        theme.overrideTheme ? ansiText.theme : type.getTextTheme(theme);
     final AnsiPadding padding = textTheme.padding;
     textTheme = textTheme.copyWith.padding(AnsiPadding.only(
       left: textTheme.padding.left,
@@ -148,7 +153,8 @@ class AnsiGridColumn {
           ansiText.text
               .wrapText(
                 wrapOptions: theme.wrapOptions,
-                fixedWidth: theme.wrapOptions.lineLength ?? textTheme.fixedWidth,
+                fixedWidth:
+                    theme.wrapOptions.lineLength ?? textTheme.fixedWidth,
               )
               .map((String s) => s.trim())
               .join(AnsiEscapeCodes.newLine),
@@ -162,7 +168,9 @@ class AnsiGridColumn {
         width: ansiText.width,
         lines: <AnsiText>[
           for (int i = 0; i < padding.top; i++) emptyAnsiText,
-          theme.overrideTheme ? ansiText : AnsiText.withTheme(ansiText.text, textTheme),
+          theme.overrideTheme
+              ? ansiText
+              : AnsiText.withTheme(ansiText.text, textTheme),
           for (int i = 0; i < padding.bottom; i++) emptyAnsiText,
         ],
       );

@@ -15,7 +15,8 @@ void main() {
   group('AnsiTree alignment', () {
     for (final AnsiTextAlignment treeAlignment in AnsiTextAlignment.values) {
       group('treeAlignment: ${treeAlignment.name}', () {
-        for (final AnsiTextAlignment? valueNodeAlignment in <AnsiTextAlignment?>[null, ...AnsiTextAlignment.values]) {
+        for (final AnsiTextAlignment? valueNodeAlignment
+            in <AnsiTextAlignment?>[null, ...AnsiTextAlignment.values]) {
           group('valueNodeAlignment: ${valueNodeAlignment?.name}', () {
             test('${treeAlignment.name}-${valueNodeAlignment?.name}', () {
               final AnsiTreeView tree = AnsiTreeView(

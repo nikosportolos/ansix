@@ -23,18 +23,24 @@ void main() {
           for (final bool supportsAnsi in values) {
             group('supportsAnsi: $supportsAnsi', () {
               for (final bool detectWindowsAnsiSupport in values) {
-                group('detectWindowsAnsiSupport: $detectWindowsAnsiSupport', () {
+                group('detectWindowsAnsiSupport: $detectWindowsAnsiSupport',
+                    () {
                   for (final bool force in values) {
                     group('force: $force', () {
                       for (final bool silent in values) {
                         group('silent: $silent', () {
                           test('', () {
-                            when(() => terminal.attachedToValidStream).thenReturn(attachedToValidStream);
+                            when(() => terminal.attachedToValidStream)
+                                .thenReturn(attachedToValidStream);
                             when(() => terminal.runsOnWindows).thenReturn(true);
-                            when(() => terminal.supportsAnsi).thenReturn(supportsAnsi);
-                            when(() => processManager.detectWindowsAnsiSupport()).thenReturn(detectWindowsAnsiSupport);
+                            when(() => terminal.supportsAnsi)
+                                .thenReturn(supportsAnsi);
+                            when(() =>
+                                    processManager.detectWindowsAnsiSupport())
+                                .thenReturn(detectWindowsAnsiSupport);
 
-                            final bool supported = attachedToValidStream && (detectWindowsAnsiSupport || supportsAnsi);
+                            final bool supported = attachedToValidStream &&
+                                (detectWindowsAnsiSupport || supportsAnsi);
 
                             try {
                               AnsiX.ensureSupportsAnsi(
@@ -48,7 +54,9 @@ void main() {
                             expect(AnsiX.isEnabled, supported || force);
                             expect(
                               AnsiX.formatter.runtimeType,
-                              supported || force ? AnsiTextFormatter : StandardTextFormatter,
+                              supported || force
+                                  ? AnsiTextFormatter
+                                  : StandardTextFormatter,
                             );
                           });
                         });
@@ -74,13 +82,18 @@ void main() {
                   for (final bool silent in values) {
                     group('silent: $silent', () {
                       test('', () {
-                        when(() => terminal.attachedToValidStream).thenReturn(attachedToValidStream);
+                        when(() => terminal.attachedToValidStream)
+                            .thenReturn(attachedToValidStream);
                         when(() => terminal.runsOnWindows).thenReturn(false);
-                        when(() => terminal.supportsAnsi).thenReturn(supportsAnsi);
-                        when(() => processManager.determineTerminalType()).thenReturn(TerminalType.bash);
+                        when(() => terminal.supportsAnsi)
+                            .thenReturn(supportsAnsi);
+                        when(() => processManager.determineTerminalType())
+                            .thenReturn(TerminalType.bash);
 
-                        final bool supported = (attachedToValidStream && supportsAnsi) ||
-                            processManager.determineTerminalType() == TerminalType.bash;
+                        final bool supported =
+                            (attachedToValidStream && supportsAnsi) ||
+                                processManager.determineTerminalType() ==
+                                    TerminalType.bash;
 
                         try {
                           AnsiX.ensureSupportsAnsi(
@@ -93,7 +106,9 @@ void main() {
                         expect(AnsiX.isEnabled, supported || force);
                         expect(
                           AnsiX.formatter.runtimeType,
-                          supported || force ? AnsiTextFormatter : StandardTextFormatter,
+                          supported || force
+                              ? AnsiTextFormatter
+                              : StandardTextFormatter,
                         );
                       });
                     });

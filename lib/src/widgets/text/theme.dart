@@ -37,5 +37,6 @@ abstract class AnsiTextTheme {
 
   int? get fixedWidth;
 
-  bool get hasColors => foregroundColor != AnsiColor.none || backgroundColor != AnsiColor.none;
+  bool get hasColors =>
+      foregroundColor != AnsiColor.none || backgroundColor != AnsiColor.none;
 }

@@ -103,11 +103,13 @@ class _AnsiTextThemeCopyWithProxyImpl implements _AnsiTextThemeCopyWithProxy {
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTextTheme foregroundColor(AnsiColor newValue) => this(foregroundColor: newValue);
+  AnsiTextTheme foregroundColor(AnsiColor newValue) =>
+      this(foregroundColor: newValue);
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTextTheme backgroundColor(AnsiColor newValue) => this(backgroundColor: newValue);
+  AnsiTextTheme backgroundColor(AnsiColor newValue) =>
+      this(backgroundColor: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -119,7 +121,8 @@ class _AnsiTextThemeCopyWithProxyImpl implements _AnsiTextThemeCopyWithProxy {
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTextTheme alignment(AnsiTextAlignment newValue) => this(alignment: newValue);
+  AnsiTextTheme alignment(AnsiTextAlignment newValue) =>
+      this(alignment: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -141,14 +144,16 @@ class _AnsiTextThemeCopyWithProxyImpl implements _AnsiTextThemeCopyWithProxy {
       style: style ?? _value.style,
       padding: padding ?? _value.padding,
       alignment: alignment ?? _value.alignment,
-      fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
+      fixedWidth: identical(fixedWidth, const Object())
+          ? _value.fixedWidth
+          : (fixedWidth as int?),
     );
   }
 }
 
 sealed class $AnsiTextThemeCopyWithProxyChain<$Result> {
-  factory $AnsiTextThemeCopyWithProxyChain(
-          final AnsiTextTheme value, final $Result Function(AnsiTextTheme update) chain) =
+  factory $AnsiTextThemeCopyWithProxyChain(final AnsiTextTheme value,
+          final $Result Function(AnsiTextTheme update) chain) =
       _AnsiTextThemeCopyWithProxyChainImpl<$Result>;
 
   $Result foregroundColor(AnsiColor newValue);
@@ -173,7 +178,8 @@ sealed class $AnsiTextThemeCopyWithProxyChain<$Result> {
   });
 }
 
-class _AnsiTextThemeCopyWithProxyChainImpl<$Result> implements $AnsiTextThemeCopyWithProxyChain<$Result> {
+class _AnsiTextThemeCopyWithProxyChainImpl<$Result>
+    implements $AnsiTextThemeCopyWithProxyChain<$Result> {
   _AnsiTextThemeCopyWithProxyChainImpl(this._value, this._chain);
 
   final AnsiTextTheme _value;
@@ -181,11 +187,13 @@ class _AnsiTextThemeCopyWithProxyChainImpl<$Result> implements $AnsiTextThemeCop
 
   @pragma('vm:prefer-inline')
   @override
-  $Result foregroundColor(AnsiColor newValue) => this(foregroundColor: newValue);
+  $Result foregroundColor(AnsiColor newValue) =>
+      this(foregroundColor: newValue);
 
   @pragma('vm:prefer-inline')
   @override
-  $Result backgroundColor(AnsiColor newValue) => this(backgroundColor: newValue);
+  $Result backgroundColor(AnsiColor newValue) =>
+      this(backgroundColor: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -219,11 +227,14 @@ class _AnsiTextThemeCopyWithProxyChainImpl<$Result> implements $AnsiTextThemeCop
       style: style ?? _value.style,
       padding: padding ?? _value.padding,
       alignment: alignment ?? _value.alignment,
-      fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
+      fixedWidth: identical(fixedWidth, const Object())
+          ? _value.fixedWidth
+          : (fixedWidth as int?),
     ));
   }
 }
 
 extension $AnsiTextThemeExtension on AnsiTextTheme {
-  _AnsiTextThemeCopyWithProxy get copyWith => _AnsiTextThemeCopyWithProxyImpl(this);
+  _AnsiTextThemeCopyWithProxy get copyWith =>
+      _AnsiTextThemeCopyWithProxyImpl(this);
 }

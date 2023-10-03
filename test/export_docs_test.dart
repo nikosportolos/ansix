@@ -19,7 +19,8 @@ void main() {
 
       group('colors', () {
         for (final AnsiColor color in AnsiColorSet.all) {
-          final String filename = '${color.name.toLowerCase().replaceAll(' ', '_')}.png';
+          final String filename =
+              '${color.name.toLowerCase().replaceAll(' ', '_')}.png';
           final String filepath = join(
             Directory.current.path,
             basePath,
@@ -45,7 +46,8 @@ void main() {
       });
 
       group('color sets', () {
-        for (final MapEntry<String, List<AnsiColor>> set in AnsiColorSet.map.entries) {
+        for (final MapEntry<String, List<AnsiColor>> set
+            in AnsiColorSet.map.entries) {
           final String filename = '${set.key.toLowerCase()}.md';
           test(filename, () {
             expect(File(join(basePath, filename)).existsSync(), true);

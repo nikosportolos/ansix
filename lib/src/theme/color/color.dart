@@ -1885,13 +1885,17 @@ class AnsiColor {
   /// Foreground 8 bit 256 color code
   @pragma('vm:prefer-inline')
   String get foreground {
-    return value < 0 ? '' : '${AnsiEscapeCodes.foregroundColorStartCode}$value${AnsiEscapeCodes.colorEndCode}';
+    return value < 0
+        ? ''
+        : '${AnsiEscapeCodes.foregroundColorStartCode}$value${AnsiEscapeCodes.colorEndCode}';
   }
 
   /// Background 8 bit 256 color code
   @pragma('vm:prefer-inline')
   String get background {
-    return value < 0 ? '' : '${AnsiEscapeCodes.backgroundColorStartCode}$value${AnsiEscapeCodes.colorEndCode}';
+    return value < 0
+        ? ''
+        : '${AnsiEscapeCodes.backgroundColorStartCode}$value${AnsiEscapeCodes.colorEndCode}';
   }
 
   /// Foreground 24 bit rgb color code

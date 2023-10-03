@@ -35,7 +35,8 @@ class _$NodeImpl extends Node {
   String toString() {
     String toStringOutput = 'Node{<optimized out>}';
     assert(() {
-      toStringOutput = 'Node@<$hexIdentity>{id: $id, child: $child, nodes: $nodes}';
+      toStringOutput =
+          'Node@<$hexIdentity>{id: $id, child: $child, nodes: $nodes}';
       return true;
     }());
     return toStringOutput;
@@ -70,8 +71,10 @@ class _NodeCopyWithProxyImpl implements _NodeCopyWithProxy {
 
   @pragma('vm:prefer-inline')
   @override
-  $NodeCopyWithProxyChain<Node>? get child =>
-      _value.child == null ? null : $NodeCopyWithProxyChain<Node>(_value.child!, (Node? update) => this(child: update));
+  $NodeCopyWithProxyChain<Node>? get child => _value.child == null
+      ? null
+      : $NodeCopyWithProxyChain<Node>(
+          _value.child!, (Node? update) => this(child: update));
 
   @pragma('vm:prefer-inline')
   @override
@@ -93,7 +96,8 @@ class _NodeCopyWithProxyImpl implements _NodeCopyWithProxy {
 }
 
 sealed class $NodeCopyWithProxyChain<$Result> {
-  factory $NodeCopyWithProxyChain(final Node value, final $Result Function(Node update) chain) =
+  factory $NodeCopyWithProxyChain(
+          final Node value, final $Result Function(Node update) chain) =
       _NodeCopyWithProxyChainImpl<$Result>;
 
   $Result id(String newValue);
@@ -109,7 +113,8 @@ sealed class $NodeCopyWithProxyChain<$Result> {
   });
 }
 
-class _NodeCopyWithProxyChainImpl<$Result> implements $NodeCopyWithProxyChain<$Result> {
+class _NodeCopyWithProxyChainImpl<$Result>
+    implements $NodeCopyWithProxyChain<$Result> {
   _NodeCopyWithProxyChainImpl(this._value, this._chain);
 
   final Node _value;

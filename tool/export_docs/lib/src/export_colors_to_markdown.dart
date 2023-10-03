@@ -16,7 +16,8 @@ abstract class ExportColorsToMarkdown {
       directory.deleteSync(recursive: true);
     }
 
-    for (final MapEntry<String, List<AnsiColor>> set in AnsiColorSet.map.entries) {
+    for (final MapEntry<String, List<AnsiColor>> set
+        in AnsiColorSet.map.entries) {
       _printColorSet(set.value, set.key);
     }
   }
@@ -25,7 +26,8 @@ abstract class ExportColorsToMarkdown {
     final List<AnsiColor> colors,
     final String colorSetName,
   ) {
-    final String markdownContent = ColorTableForGithub.markdown(colors, colorSetName);
+    final String markdownContent =
+        ColorTableForGithub.markdown(colors, colorSetName);
     final File markdownFile = File(
       join(colorDocsPath, '${colorSetName.toLowerCase()}.md'),
     );

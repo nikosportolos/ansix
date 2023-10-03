@@ -135,8 +135,8 @@ class _UserCopyWithProxyImpl implements _UserCopyWithProxy {
 
   @pragma('vm:prefer-inline')
   @override
-  $EmailCopyWithProxyChain<User> get email =>
-      $EmailCopyWithProxyChain<User>(_value.email, (Email update) => this(email: update));
+  $EmailCopyWithProxyChain<User> get email => $EmailCopyWithProxyChain<User>(
+      _value.email, (Email update) => this(email: update));
 
   @pragma('vm:prefer-inline')
   @override
@@ -178,7 +178,8 @@ class _UserCopyWithProxyImpl implements _UserCopyWithProxy {
 }
 
 sealed class $UserCopyWithProxyChain<$Result> {
-  factory $UserCopyWithProxyChain(final User value, final $Result Function(User update) chain) =
+  factory $UserCopyWithProxyChain(
+          final User value, final $Result Function(User update) chain) =
       _UserCopyWithProxyChainImpl<$Result>;
 
   $Result id(String newValue);
@@ -206,7 +207,8 @@ sealed class $UserCopyWithProxyChain<$Result> {
   });
 }
 
-class _UserCopyWithProxyChainImpl<$Result> implements $UserCopyWithProxyChain<$Result> {
+class _UserCopyWithProxyChainImpl<$Result>
+    implements $UserCopyWithProxyChain<$Result> {
   _UserCopyWithProxyChainImpl(this._value, this._chain);
 
   final User _value;
@@ -316,7 +318,8 @@ class _$AddressImpl extends Address {
   String toString() {
     String toStringOutput = 'Address{<optimized out>}';
     assert(() {
-      toStringOutput = 'Address@<$hexIdentity>{street: $street, city: $city, state: $state}';
+      toStringOutput =
+          'Address@<$hexIdentity>{street: $street, city: $city, state: $state}';
       return true;
     }());
     return toStringOutput;
@@ -373,7 +376,8 @@ class _AddressCopyWithProxyImpl implements _AddressCopyWithProxy {
 }
 
 sealed class $AddressCopyWithProxyChain<$Result> {
-  factory $AddressCopyWithProxyChain(final Address value, final $Result Function(Address update) chain) =
+  factory $AddressCopyWithProxyChain(
+          final Address value, final $Result Function(Address update) chain) =
       _AddressCopyWithProxyChainImpl<$Result>;
 
   $Result street(String newValue);
@@ -389,7 +393,8 @@ sealed class $AddressCopyWithProxyChain<$Result> {
   });
 }
 
-class _AddressCopyWithProxyChainImpl<$Result> implements $AddressCopyWithProxyChain<$Result> {
+class _AddressCopyWithProxyChainImpl<$Result>
+    implements $AddressCopyWithProxyChain<$Result> {
   _AddressCopyWithProxyChainImpl(this._value, this._chain);
 
   final Address _value;
@@ -475,7 +480,8 @@ class _$EmailImpl extends Email {
   String toString() {
     String toStringOutput = 'Email{<optimized out>}';
     assert(() {
-      toStringOutput = 'Email@<$hexIdentity>{primary: $primary, secondary: $secondary, personal: $personal}';
+      toStringOutput =
+          'Email@<$hexIdentity>{primary: $primary, secondary: $secondary, personal: $personal}';
       return true;
     }());
     return toStringOutput;
@@ -525,14 +531,19 @@ class _EmailCopyWithProxyImpl implements _EmailCopyWithProxy {
   }) {
     return _$EmailImpl(
       primary: primary ?? _value.primary,
-      secondary: identical(secondary, const Object()) ? _value.secondary : (secondary as String?),
-      personal: identical(personal, const Object()) ? _value.personal : (personal as String?),
+      secondary: identical(secondary, const Object())
+          ? _value.secondary
+          : (secondary as String?),
+      personal: identical(personal, const Object())
+          ? _value.personal
+          : (personal as String?),
     );
   }
 }
 
 sealed class $EmailCopyWithProxyChain<$Result> {
-  factory $EmailCopyWithProxyChain(final Email value, final $Result Function(Email update) chain) =
+  factory $EmailCopyWithProxyChain(
+          final Email value, final $Result Function(Email update) chain) =
       _EmailCopyWithProxyChainImpl<$Result>;
 
   $Result primary(String newValue);
@@ -548,7 +559,8 @@ sealed class $EmailCopyWithProxyChain<$Result> {
   });
 }
 
-class _EmailCopyWithProxyChainImpl<$Result> implements $EmailCopyWithProxyChain<$Result> {
+class _EmailCopyWithProxyChainImpl<$Result>
+    implements $EmailCopyWithProxyChain<$Result> {
   _EmailCopyWithProxyChainImpl(this._value, this._chain);
 
   final Email _value;
@@ -575,8 +587,12 @@ class _EmailCopyWithProxyChainImpl<$Result> implements $EmailCopyWithProxyChain<
   }) {
     return _chain(_$EmailImpl(
       primary: primary ?? _value.primary,
-      secondary: identical(secondary, const Object()) ? _value.secondary : (secondary as String?),
-      personal: identical(personal, const Object()) ? _value.personal : (personal as String?),
+      secondary: identical(secondary, const Object())
+          ? _value.secondary
+          : (secondary as String?),
+      personal: identical(personal, const Object())
+          ? _value.personal
+          : (personal as String?),
     ));
   }
 }

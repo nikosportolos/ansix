@@ -11,7 +11,12 @@ void main() {
     ...movies.mapIndexed((int i, Movie m) {
       return <Object>[i + 1, m.title, m.releaseYear, m.rate];
     }).toList(growable: false),
-    <Object?>['Average', '', '', movies.map((Movie m) => m.rate).toList(growable: false).average],
+    <Object?>[
+      'Average',
+      '',
+      '',
+      movies.map((Movie m) => m.rate).toList(growable: false).average
+    ],
   ];
 
   print('vertical'.underline());
@@ -20,6 +25,7 @@ void main() {
   print('');
 
   print('horizontal'.underline());
-  final AnsiGrid horizontalGrid = AnsiGrid.fromRows(rows, theme: horizontalTheme);
+  final AnsiGrid horizontalGrid =
+      AnsiGrid.fromRows(rows, theme: horizontalTheme);
   print(horizontalGrid);
 }

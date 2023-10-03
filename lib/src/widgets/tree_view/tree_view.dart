@@ -30,11 +30,14 @@ class AnsiTreeView extends AnsiWidget {
   late final String formattedText;
 
   String _build(final dynamic data) {
-    _horizontalLine = (theme.anchorTheme.style.boxDrawingSet.horizontalLine * _lineLength).withForegroundColor(
+    _horizontalLine =
+        (theme.anchorTheme.style.boxDrawingSet.horizontalLine * _lineLength)
+            .withForegroundColor(
       theme.anchorTheme.color,
     );
 
-    _verticalLine = theme.anchorTheme.style.boxDrawingSet.verticalLine.withForegroundColor(
+    _verticalLine =
+        theme.anchorTheme.style.boxDrawingSet.verticalLine.withForegroundColor(
       theme.anchorTheme.color,
     );
 
@@ -42,10 +45,14 @@ class AnsiTreeView extends AnsiWidget {
     String prefix = '';
 
     if (!theme.headerTheme.hideHeader) {
-      final String hash = theme.headerTheme.showHash ? '<${data.hashCode.toString().italic()}>'.dim() : '';
+      final String hash = theme.headerTheme.showHash
+          ? '<${data.hashCode.toString().italic()}>'.dim()
+          : '';
 
       String header = AnsiOutlinedText(
-        theme.headerTheme.customHeader.isNullOrEmpty ? '${data.runtimeType}$hash' : theme.headerTheme.customHeader!,
+        theme.headerTheme.customHeader.isNullOrEmpty
+            ? '${data.runtimeType}$hash'
+            : theme.headerTheme.customHeader!,
         border: theme.headerTheme.border,
         transparent: true,
         foregroundColor: theme.headerTheme.textTheme.foregroundColor,
@@ -56,7 +63,8 @@ class AnsiTreeView extends AnsiWidget {
         fixedWidth: theme.headerTheme.textTheme.fixedWidth,
       ).formattedText;
 
-      final List<String> headerRows = header.split(AnsiEscapeCodes.newLine).where((String line) {
+      final List<String> headerRows =
+          header.split(AnsiEscapeCodes.newLine).where((String line) {
         return line.isNotEmpty;
       }).toList(growable: false);
       int prefixLength = switch (theme.alignment) {
@@ -65,7 +73,9 @@ class AnsiTreeView extends AnsiWidget {
         AnsiTextAlignment.right => headerRows[0].unformattedLength,
       };
 
-      if (prefixLength > 0 && (prefixLength % 2 == 0 || prefixLength >= headerRows[0].unformattedLength)) {
+      if (prefixLength > 0 &&
+          (prefixLength % 2 == 0 ||
+              prefixLength >= headerRows[0].unformattedLength)) {
         prefixLength--;
       }
 
@@ -73,9 +83,12 @@ class AnsiTreeView extends AnsiWidget {
 
       if (headerRows.length > 2 && theme.headerTheme.hasBorder) {
         final String newChar = switch (theme.alignment) {
-          AnsiTextAlignment.left => theme.headerTheme.border.style.boxDrawingSet.middleLeftEdge,
-          AnsiTextAlignment.center => theme.headerTheme.border.style.boxDrawingSet.middleTopEdge,
-          AnsiTextAlignment.right => theme.headerTheme.border.style.boxDrawingSet.middleRightEdge,
+          AnsiTextAlignment.left =>
+            theme.headerTheme.border.style.boxDrawingSet.middleLeftEdge,
+          AnsiTextAlignment.center =>
+            theme.headerTheme.border.style.boxDrawingSet.middleTopEdge,
+          AnsiTextAlignment.right =>
+            theme.headerTheme.border.style.boxDrawingSet.middleRightEdge,
         };
 
         final String temp = newChar.isEmpty
@@ -97,11 +110,13 @@ class AnsiTreeView extends AnsiWidget {
 
     switch (TreeNodeType.getType(data)) {
       case TreeNodeType.primary:
-        buffer.write(_parseTreeNode('', data, prefix: prefix, isLast: true, isFirstNode: true));
+        buffer.write(_parseTreeNode('', data,
+            prefix: prefix, isLast: true, isFirstNode: true));
         break;
 
       case TreeNodeType.iterable:
-        buffer.write(_parseTreeList(data, data.runtimeType.toString(), prefix, true));
+        buffer.write(
+            _parseTreeList(data, data.runtimeType.toString(), prefix, true));
         break;
 
       case TreeNodeType.map:
@@ -109,7 +124,8 @@ class AnsiTreeView extends AnsiWidget {
         break;
 
       case TreeNodeType.object:
-        buffer.write(_parseObject(data, prefix: prefix, isLast: true, isFirstNode: true));
+        buffer.write(_parseObject(data,
+            prefix: prefix, isLast: true, isFirstNode: true));
         break;
     }
 
@@ -158,7 +174,9 @@ class AnsiTreeView extends AnsiWidget {
     if (key.toString().isNotEmpty) {
       buffer
         ..write(' ')
-        ..write(key.toString().styled(theme.keyTheme.textStyle, theme.keyTheme.color))
+        ..write(key
+            .toString()
+            .styled(theme.keyTheme.textStyle, theme.keyTheme.color))
         ..write(':');
     }
 
@@ -168,7 +186,8 @@ class AnsiTreeView extends AnsiWidget {
     final int bufferLength = buffer.toString().unformattedLength;
 
     if (theme.valueTheme.wrapText) {
-      final int chunkSize = theme.valueTheme.wrapOptions.lineLength ?? AnsiX.size.columns;
+      final int chunkSize =
+          theme.valueTheme.wrapOptions.lineLength ?? AnsiX.size.columns;
       final int length = theme.valueTheme.fixedWidth == null //
           ? chunkSize
           : theme.valueTheme.fixedWidth! - bufferLength - 1;
@@ -176,7 +195,8 @@ class AnsiTreeView extends AnsiWidget {
       text = text
           .wrapText(
             fixedWidth: theme.valueTheme.fixedWidth,
-            wrapOptions: theme.valueTheme.wrapOptions.copyWith.lineLength(length),
+            wrapOptions:
+                theme.valueTheme.wrapOptions.copyWith.lineLength(length),
           )
           .join(AnsiEscapeCodes.newLine);
       isMultiline = text.contains(AnsiEscapeCodes.newLine);
@@ -184,7 +204,9 @@ class AnsiTreeView extends AnsiWidget {
 
     if (isMultiline) {
       final int newTabSize = bufferLength - prefix.length + 1;
-      final String separator = isLast ? _getTab(newTabSize) : '$_verticalLine${_getTab(newTabSize - 1)}';
+      final String separator = isLast
+          ? _getTab(newTabSize)
+          : '$_verticalLine${_getTab(newTabSize - 1)}';
       buffer.write(' ');
       lines = text.split(AnsiEscapeCodes.newLine);
       for (int i = 0; i < lines.length; i++) {
@@ -228,7 +250,8 @@ class AnsiTreeView extends AnsiWidget {
     final bool isFirstNode = false,
   }) {
     final StringBuffer buffer = StringBuffer();
-    final List<dynamic> keys = map.keys.map((dynamic e) => e).toList(growable: false);
+    final List<dynamic> keys =
+        map.keys.map((dynamic e) => e).toList(growable: false);
 
     if (theme.sorted) {
       keys.sort();
@@ -246,14 +269,16 @@ class AnsiTreeView extends AnsiWidget {
 
       final bool isLastValue = i == keys.length - 1;
       final bool isLast = isLastNode ?? isLastValue;
-      final int tabSize = switch (theme.valueTheme.alignment ?? theme.alignment) {
+      final int tabSize =
+          switch (theme.valueTheme.alignment ?? theme.alignment) {
         AnsiTextAlignment.left => _lineLength + 1,
         AnsiTextAlignment.center => _lineLength + 1 + key.length ~/ 2,
         AnsiTextAlignment.right => _lineLength + key.length
       };
 
       final String tab = ' ' * tabSize;
-      final String anchor = _getAnchor(isLast: isLast, isFirstNode: isFirstNodeAndEntry);
+      final String anchor =
+          _getAnchor(isLast: isLast, isFirstNode: isFirstNodeAndEntry);
 
       if (!theme.compact) {
         buffer.writeln('$prefix$_verticalLine');
@@ -262,13 +287,17 @@ class AnsiTreeView extends AnsiWidget {
       switch (TreeNodeType.getType(value)) {
         case TreeNodeType.iterable:
           final String extraTab =
-              (theme.valueTheme.alignment ?? theme.alignment) != AnsiTextAlignment.center ? ' ' : '';
+              (theme.valueTheme.alignment ?? theme.alignment) !=
+                      AnsiTextAlignment.center
+                  ? ' '
+                  : '';
           buffer
             ..write(prefix)
             ..write(anchor)
             ..write(_horizontalLine)
             ..write(' ')
-            ..writeln(key.styled(theme.keyTheme.textStyle, theme.keyTheme.color))
+            ..writeln(
+                key.styled(theme.keyTheme.textStyle, theme.keyTheme.color))
             ..write(_parseTreeList(
               value.toList(growable: false),
               key,
@@ -311,7 +340,9 @@ class AnsiTreeView extends AnsiWidget {
             ..write(anchor)
             ..write(_horizontalLine)
             ..write(' ')
-            ..writeln(key.toString().styled(theme.keyTheme.textStyle, theme.keyTheme.color))
+            ..writeln(key
+                .toString()
+                .styled(theme.keyTheme.textStyle, theme.keyTheme.color))
             ..write(_parseObject(
               value,
               isLast: isLast,

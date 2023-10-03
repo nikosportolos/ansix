@@ -30,9 +30,10 @@ void main() {
       }
       buffer.write(AnsiText(
         '${colors[i].value}',
-        foregroundColor: colors[i].lightness != null && colors[i].lightness! >= 50 //
-            ? AnsiColor.black
-            : AnsiColor.white,
+        foregroundColor:
+            colors[i].lightness != null && colors[i].lightness! >= 50 //
+                ? AnsiColor.black
+                : AnsiColor.white,
         backgroundColor: colors[i],
         fixedWidth: size,
         alignment: AnsiTextAlignment.center,

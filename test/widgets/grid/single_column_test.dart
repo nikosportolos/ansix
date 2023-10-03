@@ -15,7 +15,8 @@ void main() {
 
   for (final AnsiBorderType type in AnsiBorderType.values) {
     group(type.name, () {
-      final AnsiBorder border = AnsiBorder(style: AnsiBorderStyle.square, type: type);
+      final AnsiBorder border =
+          AnsiBorder(style: AnsiBorderStyle.square, type: type);
 
       test('AnsiGrid.single - horizontal', () {
         expect(

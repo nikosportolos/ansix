@@ -1,5 +1,22 @@
-## v0.2.2
+## v0.2.3
 
+#### Changes/Improvements
+
+- AnsiOutlinedText: Set default border ([#211](https://github.com/nikosportolos/ansix/issues/211))
+
+#### Dependencies
+
+- Bump tachyon from 0.0.9 to 0.1.0 ([#213](https://github.com/nikosportolos/ansix/pull/213))
+- Bump data_class_plugin from 1.0.5 to 1.1.0 ([#214](https://github.com/nikosportolos/ansix/pull/214))
+- Bump test from 1.24.6 to 1.24.7 ([#215](https://github.com/nikosportolos/ansix/pull/215))
+- Bump mocktail from 1.0.0 to 1.0.1 ([#216](https://github.com/nikosportolos/ansix/pull/216))
+
+#### Misc
+
+- Decrease project line length to 80 ([#217](https://github.com/nikosportolos/ansix/issues/217))
+
+
+## v0.2.2
 
 #### Improvements & Fixes on [AnsiTreeView](https://github.com/nikosportolos/ansix/blob/main/.documentation/features/widgets.md#ansitreeview)
 

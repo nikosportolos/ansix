@@ -16,12 +16,14 @@ void main() {
     'this is a bold text'.bold(),
     'this is an italic text'.italic(),
     'this is a ${'demo'.bold()} ${'text'.underline()}',
-    'multiple styles'.styled(const AnsiTextStyle(strikethrough: true, inverse: true)),
+    'multiple styles'
+        .styled(const AnsiTextStyle(strikethrough: true, inverse: true)),
     '',
     // colors
     'text with background color'.withBackgroundColor(AnsiColor.cornflowerBlue),
     'text with foreground color'.withForegroundColor(AnsiColor.paleGreen1),
-    'this is a colored text'.colored(foreground: AnsiColor.white, background: AnsiColor.chartreuse4),
+    'this is a colored text'.colored(
+        foreground: AnsiColor.white, background: AnsiColor.chartreuse4),
     '',
     // AnsiText
     AnsiText('this is a demo text').toString(),

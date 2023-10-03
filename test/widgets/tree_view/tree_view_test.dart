@@ -96,7 +96,8 @@ void main() {
               style: AnsiBorderStyle.square,
             ),
           ),
-          valueTheme: AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
+          valueTheme:
+              AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
         ),
       ).toString();
       expect(actual.unformatted, treeViewMockExpanded);
@@ -118,7 +119,8 @@ void main() {
         ],
       );
 
-      final String actual = AnsiTreeView(node3, theme: AnsiTreeViewTheme.$default()).toString();
+      final String actual =
+          AnsiTreeView(node3, theme: AnsiTreeViewTheme.$default()).toString();
       expect(actual.unformatted, treeviewNestedMock);
     });
 
@@ -183,7 +185,8 @@ void main() {
             border: AnsiBorder(type: AnsiBorderType.all),
           ),
           anchorTheme: AnsiTreeAnchorTheme(style: AnsiBorderStyle.ascii),
-          valueTheme: AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
+          valueTheme:
+              AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
         ),
       ).toString();
       expect(actual.unformatted, treeviewMixedBordersMock);
@@ -411,9 +414,12 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
           'bool': false,
           'String': 'this is a test message',
           'record': myRecord,
-          'objectWithToString': const MockClassWithToString(id: 1, text: 'MockClassWithToString'),
-          'objectWithToJson': const MockClassWithToJson(id: 1, text: 'MockClassWithToJson'),
-          'objectWithToMap': const MockClassWithToMap(id: 1, text: 'MockClassWithToMap'),
+          'objectWithToString':
+              const MockClassWithToString(id: 1, text: 'MockClassWithToString'),
+          'objectWithToJson':
+              const MockClassWithToJson(id: 1, text: 'MockClassWithToJson'),
+          'objectWithToMap':
+              const MockClassWithToMap(id: 1, text: 'MockClassWithToMap'),
           'map': <String, dynamic>{'id': 44, 'email': 'test@email.com'},
           'list': <int>[1, 2, 3, 4, 5],
           'enum': MockEnum.value1,
@@ -426,9 +432,12 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             'Excepteur sint occaecat cupidatat non proident, '
             'sunt in culpa qui officia deserunt mollit anim id est laborum.',
         'enum': MockEnum.value2,
-        'objectWithToString': const MockClassWithToString(id: 2, text: 'MockClassWithToString'),
-        'objectWithToJson': const MockClassWithToJson(id: 2, text: 'MockClassWithToJson'),
-        'objectWithToMap': const MockClassWithToMap(id: 2, text: 'MockClassWithToMap'),
+        'objectWithToString':
+            const MockClassWithToString(id: 2, text: 'MockClassWithToString'),
+        'objectWithToJson':
+            const MockClassWithToJson(id: 2, text: 'MockClassWithToJson'),
+        'objectWithToMap':
+            const MockClassWithToMap(id: 2, text: 'MockClassWithToMap'),
         'list': <dynamic>[
           true,
           false,
@@ -437,9 +446,18 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
           232.2,
           'text message',
           myRecord,
-          <String, dynamic>{'objectWithToString': const MockClassWithToString(id: 3, text: 'MockClassWithToString')},
-          <String, dynamic>{'objectWithToJson': const MockClassWithToJson(id: 3, text: 'MockClassWithToJson')},
-          <String, dynamic>{'objectWithToMap': const MockClassWithToMap(id: 3, text: 'MockClassWithToMap')},
+          <String, dynamic>{
+            'objectWithToString': const MockClassWithToString(
+                id: 3, text: 'MockClassWithToString')
+          },
+          <String, dynamic>{
+            'objectWithToJson':
+                const MockClassWithToJson(id: 3, text: 'MockClassWithToJson')
+          },
+          <String, dynamic>{
+            'objectWithToMap':
+                const MockClassWithToMap(id: 3, text: 'MockClassWithToMap')
+          },
           <String, dynamic>{'id': 44, 'email': 'test@email.com'},
           <int>[1, 2, 3, 4, 5],
           const MockClassWithToString(id: 4, text: 'MockClassWithToString'),
@@ -448,9 +466,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
           MockEnum.value3,
         ],
       };
-      final AnsiTreeViewTheme theme = AnsiTreeViewTheme.$default().copyWith.headerTheme.showHash(false);
+      final AnsiTreeViewTheme theme =
+          AnsiTreeViewTheme.$default().copyWith.headerTheme.showHash(false);
 
-      final Map<AnsiTextAlignment, String> testCases = <AnsiTextAlignment, String>{
+      final Map<AnsiTextAlignment, String> testCases =
+          <AnsiTextAlignment, String>{
         AnsiTextAlignment.center: treeviewMixedMockCenter,
         AnsiTextAlignment.left: treeviewMixedMockLeft,
         AnsiTextAlignment.right: treeviewMixedMockRight,
@@ -471,7 +491,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
     });
 
     group('no header', () {
-      final AnsiTreeViewTheme theme = AnsiTreeViewTheme.$default().copyWith.showListItemIndex(false).copyWith(
+      final AnsiTreeViewTheme theme = AnsiTreeViewTheme.$default()
+          .copyWith
+          .showListItemIndex(false)
+          .copyWith(
             headerTheme: const AnsiTreeHeaderTheme(
               hideHeader: true,
               border: AnsiBorder.none,
@@ -511,7 +534,8 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
       test('map with no header', () {
         expect(
-          AnsiTreeView(<String, Object>{'UUID': 1, 'user': user}, theme: theme).toString(),
+          AnsiTreeView(<String, Object>{'UUID': 1, 'user': user}, theme: theme)
+              .toString(),
           noHeaderMap,
         );
       });

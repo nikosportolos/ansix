@@ -15,13 +15,15 @@ abstract class ExportColorImages {
     }
   }
 
-  static Future<void> _generateColorImage(final int index, final AnsiColor color) async {
+  static Future<void> _generateColorImage(
+      final int index, final AnsiColor color) async {
     if (color.rgb == null) {
       return;
     }
 
     // ignore: avoid_print
-    print('$index - Generating ${color.pngFilename.colored(foreground: color)}');
+    print(
+        '$index - Generating ${color.pngFilename.colored(foreground: color)}');
 
     const int imageSize = 48;
     const int radius = (imageSize - 1) ~/ 2;

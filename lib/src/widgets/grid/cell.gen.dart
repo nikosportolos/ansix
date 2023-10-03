@@ -50,7 +50,8 @@ class _$AnsiGridCellImpl extends AnsiGridCell {
   String toString() {
     String toStringOutput = 'AnsiGridCell{<optimized out>}';
     assert(() {
-      toStringOutput = 'AnsiGridCell@<$hexIdentity>{position: $position, lines: $lines, type: $type, width: $width}';
+      toStringOutput =
+          'AnsiGridCell@<$hexIdentity>{position: $position, lines: $lines, type: $type, width: $width}';
       return true;
     }());
     return toStringOutput;
@@ -85,8 +86,8 @@ class _AnsiGridCellCopyWithProxyImpl implements _AnsiGridCellCopyWithProxy {
   @pragma('vm:prefer-inline')
   @override
   $AnsiGridCellPositionCopyWithProxyChain<AnsiGridCell> get position =>
-      $AnsiGridCellPositionCopyWithProxyChain<AnsiGridCell>(
-          _value.position, (AnsiGridCellPosition update) => this(position: update));
+      $AnsiGridCellPositionCopyWithProxyChain<AnsiGridCell>(_value.position,
+          (AnsiGridCellPosition update) => this(position: update));
 
   @pragma('vm:prefer-inline')
   @override
@@ -118,7 +119,8 @@ class _AnsiGridCellCopyWithProxyImpl implements _AnsiGridCellCopyWithProxy {
 }
 
 sealed class $AnsiGridCellCopyWithProxyChain<$Result> {
-  factory $AnsiGridCellCopyWithProxyChain(final AnsiGridCell value, final $Result Function(AnsiGridCell update) chain) =
+  factory $AnsiGridCellCopyWithProxyChain(final AnsiGridCell value,
+          final $Result Function(AnsiGridCell update) chain) =
       _AnsiGridCellCopyWithProxyChainImpl<$Result>;
 
   $Result position(AnsiGridCellPosition newValue);
@@ -137,7 +139,8 @@ sealed class $AnsiGridCellCopyWithProxyChain<$Result> {
   });
 }
 
-class _AnsiGridCellCopyWithProxyChainImpl<$Result> implements $AnsiGridCellCopyWithProxyChain<$Result> {
+class _AnsiGridCellCopyWithProxyChainImpl<$Result>
+    implements $AnsiGridCellCopyWithProxyChain<$Result> {
   _AnsiGridCellCopyWithProxyChainImpl(this._value, this._chain);
 
   final AnsiGridCell _value;
@@ -177,7 +180,8 @@ class _AnsiGridCellCopyWithProxyChainImpl<$Result> implements $AnsiGridCellCopyW
 }
 
 extension $AnsiGridCellExtension on AnsiGridCell {
-  _AnsiGridCellCopyWithProxy get copyWith => _AnsiGridCellCopyWithProxyImpl(this);
+  _AnsiGridCellCopyWithProxy get copyWith =>
+      _AnsiGridCellCopyWithProxyImpl(this);
 }
 
 class _$AnsiGridCellPositionImpl extends AnsiGridCellPosition {
@@ -195,7 +199,10 @@ class _$AnsiGridCellPositionImpl extends AnsiGridCellPosition {
   @override
   bool operator ==(Object? other) {
     return identical(this, other) ||
-        other is AnsiGridCellPosition && runtimeType == other.runtimeType && column == other.column && row == other.row;
+        other is AnsiGridCellPosition &&
+            runtimeType == other.runtimeType &&
+            column == other.column &&
+            row == other.row;
   }
 
   @override
@@ -211,7 +218,8 @@ class _$AnsiGridCellPositionImpl extends AnsiGridCellPosition {
   String toString() {
     String toStringOutput = 'AnsiGridCellPosition{<optimized out>}';
     assert(() {
-      toStringOutput = 'AnsiGridCellPosition@<$hexIdentity>{column: $column, row: $row}';
+      toStringOutput =
+          'AnsiGridCellPosition@<$hexIdentity>{column: $column, row: $row}';
       return true;
     }());
     return toStringOutput;
@@ -232,7 +240,8 @@ abstract interface class _AnsiGridCellPositionCopyWithProxy {
   });
 }
 
-class _AnsiGridCellPositionCopyWithProxyImpl implements _AnsiGridCellPositionCopyWithProxy {
+class _AnsiGridCellPositionCopyWithProxyImpl
+    implements _AnsiGridCellPositionCopyWithProxy {
   _AnsiGridCellPositionCopyWithProxyImpl(this._value);
 
   final AnsiGridCellPosition _value;
@@ -260,7 +269,8 @@ class _AnsiGridCellPositionCopyWithProxyImpl implements _AnsiGridCellPositionCop
 
 sealed class $AnsiGridCellPositionCopyWithProxyChain<$Result> {
   factory $AnsiGridCellPositionCopyWithProxyChain(
-          final AnsiGridCellPosition value, final $Result Function(AnsiGridCellPosition update) chain) =
+          final AnsiGridCellPosition value,
+          final $Result Function(AnsiGridCellPosition update) chain) =
       _AnsiGridCellPositionCopyWithProxyChainImpl<$Result>;
 
   $Result column(int newValue);
@@ -273,7 +283,8 @@ sealed class $AnsiGridCellPositionCopyWithProxyChain<$Result> {
   });
 }
 
-class _AnsiGridCellPositionCopyWithProxyChainImpl<$Result> implements $AnsiGridCellPositionCopyWithProxyChain<$Result> {
+class _AnsiGridCellPositionCopyWithProxyChainImpl<$Result>
+    implements $AnsiGridCellPositionCopyWithProxyChain<$Result> {
   _AnsiGridCellPositionCopyWithProxyChainImpl(this._value, this._chain);
 
   final AnsiGridCellPosition _value;
@@ -301,5 +312,6 @@ class _AnsiGridCellPositionCopyWithProxyChainImpl<$Result> implements $AnsiGridC
 }
 
 extension $AnsiGridCellPositionExtension on AnsiGridCellPosition {
-  _AnsiGridCellPositionCopyWithProxy get copyWith => _AnsiGridCellPositionCopyWithProxyImpl(this);
+  _AnsiGridCellPositionCopyWithProxy get copyWith =>
+      _AnsiGridCellPositionCopyWithProxyImpl(this);
 }

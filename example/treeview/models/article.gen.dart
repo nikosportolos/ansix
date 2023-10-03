@@ -156,7 +156,8 @@ class _ArticleCopyWithProxyImpl implements _ArticleCopyWithProxy {
   @pragma('vm:prefer-inline')
   @override
   $UserCopyWithProxyChain<Article> get author =>
-      $UserCopyWithProxyChain<Article>(_value.author, (User update) => this(author: update));
+      $UserCopyWithProxyChain<Article>(
+          _value.author, (User update) => this(author: update));
 
   @pragma('vm:prefer-inline')
   @override
@@ -192,7 +193,8 @@ class _ArticleCopyWithProxyImpl implements _ArticleCopyWithProxy {
 }
 
 sealed class $ArticleCopyWithProxyChain<$Result> {
-  factory $ArticleCopyWithProxyChain(final Article value, final $Result Function(Article update) chain) =
+  factory $ArticleCopyWithProxyChain(
+          final Article value, final $Result Function(Article update) chain) =
       _ArticleCopyWithProxyChainImpl<$Result>;
 
   $Result id(int newValue);
@@ -223,7 +225,8 @@ sealed class $ArticleCopyWithProxyChain<$Result> {
   });
 }
 
-class _ArticleCopyWithProxyChainImpl<$Result> implements $ArticleCopyWithProxyChain<$Result> {
+class _ArticleCopyWithProxyChainImpl<$Result>
+    implements $ArticleCopyWithProxyChain<$Result> {
   _ArticleCopyWithProxyChainImpl(this._value, this._chain);
 
   final Article _value;

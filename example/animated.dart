@@ -41,7 +41,8 @@ void main() {
         ..writeStyled('This ', textStyle: const AnsiTextStyle(inverse: true))
         ..writeStyled('is ', textStyle: const AnsiTextStyle(italic: true))
         ..writeStyled('a ', textStyle: const AnsiTextStyle(bold: true))
-        ..writeStyled('text ', textStyle: const AnsiTextStyle(strikethrough: true))
+        ..writeStyled('text ',
+            textStyle: const AnsiTextStyle(strikethrough: true))
         ..writeStyled('with ', textStyle: const AnsiTextStyle(underline: true))
         ..writeStyled('ANSI ', textStyle: const AnsiTextStyle(dim: true))
         ..writeStyled('styles', textStyle: const AnsiTextStyle(bold: true)))

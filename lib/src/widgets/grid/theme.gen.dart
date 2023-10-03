@@ -140,26 +140,32 @@ class _AnsiGridThemeCopyWithProxyImpl implements _AnsiGridThemeCopyWithProxy {
   @pragma('vm:prefer-inline')
   @override
   $AnsiBorderCopyWithProxyChain<AnsiGridTheme> get border =>
-      $AnsiBorderCopyWithProxyChain<AnsiGridTheme>(_value.border, (AnsiBorder update) => this(border: update));
+      $AnsiBorderCopyWithProxyChain<AnsiGridTheme>(
+          _value.border, (AnsiBorder update) => this(border: update));
 
   @pragma('vm:prefer-inline')
   @override
-  $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>? get headerTextTheme => _value.headerTextTheme == null
-      ? null
-      : $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>(
-          _value.headerTextTheme!, (AnsiTextTheme? update) => this(headerTextTheme: update));
+  $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>? get headerTextTheme =>
+      _value.headerTextTheme == null
+          ? null
+          : $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>(
+              _value.headerTextTheme!,
+              (AnsiTextTheme? update) => this(headerTextTheme: update));
 
   @pragma('vm:prefer-inline')
   @override
-  $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme> get cellTextTheme => $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>(
-      _value.cellTextTheme, (AnsiTextTheme update) => this(cellTextTheme: update));
+  $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme> get cellTextTheme =>
+      $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>(_value.cellTextTheme,
+          (AnsiTextTheme update) => this(cellTextTheme: update));
 
   @pragma('vm:prefer-inline')
   @override
-  $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>? get footerTextTheme => _value.footerTextTheme == null
-      ? null
-      : $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>(
-          _value.footerTextTheme!, (AnsiTextTheme? update) => this(footerTextTheme: update));
+  $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>? get footerTextTheme =>
+      _value.footerTextTheme == null
+          ? null
+          : $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>(
+              _value.footerTextTheme!,
+              (AnsiTextTheme? update) => this(footerTextTheme: update));
 
   @pragma('vm:prefer-inline')
   @override
@@ -167,7 +173,8 @@ class _AnsiGridThemeCopyWithProxyImpl implements _AnsiGridThemeCopyWithProxy {
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiGridTheme orientation(AnsiOrientation newValue) => this(orientation: newValue);
+  AnsiGridTheme orientation(AnsiOrientation newValue) =>
+      this(orientation: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -183,8 +190,9 @@ class _AnsiGridThemeCopyWithProxyImpl implements _AnsiGridThemeCopyWithProxy {
 
   @pragma('vm:prefer-inline')
   @override
-  $WrapOptionsCopyWithProxyChain<AnsiGridTheme> get wrapOptions => $WrapOptionsCopyWithProxyChain<AnsiGridTheme>(
-      _value.wrapOptions, (WrapOptions update) => this(wrapOptions: update));
+  $WrapOptionsCopyWithProxyChain<AnsiGridTheme> get wrapOptions =>
+      $WrapOptionsCopyWithProxyChain<AnsiGridTheme>(_value.wrapOptions,
+          (WrapOptions update) => this(wrapOptions: update));
 
   @pragma('vm:prefer-inline')
   @override
@@ -202,11 +210,13 @@ class _AnsiGridThemeCopyWithProxyImpl implements _AnsiGridThemeCopyWithProxy {
   }) {
     return _$AnsiGridThemeImpl(
       border: border ?? _value.border,
-      headerTextTheme:
-          identical(headerTextTheme, const Object()) ? _value.headerTextTheme : (headerTextTheme as AnsiTextTheme?),
+      headerTextTheme: identical(headerTextTheme, const Object())
+          ? _value.headerTextTheme
+          : (headerTextTheme as AnsiTextTheme?),
       cellTextTheme: cellTextTheme ?? _value.cellTextTheme,
-      footerTextTheme:
-          identical(footerTextTheme, const Object()) ? _value.footerTextTheme : (footerTextTheme as AnsiTextTheme?),
+      footerTextTheme: identical(footerTextTheme, const Object())
+          ? _value.footerTextTheme
+          : (footerTextTheme as AnsiTextTheme?),
       keepSameWidth: keepSameWidth ?? _value.keepSameWidth,
       orientation: orientation ?? _value.orientation,
       transparent: transparent ?? _value.transparent,
@@ -218,8 +228,8 @@ class _AnsiGridThemeCopyWithProxyImpl implements _AnsiGridThemeCopyWithProxy {
 }
 
 sealed class $AnsiGridThemeCopyWithProxyChain<$Result> {
-  factory $AnsiGridThemeCopyWithProxyChain(
-          final AnsiGridTheme value, final $Result Function(AnsiGridTheme update) chain) =
+  factory $AnsiGridThemeCopyWithProxyChain(final AnsiGridTheme value,
+          final $Result Function(AnsiGridTheme update) chain) =
       _AnsiGridThemeCopyWithProxyChainImpl<$Result>;
 
   $Result border(AnsiBorder newValue);
@@ -256,7 +266,8 @@ sealed class $AnsiGridThemeCopyWithProxyChain<$Result> {
   });
 }
 
-class _AnsiGridThemeCopyWithProxyChainImpl<$Result> implements $AnsiGridThemeCopyWithProxyChain<$Result> {
+class _AnsiGridThemeCopyWithProxyChainImpl<$Result>
+    implements $AnsiGridThemeCopyWithProxyChain<$Result> {
   _AnsiGridThemeCopyWithProxyChainImpl(this._value, this._chain);
 
   final AnsiGridTheme _value;
@@ -268,15 +279,18 @@ class _AnsiGridThemeCopyWithProxyChainImpl<$Result> implements $AnsiGridThemeCop
 
   @pragma('vm:prefer-inline')
   @override
-  $Result headerTextTheme(AnsiTextTheme? newValue) => this(headerTextTheme: newValue);
+  $Result headerTextTheme(AnsiTextTheme? newValue) =>
+      this(headerTextTheme: newValue);
 
   @pragma('vm:prefer-inline')
   @override
-  $Result cellTextTheme(AnsiTextTheme newValue) => this(cellTextTheme: newValue);
+  $Result cellTextTheme(AnsiTextTheme newValue) =>
+      this(cellTextTheme: newValue);
 
   @pragma('vm:prefer-inline')
   @override
-  $Result footerTextTheme(AnsiTextTheme? newValue) => this(footerTextTheme: newValue);
+  $Result footerTextTheme(AnsiTextTheme? newValue) =>
+      this(footerTextTheme: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -318,11 +332,13 @@ class _AnsiGridThemeCopyWithProxyChainImpl<$Result> implements $AnsiGridThemeCop
   }) {
     return _chain(_$AnsiGridThemeImpl(
       border: border ?? _value.border,
-      headerTextTheme:
-          identical(headerTextTheme, const Object()) ? _value.headerTextTheme : (headerTextTheme as AnsiTextTheme?),
+      headerTextTheme: identical(headerTextTheme, const Object())
+          ? _value.headerTextTheme
+          : (headerTextTheme as AnsiTextTheme?),
       cellTextTheme: cellTextTheme ?? _value.cellTextTheme,
-      footerTextTheme:
-          identical(footerTextTheme, const Object()) ? _value.footerTextTheme : (footerTextTheme as AnsiTextTheme?),
+      footerTextTheme: identical(footerTextTheme, const Object())
+          ? _value.footerTextTheme
+          : (footerTextTheme as AnsiTextTheme?),
       keepSameWidth: keepSameWidth ?? _value.keepSameWidth,
       orientation: orientation ?? _value.orientation,
       transparent: transparent ?? _value.transparent,
@@ -334,5 +350,6 @@ class _AnsiGridThemeCopyWithProxyChainImpl<$Result> implements $AnsiGridThemeCop
 }
 
 extension $AnsiGridThemeExtension on AnsiGridTheme {
-  _AnsiGridThemeCopyWithProxy get copyWith => _AnsiGridThemeCopyWithProxyImpl(this);
+  _AnsiGridThemeCopyWithProxy get copyWith =>
+      _AnsiGridThemeCopyWithProxyImpl(this);
 }

@@ -10,7 +10,8 @@ class _$AnsiTreeViewThemeImpl extends AnsiTreeViewTheme {
     this.sorted = false,
     this.showListItemIndex = false,
     this.anchorTheme = const AnsiTreeAnchorTheme(),
-    this.keyTheme = const AnsiTreeNodeKeyTheme(textStyle: AnsiTextStyle(bold: true)),
+    this.keyTheme =
+        const AnsiTreeNodeKeyTheme(textStyle: AnsiTextStyle(bold: true)),
     this.valueTheme = const AnsiTreeNodeValueTheme(),
     this.headerTheme = const AnsiTreeHeaderTheme(),
     this.alignment = AnsiTextAlignment.center,
@@ -114,7 +115,8 @@ abstract interface class _AnsiTreeViewThemeCopyWithProxy {
   });
 }
 
-class _AnsiTreeViewThemeCopyWithProxyImpl implements _AnsiTreeViewThemeCopyWithProxy {
+class _AnsiTreeViewThemeCopyWithProxyImpl
+    implements _AnsiTreeViewThemeCopyWithProxy {
   _AnsiTreeViewThemeCopyWithProxyImpl(this._value);
 
   final AnsiTreeViewTheme _value;
@@ -129,35 +131,41 @@ class _AnsiTreeViewThemeCopyWithProxyImpl implements _AnsiTreeViewThemeCopyWithP
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTreeViewTheme showListItemIndex(bool newValue) => this(showListItemIndex: newValue);
+  AnsiTreeViewTheme showListItemIndex(bool newValue) =>
+      this(showListItemIndex: newValue);
 
   @pragma('vm:prefer-inline')
   @override
   $AnsiTreeAnchorThemeCopyWithProxyChain<AnsiTreeViewTheme> get anchorTheme =>
       $AnsiTreeAnchorThemeCopyWithProxyChain<AnsiTreeViewTheme>(
-          _value.anchorTheme, (AnsiTreeAnchorTheme update) => this(anchorTheme: update));
+          _value.anchorTheme,
+          (AnsiTreeAnchorTheme update) => this(anchorTheme: update));
 
   @pragma('vm:prefer-inline')
   @override
   $AnsiTreeNodeKeyThemeCopyWithProxyChain<AnsiTreeViewTheme> get keyTheme =>
       $AnsiTreeNodeKeyThemeCopyWithProxyChain<AnsiTreeViewTheme>(
-          _value.keyTheme, (AnsiTreeNodeKeyTheme update) => this(keyTheme: update));
+          _value.keyTheme,
+          (AnsiTreeNodeKeyTheme update) => this(keyTheme: update));
 
   @pragma('vm:prefer-inline')
   @override
   $AnsiTreeNodeValueThemeCopyWithProxyChain<AnsiTreeViewTheme> get valueTheme =>
       $AnsiTreeNodeValueThemeCopyWithProxyChain<AnsiTreeViewTheme>(
-          _value.valueTheme, (AnsiTreeNodeValueTheme update) => this(valueTheme: update));
+          _value.valueTheme,
+          (AnsiTreeNodeValueTheme update) => this(valueTheme: update));
 
   @pragma('vm:prefer-inline')
   @override
   $AnsiTreeHeaderThemeCopyWithProxyChain<AnsiTreeViewTheme> get headerTheme =>
       $AnsiTreeHeaderThemeCopyWithProxyChain<AnsiTreeViewTheme>(
-          _value.headerTheme, (AnsiTreeHeaderTheme update) => this(headerTheme: update));
+          _value.headerTheme,
+          (AnsiTreeHeaderTheme update) => this(headerTheme: update));
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTreeViewTheme alignment(AnsiTextAlignment newValue) => this(alignment: newValue);
+  AnsiTreeViewTheme alignment(AnsiTextAlignment newValue) =>
+      this(alignment: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -185,8 +193,8 @@ class _AnsiTreeViewThemeCopyWithProxyImpl implements _AnsiTreeViewThemeCopyWithP
 }
 
 sealed class $AnsiTreeViewThemeCopyWithProxyChain<$Result> {
-  factory $AnsiTreeViewThemeCopyWithProxyChain(
-          final AnsiTreeViewTheme value, final $Result Function(AnsiTreeViewTheme update) chain) =
+  factory $AnsiTreeViewThemeCopyWithProxyChain(final AnsiTreeViewTheme value,
+          final $Result Function(AnsiTreeViewTheme update) chain) =
       _AnsiTreeViewThemeCopyWithProxyChainImpl<$Result>;
 
   $Result compact(bool newValue);
@@ -217,7 +225,8 @@ sealed class $AnsiTreeViewThemeCopyWithProxyChain<$Result> {
   });
 }
 
-class _AnsiTreeViewThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeViewThemeCopyWithProxyChain<$Result> {
+class _AnsiTreeViewThemeCopyWithProxyChainImpl<$Result>
+    implements $AnsiTreeViewThemeCopyWithProxyChain<$Result> {
   _AnsiTreeViewThemeCopyWithProxyChainImpl(this._value, this._chain);
 
   final AnsiTreeViewTheme _value;
@@ -237,7 +246,8 @@ class _AnsiTreeViewThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeView
 
   @pragma('vm:prefer-inline')
   @override
-  $Result anchorTheme(AnsiTreeAnchorTheme newValue) => this(anchorTheme: newValue);
+  $Result anchorTheme(AnsiTreeAnchorTheme newValue) =>
+      this(anchorTheme: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -245,11 +255,13 @@ class _AnsiTreeViewThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeView
 
   @pragma('vm:prefer-inline')
   @override
-  $Result valueTheme(AnsiTreeNodeValueTheme newValue) => this(valueTheme: newValue);
+  $Result valueTheme(AnsiTreeNodeValueTheme newValue) =>
+      this(valueTheme: newValue);
 
   @pragma('vm:prefer-inline')
   @override
-  $Result headerTheme(AnsiTreeHeaderTheme newValue) => this(headerTheme: newValue);
+  $Result headerTheme(AnsiTreeHeaderTheme newValue) =>
+      this(headerTheme: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -281,7 +293,8 @@ class _AnsiTreeViewThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeView
 }
 
 extension $AnsiTreeViewThemeExtension on AnsiTreeViewTheme {
-  _AnsiTreeViewThemeCopyWithProxy get copyWith => _AnsiTreeViewThemeCopyWithProxyImpl(this);
+  _AnsiTreeViewThemeCopyWithProxy get copyWith =>
+      _AnsiTreeViewThemeCopyWithProxyImpl(this);
 }
 
 class _$AnsiTreeAnchorThemeImpl extends AnsiTreeAnchorTheme {
@@ -318,7 +331,8 @@ class _$AnsiTreeAnchorThemeImpl extends AnsiTreeAnchorTheme {
   String toString() {
     String toStringOutput = 'AnsiTreeAnchorTheme{<optimized out>}';
     assert(() {
-      toStringOutput = 'AnsiTreeAnchorTheme@<$hexIdentity>{style: $style, color: $color}';
+      toStringOutput =
+          'AnsiTreeAnchorTheme@<$hexIdentity>{style: $style, color: $color}';
       return true;
     }());
     return toStringOutput;
@@ -339,7 +353,8 @@ abstract interface class _AnsiTreeAnchorThemeCopyWithProxy {
   });
 }
 
-class _AnsiTreeAnchorThemeCopyWithProxyImpl implements _AnsiTreeAnchorThemeCopyWithProxy {
+class _AnsiTreeAnchorThemeCopyWithProxyImpl
+    implements _AnsiTreeAnchorThemeCopyWithProxy {
   _AnsiTreeAnchorThemeCopyWithProxyImpl(this._value);
 
   final AnsiTreeAnchorTheme _value;
@@ -367,7 +382,8 @@ class _AnsiTreeAnchorThemeCopyWithProxyImpl implements _AnsiTreeAnchorThemeCopyW
 
 sealed class $AnsiTreeAnchorThemeCopyWithProxyChain<$Result> {
   factory $AnsiTreeAnchorThemeCopyWithProxyChain(
-          final AnsiTreeAnchorTheme value, final $Result Function(AnsiTreeAnchorTheme update) chain) =
+          final AnsiTreeAnchorTheme value,
+          final $Result Function(AnsiTreeAnchorTheme update) chain) =
       _AnsiTreeAnchorThemeCopyWithProxyChainImpl<$Result>;
 
   $Result style(AnsiBorderStyle newValue);
@@ -380,7 +396,8 @@ sealed class $AnsiTreeAnchorThemeCopyWithProxyChain<$Result> {
   });
 }
 
-class _AnsiTreeAnchorThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeAnchorThemeCopyWithProxyChain<$Result> {
+class _AnsiTreeAnchorThemeCopyWithProxyChainImpl<$Result>
+    implements $AnsiTreeAnchorThemeCopyWithProxyChain<$Result> {
   _AnsiTreeAnchorThemeCopyWithProxyChainImpl(this._value, this._chain);
 
   final AnsiTreeAnchorTheme _value;
@@ -408,7 +425,8 @@ class _AnsiTreeAnchorThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeAn
 }
 
 extension $AnsiTreeAnchorThemeExtension on AnsiTreeAnchorTheme {
-  _AnsiTreeAnchorThemeCopyWithProxy get copyWith => _AnsiTreeAnchorThemeCopyWithProxyImpl(this);
+  _AnsiTreeAnchorThemeCopyWithProxy get copyWith =>
+      _AnsiTreeAnchorThemeCopyWithProxyImpl(this);
 }
 
 class _$AnsiTreeHeaderThemeImpl extends AnsiTreeHeaderTheme {
@@ -494,7 +512,8 @@ abstract interface class _AnsiTreeHeaderThemeCopyWithProxy {
   });
 }
 
-class _AnsiTreeHeaderThemeCopyWithProxyImpl implements _AnsiTreeHeaderThemeCopyWithProxy {
+class _AnsiTreeHeaderThemeCopyWithProxyImpl
+    implements _AnsiTreeHeaderThemeCopyWithProxy {
   _AnsiTreeHeaderThemeCopyWithProxyImpl(this._value);
 
   final AnsiTreeHeaderTheme _value;
@@ -502,7 +521,8 @@ class _AnsiTreeHeaderThemeCopyWithProxyImpl implements _AnsiTreeHeaderThemeCopyW
   @pragma('vm:prefer-inline')
   @override
   $AnsiBorderCopyWithProxyChain<AnsiTreeHeaderTheme> get border =>
-      $AnsiBorderCopyWithProxyChain<AnsiTreeHeaderTheme>(_value.border, (AnsiBorder update) => this(border: update));
+      $AnsiBorderCopyWithProxyChain<AnsiTreeHeaderTheme>(
+          _value.border, (AnsiBorder update) => this(border: update));
 
   @pragma('vm:prefer-inline')
   @override
@@ -512,7 +532,8 @@ class _AnsiTreeHeaderThemeCopyWithProxyImpl implements _AnsiTreeHeaderThemeCopyW
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTreeHeaderTheme customHeader(String? newValue) => this(customHeader: newValue);
+  AnsiTreeHeaderTheme customHeader(String? newValue) =>
+      this(customHeader: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -534,7 +555,9 @@ class _AnsiTreeHeaderThemeCopyWithProxyImpl implements _AnsiTreeHeaderThemeCopyW
     return _$AnsiTreeHeaderThemeImpl(
       border: border ?? _value.border,
       textTheme: textTheme ?? _value.textTheme,
-      customHeader: identical(customHeader, const Object()) ? _value.customHeader : (customHeader as String?),
+      customHeader: identical(customHeader, const Object())
+          ? _value.customHeader
+          : (customHeader as String?),
       hideHeader: hideHeader ?? _value.hideHeader,
       showHash: showHash ?? _value.showHash,
     );
@@ -543,7 +566,8 @@ class _AnsiTreeHeaderThemeCopyWithProxyImpl implements _AnsiTreeHeaderThemeCopyW
 
 sealed class $AnsiTreeHeaderThemeCopyWithProxyChain<$Result> {
   factory $AnsiTreeHeaderThemeCopyWithProxyChain(
-          final AnsiTreeHeaderTheme value, final $Result Function(AnsiTreeHeaderTheme update) chain) =
+          final AnsiTreeHeaderTheme value,
+          final $Result Function(AnsiTreeHeaderTheme update) chain) =
       _AnsiTreeHeaderThemeCopyWithProxyChainImpl<$Result>;
 
   $Result border(AnsiBorder newValue);
@@ -565,7 +589,8 @@ sealed class $AnsiTreeHeaderThemeCopyWithProxyChain<$Result> {
   });
 }
 
-class _AnsiTreeHeaderThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeHeaderThemeCopyWithProxyChain<$Result> {
+class _AnsiTreeHeaderThemeCopyWithProxyChainImpl<$Result>
+    implements $AnsiTreeHeaderThemeCopyWithProxyChain<$Result> {
   _AnsiTreeHeaderThemeCopyWithProxyChainImpl(this._value, this._chain);
 
   final AnsiTreeHeaderTheme _value;
@@ -603,7 +628,9 @@ class _AnsiTreeHeaderThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeHe
     return _chain(_$AnsiTreeHeaderThemeImpl(
       border: border ?? _value.border,
       textTheme: textTheme ?? _value.textTheme,
-      customHeader: identical(customHeader, const Object()) ? _value.customHeader : (customHeader as String?),
+      customHeader: identical(customHeader, const Object())
+          ? _value.customHeader
+          : (customHeader as String?),
       hideHeader: hideHeader ?? _value.hideHeader,
       showHash: showHash ?? _value.showHash,
     ));
@@ -611,7 +638,8 @@ class _AnsiTreeHeaderThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeHe
 }
 
 extension $AnsiTreeHeaderThemeExtension on AnsiTreeHeaderTheme {
-  _AnsiTreeHeaderThemeCopyWithProxy get copyWith => _AnsiTreeHeaderThemeCopyWithProxyImpl(this);
+  _AnsiTreeHeaderThemeCopyWithProxy get copyWith =>
+      _AnsiTreeHeaderThemeCopyWithProxyImpl(this);
 }
 
 class _$AnsiTreeNodeThemeImpl extends AnsiTreeNodeTheme {
@@ -648,7 +676,8 @@ class _$AnsiTreeNodeThemeImpl extends AnsiTreeNodeTheme {
   String toString() {
     String toStringOutput = 'AnsiTreeNodeTheme{<optimized out>}';
     assert(() {
-      toStringOutput = 'AnsiTreeNodeTheme@<$hexIdentity>{textStyle: $textStyle, color: $color}';
+      toStringOutput =
+          'AnsiTreeNodeTheme@<$hexIdentity>{textStyle: $textStyle, color: $color}';
       return true;
     }());
     return toStringOutput;
@@ -669,14 +698,16 @@ abstract interface class _AnsiTreeNodeThemeCopyWithProxy {
   });
 }
 
-class _AnsiTreeNodeThemeCopyWithProxyImpl implements _AnsiTreeNodeThemeCopyWithProxy {
+class _AnsiTreeNodeThemeCopyWithProxyImpl
+    implements _AnsiTreeNodeThemeCopyWithProxy {
   _AnsiTreeNodeThemeCopyWithProxyImpl(this._value);
 
   final AnsiTreeNodeTheme _value;
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTreeNodeTheme textStyle(AnsiTextStyle newValue) => this(textStyle: newValue);
+  AnsiTreeNodeTheme textStyle(AnsiTextStyle newValue) =>
+      this(textStyle: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -696,8 +727,8 @@ class _AnsiTreeNodeThemeCopyWithProxyImpl implements _AnsiTreeNodeThemeCopyWithP
 }
 
 sealed class $AnsiTreeNodeThemeCopyWithProxyChain<$Result> {
-  factory $AnsiTreeNodeThemeCopyWithProxyChain(
-          final AnsiTreeNodeTheme value, final $Result Function(AnsiTreeNodeTheme update) chain) =
+  factory $AnsiTreeNodeThemeCopyWithProxyChain(final AnsiTreeNodeTheme value,
+          final $Result Function(AnsiTreeNodeTheme update) chain) =
       _AnsiTreeNodeThemeCopyWithProxyChainImpl<$Result>;
 
   $Result textStyle(AnsiTextStyle newValue);
@@ -710,7 +741,8 @@ sealed class $AnsiTreeNodeThemeCopyWithProxyChain<$Result> {
   });
 }
 
-class _AnsiTreeNodeThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeNodeThemeCopyWithProxyChain<$Result> {
+class _AnsiTreeNodeThemeCopyWithProxyChainImpl<$Result>
+    implements $AnsiTreeNodeThemeCopyWithProxyChain<$Result> {
   _AnsiTreeNodeThemeCopyWithProxyChainImpl(this._value, this._chain);
 
   final AnsiTreeNodeTheme _value;
@@ -738,7 +770,8 @@ class _AnsiTreeNodeThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeNode
 }
 
 extension $AnsiTreeNodeThemeExtension on AnsiTreeNodeTheme {
-  _AnsiTreeNodeThemeCopyWithProxy get copyWith => _AnsiTreeNodeThemeCopyWithProxyImpl(this);
+  _AnsiTreeNodeThemeCopyWithProxy get copyWith =>
+      _AnsiTreeNodeThemeCopyWithProxyImpl(this);
 }
 
 class _$AnsiTreeNodeKeyThemeImpl extends AnsiTreeNodeKeyTheme {
@@ -775,7 +808,8 @@ class _$AnsiTreeNodeKeyThemeImpl extends AnsiTreeNodeKeyTheme {
   String toString() {
     String toStringOutput = 'AnsiTreeNodeKeyTheme{<optimized out>}';
     assert(() {
-      toStringOutput = 'AnsiTreeNodeKeyTheme@<$hexIdentity>{textStyle: $textStyle, color: $color}';
+      toStringOutput =
+          'AnsiTreeNodeKeyTheme@<$hexIdentity>{textStyle: $textStyle, color: $color}';
       return true;
     }());
     return toStringOutput;
@@ -796,14 +830,16 @@ abstract interface class _AnsiTreeNodeKeyThemeCopyWithProxy {
   });
 }
 
-class _AnsiTreeNodeKeyThemeCopyWithProxyImpl implements _AnsiTreeNodeKeyThemeCopyWithProxy {
+class _AnsiTreeNodeKeyThemeCopyWithProxyImpl
+    implements _AnsiTreeNodeKeyThemeCopyWithProxy {
   _AnsiTreeNodeKeyThemeCopyWithProxyImpl(this._value);
 
   final AnsiTreeNodeKeyTheme _value;
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTreeNodeKeyTheme textStyle(AnsiTextStyle newValue) => this(textStyle: newValue);
+  AnsiTreeNodeKeyTheme textStyle(AnsiTextStyle newValue) =>
+      this(textStyle: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -824,7 +860,8 @@ class _AnsiTreeNodeKeyThemeCopyWithProxyImpl implements _AnsiTreeNodeKeyThemeCop
 
 sealed class $AnsiTreeNodeKeyThemeCopyWithProxyChain<$Result> {
   factory $AnsiTreeNodeKeyThemeCopyWithProxyChain(
-          final AnsiTreeNodeKeyTheme value, final $Result Function(AnsiTreeNodeKeyTheme update) chain) =
+          final AnsiTreeNodeKeyTheme value,
+          final $Result Function(AnsiTreeNodeKeyTheme update) chain) =
       _AnsiTreeNodeKeyThemeCopyWithProxyChainImpl<$Result>;
 
   $Result textStyle(AnsiTextStyle newValue);
@@ -837,7 +874,8 @@ sealed class $AnsiTreeNodeKeyThemeCopyWithProxyChain<$Result> {
   });
 }
 
-class _AnsiTreeNodeKeyThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeNodeKeyThemeCopyWithProxyChain<$Result> {
+class _AnsiTreeNodeKeyThemeCopyWithProxyChainImpl<$Result>
+    implements $AnsiTreeNodeKeyThemeCopyWithProxyChain<$Result> {
   _AnsiTreeNodeKeyThemeCopyWithProxyChainImpl(this._value, this._chain);
 
   final AnsiTreeNodeKeyTheme _value;
@@ -865,7 +903,8 @@ class _AnsiTreeNodeKeyThemeCopyWithProxyChainImpl<$Result> implements $AnsiTreeN
 }
 
 extension $AnsiTreeNodeKeyThemeExtension on AnsiTreeNodeKeyTheme {
-  _AnsiTreeNodeKeyThemeCopyWithProxy get copyWith => _AnsiTreeNodeKeyThemeCopyWithProxyImpl(this);
+  _AnsiTreeNodeKeyThemeCopyWithProxy get copyWith =>
+      _AnsiTreeNodeKeyThemeCopyWithProxyImpl(this);
 }
 
 class _$AnsiTreeNodeValueThemeImpl extends AnsiTreeNodeValueTheme {
@@ -960,14 +999,16 @@ abstract interface class _AnsiTreeNodeValueThemeCopyWithProxy {
   });
 }
 
-class _AnsiTreeNodeValueThemeCopyWithProxyImpl implements _AnsiTreeNodeValueThemeCopyWithProxy {
+class _AnsiTreeNodeValueThemeCopyWithProxyImpl
+    implements _AnsiTreeNodeValueThemeCopyWithProxy {
   _AnsiTreeNodeValueThemeCopyWithProxyImpl(this._value);
 
   final AnsiTreeNodeValueTheme _value;
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTreeNodeValueTheme textStyle(AnsiTextStyle newValue) => this(textStyle: newValue);
+  AnsiTreeNodeValueTheme textStyle(AnsiTextStyle newValue) =>
+      this(textStyle: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -979,17 +1020,19 @@ class _AnsiTreeNodeValueThemeCopyWithProxyImpl implements _AnsiTreeNodeValueThem
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTreeNodeValueTheme fixedWidth(int? newValue) => this(fixedWidth: newValue);
+  AnsiTreeNodeValueTheme fixedWidth(int? newValue) =>
+      this(fixedWidth: newValue);
 
   @pragma('vm:prefer-inline')
   @override
   $WrapOptionsCopyWithProxyChain<AnsiTreeNodeValueTheme> get wrapOptions =>
-      $WrapOptionsCopyWithProxyChain<AnsiTreeNodeValueTheme>(
-          _value.wrapOptions, (WrapOptions update) => this(wrapOptions: update));
+      $WrapOptionsCopyWithProxyChain<AnsiTreeNodeValueTheme>(_value.wrapOptions,
+          (WrapOptions update) => this(wrapOptions: update));
 
   @pragma('vm:prefer-inline')
   @override
-  AnsiTreeNodeValueTheme alignment(AnsiTextAlignment? newValue) => this(alignment: newValue);
+  AnsiTreeNodeValueTheme alignment(AnsiTextAlignment? newValue) =>
+      this(alignment: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -1005,16 +1048,21 @@ class _AnsiTreeNodeValueThemeCopyWithProxyImpl implements _AnsiTreeNodeValueThem
       textStyle: textStyle ?? _value.textStyle,
       color: color ?? _value.color,
       wrapText: wrapText ?? _value.wrapText,
-      fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
+      fixedWidth: identical(fixedWidth, const Object())
+          ? _value.fixedWidth
+          : (fixedWidth as int?),
       wrapOptions: wrapOptions ?? _value.wrapOptions,
-      alignment: identical(alignment, const Object()) ? _value.alignment : (alignment as AnsiTextAlignment?),
+      alignment: identical(alignment, const Object())
+          ? _value.alignment
+          : (alignment as AnsiTextAlignment?),
     );
   }
 }
 
 sealed class $AnsiTreeNodeValueThemeCopyWithProxyChain<$Result> {
   factory $AnsiTreeNodeValueThemeCopyWithProxyChain(
-          final AnsiTreeNodeValueTheme value, final $Result Function(AnsiTreeNodeValueTheme update) chain) =
+          final AnsiTreeNodeValueTheme value,
+          final $Result Function(AnsiTreeNodeValueTheme update) chain) =
       _AnsiTreeNodeValueThemeCopyWithProxyChainImpl<$Result>;
 
   $Result textStyle(AnsiTextStyle newValue);
@@ -1084,13 +1132,18 @@ class _AnsiTreeNodeValueThemeCopyWithProxyChainImpl<$Result>
       textStyle: textStyle ?? _value.textStyle,
       color: color ?? _value.color,
       wrapText: wrapText ?? _value.wrapText,
-      fixedWidth: identical(fixedWidth, const Object()) ? _value.fixedWidth : (fixedWidth as int?),
+      fixedWidth: identical(fixedWidth, const Object())
+          ? _value.fixedWidth
+          : (fixedWidth as int?),
       wrapOptions: wrapOptions ?? _value.wrapOptions,
-      alignment: identical(alignment, const Object()) ? _value.alignment : (alignment as AnsiTextAlignment?),
+      alignment: identical(alignment, const Object())
+          ? _value.alignment
+          : (alignment as AnsiTextAlignment?),
     ));
   }
 }
 
 extension $AnsiTreeNodeValueThemeExtension on AnsiTreeNodeValueTheme {
-  _AnsiTreeNodeValueThemeCopyWithProxy get copyWith => _AnsiTreeNodeValueThemeCopyWithProxyImpl(this);
+  _AnsiTreeNodeValueThemeCopyWithProxy get copyWith =>
+      _AnsiTreeNodeValueThemeCopyWithProxyImpl(this);
 }

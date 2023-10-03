@@ -85,7 +85,10 @@ class AnsiPadding {
     if (other is! AnsiPadding) {
       return false;
     }
-    return top == other.top && bottom == other.bottom && right == other.right && left == other.left;
+    return top == other.top &&
+        bottom == other.bottom &&
+        right == other.right &&
+        left == other.left;
   }
 
   AnsiPadding operator +(final AnsiPadding padding) {

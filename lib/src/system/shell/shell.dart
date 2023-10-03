@@ -1,5 +1,6 @@
 import 'package:ansix/src/system/shell/command.dart';
-import 'package:ansix/src/system/shell/io.dart' if (dart.library.html) 'package:ansix/src/system/shell/web.dart';
+import 'package:ansix/src/system/shell/io.dart'
+    if (dart.library.html) 'package:ansix/src/system/shell/web.dart';
 
 export 'command.dart';
 

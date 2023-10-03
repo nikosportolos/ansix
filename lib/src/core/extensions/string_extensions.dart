@@ -52,7 +52,9 @@ extension StringX on String {
     if (!splitWords) {
       final RegExp regex = RegExp('.{1,$length}(?=\\s|\\b|\$)');
       final Iterable<Match> matches = regex.allMatches(this);
-      return matches.map((Match match) => match.group(0)?.trimLeft() ?? '').toList();
+      return matches
+          .map((Match match) => match.group(0)?.trimLeft() ?? '')
+          .toList();
     }
 
     if (lineBreak) {
@@ -71,7 +73,9 @@ extension StringX on String {
       final int startIndex = i * length;
       final int endIndex = (i + 1) * length;
       final bool isLastSegment = i == count - 1;
-      final String segment = isLastSegment ? substring(startIndex) : substring(startIndex, endIndex);
+      final String segment = isLastSegment
+          ? substring(startIndex)
+          : substring(startIndex, endIndex);
       result.add(segment.trimLeft());
     }
 

@@ -41,9 +41,24 @@ void main() {
   print(
     AnsiGrid.fromColumns(
       <List<Object?>>[
-        <Object?>['Name', AnsiColor.red.name, AnsiColor.green.name, AnsiColor.blue.name],
-        <Object?>['Hex', AnsiColor.red.hex, AnsiColor.green.hex, AnsiColor.blue.hex],
-        <Object?>['RGB', AnsiColor.red.rgb, AnsiColor.green.rgb, AnsiColor.blue.rgb],
+        <Object?>[
+          'Name',
+          AnsiColor.red.name,
+          AnsiColor.green.name,
+          AnsiColor.blue.name,
+        ],
+        <Object?>[
+          'Hex',
+          AnsiColor.red.hex,
+          AnsiColor.green.hex,
+          AnsiColor.blue.hex,
+        ],
+        <Object?>[
+          'RGB',
+          AnsiColor.red.rgb,
+          AnsiColor.green.rgb,
+          AnsiColor.blue.rgb,
+        ],
       ],
       theme: const AnsiGridTheme(
         border: AnsiBorder(

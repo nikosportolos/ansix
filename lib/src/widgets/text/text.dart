@@ -28,8 +28,11 @@ class AnsiText extends AnsiWidget {
     this.padding = AnsiPadding.none,
     this.fixedWidth,
   }) : text = text.unformatted {
-    final int minWidth = this.text.lengthWithoutNewLines + padding.horizontalPadding;
-    width = (fixedWidth == null || fixedWidth == 0 || fixedWidth! < minWidth) ? minWidth : fixedWidth!;
+    final int minWidth =
+        this.text.lengthWithoutNewLines + padding.horizontalPadding;
+    width = (fixedWidth == null || fixedWidth == 0 || fixedWidth! < minWidth)
+        ? minWidth
+        : fixedWidth!;
 
     final int topPadding = padding.top;
     final int bottomPadding = padding.bottom;
@@ -44,7 +47,8 @@ class AnsiText extends AnsiWidget {
 
       case AnsiTextAlignment.center:
         final int paddedWidth = width + padding.horizontalPadding;
-        leftPadding = (paddedWidth / 2 - this.text.length / 2 - padding.left).floor();
+        leftPadding =
+            (paddedWidth / 2 - this.text.length / 2 - padding.left).floor();
         rightPadding = width - this.text.length - leftPadding;
         break;
 
@@ -74,7 +78,9 @@ class AnsiText extends AnsiWidget {
       ..writeAll(style.styles.reversed.map((AnsiStyle s) => s.endEscapeCode))
       ..writeSpaces(rightPadding);
 
-    if ((backgroundColor != AnsiColor.none || foregroundColor != AnsiColor.none) && text.isNotEmpty) {
+    if ((backgroundColor != AnsiColor.none ||
+            foregroundColor != AnsiColor.none) &&
+        text.isNotEmpty) {
       buffer.write(AnsiEscapeCodes.reset);
     }
 

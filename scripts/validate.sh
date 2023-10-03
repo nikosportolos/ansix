@@ -24,7 +24,7 @@ action="${BLUE}Check Formatting${NC}"
 echo "┌───────────────────────────────────────┐"
 echo -e "│ ${action}                      │"
 echo "└───────────────────────────────────────┘"
-dart format . -l 120 --fix || { echo 'dart format failed' ; exit 1; }
+dart format . -l 80 --fix || { echo 'dart format failed' ; exit 1; }
 echo ""
 
 
@@ -48,5 +48,5 @@ echo ""
 #echo "┌───────────────────────────────────────┐"
 #echo -e "│ ${action}                      │"
 #echo "└───────────────────────────────────────┘"
-#dart pub global run pana -l 100 --exit-code-threshold 30
+#dart pub global run pana -l 80 --exit-code-threshold 30
 #echo ""

@@ -4,7 +4,8 @@ import 'package:ansix/ansix.dart';
 import 'package:path/path.dart';
 
 final String baseProjectPath = Directory.current.parent.parent.path;
-const String imageBaseUrl = 'https://raw.githubusercontent.com/nikosportolos/ansix/main';
+const String imageBaseUrl =
+    'https://raw.githubusercontent.com/nikosportolos/ansix/main';
 
 final String colorImagePath = join('assets', 'images', 'colors');
 final String colorImageExportPath = join(baseProjectPath, colorImagePath);

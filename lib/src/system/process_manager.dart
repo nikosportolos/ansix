@@ -14,11 +14,13 @@ class ProcessManager {
 
   /// 0 = Enable 'Use legacy console'
   @visibleForTesting
-  static final RegExp enabledLegacyModeMatcher = RegExp('ForceV2( )*REG_DWORD( )*0x0');
+  static final RegExp enabledLegacyModeMatcher =
+      RegExp('ForceV2( )*REG_DWORD( )*0x0');
 
   /// 1 = Disable 'Use legacy console'
   @visibleForTesting
-  static final RegExp disabledLegacyModeMatcher = RegExp('ForceV2( )*REG_DWORD( )*0x1');
+  static final RegExp disabledLegacyModeMatcher =
+      RegExp('ForceV2( )*REG_DWORD( )*0x1');
 
   @visibleForTesting
   static final RegExp bashTerminalMatcher = RegExp('256');
@@ -57,7 +59,8 @@ class ProcessManager {
     }
 
     final TerminalType terminalType = determineTerminalType();
-    if (terminalType != TerminalType.unknown && terminalType != TerminalType.cmd) {
+    if (terminalType != TerminalType.unknown &&
+        terminalType != TerminalType.cmd) {
       return true;
     }
 
@@ -79,13 +82,16 @@ class ProcessManager {
       }
       return LegacyConsoleMode.unknown;
     } on Exception catch (e) {
-      throw AnsiXException.windowsLegacyModeError('Failed to get Legacy Console Mode from Windows Registry', e);
+      throw AnsiXException.windowsLegacyModeError(
+          'Failed to get Legacy Console Mode from Windows Registry', e);
     }
   }
 
   /// Returns the [TerminalType] of the attached terminal.
   TerminalType determineTerminalType() {
-    return _checkIfRunningInBash() ?? _checkIfRunningInPowershell() ?? TerminalType.unknown;
+    return _checkIfRunningInBash() ??
+        _checkIfRunningInPowershell() ??
+        TerminalType.unknown;
   }
 
   TerminalType? _checkIfRunningInBash() {

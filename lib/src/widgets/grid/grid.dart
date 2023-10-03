@@ -35,7 +35,8 @@ class AnsiGrid extends AnsiWidget {
     this.theme = const AnsiGridTheme(),
   })  : columnCount = data.length,
         rowCount = data.objectCount {
-    final int totalGridRows = theme.orientation.isVertical ? rowCount : columnCount;
+    final int totalGridRows =
+        theme.orientation.isVertical ? rowCount : columnCount;
 
     columns = <AnsiGridColumn>[
       for (int i = 0; i < data.length; i++) //
@@ -96,10 +97,13 @@ class AnsiGrid extends AnsiWidget {
   }
 
   void _generateGrid() {
-    final AnsiGridBorderSet builder = AnsiGridBorderSet.fromBorder(theme.border);
+    final AnsiGridBorderSet builder =
+        AnsiGridBorderSet.fromBorder(theme.border);
 
-    final int maxColumnWidth = columns.fold(0, (int m, AnsiGridColumn column) => max(m, column.width));
-    final Iterable<AnsiGridCell> allCells = columns.expand((AnsiGridColumn column) => column.cells);
+    final int maxColumnWidth =
+        columns.fold(0, (int m, AnsiGridColumn column) => max(m, column.width));
+    final Iterable<AnsiGridCell> allCells =
+        columns.expand((AnsiGridColumn column) => column.cells);
 
     for (int row = 0; row < rowCount; row++) {
       _generateRow(
@@ -167,7 +171,8 @@ class AnsiGrid extends AnsiWidget {
         );
       }
 
-      _buffer.writeWithForegroundColor(builder.textLine.end, theme.border.color);
+      _buffer.writeWithForegroundColor(
+          builder.textLine.end, theme.border.color);
 
       if (maxRowLines > 1 && line != maxRowLines - 1) {
         _buffer.writeln();
@@ -212,7 +217,8 @@ class AnsiGrid extends AnsiWidget {
       );
     }
 
-    if (column.cells.length - 1 >= row && column.cells[row].lineCount - 1 >= line) {
+    if (column.cells.length - 1 >= row &&
+        column.cells[row].lineCount - 1 >= line) {
       final AnsiText ansiText = column.cells[row].lines[line];
       final int widthDiff = _calculateColumnWidthDiff(
         columnWidth: column.width,
@@ -223,7 +229,8 @@ class AnsiGrid extends AnsiWidget {
       if (widthDiff == 0) {
         _buffer.write(ansiText);
         if (col < columnCount - 1) {
-          if (ansiText.backgroundColor != AnsiColor.none && theme.orientation.isHorizontal) {
+          if (ansiText.backgroundColor != AnsiColor.none &&
+              theme.orientation.isHorizontal) {
             // TODO - Hotfix
             _buffer.write(AnsiEscapeCodes.reset);
           }
@@ -242,7 +249,8 @@ class AnsiGrid extends AnsiWidget {
           break;
 
         case AnsiTextAlignment.center:
-          final (int, int) paddings = alignCenter(ansiText.width - widthDiff, ansiText.width);
+          final (int, int) paddings =
+              alignCenter(ansiText.width - widthDiff, ansiText.width);
           _buffer.writeSpaces(paddings.$1, backgroundColor);
           _buffer.write(ansiText.formattedText);
           _buffer.writeSpaces(paddings.$2, backgroundColor);
@@ -269,11 +277,14 @@ class AnsiGrid extends AnsiWidget {
   }
 
   int _calculateColumnWidthDiff(
-      {required final int columnWidth, required final int maxColumnWidth, required final int textWidth}) {
+      {required final int columnWidth,
+      required final int maxColumnWidth,
+      required final int textWidth}) {
     return _calculateSpacesForColumn(columnWidth, maxColumnWidth) - textWidth;
   }
 
-  int _calculateSpacesForColumn(final int columnWidth, final int maxColumnWidth) {
+  int _calculateSpacesForColumn(
+      final int columnWidth, final int maxColumnWidth) {
     return theme.keepSameWidth ? maxColumnWidth : columnWidth;
   }
 }

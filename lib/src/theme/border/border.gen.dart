@@ -44,7 +44,8 @@ class _$AnsiBorderImpl extends AnsiBorder {
   String toString() {
     String toStringOutput = 'AnsiBorder{<optimized out>}';
     assert(() {
-      toStringOutput = 'AnsiBorder@<$hexIdentity>{type: $type, style: $style, color: $color}';
+      toStringOutput =
+          'AnsiBorder@<$hexIdentity>{type: $type, style: $style, color: $color}';
       return true;
     }());
     return toStringOutput;
@@ -101,7 +102,8 @@ class _AnsiBorderCopyWithProxyImpl implements _AnsiBorderCopyWithProxy {
 }
 
 sealed class $AnsiBorderCopyWithProxyChain<$Result> {
-  factory $AnsiBorderCopyWithProxyChain(final AnsiBorder value, final $Result Function(AnsiBorder update) chain) =
+  factory $AnsiBorderCopyWithProxyChain(final AnsiBorder value,
+          final $Result Function(AnsiBorder update) chain) =
       _AnsiBorderCopyWithProxyChainImpl<$Result>;
 
   $Result type(AnsiBorderType newValue);
@@ -117,7 +119,8 @@ sealed class $AnsiBorderCopyWithProxyChain<$Result> {
   });
 }
 
-class _AnsiBorderCopyWithProxyChainImpl<$Result> implements $AnsiBorderCopyWithProxyChain<$Result> {
+class _AnsiBorderCopyWithProxyChainImpl<$Result>
+    implements $AnsiBorderCopyWithProxyChain<$Result> {
   _AnsiBorderCopyWithProxyChainImpl(this._value, this._chain);
 
   final AnsiBorder _value;

@@ -11,7 +11,8 @@ void main() {
     BoxDrawingSet.rounded: '─│╭╮╰╯┼┴┬┤├',
     BoxDrawingSet.square: '─│┌┐└┘┼┴┬┤├',
   };
-  final Map<BoxDrawingSet, AnsiBorderStyle> styles = <BoxDrawingSet, AnsiBorderStyle>{
+  final Map<BoxDrawingSet, AnsiBorderStyle> styles =
+      <BoxDrawingSet, AnsiBorderStyle>{
     BoxDrawingSet.ascii: AnsiBorderStyle.ascii,
     BoxDrawingSet.bold: AnsiBorderStyle.bold,
     BoxDrawingSet.double: AnsiBorderStyle.double,

@@ -150,6 +150,21 @@ class AnsiX {
       );
     }
   }
+
+  /// Prints a grid representation of the given data to console.
+  static void printDataGrid(
+    final List<List<Object?>> data, {
+    required final AnsiGridType type,
+    final AnsiGridTheme theme = const AnsiGridTheme(),
+  }) {
+    if (allowPrint) {
+      // ignore: avoid_print
+      print(switch (type) {
+        AnsiGridType.fromRows => AnsiGrid.fromRows(data, theme: theme),
+        AnsiGridType.fromColumns => AnsiGrid.fromColumns(data, theme: theme),
+      });
+    }
+  }
 }
 
 /// Initializes a custom instance of **AnsiX**.

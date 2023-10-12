@@ -8,6 +8,14 @@ import 'package:ansix/src/widgets/grid/column.dart';
 
 export 'theme.dart';
 
+enum AnsiGridType {
+  /// Used to create an [AnsiGrid] from a list of rows.
+  fromRows,
+
+  /// Used to create an [AnsiGrid] from a list of columns.
+  fromColumns;
+}
+
 /// **AnsiGrid**
 ///
 /// An ANSI Grid is a 2D table of data that is formatted with ANSI escape sequences to display borders

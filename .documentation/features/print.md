@@ -12,11 +12,13 @@ The **AnsiX** class library provides static methods that allow us to print Ansi 
 - [printStyled](#printStyled)
 - [printJson](#printJson)
 - [printTreeView](#printTreeView)
+- [printDataGrid](#printDataGrid)
 
 ---
 
 
 - #### printStyled
+
 Prints a string representation of the object to console with the given styles and ANSI colors.
 
 ```dart
@@ -43,6 +45,7 @@ void main(){
 
 
 - #### printJson
+
 Prints an indented string representation of the JSON to console with the given styles and ANSI colors.
 
 ```dart
@@ -73,6 +76,7 @@ void main(){
 
 
 - #### printTreeView
+
 Prints a tree-view representation of the given data to console.
 
 ```dart
@@ -97,6 +101,37 @@ void main() {
       'list': <String>['This', 'is', 'AnsiX'],
     },
     theme:AnsiTreeViewTheme.$default(),
+  );
+}
+```
+
+
+
+- #### printDataGrid
+
+Prints a grid representation of the given data to console.
+
+```dart
+static void printDataGrid(
+  final List<List<Object?>> data, {
+  required final AnsiGridType type,
+  final AnsiGridTheme theme = const AnsiGridTheme(),
+})
+```
+
+**Usage:**
+
+```dart
+import 'package:ansix/ansix.dart';
+
+void main() {
+  AnsiX.printDataGrid(
+    <List<Object?>>[
+      <Object?>[1, 2, 3, 4, 5],
+      <Object?>[2, 5, 1, 3, 5],
+      <Object?>[5, 2, 3, 5, 2]
+    ],
+    type: AnsiGridType.fromColumns,
   );
 }
 ```

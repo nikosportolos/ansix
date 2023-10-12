@@ -15,6 +15,16 @@ void main() {
       );
     });
 
+    test('print unformatted DataGrid fromColumns', () {
+      testPrintDataGrid(
+        data: gridData,
+        type: AnsiGridType.fromColumns,
+        allowPrint: true,
+        allowAnsi: false,
+        expected: mockUnformattedGridFromColumns,
+      );
+    });
+
     test("don't print DataGrid fromColumns", () {
       testPrintDataGrid(
         data: gridData,
@@ -30,6 +40,16 @@ void main() {
         type: AnsiGridType.fromRows,
         allowPrint: true,
         expected: mockGridFromRows,
+      );
+    });
+
+    test('print unformatted DataGrid fromRows', () {
+      testPrintDataGrid(
+        data: gridData,
+        type: AnsiGridType.fromRows,
+        allowPrint: true,
+        allowAnsi: false,
+        expected: mockUnformattedGridFromRows,
       );
     });
 

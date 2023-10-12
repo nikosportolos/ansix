@@ -38,43 +38,42 @@ void main() {
   AnsiX.printTreeView(json, theme: AnsiTreeViewTheme.$default());
 
   print('Data Grid'.italic().colored(foreground: AnsiColor.deepSkyBlue5));
-  print(
-    AnsiGrid.fromColumns(
-      <List<Object?>>[
-        <Object?>[
-          'Name',
-          AnsiColor.red.name,
-          AnsiColor.green.name,
-          AnsiColor.blue.name,
-        ],
-        <Object?>[
-          'Hex',
-          AnsiColor.red.hex,
-          AnsiColor.green.hex,
-          AnsiColor.blue.hex,
-        ],
-        <Object?>[
-          'RGB',
-          AnsiColor.red.rgb,
-          AnsiColor.green.rgb,
-          AnsiColor.blue.rgb,
-        ],
+  AnsiX.printDataGrid(
+    <List<Object?>>[
+      <Object?>[
+        'Name',
+        AnsiColor.red.name,
+        AnsiColor.green.name,
+        AnsiColor.blue.name,
       ],
-      theme: const AnsiGridTheme(
-        border: AnsiBorder(
-          style: AnsiBorderStyle.square,
-          type: AnsiBorderType.all,
-        ),
-        headerTextTheme: AnsiTextTheme(
-          alignment: AnsiTextAlignment.center,
-          style: AnsiTextStyle(bold: true),
-          foregroundColor: AnsiColor.cyan3,
-        ),
-        cellTextTheme: AnsiTextTheme(
-          fixedWidth: 15,
-          alignment: AnsiTextAlignment.center,
-        ),
+      <Object?>[
+        'Hex',
+        AnsiColor.red.hex,
+        AnsiColor.green.hex,
+        AnsiColor.blue.hex,
+      ],
+      <Object?>[
+        'RGB',
+        AnsiColor.red.rgb,
+        AnsiColor.green.rgb,
+        AnsiColor.blue.rgb,
+      ],
+    ],
+    theme: const AnsiGridTheme(
+      border: AnsiBorder(
+        style: AnsiBorderStyle.square,
+        type: AnsiBorderType.all,
+      ),
+      headerTextTheme: AnsiTextTheme(
+        alignment: AnsiTextAlignment.center,
+        style: AnsiTextStyle(bold: true),
+        foregroundColor: AnsiColor.cyan3,
+      ),
+      cellTextTheme: AnsiTextTheme(
+        fixedWidth: 15,
+        alignment: AnsiTextAlignment.center,
       ),
     ),
+    type: AnsiGridType.fromColumns,
   );
 }

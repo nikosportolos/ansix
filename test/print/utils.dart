@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:ansix/ansix.dart';
+import 'package:ansix/src/formatter/ansi.dart';
+import 'package:ansix/src/writer/ansi.dart';
 import 'package:test/test.dart';
 
 import 'mocks.dart';
 
-testPrint({
+_testPrint({
   required final bool allowPrint,
   required final bool allowAnsi,
   required Function printCallback,
@@ -31,6 +33,24 @@ testPrint({
   );
 
   expect(printLine, expected);
+
+  expect(AnsiX.isEnabled, allowAnsi);
+  expect(AnsiX.formatter is AnsiTextFormatter, allowAnsi);
+  expect(AnsiX.writer is AnsiWriter, allowAnsi);
+}
+
+testPrint(
+  final Object? object, {
+  required final String expected,
+  required final bool allowPrint,
+  final bool allowAnsi = true,
+}) {
+  _testPrint(
+    allowPrint: allowPrint,
+    allowAnsi: allowAnsi,
+    expected: expected,
+    printCallback: () => AnsiX.print(object),
+  );
 }
 
 testPrintStyledText({
@@ -38,7 +58,7 @@ testPrintStyledText({
   required final bool allowPrint,
   final bool allowAnsi = true,
 }) {
-  testPrint(
+  _testPrint(
     allowPrint: allowPrint,
     allowAnsi: allowAnsi,
     expected: expected,
@@ -55,7 +75,7 @@ testPrintJson({
   required final bool allowPrint,
   final bool allowAnsi = true,
 }) {
-  testPrint(
+  _testPrint(
     allowPrint: allowPrint,
     allowAnsi: allowAnsi,
     expected: expected,
@@ -72,7 +92,7 @@ testPrintTreeView({
   required final bool allowPrint,
   final bool allowAnsi = true,
 }) {
-  testPrint(
+  _testPrint(
     allowPrint: allowPrint,
     allowAnsi: allowAnsi,
     expected: expected,
@@ -101,7 +121,7 @@ testPrintDataGrid({
   required final bool allowPrint,
   final bool allowAnsi = true,
 }) {
-  testPrint(
+  _testPrint(
     allowPrint: allowPrint,
     allowAnsi: allowAnsi,
     expected: expected,

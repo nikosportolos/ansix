@@ -45,20 +45,21 @@ class AnsiX {
   TextFormatter _formatter = AnsiTextFormatter();
 
   /// The active text writer.
-  static Writer writer = const AnsiWriter();
+  static Writer get writer => _ansix._writer;
+  Writer _writer = const AnsiWriter();
 
   /// Enables ANSI formatting (if supported by the system).
   static void enable() {
     _ansix._isEnabled = true;
     _ansix._formatter = AnsiTextFormatter();
-    writer = const AnsiWriter();
+    _ansix._writer = const AnsiWriter();
   }
 
   /// Disables ANSI formatting.
   static void disable() {
     _ansix._isEnabled = false;
     _ansix._formatter = StandardTextFormatter();
-    writer = const NoAnsiWriter();
+    _ansix._writer = const NoAnsiWriter();
   }
 
   /// Returns true if ANSI escape characters are supported in the attached terminal.
@@ -111,6 +112,11 @@ class AnsiX {
       }
       rethrow;
     }
+  }
+
+  /// Prints a string representation of the given object to console
+  static void print(final Object? object) {
+    writer.write(object);
   }
 
   /// Prints a string representation of the object to console

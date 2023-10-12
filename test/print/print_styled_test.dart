@@ -12,6 +12,14 @@ void main() {
       );
     });
 
+    test('print unformatted text', () {
+      testPrintStyledText(
+        allowPrint: true,
+        allowAnsi: false,
+        expected: mockText,
+      );
+    });
+
     test("don't print styled text", () {
       testPrintStyledText(
         allowPrint: false,

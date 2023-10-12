@@ -1,6 +1,7 @@
 import 'package:ansix/src/theme/color/color.dart';
 import 'package:ansix/src/theme/style.dart';
 
+/// Defines how the given text should be printed.
 abstract class TextFormatter {
   /// Returns the given [text] with the selected [style].
   String withStyle(

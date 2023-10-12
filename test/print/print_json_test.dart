@@ -8,6 +8,14 @@ void main() {
     test('print formatted json', () {
       testPrintJson(
         allowPrint: true,
+        expected: mockFormattedJson,
+      );
+    });
+
+    test('print unformatted json', () {
+      testPrintJson(
+        allowPrint: true,
+        allowAnsi: false,
         expected: mockJson,
       );
     });

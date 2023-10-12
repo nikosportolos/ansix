@@ -4,6 +4,9 @@ import 'package:ansix/ansix.dart';
 import 'package:ansix/src/formatter/formatters.dart';
 import 'package:ansix/src/system/process_manager.dart';
 import 'package:ansix/src/system/terminal/terminal.dart';
+import 'package:ansix/src/writer/ansi.dart';
+import 'package:ansix/src/writer/standard.dart';
+import 'package:ansix/src/writer/writer.dart';
 import 'package:meta/meta.dart';
 
 /// **AnsiX**
@@ -39,16 +42,21 @@ class AnsiX {
   static TextFormatter get formatter => _ansix._formatter;
   TextFormatter _formatter = AnsiTextFormatter();
 
+  /// The active text writer.
+  static Writer writer = const AnsiWriter();
+
   /// Enables ANSI formatting (if supported by the system).
   static void enable() {
     _ansix._isEnabled = true;
     _ansix._formatter = AnsiTextFormatter();
+    writer = const AnsiWriter();
   }
 
   /// Disables ANSI formatting.
   static void disable() {
     _ansix._isEnabled = false;
     _ansix._formatter = StandardTextFormatter();
+    writer = const NoAnsiWriter();
   }
 
   /// Returns true if ANSI escape characters are supported in the attached terminal.
@@ -111,12 +119,11 @@ class AnsiX {
     final AnsiColor foreground = AnsiColor.none,
     final AnsiColor background = AnsiColor.none,
   }) {
-    if (allowPrint) {
-      // ignore: avoid_print
-      print(
-        '$object'.styled(textStyle, foreground, background),
-      );
-    }
+    writer.write('$object'.styled(
+      textStyle,
+      foreground,
+      background,
+    ));
   }
 
   /// Prints an indented string representation of the JSON
@@ -128,14 +135,11 @@ class AnsiX {
     final AnsiColor background = AnsiColor.none,
     final int tabs = 2,
   }) {
-    if (allowPrint) {
-      // ignore: avoid_print
-      print(
-        JsonEncoder.withIndent(' ' * tabs) //
-            .convert(object)
-            .styled(textStyle, foreground, background),
-      );
-    }
+    writer.write(
+      JsonEncoder.withIndent(' ' * tabs) //
+          .convert(object)
+          .styled(textStyle, foreground, background),
+    );
   }
 
   /// Prints a tree-view representation of the given data to console.
@@ -143,12 +147,10 @@ class AnsiX {
     final dynamic data, {
     final AnsiTreeViewTheme theme = const AnsiTreeViewTheme(),
   }) {
-    if (allowPrint) {
-      // ignore: avoid_print
-      print(
-        AnsiTreeView(data, theme: theme),
-      );
-    }
+    writer.write(AnsiTreeView(
+      data,
+      theme: theme,
+    ));
   }
 
   /// Prints a grid representation of the given data to console.
@@ -157,13 +159,12 @@ class AnsiX {
     required final AnsiGridType type,
     final AnsiGridTheme theme = const AnsiGridTheme(),
   }) {
-    if (allowPrint) {
-      // ignore: avoid_print
-      print(switch (type) {
+    writer.write(
+      switch (type) {
         AnsiGridType.fromRows => AnsiGrid.fromRows(data, theme: theme),
         AnsiGridType.fromColumns => AnsiGrid.fromColumns(data, theme: theme),
-      });
-    }
+      },
+    );
   }
 }
 
@@ -175,5 +176,8 @@ void initializeAnsiX({
   final ProcessManager? processManager,
   final AnsiTerminal? terminal,
 }) {
-  AnsiX._instance = AnsiX._(processManager: processManager, terminal: terminal);
+  AnsiX._instance = AnsiX._(
+    processManager: processManager,
+    terminal: terminal,
+  );
 }

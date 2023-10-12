@@ -1,8 +1,6 @@
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/formatter/formatter.dart';
 
-/// **AnsiTextFormatter**
-///
 /// Returns the given text with the specified styles and colors.
 class AnsiTextFormatter implements TextFormatter {
   /// Returns the given [text] with the selected [style].

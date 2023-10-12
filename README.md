@@ -54,6 +54,7 @@ AnsiX makes it easy to add ANSI styling to your output with minimal effort and m
       - [Usage](./.documentation/features/widgets.md#usage)
       - [Default theme](./.documentation/features/widgets.md#default-theme)
   - [Print](./.documentation/features/print.md#print)
+    - [print](./.documentation/features/print.md#print)
     - [printStyled](./.documentation/features/print.md#printStyled)
     - [printJson](./.documentation/features/print.md#printJson)
     - [printTreeView](./.documentation/features/print.md#printTreeView)

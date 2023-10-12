@@ -4,11 +4,18 @@
 ## Print
 
 
-The **AnsiX** class library provides static methods that allow us to print Ansi Widgets in the console fast and easy.
+The **AnsiX** class library provides static methods that allow us to 
+print Ansi Widgets in the console fast and easy.
+
+If ANSI formatting is not supported or disabled manually, 
+then all output will be printed unformatted.
 
 > Note that the property **AnsiX.allowPrint** needs to be enabled in order to use the print methods.
 
 
+### Table of Contents
+
+- [print](#print)
 - [printStyled](#printStyled)
 - [printJson](#printJson)
 - [printTreeView](#printTreeView)
@@ -17,9 +24,34 @@ The **AnsiX** class library provides static methods that allow us to print Ansi 
 ---
 
 
+- #### print
+
+Prints a string representation of the object to console 
+with the given styles and ANSI colors.
+
+```dart
+static void print(final Object? object) 
+```
+
+**Usage:**
+
+```dart
+import 'package:ansix/ansix.dart';
+
+void main(){
+  AnsiX.print(
+    'This is a text with bold style.'.bold(),
+  );
+}
+```
+
+
+
+
 - #### printStyled
 
-Prints a string representation of the object to console with the given styles and ANSI colors.
+Prints a string representation of the object to console 
+with the given styles and ANSI colors.
 
 ```dart
 static void printStyled(
@@ -46,7 +78,8 @@ void main(){
 
 - #### printJson
 
-Prints an indented string representation of the JSON to console with the given styles and ANSI colors.
+Prints an indented string representation of the JSON to console 
+with the given styles and ANSI colors.
 
 ```dart
 static void printJson(

@@ -80,10 +80,12 @@ AnsiX.ensureSupportsAnsi(force: true);
 
 ### Enable/Disable AnsiX
 
-We can enable ANSI formatting simply by running the following:
+We can enable or disable ANSI formatting simply by running:
 
 ```dart
 AnsiX.enable();
 AnsiX.disable();
 ```
 
+If ANSI formatting is disabled, no styles nor colors will be applied and
+all output printed by AnsiX will be unformatted.

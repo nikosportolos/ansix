@@ -18,7 +18,9 @@ class AnsiX {
     final ProcessManager? processManager,
     final AnsiTerminal? terminal,
   })  : _processManager = processManager ?? ProcessManager(),
-        _terminal = terminal ?? AnsiTerminal.create();
+        _terminal = terminal ?? AnsiTerminal.create() {
+    _instance = this;
+  }
 
   static AnsiX? _instance;
   static AnsiX get _ansix => _instance ?? AnsiX._();

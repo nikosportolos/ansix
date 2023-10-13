@@ -1,4 +1,4 @@
-import 'package:ansix/ansix.dart';
+import 'package:ansix/src/core/extensions/ansi_string_extensions.dart';
 import 'package:test/test.dart';
 
 import 'mocks.dart';

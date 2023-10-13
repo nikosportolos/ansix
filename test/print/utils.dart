@@ -1,45 +1,63 @@
-import 'dart:async';
-
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/formatter/ansi.dart';
-import 'package:ansix/src/writer/ansi.dart';
+import 'package:ansix/src/printer/printers.dart';
 import 'package:test/test.dart';
 
 import 'mocks.dart';
 
-_testPrint({
+void _validatePrint({
+  required final bool allowPrint,
+  required final bool allowAnsi,
+  required final String actual,
+  required final String expected,
+}) {
+  expect(actual, expected);
+  expect(AnsiX.isEnabled, allowAnsi);
+  expect(AnsiX.allowPrint, allowPrint);
+  expect(AnsiX.formatter is AnsiTextFormatter, allowAnsi);
+  expect(AnsiX.printer is AnsiPrinter, allowAnsi && allowPrint);
+  expect(AnsiX.printer is NoOpPrinter, !allowPrint);
+  expect(AnsiX.printer is StandardPrinter, !allowAnsi && allowPrint);
+}
+
+void _testPrint({
   required final bool allowPrint,
   required final bool allowAnsi,
   required Function printCallback,
   required final String expected,
 }) {
-  String printLine = '';
-  runZoned(
-    () {
+  final List<String> printLines = <String>[
+    testPrintOutput(() {
       AnsiX.allowPrint = allowPrint;
       if (allowAnsi) {
         AnsiX.enable();
       } else {
         AnsiX.disable();
       }
-
       printCallback();
-    },
-    zoneSpecification: ZoneSpecification(
-      print: (_, ZoneDelegate parent, Zone zone, String line) {
-        printLine = line;
-      },
-    ),
-  );
+    }),
+    testPrintOutput(() {
+      if (allowAnsi) {
+        AnsiX.enable();
+      } else {
+        AnsiX.disable();
+      }
+      AnsiX.allowPrint = allowPrint;
+      printCallback();
+    }),
+  ];
 
-  expect(printLine, expected);
-
-  expect(AnsiX.isEnabled, allowAnsi);
-  expect(AnsiX.formatter is AnsiTextFormatter, allowAnsi);
-  expect(AnsiX.writer is AnsiWriter, allowAnsi);
+  for (final String printLine in printLines) {
+    _validatePrint(
+      allowAnsi: allowAnsi,
+      allowPrint: allowPrint,
+      expected: expected,
+      actual: printLine,
+    );
+  }
 }
 
-testPrint(
+void testPrint(
   final Object? object, {
   required final String expected,
   required final bool allowPrint,
@@ -53,7 +71,7 @@ testPrint(
   );
 }
 
-testPrintStyledText({
+void testPrintStyledText({
   required final String expected,
   required final bool allowPrint,
   final bool allowAnsi = true,
@@ -69,7 +87,7 @@ testPrintStyledText({
   );
 }
 
-testPrintJson({
+void testPrintJson({
   final Object? object,
   required final String expected,
   required final bool allowPrint,
@@ -86,7 +104,7 @@ testPrintJson({
   );
 }
 
-testPrintTreeView({
+void testPrintTreeView({
   final dynamic data,
   required final String expected,
   required final bool allowPrint,
@@ -114,7 +132,7 @@ testPrintTreeView({
   );
 }
 
-testPrintDataGrid({
+void testPrintDataGrid({
   required final List<List<Object?>> data,
   required final AnsiGridType type,
   required final String expected,

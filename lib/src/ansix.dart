@@ -2,11 +2,9 @@ import 'dart:convert';
 
 import 'package:ansix/ansix.dart';
 import 'package:ansix/src/formatter/formatters.dart';
+import 'package:ansix/src/printer/printers.dart';
 import 'package:ansix/src/system/process_manager.dart';
 import 'package:ansix/src/system/terminal/terminal.dart';
-import 'package:ansix/src/writer/ansi.dart';
-import 'package:ansix/src/writer/standard.dart';
-import 'package:ansix/src/writer/writer.dart';
 import 'package:meta/meta.dart';
 
 /// **AnsiX**
@@ -34,7 +32,17 @@ class AnsiX {
   /// Determines if printing messages to the attached terminal is allowed.
   ///
   /// Defaults to true for debug mode only.
-  static bool allowPrint = isDebugMode;
+  static bool get allowPrint => _ansix._allowPrint;
+  static set allowPrint(final bool value) {
+    _ansix._allowPrint = value;
+    _ansix._printer = value
+        ? _ansix._isEnabled
+            ? AnsiPrinter()
+            : StandardPrinter()
+        : NoOpPrinter();
+  }
+
+  bool _allowPrint = isDebugMode;
 
   /// Returns true if ANSI formatting is supported and enabled.
   static bool get isEnabled => _ansix._isEnabled;
@@ -44,22 +52,22 @@ class AnsiX {
   static TextFormatter get formatter => _ansix._formatter;
   TextFormatter _formatter = AnsiTextFormatter();
 
-  /// The active text writer.
-  static Writer get writer => _ansix._writer;
-  Writer _writer = const AnsiWriter();
+  /// The active text printer.
+  static Printer get printer => _ansix._printer;
+  Printer _printer = AnsiPrinter();
 
   /// Enables ANSI formatting (if supported by the system).
   static void enable() {
     _ansix._isEnabled = true;
     _ansix._formatter = AnsiTextFormatter();
-    _ansix._writer = const AnsiWriter();
+    _ansix._printer = allowPrint ? AnsiPrinter() : NoOpPrinter();
   }
 
   /// Disables ANSI formatting.
   static void disable() {
     _ansix._isEnabled = false;
     _ansix._formatter = StandardTextFormatter();
-    _ansix._writer = const NoAnsiWriter();
+    _ansix._printer = allowPrint ? StandardPrinter() : NoOpPrinter();
   }
 
   /// Returns true if ANSI escape characters are supported in the attached terminal.
@@ -116,7 +124,7 @@ class AnsiX {
 
   /// Prints a string representation of the given object to console
   static void print(final Object? object) {
-    writer.write(object);
+    printer.print(object);
   }
 
   /// Prints a string representation of the object to console
@@ -127,7 +135,7 @@ class AnsiX {
     final AnsiColor foreground = AnsiColor.none,
     final AnsiColor background = AnsiColor.none,
   }) {
-    writer.write('$object'.styled(
+    printer.print('$object'.styled(
       textStyle,
       foreground,
       background,
@@ -143,7 +151,7 @@ class AnsiX {
     final AnsiColor background = AnsiColor.none,
     final int tabs = 2,
   }) {
-    writer.write(
+    printer.print(
       JsonEncoder.withIndent(' ' * tabs) //
           .convert(object)
           .styled(textStyle, foreground, background),
@@ -155,7 +163,7 @@ class AnsiX {
     final dynamic data, {
     final AnsiTreeViewTheme theme = const AnsiTreeViewTheme(),
   }) {
-    writer.write(AnsiTreeView(
+    printer.print(AnsiTreeView(
       data,
       theme: theme,
     ));
@@ -167,7 +175,7 @@ class AnsiX {
     required final AnsiGridType type,
     final AnsiGridTheme theme = const AnsiGridTheme(),
   }) {
-    writer.write(
+    printer.print(
       switch (type) {
         AnsiGridType.fromRows => AnsiGrid.fromRows(data, theme: theme),
         AnsiGridType.fromColumns => AnsiGrid.fromColumns(data, theme: theme),

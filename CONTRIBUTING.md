@@ -44,7 +44,7 @@ The community looks forward to your contributions. 🎉
 
 > If you want to ask a question, we assume that you have read the available 
 > [Documentation](https://github.com/nikosportolos/ansix) and 
-> [FAQs](https://github.com/nikosportolos/ansix/.documentation/docs/FAQ.md).
+> [FAQs](https://github.com/nikosportolos/ansix/blob/main/.documentation/docs/FAQ.md).
 
 Before you ask a question, it is best to search for existing [Issues](https://github.com/nikosportolos/ansix/issues) that might help you. 
 In case you have found a suitable issue and still need clarification, you can write your question in this issue. 

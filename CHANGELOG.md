@@ -1,3 +1,32 @@
+## v0.3.0
+
+#### Changes/Improvements
+
+- Enhance web support ([#225](https://github.com/nikosportolos/ansix/issues/225))
+  - Create custom BrowserDetector ([#236](https://github.com/nikosportolos/ansix/issues/236))
+- Enhance printing methods ([#226](https://github.com/nikosportolos/ansix/issues/226))
+  - Create method printDataGrid ([#220](https://github.com/nikosportolos/ansix/pull/220))
+  - Create Writer to mute all Ansi escape codes ([#221](https://github.com/nikosportolos/ansix/pull/221))
+  - Create print method ([#223](https://github.com/nikosportolos/ansix/pull/223))
+  - Refactor writer ([#224](https://github.com/nikosportolos/ansix/pull/224))
+    - Rename to 'Printer' for consistency
+    - Enhance testing
+- Add more options in ensureSupportsAnsi() ([#234](https://github.com/nikosportolos/ansix/issues/234))
+
+#### Bug fixes
+
+- Fix static instance ([#222](https://github.com/nikosportolos/ansix/pull/222))
+
+#### Dependencies
+
+- Bump meta from 1.10.0 to 1.11.0 ([#228](https://github.com/nikosportolos/ansix/issues/228))
+- Bump test from 1.24.7 to 1.24.8 ([#229](https://github.com/nikosportolos/ansix/issues/229))
+
+#### Testing
+
+- Add missing process manager test ([#238](https://github.com/nikosportolos/ansix/issues/238))
+
+
 ## v0.2.3
 
 #### Changes/Improvements
@@ -16,12 +45,14 @@
 - Decrease project line length to 80 ([#217](https://github.com/nikosportolos/ansix/issues/217))
 
 
+
 ## v0.2.2
 
 #### Improvements & Fixes on [AnsiTreeView](https://github.com/nikosportolos/ansix/blob/main/.documentation/features/widgets.md#ansitreeview)
 
 - Fix tree alignment ([#206](https://github.com/nikosportolos/ansix/issues/206))
 - Increase the prefix of the last node if it's a List ([#208](https://github.com/nikosportolos/ansix/issues/208))
+
 
 
 ## v0.2.1

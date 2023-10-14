@@ -29,11 +29,12 @@ AnsiX makes it easy to add ANSI styling to your output with minimal effort and m
 
 - [Introduction](#introduction)
 - [AnsiX Features](#ansix-features)
-  - [ANSI Support](./.documentation/features/ansi_support.md#ansi-support)
+  - [ANSI support](./.documentation/features/ansi_support.md#ansi-support)
     - [ANSI support detection](./.documentation/features/ansi_support.md#ansi-support-detection)
     - [Ensure ANSI support](./.documentation/features/ansi_support.md#ensure-ansi-support)
     - [Force usage of ANSI escape codes](./.documentation/features/ansi_support.md#force-usage-of-ansi-escape-codes)
     - [Enable/Disable AnsiX](./.documentation/features/ansi_support.md#enabledisable-ansix)
+  - [Web support](./.documentation/features/web_support.md#web-support)
   - [Theme](./.documentation/features/theme.md#theme)
     - [Styles](./.documentation/features/theme.md#styles)
     - [Colors](./.documentation/features/theme.md#colors)
@@ -59,8 +60,8 @@ AnsiX makes it easy to add ANSI styling to your output with minimal effort and m
     - [printJson](./.documentation/features/print.md#printJson)
     - [printTreeView](./.documentation/features/print.md#printTreeView)
     - [printDataGrid](./.documentation/features/print.md#printDataGrid)
-- [FAQ](#faq)
 - [Examples](#examples)
+- [FAQ](#faq)
 - [Contribution](#contribution)
 - [Changelog](#changelog)
 
@@ -80,12 +81,6 @@ The code `"\e[2J"` clears the entire screen, and `"\e[;H"` moves the cursor to t
 
 ANSI escape codes are widely used in command-line interfaces, terminal emulators, and other text-based applications 
 to provide a richer and more interactive user experience.
-
-
-### FAQ
-
-If you have questions about **AnsiX**, make sure to check the
-[FAQ](https://github.com/nikosportolos/ansix/tree/main/CONTRIBUTING.md) document.
 
 
 ## Examples
@@ -211,6 +206,12 @@ void main() {
 <a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/json-example.png" target="_blank">
   <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/json-example.png" width="275" alt="json-example">
 </a>
+
+
+### FAQ
+
+If you have questions about **AnsiX**, make sure to check the
+[FAQ](https://github.com/nikosportolos/ansix/.documentation/docs/FAQ.md) document.
 
 
 ## Contribution

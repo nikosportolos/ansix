@@ -1,8 +1,4 @@
-import 'package:ansix/src/core/escape_codes.dart';
-import 'package:ansix/src/core/extensions/extensions.dart';
-import 'package:ansix/src/theme/theme.dart';
-import 'package:ansix/src/widgets/text/text.dart';
-import 'package:ansix/src/widgets/widget.dart';
+import 'package:ansix/ansix.dart';
 
 export '../../theme/padding.dart';
 export 'style.dart';
@@ -62,7 +58,9 @@ class AnsiText extends AnsiWidget {
 
     buffer.writeLines(topPadding);
     if (backgroundColor != AnsiColor.none) {
-      buffer.write(backgroundColor.background);
+      buffer.write(AnsiX.colorFormat == ColorFormat.ansi
+          ? backgroundColor.background
+          : backgroundColor.backgroundRgb);
     }
 
     buffer
@@ -70,7 +68,9 @@ class AnsiText extends AnsiWidget {
       ..writeAll(style.styles.map((AnsiStyle s) => s.startEscapeCode));
 
     if (foregroundColor != AnsiColor.none && text.isNotEmpty) {
-      buffer.write(foregroundColor.foreground);
+      buffer.write(AnsiX.colorFormat == ColorFormat.ansi
+          ? foregroundColor.foreground
+          : foregroundColor.foregroundRgb);
     }
 
     buffer

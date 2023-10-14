@@ -1,4 +1,5 @@
 import 'package:ansix/ansix.dart';
+import 'package:ansix/src/formatter/formatters.dart';
 
 extension AnsiXShortcuts on String {
   /// Adds [AnsiStyle.bold] text style on a string.
@@ -96,7 +97,7 @@ extension AnsiString on String {
     final Rgb? foreground,
     final Rgb? background,
   }) {
-    return AnsiX.formatter.withColorRgb(
+    return RgbTextFormatter().withColor(
       this,
       foreground:
           foreground == null ? AnsiColor.none : AnsiColor.fromRgb(foreground),

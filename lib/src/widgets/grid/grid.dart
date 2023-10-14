@@ -127,7 +127,10 @@ class AnsiGrid extends AnsiWidget {
     _buffer.writeAll(
       <String>[
         if (!theme.transparent) AnsiEscapeCodes.reset,
-        if (theme.border.color != AnsiColor.none) theme.border.color.foreground,
+        if (theme.border.color != AnsiColor.none)
+          AnsiX.colorFormat == ColorFormat.ansi
+              ? theme.border.color.foreground
+              : theme.border.color.foregroundRgb,
         set.start,
         for (int i = 0; i < columnCount; i++) ...<String>[
           set.line *

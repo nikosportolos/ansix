@@ -2,11 +2,10 @@ import 'package:ansix/ansix.dart';
 import 'package:ansix/src/formatter/formatters.dart';
 import 'package:test/test.dart';
 
+import 'mocks.dart';
+
 void main() {
   final StandardTextFormatter formatter = StandardTextFormatter();
-  const String testMessage = 'This is a test message.';
-  const AnsiColor foregroundColor = AnsiColor.deepSkyBlue4;
-  const AnsiColor backgroundColor = AnsiColor.cyan3;
 
   group('StandardTextFormatter', () {
     test('withStyle', () {
@@ -18,15 +17,6 @@ void main() {
 
     test('withColor', () {
       final String output = formatter.withColor(
-        testMessage,
-        foreground: foregroundColor,
-        background: backgroundColor,
-      );
-      expect(output, testMessage);
-    });
-
-    test('withColorRgb', () {
-      final String output = formatter.withColorRgb(
         testMessage,
         foreground: foregroundColor,
         background: backgroundColor,

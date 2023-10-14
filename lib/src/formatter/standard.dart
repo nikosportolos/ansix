@@ -26,14 +26,4 @@ class StandardTextFormatter extends TextFormatter {
   }) {
     return text;
   }
-
-  /// Returns the given [text] with no colors.
-  @override
-  String withColorRgb(
-    final String text, {
-    final AnsiColor foreground = AnsiColor.none,
-    final AnsiColor background = AnsiColor.none,
-  }) {
-    return text;
-  }
 }

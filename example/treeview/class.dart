@@ -35,6 +35,7 @@ void main() {
         border: const AnsiBorder(
           style: AnsiBorderStyle.square,
           type: AnsiBorderType.all,
+          color: AnsiColor.deepSkyBlue5,
         ),
         textTheme: AnsiTextTheme(
           padding: AnsiPadding.symmetric(vertical: 1, horizontal: 2),

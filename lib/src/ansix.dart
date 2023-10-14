@@ -21,6 +21,7 @@ class AnsiX {
   }
 
   static AnsiX? _instance;
+
   static AnsiX get _ansix => _instance ?? AnsiX._();
 
   final ProcessManager _processManager;
@@ -33,6 +34,7 @@ class AnsiX {
   ///
   /// Defaults to true for debug mode only.
   static bool get allowPrint => _ansix._allowPrint;
+
   static set allowPrint(final bool value) {
     _ansix._allowPrint = value;
     _ansix._printer = value
@@ -56,10 +58,30 @@ class AnsiX {
   static Printer get printer => _ansix._printer;
   Printer _printer = AnsiPrinter();
 
+  /// Defines whether ANSI colors should be formatted
+  /// using the terminal code or the RGB value.
+  static ColorFormat get colorFormat => _ansix._colorFormat;
+  ColorFormat _colorFormat = ColorFormat.ansi;
+  static set colorFormat(ColorFormat format) {
+    _ansix._colorFormat = format;
+
+    if (!_ansix._isEnabled) {
+      _ansix._formatter = StandardTextFormatter();
+      return;
+    }
+
+    _ansix._formatter = switch (format) {
+      (ColorFormat.ansi) => AnsiTextFormatter(),
+      (ColorFormat.rgb) => RgbTextFormatter(),
+    };
+  }
+
   /// Enables ANSI formatting (if supported by the system).
   static void enable() {
     _ansix._isEnabled = true;
-    _ansix._formatter = AnsiTextFormatter();
+    _ansix._formatter = colorFormat == ColorFormat.ansi
+        ? AnsiTextFormatter()
+        : RgbTextFormatter();
     _ansix._printer = allowPrint ? AnsiPrinter() : NoOpPrinter();
   }
 

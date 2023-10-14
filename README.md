@@ -62,7 +62,12 @@ AnsiX makes it easy to add ANSI styling to your output with minimal effort and m
     - [printDataGrid](./.documentation/features/print.md#printDataGrid)
 - [Examples](#examples)
 - [FAQ](#faq)
-- [Contribution](#contribution)
+  - [Extensions](https://github.com/nikosportolos/ansix/blob/main/.documentation/docs/FAQ.md#extensions)
+  - [AnsiColor](https://github.com/nikosportolos/ansix/blob/main/.documentation/docs/FAQ.md#ansicolor)
+  - [Flutter](https://github.com/nikosportolos/ansix/blob/main/.documentation/docs/FAQ.md#flutter)
+    - [Dependency conflicts](https://github.com/nikosportolos/ansix/blob/main/.documentation/docs/FAQ.md#dependency-conflicts)
+    - [Web support](https://github.com/nikosportolos/ansix/blob/main/.documentation/docs/FAQ.md#web-support)
+- [Contribution](https://github.com/nikosportolos/ansix/blob/main/.documentation/docs/FAQ.md#contribution)
 - [Changelog](#changelog)
 
 
@@ -211,7 +216,7 @@ void main() {
 ### FAQ
 
 If you have questions about **AnsiX**, make sure to check the
-[FAQ](https://github.com/nikosportolos/ansix/.documentation/docs/FAQ.md) document.
+[FAQ](https://github.com/nikosportolos/ansix/blob/main/.documentation/docs/FAQ.md) document.
 
 
 ## Contribution

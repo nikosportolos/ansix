@@ -41,8 +41,8 @@ screenshots:
     path: assets/images/border-styles.png
   - description: 'Supported ANSI border types'
     path: assets/images/border-types.png
-  - description: 'This is an animated demonstration of AnsiX text styles'
-    path: assets/images/AnsiX.gif
+  - description: 'AnsiX on Flutter Web'
+    path: assets/images/web-example.webp
 
 topics:
   - ansi

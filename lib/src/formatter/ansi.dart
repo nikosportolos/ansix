@@ -41,30 +41,4 @@ class AnsiTextFormatter implements TextFormatter {
 
     return '${foreground.foreground}${background.background}$text${AnsiEscapeCodes.reset}';
   }
-
-  /// Returns the given [text] with [foreground] or/and [background] [Rgb] colors.
-  @override
-  String withColorRgb(
-    final String text, {
-    final AnsiColor foreground = AnsiColor.none,
-    final AnsiColor background = AnsiColor.none,
-  }) {
-    if (text.isEmpty) {
-      return '';
-    }
-
-    if (foreground == AnsiColor.none && background == AnsiColor.none) {
-      return text;
-    }
-
-    if (background == AnsiColor.none) {
-      return '${foreground.foregroundRgb}$text${AnsiEscapeCodes.reset}';
-    }
-
-    if (foreground == AnsiColor.none) {
-      return '${background.backgroundRgb}$text${AnsiEscapeCodes.reset}';
-    }
-
-    return '${foreground.foregroundRgb}${background.backgroundRgb}$text${AnsiEscapeCodes.reset}';
-  }
 }

@@ -12,7 +12,7 @@
 - #### What's the difference between the `.colored` and `.coloredRgb` string extensions?
 
   The `.colored` extension uses the 256-terminal color value of the given AnsiColor, while the `.coloredRgb` 
-extension uses the 24-bit terminal color.
+extension uses the 24-bit terminal (RGB) color.
 
   Read more [here](#whats-the-difference-between-the-colored-and-coloredrgb-string-extensions).
 
@@ -44,3 +44,20 @@ based on the RGB color model, resulting in millions of possible colors.
 
 If you didn't find an answer here, make sure you check the repository's [issues](https://github.com/nikosportolos/ansix/issues) 
 or feel free to create a new one.
+
+
+### Flutter web
+
+- #### The text in my browser's console has no or invalid ANSI colors and styles.
+
+  <a href="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/web-example-faq.webp" target="_blank">
+    <img src="https://raw.githubusercontent.com/nikosportolos/ansix/main/assets/images/web-example-faq.webp" width="600" alt="web-example-faq">
+  </a>
+
+  Just make sure you have set the `ColorFormat` to `RGB`:
+
+  ```dart
+  AnsiX.colorFormat = ColorFormat.rgb;
+  ```
+
+  Read more on [web support](../features/web_support.md#web-support).

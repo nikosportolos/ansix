@@ -11,6 +11,7 @@ environment:
   sdk: ">=3.1.0 <4.0.0"
 
 dependencies:
+  browser_detector: ^2.0.0
   collection: ^1.18.0
   data_class_plugin: ^1.1.0
   meta: ^1.11.0

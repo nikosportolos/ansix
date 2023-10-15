@@ -13,6 +13,9 @@ abstract class AnsiTerminal {
   /// Returns true when [Platform.isWindows]
   bool get runsOnWindows;
 
+  /// Returns true when running on a web browser
+  bool get runsOnWeb;
+
   /// Returns true if connected to a terminal that supports ANSI escape sequences.
   bool get supportsAnsi;
 

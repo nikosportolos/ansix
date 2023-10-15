@@ -131,8 +131,8 @@ class AnsiX {
     final ColorFormat? colorFormat,
   }) {
     _ansix._allowPrint = allowPrint ?? isDebugMode;
-    _ansix._colorFormat =
-        colorFormat ?? (isWeb ? ColorFormat.rgb : ColorFormat.ansi);
+    _ansix._colorFormat = colorFormat ??
+        (_ansix._terminal.runsOnWeb ? ColorFormat.rgb : ColorFormat.ansi);
 
     if (force) {
       enable();

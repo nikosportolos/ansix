@@ -31,6 +31,10 @@ void main() {
       expect(terminal.runsOnWindows, Platform.isWindows);
     });
 
+    test('runsOnWeb', () {
+      expect(terminal.runsOnWeb, false);
+    });
+
     group('supportsAnsiEscapes', () {
       test('false', () {
         when(() => stdOut.supportsAnsiEscapes).thenReturn(false);

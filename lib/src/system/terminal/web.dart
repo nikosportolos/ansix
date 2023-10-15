@@ -1,8 +1,15 @@
+import 'dart:html';
+
+import 'package:ansix/src/system/browser_detector.dart';
 import 'package:ansix/src/system/terminal/terminal.dart';
-import 'package:browser_detector/browser_detector.dart';
 
 class AnsiTerminalImpl implements AnsiTerminal {
-  const AnsiTerminalImpl();
+  AnsiTerminalImpl()
+      : _browser = const BrowserDetector().detect(
+          window.navigator.userAgent,
+        );
+
+  final Browser _browser;
 
   /// Returns always false on web
   @override
@@ -10,7 +17,7 @@ class AnsiTerminalImpl implements AnsiTerminal {
 
   /// Returns true when running on a web browser
   @override
-  bool get runsOnWeb => false;
+  bool get runsOnWeb => true;
 
   @override
   TerminalSize get size => TerminalSize.$default;
@@ -18,10 +25,7 @@ class AnsiTerminalImpl implements AnsiTerminal {
   /// Returns true if connected to a web browser
   /// that supports ANSI escape sequences.
   @override
-  bool get supportsAnsi {
-    final Browser browser = BrowserDetector().browser;
-    return browser.isChrome || browser.isEdge;
-  }
+  bool get supportsAnsi => _browser.supportsAnsi;
 
   @override
   bool get attachedToValidStream => supportsAnsi;

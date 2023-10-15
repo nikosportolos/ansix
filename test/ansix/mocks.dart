@@ -23,6 +23,9 @@ class MockAnsiTerminal extends Mock implements AnsiTerminal {
   bool get runsOnWindows;
 
   @override
+  bool get runsOnWeb => false;
+
+  @override
   TerminalSize get size => TerminalSize.$default;
 }
 

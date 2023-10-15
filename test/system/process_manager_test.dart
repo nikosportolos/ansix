@@ -141,6 +141,22 @@ void main() {
         expect(manager.determineTerminalType(), TerminalType.unknown);
       });
     });
+
+    test('cmd throws', () {
+      when(() {
+        return mockShell
+            .runCommand(ProcessManager.detectLegacyConsoleModeCommand);
+      }).thenReturn(enabledResult);
+
+      when(() {
+        return mockShell
+            .runCommand(ProcessManager.detectWindowsTerminalCommand);
+      }).thenReturn('CMD');
+
+      expect(manager.determineLegacyConsoleMode(), LegacyConsoleMode.enabled);
+      expect(() => manager.detectWindowsAnsiSupport(),
+          throwsA(isA<AnsiXException>()));
+    });
   });
 }
 

@@ -16,6 +16,10 @@ class AnsiTerminalImpl implements AnsiTerminal {
   @override
   bool get runsOnWindows => Platform.isWindows;
 
+  /// Returns true when running on a web browser
+  @override
+  bool get runsOnWeb => false;
+
   /// Returns true if connected to a terminal that supports ANSI escape sequences.
   @override
   bool get supportsAnsi => _stdout.supportsAnsiEscapes;

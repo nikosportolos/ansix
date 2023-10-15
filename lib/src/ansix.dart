@@ -117,10 +117,23 @@ class AnsiX {
   ///
   /// If [force] = true, ANSI formatting will be enabled even if ANSI support detection failed.
   /// Use with caution, as it may lead to printing wrongly-formatted text.
+  ///
+  /// [allowPrint] determines if printing messages to the attached terminal is allowed.
+  /// Defaults to true for debug mode only.
+  ///
+  /// [colorFormat] defines whether ANSI colors should be formatted
+  /// using the terminal code or the RGB value.
+  /// Will automatically set to [ColorFormat.rgb] when running on web.
   static void ensureSupportsAnsi({
     final bool silent = false,
     final bool force = false,
+    final bool? allowPrint,
+    final ColorFormat? colorFormat,
   }) {
+    _ansix._allowPrint = allowPrint ?? isDebugMode;
+    _ansix._colorFormat =
+        colorFormat ?? (isWeb ? ColorFormat.rgb : ColorFormat.ansi);
+
     if (force) {
       enable();
       return;

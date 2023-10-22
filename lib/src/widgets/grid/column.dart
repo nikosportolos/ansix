@@ -180,7 +180,7 @@ class AnsiGridColumn {
       for (int i = 0; i < padding.top; i++) emptyAnsiText,
       ...ansiText.text.trim().split(AnsiEscapeCodes.newLine).map((String t) {
         return AnsiText.withTheme(t, textTheme);
-      }).toList(growable: false),
+      }),
       for (int i = 0; i < padding.bottom; i++) emptyAnsiText,
     ];
 

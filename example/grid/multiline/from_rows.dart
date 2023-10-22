@@ -10,7 +10,7 @@ void main() {
     <Object?>['#', 'Title', 'Release Year', 'IMDb Rate'],
     ...movies.mapIndexed((int i, Movie m) {
       return <Object>[i + 1, m.title, m.releaseYear, m.rate];
-    }).toList(growable: false),
+    }),
     <Object?>[
       'Average',
       '',

@@ -15,7 +15,7 @@ void main() {
           color.rgb.toString().withForegroundColor(color),
           ''.padLeft(20).withBackgroundColor(color),
         ];
-      }).toList(growable: false),
+      }),
     ];
 
     print(

@@ -1,3 +1,18 @@
+## v0.3.1
+
+#### Dependencies
+
+- Bump lints from 2.1.1 to 3.0.0 ([#241](https://github.com/nikosportolos/ansix/pull/241))
+- Bump nikosportolos/dart_package from 0.1.2 to 0.2.0 ([#242](https://github.com/nikosportolos/ansix/pull/242))
+- Bump actions/checkout from 4.1.0 to 4.1.1 ([#243](https://github.com/nikosportolos/ansix/pull/243))
+- Bump lints from 2.1.1 to 3.0.0 in /tool/export_docs ([#246](https://github.com/nikosportolos/ansix/pull/246))
+- Bump nikosportolos/dart_package from 0.2.0 to 0.2.1 ([#247](https://github.com/nikosportolos/ansix/pull/247))
+
+#### CI/CD
+
+- Dependabot: Check github actions weekly ([#244](https://github.com/nikosportolos/ansix/issues/244))
+
+
 ## v0.3.0
 
 #### Changes/Improvements

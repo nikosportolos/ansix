@@ -18,7 +18,7 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v4.1.1
-      - uses: nikosportolos/dart_package@v0.2.0
+      - uses: nikosportolos/dart_package@v0.2.1
         with:
           line_length: 80
           coverage: ${{ inputs.coverage }}

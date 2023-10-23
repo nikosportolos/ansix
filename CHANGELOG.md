@@ -1,6 +1,21 @@
+## v0.3.1
+
+### Dependencies
+
+- Bump lints from 2.1.1 to 3.0.0 ([#241](https://github.com/nikosportolos/ansix/pull/241))
+- Bump nikosportolos/dart_package from 0.1.2 to 0.2.0 ([#242](https://github.com/nikosportolos/ansix/pull/242))
+- Bump actions/checkout from 4.1.0 to 4.1.1 ([#243](https://github.com/nikosportolos/ansix/pull/243))
+- Bump lints from 2.1.1 to 3.0.0 in /tool/export_docs ([#246](https://github.com/nikosportolos/ansix/pull/246))
+- Bump nikosportolos/dart_package from 0.2.0 to 0.2.1 ([#247](https://github.com/nikosportolos/ansix/pull/247))
+
+### CI/CD
+
+- Dependabot: Check github actions weekly ([#244](https://github.com/nikosportolos/ansix/issues/244))
+
+
 ## v0.3.0
 
-#### Changes/Improvements
+### Changes/Improvements
 
 - Enhance web support ([#225](https://github.com/nikosportolos/ansix/issues/225))
   - Create custom BrowserDetector ([#236](https://github.com/nikosportolos/ansix/issues/236))
@@ -13,34 +28,34 @@
     - Enhance testing
 - Add more options in ensureSupportsAnsi() ([#234](https://github.com/nikosportolos/ansix/issues/234))
 
-#### Bug fixes
+### Bug fixes
 
 - Fix static instance ([#222](https://github.com/nikosportolos/ansix/pull/222))
 
-#### Dependencies
+### Dependencies
 
 - Bump meta from 1.10.0 to 1.11.0 ([#228](https://github.com/nikosportolos/ansix/issues/228))
 - Bump test from 1.24.7 to 1.24.8 ([#229](https://github.com/nikosportolos/ansix/issues/229))
 
-#### Testing
+### Testing
 
 - Add missing process manager test ([#238](https://github.com/nikosportolos/ansix/issues/238))
 
 
 ## v0.2.3
 
-#### Changes/Improvements
+### Changes/Improvements
 
 - AnsiOutlinedText: Set default border ([#211](https://github.com/nikosportolos/ansix/issues/211))
 
-#### Dependencies
+### Dependencies
 
 - Bump tachyon from 0.0.9 to 0.1.0 ([#213](https://github.com/nikosportolos/ansix/pull/213))
 - Bump data_class_plugin from 1.0.5 to 1.1.0 ([#214](https://github.com/nikosportolos/ansix/pull/214))
 - Bump test from 1.24.6 to 1.24.7 ([#215](https://github.com/nikosportolos/ansix/pull/215))
 - Bump mocktail from 1.0.0 to 1.0.1 ([#216](https://github.com/nikosportolos/ansix/pull/216))
 
-#### Misc
+### Misc
 
 - Decrease project line length to 80 ([#217](https://github.com/nikosportolos/ansix/issues/217))
 
@@ -48,7 +63,7 @@
 
 ## v0.2.2
 
-#### Improvements & Fixes on [AnsiTreeView](https://github.com/nikosportolos/ansix/blob/main/.documentation/features/widgets.md#ansitreeview)
+### Improvements & Fixes on [AnsiTreeView](https://github.com/nikosportolos/ansix/blob/main/.documentation/features/widgets.md#ansitreeview)
 
 - Fix tree alignment ([#206](https://github.com/nikosportolos/ansix/issues/206))
 - Increase the prefix of the last node if it's a List ([#208](https://github.com/nikosportolos/ansix/issues/208))
@@ -57,14 +72,14 @@
 
 ## v0.2.1
 
-#### Changes/Improvements
+### Changes/Improvements
 
 - Enable web platform support ([#196](https://github.com/nikosportolos/ansix/issues/196))
 
   - Conditional import between `dart:io` and `dart:html` depending on the platform  
   - Create separate implementations for io-dependant functions  
 
-#### Dependencies
+### Dependencies
 
 - Bump data_class_plugin from 1.0.4 to 1.0.5 ([#198](https://github.com/nikosportolos/ansix/issues/198))
 - Bump nikosportolos/dart_package from 0.1.1 to 0.1.2  ([#201](https://github.com/nikosportolos/ansix/issues/201))
@@ -83,7 +98,7 @@
 > multiple lines of text in each grid cell.
 
 
-#### Changes/Improvements
+### Changes/Improvements
 
 - AnsiTable: Wrap line if AnsiText.fixedWidth is set ([#3](https://github.com/nikosportolos/ansix/issues/3))
 - AnsiTable: Support multiline cells ([#138](https://github.com/nikosportolos/ansix/issues/138))
@@ -95,7 +110,7 @@
 - Create 'writeTabs' string buffer extension ([#191](https://github.com/nikosportolos/ansix/issues/191))
 
 
-#### Bug fixes
+### Bug fixes
 
 - AnsiGrid: Wrong cell width when keepSameWidth is true with center alignment ([#178](https://github.com/nikosportolos/ansix/issues/178))
 - Fix AnsiGrid issues ([#180](https://github.com/nikosportolos/ansix/issues/180))
@@ -105,7 +120,7 @@
 - AnsiTreeView: Fix header issues ([#189](https://github.com/nikosportolos/ansix/issues/189))
 
 
-#### Documentation
+### Documentation
 
 - Update badges on README.md ([#181](https://github.com/nikosportolos/ansix/issues/181))
 - Update topics and screenshots for [pub.dev](https://pub.dev/packages/ansix)
@@ -113,7 +128,7 @@
 - Update outdated examples & tests
 
 
-#### Dependencies
+### Dependencies
 
 - Bump ansix from 0.0.9-prerelease to 0.1.0 in /tool/export_docs ([#168](https://github.com/nikosportolos/ansix/pull/168))
 - Bump tachyon from 0.0.8 to 0.0.9 ([#169](https://github.com/nikosportolos/ansix/pull/169))
@@ -123,7 +138,7 @@
 
 ## v0.1.0
 
-#### Dependencies
+### Dependencies
 
 - Bump data_class_plugin from 1.0.2 to 1.0.3 ([#148](https://github.com/nikosportolos/ansix/pull/148))
 - Bump collection from 1.17.2 to 1.18.0 ([#149](https://github.com/nikosportolos/ansix/pull/149))
@@ -137,12 +152,12 @@
 - Bump 'dart-package' action to 0.1.1 ([#160](https://github.com/nikosportolos/ansix/issues/160))
 
 
-#### Documentation
+### Documentation
 
 - Update README.md ([#162](https://github.com/nikosportolos/ansix/issues/162))
 
 
-#### Changes/Improvements
+### Changes/Improvements
 
 - Modify header theme of AnsiTreeView ([#164](https://github.com/nikosportolos/ansix/issues/164))
 
@@ -150,12 +165,12 @@
 
 ## v0.0.9-prerelease
 
-#### Changes/Improvements
+### Changes/Improvements
 
 - AnsiTable: Set headerTextStyle & footerTextStyle as optional ([#134](https://github.com/nikosportolos/ansix/issues/134))
 - Refactor AnsiX class library ([#136](https://github.com/nikosportolos/ansix/issues/136))
 
-#### Dependencies
+### Dependencies
 
 - Bump tachyon to 0.0.7 ([#142](https://github.com/nikosportolos/ansix/issues/142))
 - Bump test to 1.24.4 ([#143](https://github.com/nikosportolos/ansix/issues/143))
@@ -163,15 +178,15 @@
 
 ## v0.0.8-prerelease
 
-#### Dependencies
+### Dependencies
 
 - Bump data_class_plugin from 1.0.1 to 1.0.2 ([#122](https://github.com/nikosportolos/ansix/pull/122))
 
-#### Documentation
+### Documentation
 
 - Add screenshots & topics in pubspec.yaml ([#126](https://github.com/nikosportolos/ansix/issues/126))
 
-#### AnsiTable
+### AnsiTable
 
 - Fix transparency ([#128](https://github.com/nikosportolos/ansix/issues/128))
   - Add the ANSI reset escape code in every line if the transparent flag is set to true.
@@ -197,12 +212,12 @@
 
 ## v0.0.6-prerelease
 
-#### Bug fixes
+### Bug fixes
 
 - AnsiTable uses external color if no border color is set ([#93](https://github.com/nikosportolos/ansix/issues/93))
 - Wrapped lines in AnsiTreeView lose their styling ([#98](https://github.com/nikosportolos/ansix/issues/98))
 
-#### Misc
+### Misc
 
 - Add missing tests ([#94](https://github.com/nikosportolos/ansix/issues/94))
 - Add more documentation on public API elements ([#97](https://github.com/nikosportolos/ansix/issues/97))
@@ -211,7 +226,7 @@
 
 ## v0.0.5-prerelease
 
-#### AnsiTreeView enhancements & bug fixes 
+### AnsiTreeView enhancements & bug fixes 
 
 - Refactor AnsiTreeViewTheme ([#75](https://github.com/nikosportolos/ansix/issues/75))
   - Rename `TreeAnchorTheme` to `AnsiTreeAnchorTheme`
@@ -225,7 +240,7 @@
 - AnsiTreeView: Handle new lines & long text ([#90](https://github.com/nikosportolos/ansix/issues/90))
 
 
-#### Misc
+### Misc
 - Export drawing enums ([#72](https://github.com/nikosportolos/ansix/issues/72))
 - AnsiBorder - Set 'none' as default type and 'square' as default style ([#81](https://github.com/nikosportolos/ansix/issues/81))
 - Detect terminal size ([#87](https://github.com/nikosportolos/ansix/issues/87))
@@ -233,61 +248,61 @@
 
 ## v0.0.4-prerelease
 
-#### New features
+### New features
 
 - Introduced a new widget, `AnsiTreeView` ([#58](https://github.com/nikosportolos/ansix/issues/58),
 [#63](https://github.com/nikosportolos/ansix/issues/63))
   
   Read more [here](https://github.com/nikosportolos/ansix#ansitreeview)
 
-#### Bug fixes
+### Bug fixes
 
 - Fix AnsiTable with only one cell ([#59](https://github.com/nikosportolos/ansix/issues/59))
 - Export class AnsiTableRow ([#62](https://github.com/nikosportolos/ansix/issues/62))
 
-#### Misc
+### Misc
 - AnsiTable - Set default AnsiBorderType to all ([#68](https://github.com/nikosportolos/ansix/issues/68))
 - Update CONTRIBUTING.md
 
 
 ## v0.0.3-prerelease
 
-#### Bug fixes
+### Bug fixes
 
 - AnsiTable: Fix cell width calculation for styled/colored text ([#50](https://github.com/nikosportolos/ansix/issues/50))
 
-#### Dependencies
+### Dependencies
 
 - Bump test from 1.24.2 to 1.24.3 ([#46](https://github.com/nikosportolos/ansix/pull/46))
 
 
 ## v0.0.2-prerelease
 
-#### AnsiX
+### AnsiX
 
 - ensureSupportsAnsi throws exception on Mac/VSCode  ([#12](https://github.com/nikosportolos/ansix/issues/12))
 - Export missing classes ([#13](https://github.com/nikosportolos/ansix/issues/13),
   [#20](https://github.com/nikosportolos/ansix/issues/20))
 
-#### Extensions
+### Extensions
 
 - Refactor coloredRgb extension ([#35](https://github.com/nikosportolos/ansix/issues/35))
 
-#### Widgets
+### Widgets
 
 - Support AnsiText headers in AnsiTable.fromMap ([#14](https://github.com/nikosportolos/ansix/issues/14))
 - Add a space separator between columns in tables with no inside vertical border ([#16](https://github.com/nikosportolos/ansix/issues/16))
 - Refactor AnsiText properties ([#24](https://github.com/nikosportolos/ansix/issues/24))
 - Remove markdown border style ([#32](https://github.com/nikosportolos/ansix/issues/32))
 
-#### Documentation
+### Documentation
 
 - Update README.md ([#15](https://github.com/nikosportolos/ansix/issues/15),
   [#17](https://github.com/nikosportolos/ansix/issues/17))
 - Add badges in CONTRIBUTING.md ([#28](https://github.com/nikosportolos/ansix/issues/28))
 - Add FAQ.md ([#37](https://github.com/nikosportolos/ansix/issues/37))
 
-#### Testing
+### Testing
 
 - Add missing tests ([#39](https://github.com/nikosportolos/ansix/issues/39))
 

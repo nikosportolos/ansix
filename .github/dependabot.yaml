@@ -3,18 +3,18 @@ enable-beta-ecosystems: true
 
 updates:
   - package-ecosystem: "github-actions"
-    directory: "."
+    directory: "/"
     schedule:
       interval: "weekly"
 
   - package-ecosystem: "pub"
-    directory: "."
+    directory: "/"
     schedule:
       interval: "weekly"
     versioning-strategy: increase
 
   - package-ecosystem: "pub"
-    directory: "./tool/export_docs"
+    directory: "/tool/export_docs"
     schedule:
       interval: "weekly"
     versioning-strategy: increase

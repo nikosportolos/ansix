@@ -1,16 +1,30 @@
+## v0.3.2
+
+### Dependencies
+
+- Bump data_class_plugin from 1.2.1 to 1.3.0 ([#256](https://github.com/nikosportolos/ansix/pull/256))
+- Bump test from 1.24.9 to 1.25.1 ([#255](https://github.com/nikosportolos/ansix/pull/255))
+- Bump mocktail from 1.0.1 to 1.0.2 ([#254](https://github.com/nikosportolos/ansix/pull/254))
+- Bump path from 1.8.3 to 1.9.0 ([#253](https://github.com/nikosportolos/ansix/pull/253))
+- Bump tachyon from 0.2.2 to 0.3.0 ([#252](https://github.com/nikosportolos/ansix/pull/252))
+- Bump data_class_plugin from 1.1.0 to 1.2.1 ([#251](https://github.com/nikosportolos/ansix/pull/251))
+- Bump test from 1.24.8 to 1.24.9 ([#250](https://github.com/nikosportolos/ansix/pull/250))
+- Bump tachyon from 0.1.0 to 0.2.2 ([#249](https://github.com/nikosportolos/ansix/pull/249))
+
+
 ## v0.3.1
 
 ### Dependencies
 
 - Bump lints from 2.1.1 to 3.0.0 ([#241](https://github.com/nikosportolos/ansix/pull/241))
-- Bump nikosportolos/dart_package from 0.1.2 to 0.2.0 ([#242](https://github.com/nikosportolos/ansix/pull/242))
-- Bump actions/checkout from 4.1.0 to 4.1.1 ([#243](https://github.com/nikosportolos/ansix/pull/243))
 - Bump lints from 2.1.1 to 3.0.0 in /tool/export_docs ([#246](https://github.com/nikosportolos/ansix/pull/246))
-- Bump nikosportolos/dart_package from 0.2.0 to 0.2.1 ([#247](https://github.com/nikosportolos/ansix/pull/247))
 
 ### CI/CD
 
+- Bump nikosportolos/dart_package from 0.1.2 to 0.2.0 ([#242](https://github.com/nikosportolos/ansix/pull/242))
+- Bump actions/checkout from 4.1.0 to 4.1.1 ([#243](https://github.com/nikosportolos/ansix/pull/243))
 - Dependabot: Check github actions weekly ([#244](https://github.com/nikosportolos/ansix/issues/244))
+- Bump nikosportolos/dart_package from 0.2.0 to 0.2.1 ([#247](https://github.com/nikosportolos/ansix/pull/247))
 
 
 ## v0.3.0

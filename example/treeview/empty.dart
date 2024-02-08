@@ -6,6 +6,8 @@ void main() {
       'map': <String, dynamic>{
         'id': 123,
         'username': 'AnsiX',
+        'empty_map': <String, String>{},
+        'empty_list': <String>[],
       },
       'empty_map': <String, String>{},
       'list': <String>['This', 'is', 'AnsiX'],

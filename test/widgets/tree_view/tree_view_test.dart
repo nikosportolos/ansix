@@ -151,7 +151,7 @@ void main() {
       expect(actual.toString(), treeviewWithVerticalPaddedHeaderMock);
     });
 
-    test('empty', () {
+    group('empty list/map', () {
       final Map<String, dynamic> map = <String, dynamic>{
         'map': <String, dynamic>{
           'id': 123,
@@ -162,8 +162,17 @@ void main() {
         'empty_list': <String>[],
       };
 
-      final String actual = AnsiTreeView(map, theme: theme).toString();
-      expect(actual.unformatted, treeviewEmptyMock);
+      test('include empty', () {
+        final String actual = AnsiTreeView(map, theme: theme).toString();
+        expect(actual.unformatted, treeviewEmptyMock);
+      });
+
+      test("don't include empty", () {
+        final String actual = AnsiTreeView(map,
+                theme: theme.copyWith.valueTheme.hideIfEmpty(true))
+            .toString();
+        expect(actual.unformatted, treeviewEmptyNotIncludedMock);
+      });
     });
 
     test('mixed borders', () {
@@ -192,65 +201,28 @@ void main() {
       expect(actual.unformatted, treeviewMixedBordersMock);
     });
 
-    test('long text', () {
-      final Map<String, dynamic> map = <String, dynamic>{
-        'id': 123,
-        'title': 'Lorem ipsum dolor sit amet',
-        'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
-            'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
-            'nisi ut aliquip ex ea commodo consequat.'
-            'Excepteur sint occaecat cupidatat non proident, '
-            'sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        'postedOn': '2023-06-02T13:01:43.597697',
-        'body': '''
+    group('wrapping long text', () {
+      test('long text', () {
+        final Map<String, dynamic> map = <String, dynamic>{
+          'id': 123,
+          'title': 'Lorem ipsum dolor sit amet',
+          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+              'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+              'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
+              'nisi ut aliquip ex ea commodo consequat.'
+              'Excepteur sint occaecat cupidatat non proident, '
+              'sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          'postedOn': '2023-06-02T13:01:43.597697',
+          'body': '''
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
-      };
+        };
 
-      final String actual = AnsiTreeView(
-        map,
-        theme: const AnsiTreeViewTheme(
-          headerTheme: AnsiTreeHeaderTheme(
-            showHash: false,
-            border: AnsiBorder.none,
-          ),
-          valueTheme: AnsiTreeNodeValueTheme(
-            wrapText: true,
-            wrapOptions: WrapOptions(lineLength: 100),
-            alignment: AnsiTextAlignment.center,
-          ),
-        ),
-      ).toString();
-      expect(actual.unformatted, treeviewLongTextMock);
-    });
-
-    test('long text with split words', () {
-      final Map<String, dynamic> map = <String, dynamic>{
-        'id': 123,
-        'title': 'Lorem ipsum dolor sit amet',
-        'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
-            'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
-            'nisi ut aliquip ex ea commodo consequat.'
-            'Excepteur sint occaecat cupidatat non proident, '
-            'sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        'postedOn': '2023-06-02T13:01:43.597697',
-        'body': '''
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
-      };
-
-      expect(
-        AnsiTreeView(
+        final String actual = AnsiTreeView(
           map,
           theme: const AnsiTreeViewTheme(
             headerTheme: AnsiTreeHeaderTheme(
@@ -259,147 +231,186 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
             ),
             valueTheme: AnsiTreeNodeValueTheme(
               wrapText: true,
-              wrapOptions: WrapOptions(
-                lineLength: 50,
-                splitWords: true,
-              ),
+              wrapOptions: WrapOptions(lineLength: 100),
               alignment: AnsiTextAlignment.center,
             ),
           ),
-        ).toString(),
-        treeviewLongTextSplitMock,
-      );
-    });
+        ).toString();
+        expect(actual.unformatted, treeviewLongTextMock);
+      });
 
-    test('long text with split words and line breaks', () {
-      final Map<String, dynamic> map = <String, dynamic>{
-        'id': 123,
-        'title': 'Lorem ipsum dolor sit amet',
-        'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
-            'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
-            'nisi ut aliquip ex ea commodo consequat.'
-            'Excepteur sint occaecat cupidatat non proident, '
-            'sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        'postedOn': '2023-06-02T13:01:43.597697',
-        'body': '''
+      test('long text with split words', () {
+        final Map<String, dynamic> map = <String, dynamic>{
+          'id': 123,
+          'title': 'Lorem ipsum dolor sit amet',
+          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+              'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+              'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
+              'nisi ut aliquip ex ea commodo consequat.'
+              'Excepteur sint occaecat cupidatat non proident, '
+              'sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          'postedOn': '2023-06-02T13:01:43.597697',
+          'body': '''
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
-      };
+        };
 
-      expect(
-        AnsiTreeView(
+        expect(
+          AnsiTreeView(
+            map,
+            theme: const AnsiTreeViewTheme(
+              headerTheme: AnsiTreeHeaderTheme(
+                showHash: false,
+                border: AnsiBorder.none,
+              ),
+              valueTheme: AnsiTreeNodeValueTheme(
+                wrapText: true,
+                wrapOptions: WrapOptions(
+                  lineLength: 50,
+                  splitWords: true,
+                ),
+                alignment: AnsiTextAlignment.center,
+              ),
+            ),
+          ).toString(),
+          treeviewLongTextSplitMock,
+        );
+      });
+
+      test('long text with split words and line breaks', () {
+        final Map<String, dynamic> map = <String, dynamic>{
+          'id': 123,
+          'title': 'Lorem ipsum dolor sit amet',
+          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+              'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+              'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
+              'nisi ut aliquip ex ea commodo consequat.'
+              'Excepteur sint occaecat cupidatat non proident, '
+              'sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          'postedOn': '2023-06-02T13:01:43.597697',
+          'body': '''
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
+        };
+
+        expect(
+          AnsiTreeView(
+            map,
+            theme: const AnsiTreeViewTheme(
+              headerTheme: AnsiTreeHeaderTheme(
+                showHash: false,
+                border: AnsiBorder.none,
+              ),
+              valueTheme: AnsiTreeNodeValueTheme(
+                wrapText: true,
+                wrapOptions: WrapOptions(
+                  lineLength: 75,
+                  splitWords: true,
+                  lineBreak: true,
+                ),
+                alignment: AnsiTextAlignment.center,
+              ),
+            ),
+          ).toString(),
+          treeviewLongTextSplitAndLineBreaksMock,
+        );
+      });
+
+      test('long text with split words, line breaks and fixed length', () {
+        final Map<String, dynamic> map = <String, dynamic>{
+          'id': 123,
+          'title': 'Lorem ipsum dolor sit amet',
+          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+              'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+              'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
+              'nisi ut aliquip ex ea commodo consequat.'
+              'Excepteur sint occaecat cupidatat non proident, '
+              'sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          'postedOn': '2023-06-02T13:01:43.597697',
+          'body': '''
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
+        };
+
+        expect(
+          AnsiTreeView(
+            map,
+            theme: const AnsiTreeViewTheme(
+              headerTheme: AnsiTreeHeaderTheme(
+                showHash: false,
+                border: AnsiBorder.none,
+              ),
+              valueTheme: AnsiTreeNodeValueTheme(
+                fixedWidth: 75,
+                wrapText: true,
+                wrapOptions: WrapOptions(
+                  lineLength: 75,
+                  splitWords: true,
+                  lineBreak: true,
+                ),
+                alignment: AnsiTextAlignment.center,
+              ),
+            ),
+          ).toString(),
+          treeviewLongTextSplitLineBreaksFixedMock,
+        );
+      });
+
+      test('long text with colors', () {
+        final Map<String, dynamic> map = <String, dynamic>{
+          'id': 123,
+          'title': 'Lorem ipsum dolor sit amet',
+          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+              'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
+              'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
+              'nisi ut aliquip ex ea commodo consequat.'
+              'Excepteur sint occaecat cupidatat non proident, '
+              'sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          'postedOn': '2023-06-02T13:01:43.597697',
+          'body': '''
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
+        };
+
+        final String actual = AnsiTreeView(
           map,
           theme: const AnsiTreeViewTheme(
             headerTheme: AnsiTreeHeaderTheme(
-              showHash: false,
               border: AnsiBorder.none,
+              showHash: false,
+              textTheme: AnsiTextTheme(
+                foregroundColor: AnsiColor.salmon1,
+                backgroundColor: AnsiColor.grey11,
+              ),
             ),
+            anchorTheme: AnsiTreeAnchorTheme(color: AnsiColor.yellow6),
+            keyTheme: AnsiTreeNodeKeyTheme(color: AnsiColor.darkOrange3),
             valueTheme: AnsiTreeNodeValueTheme(
               wrapText: true,
-              wrapOptions: WrapOptions(
-                lineLength: 75,
-                splitWords: true,
-                lineBreak: true,
-              ),
-              alignment: AnsiTextAlignment.center,
+              wrapOptions: WrapOptions(lineLength: 100),
+              color: AnsiColor.cadetBlue,
             ),
           ),
-        ).toString(),
-        treeviewLongTextSplitAndLineBreaksMock,
-      );
-    });
+        ).toString();
 
-    test('long text with split words, line breaks and fixed length', () {
-      final Map<String, dynamic> map = <String, dynamic>{
-        'id': 123,
-        'title': 'Lorem ipsum dolor sit amet',
-        'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
-            'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
-            'nisi ut aliquip ex ea commodo consequat.'
-            'Excepteur sint occaecat cupidatat non proident, '
-            'sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        'postedOn': '2023-06-02T13:01:43.597697',
-        'body': '''
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
-      };
-
-      expect(
-        AnsiTreeView(
-          map,
-          theme: const AnsiTreeViewTheme(
-            headerTheme: AnsiTreeHeaderTheme(
-              showHash: false,
-              border: AnsiBorder.none,
-            ),
-            valueTheme: AnsiTreeNodeValueTheme(
-              fixedWidth: 75,
-              wrapText: true,
-              wrapOptions: WrapOptions(
-                lineLength: 75,
-                splitWords: true,
-                lineBreak: true,
-              ),
-              alignment: AnsiTextAlignment.center,
-            ),
-          ),
-        ).toString(),
-        treeviewLongTextSplitLineBreaksFixedMock,
-      );
-    });
-
-    test('long text with colors', () {
-      final Map<String, dynamic> map = <String, dynamic>{
-        'id': 123,
-        'title': 'Lorem ipsum dolor sit amet',
-        'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
-            'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
-            'nisi ut aliquip ex ea commodo consequat.'
-            'Excepteur sint occaecat cupidatat non proident, '
-            'sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        'postedOn': '2023-06-02T13:01:43.597697',
-        'body': '''
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
-      };
-
-      final String actual = AnsiTreeView(
-        map,
-        theme: const AnsiTreeViewTheme(
-          headerTheme: AnsiTreeHeaderTheme(
-            border: AnsiBorder.none,
-            showHash: false,
-            textTheme: AnsiTextTheme(
-              foregroundColor: AnsiColor.salmon1,
-              backgroundColor: AnsiColor.grey11,
-            ),
-          ),
-          anchorTheme: AnsiTreeAnchorTheme(color: AnsiColor.yellow6),
-          keyTheme: AnsiTreeNodeKeyTheme(color: AnsiColor.darkOrange3),
-          valueTheme: AnsiTreeNodeValueTheme(
-            wrapText: true,
-            wrapOptions: WrapOptions(lineLength: 100),
-            color: AnsiColor.cadetBlue,
-          ),
-        ),
-      ).toString();
-
-      expect(actual, treeviewLongTextWithColorsMock);
+        expect(actual, treeviewLongTextWithColorsMock);
+      });
     });
 
     group('mixed', () {
@@ -466,28 +477,54 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
           MockEnum.value3,
         ],
       };
-      final AnsiTreeViewTheme theme =
+      final AnsiTreeViewTheme compactTheme =
           AnsiTreeViewTheme.$default().copyWith.headerTheme.showHash(false);
 
-      final Map<AnsiTextAlignment, String> testCases =
-          <AnsiTextAlignment, String>{
-        AnsiTextAlignment.center: treeviewMixedMockCenter,
-        AnsiTextAlignment.left: treeviewMixedMockLeft,
-        AnsiTextAlignment.right: treeviewMixedMockRight,
-      };
+      group('compact', () {
+        for (final AnsiTextAlignment alignment in AnsiTextAlignment.values) {
+          test(alignment, () {
+            final String actual = AnsiTreeView(
+              map,
+              theme: compactTheme.copyWith.valueTheme(
+                alignment: alignment,
+                wrapOptions: const WrapOptions(lineLength: 120),
+              ),
+            ).toString();
+            expect(
+              actual,
+              <AnsiTextAlignment, String>{
+                AnsiTextAlignment.center: treeviewMixedMockCenter,
+                AnsiTextAlignment.left: treeviewMixedMockLeft,
+                AnsiTextAlignment.right: treeviewMixedMockRight,
+              }[alignment],
+            );
+          });
+        }
+      });
+      final AnsiTreeViewTheme expandedTheme =
+          compactTheme.copyWith.compact(false);
 
-      for (final AnsiTextAlignment alignment in AnsiTextAlignment.values) {
-        test(alignment, () {
-          final String actual = AnsiTreeView(
-            map,
-            theme: theme.copyWith.valueTheme(
-              alignment: alignment,
-              wrapOptions: const WrapOptions(lineLength: 120),
-            ),
-          ).toString();
-          expect(actual, testCases[alignment]);
-        });
-      }
+      group('expanded', () {
+        for (final AnsiTextAlignment alignment in AnsiTextAlignment.values) {
+          test(alignment, () {
+            final String actual = AnsiTreeView(
+              map,
+              theme: expandedTheme.copyWith.valueTheme(
+                alignment: alignment,
+                wrapOptions: const WrapOptions(lineLength: 120),
+              ),
+            ).toString();
+            expect(
+              actual,
+              <AnsiTextAlignment, String>{
+                AnsiTextAlignment.center: treeviewMixedMockCenterExpanded,
+                AnsiTextAlignment.left: treeviewMixedMockLeftExpanded,
+                AnsiTextAlignment.right: treeviewMixedMockRightExpanded,
+              }[alignment],
+            );
+          });
+        }
+      });
     });
 
     group('no header', () {
@@ -574,6 +611,155 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
  └── 5
 ''',
       );
+    });
+
+    group('compact/expanded', () {
+      AnsiTreeViewTheme getTheme(final bool compact) {
+        return AnsiTreeViewTheme(
+          compact: compact,
+          showListItemIndex: false,
+          headerTheme: const AnsiTreeHeaderTheme(
+            customHeader: 'AnsiX',
+            border: AnsiBorder.none,
+          ),
+          valueTheme: const AnsiTreeNodeValueTheme(
+            alignment: AnsiTextAlignment.left,
+          ),
+          keyTheme: const AnsiTreeNodeKeyTheme(
+            textStyle: AnsiTextStyle(),
+          ),
+        );
+      }
+
+      group('enum top level', () {
+        test('compact', () {
+          expect(
+            AnsiTreeView(MockEnum.value1, theme: getTheme(true)).toString(),
+            '''AnsiX
+ └── MockEnum.value1
+''',
+          );
+        });
+
+        test('expanded', () {
+          expect(
+            AnsiTreeView(MockEnum.value1, theme: getTheme(false)).toString(),
+            '''AnsiX
+ │
+ └──── MockEnum.value1
+''',
+          );
+        });
+      });
+
+      group('int top level', () {
+        test('compact', () {
+          expect(
+            AnsiTreeView(123, theme: getTheme(true)).toString(),
+            '''AnsiX
+ └── 123
+''',
+          );
+        });
+
+        test('expanded', () {
+          expect(
+            AnsiTreeView(123, theme: getTheme(false)).toString(),
+            '''AnsiX
+ │
+ └──── 123
+''',
+          );
+        });
+      });
+
+      group('list top level', () {
+        test('compact', () {
+          expect(
+            AnsiTreeView(<int>[1, 2, 3], theme: getTheme(true)).toString(),
+            '''AnsiX
+ ├── 1
+ ├── 2
+ └── 3
+''',
+          );
+        });
+
+        test('expanded', () {
+          expect(
+            AnsiTreeView(<int>[1, 2, 3], theme: getTheme(false)).toString(),
+            '''AnsiX
+ │
+ ├──── 1
+ │
+ ├──── 2
+ │
+ └──── 3
+''',
+          );
+        });
+      });
+
+      group('map top level', () {
+        test('compact', () {
+          expect(
+            AnsiTreeView(<String, int>{'1': 1, '2': 2, '3': 3},
+                    theme: getTheme(true))
+                .toString(),
+            '''AnsiX
+ ├── 1: 1
+ ├── 2: 2
+ └── 3: 3
+''',
+          );
+        });
+
+        test('expanded', () {
+          expect(
+            AnsiTreeView(<String, int>{'1': 1, '2': 2, '3': 3},
+                    theme: getTheme(false))
+                .toString(),
+            '''AnsiX
+ │
+ ├──── 1: 1
+ │
+ ├──── 2: 2
+ │
+ └──── 3: 3
+''',
+          );
+        });
+      });
+
+      group('class top level', () {
+        test('compact', () {
+          expect(
+            AnsiTreeView(Node(id: '1'), theme: getTheme(true)).toString(),
+            '''AnsiX
+ ├── id: 1
+ ├── child: null
+ └── nodes
+     └── (empty)
+''',
+          );
+        });
+
+        test('expanded', () {
+          expect(
+            AnsiTreeView(Node(id: '1'), theme: getTheme(false)).toString(),
+            '''AnsiX
+ │
+ ├──── id: 1
+ │
+ ├──── child: null
+ │
+ └──── nodes
+       │
+       └──── (empty)
+''',
+          );
+        });
+      });
     });
   });
 }

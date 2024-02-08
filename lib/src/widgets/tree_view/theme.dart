@@ -30,7 +30,7 @@ abstract class AnsiTreeViewTheme {
   @DefaultValue(false)
   bool get sorted;
 
-  /// If set to true all an index will be displayed before list item.
+  /// If set to true an index will be displayed before a list item.
   @DefaultValue(false)
   bool get showListItemIndex;
 
@@ -214,6 +214,7 @@ abstract class AnsiTreeNodeValueTheme extends AnsiTreeNodeTheme {
     int? fixedWidth,
     WrapOptions wrapOptions,
     AnsiTextAlignment? alignment,
+    bool hideIfEmpty,
   }) = _$AnsiTreeNodeValueThemeImpl;
 
   /// Defines the [AnsiTextStyle] of the tree node.
@@ -242,4 +243,8 @@ abstract class AnsiTreeNodeValueTheme extends AnsiTreeNodeTheme {
   ///
   /// If not set, the root [AnsiTextAlignment] of the [AnsiTreeViewTheme] will be used instead.
   AnsiTextAlignment? get alignment;
+
+  /// Defines if the value node will be included if it's empty map or iterable.
+  @DefaultValue(false)
+  bool get hideIfEmpty;
 }

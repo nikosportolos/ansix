@@ -13,7 +13,8 @@ enum TreeNodeType {
         object is bool ||
         object is num ||
         object is double ||
-        object is int) {
+        object is int ||
+        object is Enum) {
       return TreeNodeType.primary;
     }
 

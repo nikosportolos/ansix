@@ -252,6 +252,7 @@ class AnsiTreeView extends AnsiWidget {
     final bool? isLastNode,
     final bool isFirstNode = false,
   }) {
+    final StringBuffer buffer = StringBuffer();
     final List<dynamic> keys =
         map.keys.map((dynamic e) => e).toList(growable: false);
 
@@ -259,14 +260,16 @@ class AnsiTreeView extends AnsiWidget {
       if (theme.valueTheme.hideIfEmpty) {
         return '';
       }
-      return _parseTreeNode('', '(empty)', isLast: true, prefix: prefix);
+      if (!theme.compact) {
+        buffer.writeln('$prefix$_verticalLine');
+      }
+      buffer.write(_parseTreeNode('', '(empty)', isLast: true, prefix: prefix));
+      return buffer.toString();
     }
 
     if (theme.sorted) {
       keys.sort();
     }
-
-    final StringBuffer buffer = StringBuffer();
 
     for (int i = 0; i < keys.length; i++) {
       final String key = keys[i].toString();
@@ -281,7 +284,10 @@ class AnsiTreeView extends AnsiWidget {
           _getAnchor(isLast: isLast, isFirstNode: isFirstNodeAndEntry);
 
       if (!theme.compact) {
-        buffer.writeln('$prefix$_verticalLine');
+        if (isFirstNodeAndEntry && theme.headerTheme.hideHeader) {
+        } else {
+          buffer.writeln('$prefix$_verticalLine');
+        }
       }
 
       switch (TreeNodeType.getType(value)) {
@@ -320,7 +326,7 @@ class AnsiTreeView extends AnsiWidget {
             ..write(_parseTreeMap(
               value,
               prefix: isLast ? '$prefix$tab ' : '$prefix$_verticalLine$tab',
-              isFirstNode: isFirstNodeAndEntry,
+              isFirstNode: false,
             ));
           break;
 

@@ -760,6 +760,67 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
           );
         });
       });
+
+      test('no header', () {
+        expect(
+          AnsiTreeView(
+            <String, dynamic>{
+              'map': <String, dynamic>{
+                'id': 123,
+                'username': 'AnsiX',
+                'empty_map': <String, String>{},
+                'empty_list': <String>[],
+              },
+              'empty_map': <String, String>{},
+              'list': <String>['This', 'is', 'AnsiX'],
+              'empty_list': <String>[],
+            },
+            theme: const AnsiTreeViewTheme(
+              compact: false,
+              alignment: AnsiTextAlignment.center,
+              showListItemIndex: true,
+              headerTheme: AnsiTreeHeaderTheme(hideHeader: true),
+              valueTheme: AnsiTreeNodeValueTheme(
+                alignment: AnsiTextAlignment.left,
+              ),
+              keyTheme: AnsiTreeNodeKeyTheme(
+                textStyle: AnsiTextStyle(),
+              ),
+            ),
+          ).toString(),
+          '''
+┌──── map
+│     │
+│     ├──── id: 123
+│     │
+│     ├──── username: AnsiX
+│     │
+│     ├──── empty_map
+│     │     │
+│     │     └──── (empty)
+│     │
+│     └──── empty_list
+│           │
+│           └──── (empty)
+│
+├──── empty_map
+│     │
+│     └──── (empty)
+│
+├──── list
+│     │
+│     ├──── 0: This
+│     │
+│     ├──── 1: is
+│     │
+│     └──── 2: AnsiX
+│
+└──── empty_list
+      │
+      └──── (empty)
+''',
+        );
+      });
     });
   });
 }

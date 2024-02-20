@@ -382,8 +382,12 @@ class AnsiTreeView extends AnsiWidget {
       switch (TreeNodeType.getType(values[i])) {
         case TreeNodeType.primary:
           if (!theme.compact) {
-            buffer.writeln('$prefix$_verticalLine');
+            if (isFirstNodeAndEntry && theme.headerTheme.hideHeader) {
+            } else {
+              buffer.writeln('$prefix$_verticalLine');
+            }
           }
+
           buffer.write(
             _parseTreeNode(
               theme.showListItemIndex && list.isNotEmpty ? '$i' : '',
@@ -405,20 +409,15 @@ class AnsiTreeView extends AnsiWidget {
             ..write(_horizontalLine)
             ..write(' ')
             ..writeln(
-                '$i'.styled(theme.keyTheme.textStyle, theme.keyTheme.color));
-
-          if (!theme.compact) {
-            buffer.writeln('$prefix$_verticalLine');
-          }
-
-          buffer.write(
-            _parseTreeList(
-              values[i],
-              '$i',
-              isLast ? '$prefix$tab' : '$prefix$_verticalLine$tab',
-              isFirstNode,
-            ),
-          );
+                '$i'.styled(theme.keyTheme.textStyle, theme.keyTheme.color))
+            ..write(
+              _parseTreeList(
+                values[i],
+                '$i',
+                isLast ? '$prefix$tab ' : '$prefix$_verticalLine$tab',
+                isFirstNode,
+              ),
+            );
           break;
 
         case TreeNodeType.map:
@@ -444,44 +443,40 @@ class AnsiTreeView extends AnsiWidget {
     final bool isFirstNode = false,
     final bool hasAnchor = false,
   }) {
-    final StringBuffer buffer = StringBuffer();
-    if (!theme.compact && !isFirstNode) {
-      buffer.writeln('$prefix$_verticalLine');
-    }
+    try {
+      return _parseTreeMap(
+        object.toJson(),
+        prefix: prefix,
+        isFirstNode: isFirstNode,
+      );
+    } catch (_) {}
 
-    String parse() {
-      try {
-        return _parseTreeMap(
-          object.toJson(),
-          prefix: prefix,
-          isFirstNode: isFirstNode,
-        );
-      } catch (_) {}
+    try {
+      return _parseTreeMap(
+        object.toMap(),
+        prefix: prefix,
+        isFirstNode: isFirstNode,
+      );
+    } catch (_) {}
 
-      try {
-        return _parseTreeMap(
-          object.toMap(),
-          prefix: prefix,
-          isFirstNode: isFirstNode,
-        );
-      } catch (_) {}
+    try {
+      final StringBuffer buffer = StringBuffer();
+      if (!theme.compact && !isFirstNode) {
+        buffer.writeln('$prefix$_verticalLine');
+      }
 
-      try {
-        return _parseTreeNode(
-          '',
-          object.toString(),
-          prefix: prefix,
-          hasAnchor: hasAnchor,
-          isLast: true,
-          isFirstNode: isFirstNode,
-        );
-      } catch (_) {}
+      buffer.write(_parseTreeNode(
+        '',
+        object.toString(),
+        prefix: prefix,
+        hasAnchor: hasAnchor,
+        isLast: true,
+        isFirstNode: isFirstNode,
+      ));
+      return buffer.toString();
+    } catch (_) {}
 
-      return '';
-    }
-
-    buffer.write(parse());
-    return buffer.toString();
+    return '';
   }
 
   String _getTabForKey(final String key) {

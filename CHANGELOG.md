@@ -1,3 +1,18 @@
+## v0.3.3
+
+### TreeView enhancements & fixes ([#261](https://github.com/nikosportolos/ansix/pull/261), [#261](https://github.com/nikosportolos/ansix/pull/263), [#263](https://github.com/nikosportolos/ansix/pull/263))
+  - Fixed issue when sublists were parsed as maps
+  - Fixed various issues with `compact` flag of AnsiTreeViewTheme
+  - Added `hideIfEmpty` flag in AnsiTreeAnchorTheme
+  - Added more tests
+
+### Dependencies
+
+- Βump meta from 1.11.0 to 1.12.0 ([#258](https://github.com/nikosportolos/ansix/pull/258))
+- Βump mocktail from 1.0.2 to 1.0.3 ([#259](https://github.com/nikosportolos/ansix/pull/259))
+- Βump test from 1.25.1 to 1.25.2 ([#260](https://github.com/nikosportolos/ansix/pull/260))
+
+
 ## v0.3.2
 
 ### Dependencies

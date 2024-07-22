@@ -26,7 +26,7 @@ class _$AnsiGridCellImpl extends AnsiGridCell {
   final int width;
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is AnsiGridCell &&
             runtimeType == other.runtimeType &&
@@ -198,7 +198,7 @@ class _$AnsiGridCellPositionImpl extends AnsiGridCellPosition {
   final int row;
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is AnsiGridCellPosition &&
             runtimeType == other.runtimeType &&

@@ -12,3 +12,9 @@ data_class:
       default: false
     unmodifiable_collections:
       default: false
+
+json:
+  to_json:
+    options_config:
+      drop_null_values:
+        default: false

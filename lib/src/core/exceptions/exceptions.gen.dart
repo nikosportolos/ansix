@@ -50,7 +50,7 @@ class AnsiNotSupported extends AnsiXException {
   }
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is AnsiNotSupported &&
             runtimeType == other.runtimeType &&
@@ -88,7 +88,7 @@ class WindowsLegacyModeError extends AnsiXException {
   }
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is WindowsLegacyModeError &&
             runtimeType == other.runtimeType &&

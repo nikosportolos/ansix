@@ -22,7 +22,7 @@ class _$WrapOptionsImpl extends WrapOptions {
   final bool lineBreak;
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is WrapOptions &&
             runtimeType == other.runtimeType &&

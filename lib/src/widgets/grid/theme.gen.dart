@@ -50,7 +50,7 @@ class _$AnsiGridThemeImpl extends AnsiGridTheme {
   final WrapOptions wrapOptions;
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is AnsiGridTheme &&
             runtimeType == other.runtimeType &&

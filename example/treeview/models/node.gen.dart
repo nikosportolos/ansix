@@ -33,7 +33,7 @@ class _$NodeImpl extends Node {
   }
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is Node &&
             runtimeType == other.runtimeType &&

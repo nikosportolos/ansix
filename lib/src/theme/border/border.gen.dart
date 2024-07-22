@@ -22,7 +22,7 @@ class _$AnsiBorderImpl extends AnsiBorder {
   final AnsiColor color;
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is AnsiBorder &&
             runtimeType == other.runtimeType &&

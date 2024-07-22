@@ -25,7 +25,7 @@ class _$NodeImpl extends Node {
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,
-      'child': child?.toJson(),
+      if (child != null) 'child': child!.toJson(),
       'nodes': <dynamic>[
         for (final Node i0 in nodes) i0.toJson(),
       ],

@@ -43,7 +43,7 @@ class _$AnsiTreeViewThemeImpl extends AnsiTreeViewTheme {
   final AnsiTextAlignment alignment;
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is AnsiTreeViewTheme &&
             runtimeType == other.runtimeType &&
@@ -311,7 +311,7 @@ class _$AnsiTreeAnchorThemeImpl extends AnsiTreeAnchorTheme {
   final AnsiColor color;
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is AnsiTreeAnchorTheme &&
             runtimeType == other.runtimeType &&
@@ -455,7 +455,7 @@ class _$AnsiTreeHeaderThemeImpl extends AnsiTreeHeaderTheme {
   final bool showHash;
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is AnsiTreeHeaderTheme &&
             runtimeType == other.runtimeType &&
@@ -656,7 +656,7 @@ class _$AnsiTreeNodeThemeImpl extends AnsiTreeNodeTheme {
   final AnsiColor color;
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is AnsiTreeNodeTheme &&
             runtimeType == other.runtimeType &&
@@ -788,7 +788,7 @@ class _$AnsiTreeNodeKeyThemeImpl extends AnsiTreeNodeKeyTheme {
   final AnsiColor color;
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is AnsiTreeNodeKeyTheme &&
             runtimeType == other.runtimeType &&
@@ -941,7 +941,7 @@ class _$AnsiTreeNodeValueThemeImpl extends AnsiTreeNodeValueTheme {
   final bool hideIfEmpty;
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is AnsiTreeNodeValueTheme &&
             runtimeType == other.runtimeType &&

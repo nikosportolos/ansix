@@ -26,7 +26,7 @@ class _$AnsiBorderSetImpl extends AnsiBorderSet {
   final String end;
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is AnsiBorderSet &&
             runtimeType == other.runtimeType &&

@@ -53,7 +53,7 @@ class _$UserImpl extends User {
   }
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is User &&
             runtimeType == other.runtimeType &&
@@ -296,7 +296,7 @@ class _$AddressImpl extends Address {
   }
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is Address &&
             runtimeType == other.runtimeType &&
@@ -452,13 +452,13 @@ class _$EmailImpl extends Email {
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'primary': primary,
-      'secondary': secondary,
-      'personal': personal,
+      if (secondary != null) 'secondary': secondary,
+      if (personal != null) 'personal': personal,
     };
   }
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is Email &&
             runtimeType == other.runtimeType &&

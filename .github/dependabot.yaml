@@ -2,19 +2,48 @@ version: 2
 enable-beta-ecosystems: true
 
 updates:
+  # https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#github-actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+      time: "00:00"
+      day: "monday"
+      timezone: "Europe/Athens"
+    assignees:
+      - "nikosportolos"
+    reviewers:
+      - "nikosportolos"
 
+  # https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#pub
   - package-ecosystem: "pub"
     directory: "/"
     schedule:
       interval: "weekly"
+      time: "00:00"
+      day: "monday"
+      timezone: "Europe/Athens"
+    assignees:
+      - "nikosportolos"
+    reviewers:
+      - "nikosportolos"
+    allow:
+      # Allow both direct and indirect updates for all packages
+      - dependency-type: "all"
     versioning-strategy: increase
 
   - package-ecosystem: "pub"
     directory: "/tool/export_docs"
     schedule:
       interval: "weekly"
+      time: "00:00"
+      day: "monday"
+      timezone: "Europe/Athens"
+    assignees:
+      - "nikosportolos"
+    reviewers:
+      - "nikosportolos"
+    allow:
+      # Allow both direct and indirect updates for all packages
+      - dependency-type: "all"
     versioning-strategy: increase

@@ -4,6 +4,8 @@ analyzer:
   plugins:
     - data_class_plugin
   exclude:
+    - example/**/*.gen.dart
+    - test/**/*.gen.dart
     - lib/**/*.gen.dart
     - lib/generated/**.dart
 

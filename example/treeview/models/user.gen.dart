@@ -53,7 +53,7 @@ class _$UserImpl extends User {
   }
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is User &&
             runtimeType == other.runtimeType &&
@@ -296,7 +296,7 @@ class _$AddressImpl extends Address {
   }
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is Address &&
             runtimeType == other.runtimeType &&
@@ -458,7 +458,7 @@ class _$EmailImpl extends Email {
   }
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is Email &&
             runtimeType == other.runtimeType &&

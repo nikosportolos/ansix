@@ -34,7 +34,7 @@ class _$AnsiTextThemeImpl extends AnsiTextTheme {
   final int? fixedWidth;
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is AnsiTextTheme &&
             runtimeType == other.runtimeType &&

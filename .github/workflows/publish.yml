@@ -19,6 +19,7 @@ jobs:
       - uses: actions/checkout@v4.2.0
       - uses: nikosportolos/dart_package@v0.2.2
         with:
+          dart_sdk: "3.5.3"
           line_length: 80
           coverage: true
           codecov: true

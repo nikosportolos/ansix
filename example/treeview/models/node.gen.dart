@@ -25,7 +25,7 @@ class _$NodeImpl extends Node {
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,
-      'child': child?.toJson(),
+      if (child != null) 'child': child!.toJson(),
       'nodes': <dynamic>[
         for (final Node i0 in nodes) i0.toJson(),
       ],
@@ -33,7 +33,7 @@ class _$NodeImpl extends Node {
   }
 
   @override
-  bool operator ==(Object? other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         other is Node &&
             runtimeType == other.runtimeType &&

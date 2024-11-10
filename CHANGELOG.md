@@ -1,3 +1,8 @@
+## v0.3.4
+
+Dependency updates and source code maintenance.
+
+
 ## v0.3.3
 
 ### TreeView enhancements & fixes ([#261](https://github.com/nikosportolos/ansix/pull/261), [#261](https://github.com/nikosportolos/ansix/pull/263), [#263](https://github.com/nikosportolos/ansix/pull/263))

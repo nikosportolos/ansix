@@ -1,3 +1,8 @@
+## [0.3.3+1] - November 10, 2024
+
+* Automated dependency updates
+
+
 ## v0.3.3
 
 ### TreeView enhancements & fixes ([#261](https://github.com/nikosportolos/ansix/pull/261), [#261](https://github.com/nikosportolos/ansix/pull/263), [#263](https://github.com/nikosportolos/ansix/pull/263))

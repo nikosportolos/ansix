@@ -1,52 +1,51 @@
-name: ansix
-description: AnsiX is a powerful and easy-to-use library that provides tools and extensions for adding ANSI color and styling support to your Dart & Flutter applications.
-version: 0.3.3
-
-homepage: https://github.com/nikosportolos/ansix
-repository: https://github.com/nikosportolos/ansix
-documentation: https://github.com/nikosportolos/ansix
-issue_tracker: https://github.com/nikosportolos/ansix/issues
+name: 'ansix'
+description: 'AnsiX is a powerful and easy-to-use library that provides tools and extensions for adding ANSI color and styling support to your Dart & Flutter applications.'
+version: '0.3.3+1'
+homepage: 'https://github.com/nikosportolos/ansix'
+repository: 'https://github.com/nikosportolos/ansix'
+documentation: 'https://github.com/nikosportolos/ansix'
+issue_tracker: 'https://github.com/nikosportolos/ansix/issues'
 
 environment:
-  sdk: ">=3.1.0 <4.0.0"
+  sdk: '>=3.1.0 <4.0.0'
 
 dependencies:
-  collection: ^1.19.1
-  data_class_plugin: ^1.5.1
-  meta: ^1.16.0
-  path: ^1.9.1
+  collection: '^1.19.1'
+  data_class_plugin: '^1.5.1'
+  meta: '^1.16.0'
+  path: '^1.9.1'
 
 dev_dependencies:
-  lints: ^5.0.0
-  mocktail: ^1.0.3
-  tachyon: ^0.3.1
-  test: ^1.25.8
+  lints: '^5.0.0'
+  mocktail: '^1.0.4'
+  tachyon: '^0.3.1'
+  test: '^1.25.8'
 
 screenshots:
   - description: 'This is an AnsiTreeView usage example'
-    path: assets/images/treeview/class.png
+    path: 'assets/images/treeview/class.png'
   - description: 'This is a vertical AnsiGrid usage example'
-    path: assets/images/grid/vertical-grid-example.png
+    path: 'assets/images/grid/vertical-grid-example.png'
   - description: 'This is a horizontal AnsiGrid usage example'
-    path: assets/images/grid/horizontal-grid-example.png
+    path: 'assets/images/grid/horizontal-grid-example.png'
   - description: 'This is an OutlinedText usage example with various borders'
-    path: assets/images/outlined-text-example-1.png
+    path: 'assets/images/outlined-text-example-1.png'
   - description: 'This is an OutlinedText usage example with auto-wrapped text'
-    path: assets/images/outlined-text-example-2.png
+    path: 'assets/images/outlined-text-example-2.png'
   - description: 'Supported ANSI colors'
-    path: assets/images/color-tables.png
+    path: 'assets/images/color-tables.png'
   - description: 'Supported ANSI text styles'
-    path: assets/images/text-styles.png
+    path: 'assets/images/text-styles.png'
   - description: 'Supported ANSI border styles'
-    path: assets/images/border-styles.png
+    path: 'assets/images/border-styles.png'
   - description: 'Supported ANSI border types'
-    path: assets/images/border-types.png
+    path: 'assets/images/border-types.png'
   - description: 'AnsiX on Flutter Web apps'
-    path: assets/images/web/web-example-chrome.webp
+    path: 'assets/images/web/web-example-chrome.webp'
 
 topics:
-  - ansi
-  - cli
-  - console
-  - grid
-  - treeview
+  - 'ansi'
+  - 'cli'
+  - 'console'
+  - 'grid'
+  - 'treeview'

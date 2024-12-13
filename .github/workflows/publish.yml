@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: nikosportolos/dart_package@v0.2.2
+      - uses: nikosportolos/dart_package@v0.2.3
         with:
           dart_sdk: "3.5.3"
           line_length: 80

@@ -26,7 +26,7 @@ String testPrintOutput(final Function callback) {
   runZoned(
     () => callback(),
     zoneSpecification: ZoneSpecification(
-      print: (_, __, ___, String line) {
+      print: (_, _, _, String line) {
         printedText = line;
       },
     ),

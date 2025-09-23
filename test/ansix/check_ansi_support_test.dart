@@ -21,22 +21,28 @@ void main() {
           for (final bool supportsAnsi in values) {
             group('supportsAnsi: $supportsAnsi', () {
               for (final bool detectWindowsAnsiSupport in values) {
-                group('detectWindowsAnsiSupport: $detectWindowsAnsiSupport',
-                    () {
-                  final bool expected = supportsAnsi
-                      ? supportsAnsi
-                      : attachedToValidStream && detectWindowsAnsiSupport;
+                group(
+                  'detectWindowsAnsiSupport: $detectWindowsAnsiSupport',
+                  () {
+                    final bool expected = supportsAnsi
+                        ? supportsAnsi
+                        : attachedToValidStream && detectWindowsAnsiSupport;
 
-                  test('should return $expected', () {
-                    when(() => terminal.attachedToValidStream)
-                        .thenReturn(attachedToValidStream);
-                    when(() => terminal.runsOnWindows).thenReturn(true);
-                    when(() => terminal.supportsAnsi).thenReturn(supportsAnsi);
-                    when(() => processManager.detectWindowsAnsiSupport())
-                        .thenReturn(detectWindowsAnsiSupport);
-                    expect(AnsiX.checkAnsiSupport(), expected);
-                  });
-                });
+                    test('should return $expected', () {
+                      when(
+                        () => terminal.attachedToValidStream,
+                      ).thenReturn(attachedToValidStream);
+                      when(() => terminal.runsOnWindows).thenReturn(true);
+                      when(
+                        () => terminal.supportsAnsi,
+                      ).thenReturn(supportsAnsi);
+                      when(
+                        () => processManager.detectWindowsAnsiSupport(),
+                      ).thenReturn(detectWindowsAnsiSupport);
+                      expect(AnsiX.checkAnsiSupport(), expected);
+                    });
+                  },
+                );
               }
             });
           }
@@ -50,13 +56,16 @@ void main() {
         group('attachedToValidStream: $attachedToValidStream', () {
           for (final bool supportsAnsi in values) {
             group('supportsAnsi: $supportsAnsi', () {
-              when(() => processManager.determineTerminalType())
-                  .thenReturn(TerminalType.bash);
-              final bool expected = (attachedToValidStream && supportsAnsi) ||
+              when(
+                () => processManager.determineTerminalType(),
+              ).thenReturn(TerminalType.bash);
+              final bool expected =
+                  (attachedToValidStream && supportsAnsi) ||
                   processManager.determineTerminalType() == TerminalType.bash;
               test('should return $expected', () {
-                when(() => terminal.attachedToValidStream)
-                    .thenReturn(attachedToValidStream);
+                when(
+                  () => terminal.attachedToValidStream,
+                ).thenReturn(attachedToValidStream);
                 when(() => terminal.runsOnWindows).thenReturn(false);
                 when(() => terminal.supportsAnsi).thenReturn(supportsAnsi);
                 expect(AnsiX.checkAnsiSupport(), expected);

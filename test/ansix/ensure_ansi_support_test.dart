@@ -24,103 +24,110 @@ void main() {
           for (final bool supportsAnsi in values) {
             group('supportsAnsi: $supportsAnsi', () {
               for (final bool detectWindowsAnsiSupport in values) {
-                group('detectWindowsAnsiSupport: $detectWindowsAnsiSupport',
-                    () {
-                  for (final bool force in values) {
-                    group('force: $force', () {
-                      for (final bool silent in values) {
-                        group('silent: $silent', () {
-                          for (final bool? allowPrint in <bool?>[
-                            null,
-                            true,
-                            false
-                          ]) {
-                            group('allowPrint: $allowPrint', () {
-                              for (final ColorFormat? colorFormat
-                                  in <ColorFormat?>[
-                                null,
-                                ...ColorFormat.values
-                              ]) {
-                                group('colorFormat: $colorFormat', () {
-                                  test('', () {
-                                    when(() => terminal.attachedToValidStream)
-                                        .thenReturn(attachedToValidStream);
-                                    when(() => terminal.runsOnWindows)
-                                        .thenReturn(true);
-                                    when(() => terminal.supportsAnsi)
-                                        .thenReturn(supportsAnsi);
-                                    when(() => processManager
-                                            .detectWindowsAnsiSupport())
-                                        .thenReturn(detectWindowsAnsiSupport);
+                group(
+                  'detectWindowsAnsiSupport: $detectWindowsAnsiSupport',
+                  () {
+                    for (final bool force in values) {
+                      group('force: $force', () {
+                        for (final bool silent in values) {
+                          group('silent: $silent', () {
+                            for (final bool? allowPrint in <bool?>[
+                              null,
+                              true,
+                              false,
+                            ]) {
+                              group('allowPrint: $allowPrint', () {
+                                for (final ColorFormat? colorFormat
+                                    in <ColorFormat?>[
+                                      null,
+                                      ...ColorFormat.values,
+                                    ]) {
+                                  group('colorFormat: $colorFormat', () {
+                                    test('', () {
+                                      when(
+                                        () => terminal.attachedToValidStream,
+                                      ).thenReturn(attachedToValidStream);
+                                      when(
+                                        () => terminal.runsOnWindows,
+                                      ).thenReturn(true);
+                                      when(
+                                        () => terminal.supportsAnsi,
+                                      ).thenReturn(supportsAnsi);
+                                      when(
+                                        () => processManager
+                                            .detectWindowsAnsiSupport(),
+                                      ).thenReturn(detectWindowsAnsiSupport);
 
-                                    final bool supported =
-                                        attachedToValidStream &&
-                                            (detectWindowsAnsiSupport ||
-                                                supportsAnsi);
+                                      final bool supported =
+                                          attachedToValidStream &&
+                                          (detectWindowsAnsiSupport ||
+                                              supportsAnsi);
 
-                                    try {
-                                      AnsiX.ensureSupportsAnsi(
-                                        force: force,
-                                        silent: silent,
-                                        allowPrint: allowPrint,
-                                        colorFormat: colorFormat,
+                                      try {
+                                        AnsiX.ensureSupportsAnsi(
+                                          force: force,
+                                          silent: silent,
+                                          allowPrint: allowPrint,
+                                          colorFormat: colorFormat,
+                                        );
+                                      } catch (e) {
+                                        expect(e is AnsiXException, true);
+                                      }
+
+                                      final bool isEnabled = supported || force;
+                                      final bool allowPrintValue =
+                                          allowPrint ?? true;
+
+                                      expect(AnsiX.isEnabled, isEnabled);
+                                      expect(AnsiX.allowPrint, allowPrintValue);
+
+                                      expect(
+                                        AnsiX.colorFormat,
+                                        colorFormat ?? ColorFormat.ansi,
                                       );
-                                    } catch (e) {
-                                      expect(e is AnsiXException, true);
-                                    }
 
-                                    final bool isEnabled = supported || force;
-                                    final bool allowPrintValue =
-                                        allowPrint ?? true;
+                                      expect(
+                                        AnsiX.formatter is AnsiTextFormatter,
+                                        isEnabled,
+                                      );
 
-                                    expect(AnsiX.isEnabled, isEnabled);
-                                    expect(AnsiX.allowPrint, allowPrintValue);
+                                      expect(
+                                        AnsiX.formatter is RgbTextFormatter,
+                                        isEnabled &&
+                                            colorFormat == ColorFormat.rgb,
+                                      );
 
-                                    expect(
-                                      AnsiX.colorFormat,
-                                      colorFormat ?? ColorFormat.ansi,
-                                    );
+                                      expect(
+                                        AnsiX.formatter
+                                            is StandardTextFormatter,
+                                        !isEnabled,
+                                      );
 
-                                    expect(
-                                      AnsiX.formatter is AnsiTextFormatter,
-                                      isEnabled,
-                                    );
+                                      expect(
+                                        AnsiX.printer is StandardPrinter,
+                                        !isEnabled && allowPrintValue,
+                                      );
 
-                                    expect(
-                                      AnsiX.formatter is RgbTextFormatter,
-                                      isEnabled &&
-                                          colorFormat == ColorFormat.rgb,
-                                    );
+                                      expect(
+                                        AnsiX.printer is NoOpPrinter,
+                                        !allowPrintValue,
+                                      );
 
-                                    expect(
-                                      AnsiX.formatter is StandardTextFormatter,
-                                      !isEnabled,
-                                    );
-
-                                    expect(
-                                      AnsiX.printer is StandardPrinter,
-                                      !isEnabled && allowPrintValue,
-                                    );
-
-                                    expect(
-                                      AnsiX.printer is NoOpPrinter,
-                                      !allowPrintValue,
-                                    );
-
-                                    expect(
-                                      AnsiX.printer is AnsiPrinter,
-                                      isEnabled && allowPrintValue,
-                                    );
+                                      expect(
+                                        AnsiX.printer is AnsiPrinter,
+                                        isEnabled && allowPrintValue,
+                                      );
+                                    });
                                   });
-                                });
-                              }
-                            });
-                          }
-                        });
-                      }
-                    });
-                  }
-                });
+                                }
+                              });
+                            }
+                          });
+                        }
+                      });
+                    }
+                  },
+                );
               }
             });
           }
@@ -141,27 +148,30 @@ void main() {
                       for (final bool? allowPrint in <bool?>[
                         null,
                         true,
-                        false
+                        false,
                       ]) {
                         group('allowPrint: $allowPrint', () {
                           for (final ColorFormat? colorFormat in <ColorFormat?>[
                             null,
-                            ...ColorFormat.values
+                            ...ColorFormat.values,
                           ]) {
                             group('colorFormat: $colorFormat', () {
                               test('', () {
-                                when(() => terminal.attachedToValidStream)
-                                    .thenReturn(attachedToValidStream);
-                                when(() => terminal.runsOnWindows)
-                                    .thenReturn(false);
-                                when(() => terminal.supportsAnsi)
-                                    .thenReturn(supportsAnsi);
-                                when(() =>
-                                        processManager.determineTerminalType())
-                                    .thenReturn(TerminalType.bash);
+                                when(
+                                  () => terminal.attachedToValidStream,
+                                ).thenReturn(attachedToValidStream);
+                                when(
+                                  () => terminal.runsOnWindows,
+                                ).thenReturn(false);
+                                when(
+                                  () => terminal.supportsAnsi,
+                                ).thenReturn(supportsAnsi);
+                                when(
+                                  () => processManager.determineTerminalType(),
+                                ).thenReturn(TerminalType.bash);
 
-                                final bool supported = (attachedToValidStream &&
-                                        supportsAnsi) ||
+                                final bool supported =
+                                    (attachedToValidStream && supportsAnsi) ||
                                     processManager.determineTerminalType() ==
                                         TerminalType.bash;
 

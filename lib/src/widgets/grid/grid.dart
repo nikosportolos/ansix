@@ -13,7 +13,7 @@ enum AnsiGridType {
   fromRows,
 
   /// Used to create an [AnsiGrid] from a list of columns.
-  fromColumns;
+  fromColumns,
 }
 
 /// **AnsiGrid**
@@ -41,10 +41,11 @@ class AnsiGrid extends AnsiWidget {
   AnsiGrid._(
     final List<List<Object?>> data, {
     this.theme = const AnsiGridTheme(),
-  })  : columnCount = data.length,
-        rowCount = data.objectCount {
-    final int totalGridRows =
-        theme.orientation.isVertical ? rowCount : columnCount;
+  }) : columnCount = data.length,
+       rowCount = data.objectCount {
+    final int totalGridRows = theme.orientation.isVertical
+        ? rowCount
+        : columnCount;
 
     columns = <AnsiGridColumn>[
       for (int i = 0; i < data.length; i++) //
@@ -105,13 +106,17 @@ class AnsiGrid extends AnsiWidget {
   }
 
   void _generateGrid() {
-    final AnsiGridBorderSet builder =
-        AnsiGridBorderSet.fromBorder(theme.border);
+    final AnsiGridBorderSet builder = AnsiGridBorderSet.fromBorder(
+      theme.border,
+    );
 
-    final int maxColumnWidth =
-        columns.fold(0, (int m, AnsiGridColumn column) => max(m, column.width));
-    final Iterable<AnsiGridCell> allCells =
-        columns.expand((AnsiGridColumn column) => column.cells);
+    final int maxColumnWidth = columns.fold(
+      0,
+      (int m, AnsiGridColumn column) => max(m, column.width),
+    );
+    final Iterable<AnsiGridCell> allCells = columns.expand(
+      (AnsiGridColumn column) => column.cells,
+    );
 
     for (int row = 0; row < rowCount; row++) {
       _generateRow(
@@ -183,7 +188,9 @@ class AnsiGrid extends AnsiWidget {
       }
 
       _buffer.writeWithForegroundColor(
-          builder.textLine.end, theme.border.color);
+        builder.textLine.end,
+        theme.border.color,
+      );
 
       if (maxRowLines > 1 && line != maxRowLines - 1) {
         _buffer.writeln();
@@ -212,10 +219,13 @@ class AnsiGrid extends AnsiWidget {
     required final int maxColumnWidth,
   }) {
     final AnsiGridColumn column = columns[col];
-    final AnsiColor backgroundColor = allCells
-            .where((AnsiGridCell cell) => theme.orientation.isVertical
-                ? cell.position.row == row && cell.lines.isNotEmpty
-                : cell.position.column == col && cell.lines.isNotEmpty)
+    final AnsiColor backgroundColor =
+        allCells
+            .where(
+              (AnsiGridCell cell) => theme.orientation.isVertical
+                  ? cell.position.row == row && cell.lines.isNotEmpty
+                  : cell.position.column == col && cell.lines.isNotEmpty,
+            )
             .firstOrNull
             ?.lines[0]
             .backgroundColor ??
@@ -260,8 +270,10 @@ class AnsiGrid extends AnsiWidget {
           break;
 
         case AnsiTextAlignment.center:
-          final (int, int) paddings =
-              alignCenter(ansiText.width - widthDiff, ansiText.width);
+          final (int, int) paddings = alignCenter(
+            ansiText.width - widthDiff,
+            ansiText.width,
+          );
           _buffer.writeSpaces(paddings.$1, backgroundColor);
           _buffer.write(ansiText.formattedText);
           _buffer.writeSpaces(paddings.$2, backgroundColor);
@@ -287,15 +299,18 @@ class AnsiGrid extends AnsiWidget {
     }
   }
 
-  int _calculateColumnWidthDiff(
-      {required final int columnWidth,
-      required final int maxColumnWidth,
-      required final int textWidth}) {
+  int _calculateColumnWidthDiff({
+    required final int columnWidth,
+    required final int maxColumnWidth,
+    required final int textWidth,
+  }) {
     return _calculateSpacesForColumn(columnWidth, maxColumnWidth) - textWidth;
   }
 
   int _calculateSpacesForColumn(
-      final int columnWidth, final int maxColumnWidth) {
+    final int columnWidth,
+    final int maxColumnWidth,
+  ) {
     return theme.keepSameWidth ? maxColumnWidth : columnWidth;
   }
 }

@@ -142,31 +142,37 @@ class _AnsiGridThemeCopyWithProxyImpl implements _AnsiGridThemeCopyWithProxy {
   @override
   $AnsiBorderCopyWithProxyChain<AnsiGridTheme> get border =>
       $AnsiBorderCopyWithProxyChain<AnsiGridTheme>(
-          _value.border, (AnsiBorder update) => this(border: update));
+        _value.border,
+        (AnsiBorder update) => this(border: update),
+      );
 
   @pragma('vm:prefer-inline')
   @override
   $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>? get headerTextTheme =>
       _value.headerTextTheme == null
-          ? null
-          : $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>(
-              _value.headerTextTheme!,
-              (AnsiTextTheme? update) => this(headerTextTheme: update));
+      ? null
+      : $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>(
+          _value.headerTextTheme!,
+          (AnsiTextTheme? update) => this(headerTextTheme: update),
+        );
 
   @pragma('vm:prefer-inline')
   @override
   $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme> get cellTextTheme =>
-      $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>(_value.cellTextTheme,
-          (AnsiTextTheme update) => this(cellTextTheme: update));
+      $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>(
+        _value.cellTextTheme,
+        (AnsiTextTheme update) => this(cellTextTheme: update),
+      );
 
   @pragma('vm:prefer-inline')
   @override
   $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>? get footerTextTheme =>
       _value.footerTextTheme == null
-          ? null
-          : $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>(
-              _value.footerTextTheme!,
-              (AnsiTextTheme? update) => this(footerTextTheme: update));
+      ? null
+      : $AnsiTextThemeCopyWithProxyChain<AnsiGridTheme>(
+          _value.footerTextTheme!,
+          (AnsiTextTheme? update) => this(footerTextTheme: update),
+        );
 
   @pragma('vm:prefer-inline')
   @override
@@ -192,8 +198,10 @@ class _AnsiGridThemeCopyWithProxyImpl implements _AnsiGridThemeCopyWithProxy {
   @pragma('vm:prefer-inline')
   @override
   $WrapOptionsCopyWithProxyChain<AnsiGridTheme> get wrapOptions =>
-      $WrapOptionsCopyWithProxyChain<AnsiGridTheme>(_value.wrapOptions,
-          (WrapOptions update) => this(wrapOptions: update));
+      $WrapOptionsCopyWithProxyChain<AnsiGridTheme>(
+        _value.wrapOptions,
+        (WrapOptions update) => this(wrapOptions: update),
+      );
 
   @pragma('vm:prefer-inline')
   @override
@@ -229,9 +237,10 @@ class _AnsiGridThemeCopyWithProxyImpl implements _AnsiGridThemeCopyWithProxy {
 }
 
 sealed class $AnsiGridThemeCopyWithProxyChain<$Result> {
-  factory $AnsiGridThemeCopyWithProxyChain(final AnsiGridTheme value,
-          final $Result Function(AnsiGridTheme update) chain) =
-      _AnsiGridThemeCopyWithProxyChainImpl<$Result>;
+  factory $AnsiGridThemeCopyWithProxyChain(
+    final AnsiGridTheme value,
+    final $Result Function(AnsiGridTheme update) chain,
+  ) = _AnsiGridThemeCopyWithProxyChainImpl<$Result>;
 
   $Result border(AnsiBorder newValue);
 
@@ -331,22 +340,24 @@ class _AnsiGridThemeCopyWithProxyChainImpl<$Result>
     final bool? wrapText,
     final WrapOptions? wrapOptions,
   }) {
-    return _chain(_$AnsiGridThemeImpl(
-      border: border ?? _value.border,
-      headerTextTheme: identical(headerTextTheme, const Object())
-          ? _value.headerTextTheme
-          : (headerTextTheme as AnsiTextTheme?),
-      cellTextTheme: cellTextTheme ?? _value.cellTextTheme,
-      footerTextTheme: identical(footerTextTheme, const Object())
-          ? _value.footerTextTheme
-          : (footerTextTheme as AnsiTextTheme?),
-      keepSameWidth: keepSameWidth ?? _value.keepSameWidth,
-      orientation: orientation ?? _value.orientation,
-      transparent: transparent ?? _value.transparent,
-      overrideTheme: overrideTheme ?? _value.overrideTheme,
-      wrapText: wrapText ?? _value.wrapText,
-      wrapOptions: wrapOptions ?? _value.wrapOptions,
-    ));
+    return _chain(
+      _$AnsiGridThemeImpl(
+        border: border ?? _value.border,
+        headerTextTheme: identical(headerTextTheme, const Object())
+            ? _value.headerTextTheme
+            : (headerTextTheme as AnsiTextTheme?),
+        cellTextTheme: cellTextTheme ?? _value.cellTextTheme,
+        footerTextTheme: identical(footerTextTheme, const Object())
+            ? _value.footerTextTheme
+            : (footerTextTheme as AnsiTextTheme?),
+        keepSameWidth: keepSameWidth ?? _value.keepSameWidth,
+        orientation: orientation ?? _value.orientation,
+        transparent: transparent ?? _value.transparent,
+        overrideTheme: overrideTheme ?? _value.overrideTheme,
+        wrapText: wrapText ?? _value.wrapText,
+        wrapOptions: wrapOptions ?? _value.wrapOptions,
+      ),
+    );
   }
 }
 

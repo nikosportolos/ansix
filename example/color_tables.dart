@@ -28,16 +28,20 @@ void main() {
       if (i != 0 && i % maxColumns == 0) {
         buffer.writeln();
       }
-      buffer.write(AnsiText(
-        '${colors[i].value}',
-        foregroundColor:
-            colors[i].lightness != null && colors[i].lightness! >= 50 //
-                ? AnsiColor.black
-                : AnsiColor.white,
-        backgroundColor: colors[i],
-        fixedWidth: size,
-        alignment: AnsiTextAlignment.center,
-      ));
+      buffer.write(
+        AnsiText(
+          '${colors[i].value}',
+          foregroundColor:
+              colors[i].lightness != null &&
+                  colors[i].lightness! >=
+                      50 //
+              ? AnsiColor.black
+              : AnsiColor.white,
+          backgroundColor: colors[i],
+          fixedWidth: size,
+          alignment: AnsiTextAlignment.center,
+        ),
+      );
     }
 
     buffer

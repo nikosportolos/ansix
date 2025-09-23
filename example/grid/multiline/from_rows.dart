@@ -15,7 +15,7 @@ void main() {
       'Average',
       '',
       '',
-      movies.map((Movie m) => m.rate).toList(growable: false).average
+      movies.map((Movie m) => m.rate).toList(growable: false).average,
     ],
   ];
 
@@ -25,7 +25,9 @@ void main() {
   print('');
 
   print('horizontal'.underline());
-  final AnsiGrid horizontalGrid =
-      AnsiGrid.fromRows(rows, theme: horizontalTheme);
+  final AnsiGrid horizontalGrid = AnsiGrid.fromRows(
+    rows,
+    theme: horizontalTheme,
+  );
   print(horizontalGrid);
 }

@@ -16,16 +16,17 @@ void main() {
     deleteDuration: const Duration(milliseconds: 100),
   );
 
-  final String colored = (StringBuffer()
-        ..writeWithForegroundColor('This ', AnsiColor.deepSkyBlue4)
-        ..writeWithForegroundColor('is ', AnsiColor.aquamarine1)
-        ..writeWithForegroundColor('a ', AnsiColor.green4)
-        ..writeWithForegroundColor('multi', AnsiColor.blue3)
-        ..writeWithForegroundColor('-', AnsiColor.darkOliveGreen1)
-        ..writeWithForegroundColor('color ', AnsiColor.greenYellow)
-        ..writeWithForegroundColor('text', AnsiColor.deepSkyBlue5)
-        ..writeWithForegroundColor('.', AnsiColor.white))
-      .toString();
+  final String colored =
+      (StringBuffer()
+            ..writeWithForegroundColor('This ', AnsiColor.deepSkyBlue4)
+            ..writeWithForegroundColor('is ', AnsiColor.aquamarine1)
+            ..writeWithForegroundColor('a ', AnsiColor.green4)
+            ..writeWithForegroundColor('multi', AnsiColor.blue3)
+            ..writeWithForegroundColor('-', AnsiColor.darkOliveGreen1)
+            ..writeWithForegroundColor('color ', AnsiColor.greenYellow)
+            ..writeWithForegroundColor('text', AnsiColor.deepSkyBlue5)
+            ..writeWithForegroundColor('.', AnsiColor.white))
+          .toString();
 
   typewriter.print(
     colored,
@@ -37,16 +38,25 @@ void main() {
     deleteDuration: const Duration(milliseconds: 30),
   );
 
-  final String styled = (StringBuffer()
-        ..writeStyled('This ', textStyle: const AnsiTextStyle(inverse: true))
-        ..writeStyled('is ', textStyle: const AnsiTextStyle(italic: true))
-        ..writeStyled('a ', textStyle: const AnsiTextStyle(bold: true))
-        ..writeStyled('text ',
-            textStyle: const AnsiTextStyle(strikethrough: true))
-        ..writeStyled('with ', textStyle: const AnsiTextStyle(underline: true))
-        ..writeStyled('ANSI ', textStyle: const AnsiTextStyle(dim: true))
-        ..writeStyled('styles', textStyle: const AnsiTextStyle(bold: true)))
-      .toString();
+  final String styled =
+      (StringBuffer()
+            ..writeStyled(
+              'This ',
+              textStyle: const AnsiTextStyle(inverse: true),
+            )
+            ..writeStyled('is ', textStyle: const AnsiTextStyle(italic: true))
+            ..writeStyled('a ', textStyle: const AnsiTextStyle(bold: true))
+            ..writeStyled(
+              'text ',
+              textStyle: const AnsiTextStyle(strikethrough: true),
+            )
+            ..writeStyled(
+              'with ',
+              textStyle: const AnsiTextStyle(underline: true),
+            )
+            ..writeStyled('ANSI ', textStyle: const AnsiTextStyle(dim: true))
+            ..writeStyled('styles', textStyle: const AnsiTextStyle(bold: true)))
+          .toString();
 
   typewriter.print(
     styled,

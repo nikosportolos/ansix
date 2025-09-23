@@ -94,21 +94,22 @@ void main() {
     group('wrap lines', () {
       test('40', () {
         expect(
-            AnsiOutlinedText(
-              'This is a demo text with rounded borders',
-              border: const AnsiBorder(
-                color: AnsiColor.deepSkyBlue4,
-                type: AnsiBorderType.outside,
-                style: AnsiBorderStyle.rounded,
-              ),
-              foregroundColor: AnsiColor.darkKhaki,
-              wrapText: true,
-              fixedWidth: 40,
-            ).formattedText,
-            '''
+          AnsiOutlinedText(
+            'This is a demo text with rounded borders',
+            border: const AnsiBorder(
+              color: AnsiColor.deepSkyBlue4,
+              type: AnsiBorderType.outside,
+              style: AnsiBorderStyle.rounded,
+            ),
+            foregroundColor: AnsiColor.darkKhaki,
+            wrapText: true,
+            fixedWidth: 40,
+          ).formattedText,
+          '''
 [38;5;25m╭────────────────────────────────────────╮[0m
 [38;5;25m│[0m[38;5;143mThis is a demo text with rounded borders[0m[38;5;25m│[0m
-[38;5;25m╰────────────────────────────────────────╯[0m''');
+[38;5;25m╰────────────────────────────────────────╯[0m''',
+        );
       });
 
       test('20', () {

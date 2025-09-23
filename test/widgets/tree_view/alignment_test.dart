@@ -16,7 +16,10 @@ void main() {
     for (final AnsiTextAlignment treeAlignment in AnsiTextAlignment.values) {
       group('treeAlignment: ${treeAlignment.name}', () {
         for (final AnsiTextAlignment? valueNodeAlignment
-            in <AnsiTextAlignment?>[null, ...AnsiTextAlignment.values]) {
+            in <AnsiTextAlignment?>[
+              null,
+              ...AnsiTextAlignment.values,
+            ]) {
           group('valueNodeAlignment: ${valueNodeAlignment?.name}', () {
             test('${treeAlignment.name}-${valueNodeAlignment?.name}', () {
               final AnsiTreeView tree = AnsiTreeView(
@@ -44,25 +47,25 @@ void main() {
 
 const Map<AnsiTextAlignment, Map<AnsiTextAlignment?, String>> _mocks =
     <AnsiTextAlignment, Map<AnsiTextAlignment?, String>>{
-  AnsiTextAlignment.left: <AnsiTextAlignment?, String>{
-    AnsiTextAlignment.left: _leftTreeLeftValueMock,
-    AnsiTextAlignment.center: _leftTreeCenterValueMock,
-    AnsiTextAlignment.right: _leftTreeRightValueMock,
-    null: _leftTreeNullValueMock,
-  },
-  AnsiTextAlignment.center: <AnsiTextAlignment?, String>{
-    AnsiTextAlignment.left: _centerTreeLeftValueMock,
-    AnsiTextAlignment.center: _centerTreeCenterValueMock,
-    AnsiTextAlignment.right: _centerTreeRightValueMock,
-    null: _centerTreeNullValueMock,
-  },
-  AnsiTextAlignment.right: <AnsiTextAlignment?, String>{
-    AnsiTextAlignment.left: _rightTreeLeftValueMock,
-    AnsiTextAlignment.center: _rightTreeCenterValueMock,
-    AnsiTextAlignment.right: _rightTreeRightValueMock,
-    null: _rightTreeNullValueMock,
-  },
-};
+      AnsiTextAlignment.left: <AnsiTextAlignment?, String>{
+        AnsiTextAlignment.left: _leftTreeLeftValueMock,
+        AnsiTextAlignment.center: _leftTreeCenterValueMock,
+        AnsiTextAlignment.right: _leftTreeRightValueMock,
+        null: _leftTreeNullValueMock,
+      },
+      AnsiTextAlignment.center: <AnsiTextAlignment?, String>{
+        AnsiTextAlignment.left: _centerTreeLeftValueMock,
+        AnsiTextAlignment.center: _centerTreeCenterValueMock,
+        AnsiTextAlignment.right: _centerTreeRightValueMock,
+        null: _centerTreeNullValueMock,
+      },
+      AnsiTextAlignment.right: <AnsiTextAlignment?, String>{
+        AnsiTextAlignment.left: _rightTreeLeftValueMock,
+        AnsiTextAlignment.center: _rightTreeCenterValueMock,
+        AnsiTextAlignment.right: _rightTreeRightValueMock,
+        null: _rightTreeNullValueMock,
+      },
+    };
 
 const String _leftTreeLeftValueMock = '''
 ┌─────────────────────┐

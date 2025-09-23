@@ -1,13 +1,12 @@
-import 'dart:html';
-
 import 'package:ansix/src/system/browser_detector.dart';
 import 'package:ansix/src/system/terminal/terminal.dart';
+import 'package:web/web.dart';
 
 class AnsiTerminalImpl implements AnsiTerminal {
   AnsiTerminalImpl()
-      : _browser = const BrowserDetector().detect(
-          window.navigator.userAgent,
-        );
+    : _browser = const BrowserDetector().detect(
+        window.navigator.userAgent,
+      );
 
   final Browser _browser;
 

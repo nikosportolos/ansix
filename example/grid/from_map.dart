@@ -18,7 +18,7 @@ void main() {
           '234'.bold(),
           '5345435345345345'.red(),
           '34534',
-          '234234'
+          '234234',
         ],
       ],
       theme: const AnsiGridTheme(
@@ -40,30 +40,32 @@ void main() {
     style: AnsiTextStyle(bold: true),
   );
 
-  print(AnsiGrid.fromColumns(
-    <List<Object?>>[
-      <Object?>['Column 1', 1, 2, 3, 4, 5, 6],
-      <Object?>['Column 2'.bold(), 1, 2, 3, 4, 5],
-      <Object?>[
-        AnsiText.withTheme('Column 3', headerTheme),
-        'row 1',
-        'row 2',
-        'this is a long text'.red(),
-        '',
-        'row 5'
+  print(
+    AnsiGrid.fromColumns(
+      <List<Object?>>[
+        <Object?>['Column 1', 1, 2, 3, 4, 5, 6],
+        <Object?>['Column 2'.bold(), 1, 2, 3, 4, 5],
+        <Object?>[
+          AnsiText.withTheme('Column 3', headerTheme),
+          'row 1',
+          'row 2',
+          'this is a long text'.red(),
+          '',
+          'row 5',
+        ],
       ],
-    ],
-    theme: const AnsiGridTheme(
-      border: AnsiBorder(
-        type: AnsiBorderType.all,
-        style: AnsiBorderStyle.square,
-      ),
-      orientation: AnsiOrientation.vertical,
-      keepSameWidth: true,
-      headerTextTheme: headerTheme,
-      cellTextTheme: AnsiTextTheme(
-        foregroundColor: AnsiColor.cadetBlue,
+      theme: const AnsiGridTheme(
+        border: AnsiBorder(
+          type: AnsiBorderType.all,
+          style: AnsiBorderStyle.square,
+        ),
+        orientation: AnsiOrientation.vertical,
+        keepSameWidth: true,
+        headerTextTheme: headerTheme,
+        cellTextTheme: AnsiTextTheme(
+          foregroundColor: AnsiColor.cadetBlue,
+        ),
       ),
     ),
-  ));
+  );
 }

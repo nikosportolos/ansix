@@ -21,8 +21,11 @@ void main() {
 
     test('withColor', () {
       expect(
-        formatter.withColor(testMessage,
-            foreground: foregroundColor, background: backgroundColor),
+        formatter.withColor(
+          testMessage,
+          foreground: foregroundColor,
+          background: backgroundColor,
+        ),
         '\x1B[38;5;25m\x1B[48;5;43m$testMessage\x1B[0m',
       );
       expect(

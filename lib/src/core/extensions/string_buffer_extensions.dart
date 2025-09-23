@@ -50,10 +50,12 @@ extension StringBufferX on StringBuffer {
       return;
     }
 
-    write(text.colored(
-      foreground: foregroundColor,
-      background: backgroundColor,
-    ));
+    write(
+      text.colored(
+        foreground: foregroundColor,
+        background: backgroundColor,
+      ),
+    );
   }
 
   /// Adds [Rgb] colors on the given [text].
@@ -66,10 +68,12 @@ extension StringBufferX on StringBuffer {
       return;
     }
 
-    write(text.coloredRgb(
-      foreground: foreground,
-      background: background,
-    ));
+    write(
+      text.coloredRgb(
+        foreground: foreground,
+        background: background,
+      ),
+    );
   }
 
   /// Adds foreground color on the given [text].
@@ -101,10 +105,12 @@ extension StringBufferX on StringBuffer {
       return;
     }
 
-    write(text.styled(
-      textStyle,
-      foregroundColor,
-      backgroundColor,
-    ));
+    write(
+      text.styled(
+        textStyle,
+        foregroundColor,
+        backgroundColor,
+      ),
+    );
   }
 }

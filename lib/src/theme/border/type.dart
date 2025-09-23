@@ -9,5 +9,5 @@ enum AnsiBorderType {
   none,
   outside,
   outsideHorizontal,
-  outsideVertical;
+  outsideVertical,
 }

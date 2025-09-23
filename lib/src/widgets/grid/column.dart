@@ -25,17 +25,24 @@ class AnsiGridColumn {
           object: data[row],
           theme: theme,
           position: AnsiGridCellPosition(column: columnIndex, row: row),
-          type: theme.orientation.isVertical //
+          type:
+              theme
+                  .orientation
+                  .isVertical //
               ? _getType(row, totalGridRows)
               : _getType(columnIndex, totalGridRows),
-        )
+        ),
     ];
 
     rowCount = data.length;
-    lineCount =
-        cells.fold<int>(0, (int m, AnsiGridCell cell) => m + cell.lineCount);
-    width =
-        cells.fold<int>(0, (int m, AnsiGridCell cell) => max(m, cell.width));
+    lineCount = cells.fold<int>(
+      0,
+      (int m, AnsiGridCell cell) => m + cell.lineCount,
+    );
+    width = cells.fold<int>(
+      0,
+      (int m, AnsiGridCell cell) => max(m, cell.width),
+    );
   }
 
   /// The list of [AnsiGridCell] of the column.
@@ -82,23 +89,30 @@ class AnsiGridColumn {
 
     AnsiTextTheme textTheme = type.getTextTheme(theme);
     final AnsiPadding padding = textTheme.padding;
-    textTheme = textTheme.copyWith.padding(AnsiPadding.only(
-      left: textTheme.padding.left,
-      right: textTheme.padding.right,
-    ));
+    textTheme = textTheme.copyWith.padding(
+      AnsiPadding.only(
+        left: textTheme.padding.left,
+        right: textTheme.padding.right,
+      ),
+    );
 
     final AnsiText emptyAnsiText = AnsiText.withTheme('', textTheme);
 
-    String text =
-        theme.overrideTheme ? object.toString() : object.toString().unformatted;
+    String text = theme.overrideTheme
+        ? object.toString()
+        : object.toString().unformatted;
     if (theme.wrapText) {
       final int? wrapLength =
           theme.wrapOptions.lineLength ?? textTheme.fixedWidth;
       if (wrapLength != null && wrapLength < text.length) {
-        text = text //
-            .wrapText(wrapOptions: theme.wrapOptions, fixedWidth: wrapLength)
-            .map((String s) => s.trim())
-            .join(AnsiEscapeCodes.newLine);
+        text =
+            text //
+                .wrapText(
+                  wrapOptions: theme.wrapOptions,
+                  fixedWidth: wrapLength,
+                )
+                .map((String s) => s.trim())
+                .join(AnsiEscapeCodes.newLine);
       }
     }
     final List<String> lines = text.split(AnsiEscapeCodes.newLine);
@@ -117,9 +131,11 @@ class AnsiGridColumn {
       );
     }
 
-    final List<AnsiText> data = lines.map((String t) {
-      return AnsiText.withTheme(t, textTheme);
-    }).toList(growable: false);
+    final List<AnsiText> data = lines
+        .map((String t) {
+          return AnsiText.withTheme(t, textTheme);
+        })
+        .toList(growable: false);
 
     return AnsiGridCell(
       position: position,
@@ -139,26 +155,29 @@ class AnsiGridColumn {
     required final AnsiGridTheme theme,
     required final AnsiGridCellType type,
   }) {
-    AnsiTextTheme textTheme =
-        theme.overrideTheme ? ansiText.theme : type.getTextTheme(theme);
+    AnsiTextTheme textTheme = theme.overrideTheme
+        ? ansiText.theme
+        : type.getTextTheme(theme);
     final AnsiPadding padding = textTheme.padding;
-    textTheme = textTheme.copyWith.padding(AnsiPadding.only(
-      left: textTheme.padding.left,
-      right: textTheme.padding.right,
-    ));
+    textTheme = textTheme.copyWith.padding(
+      AnsiPadding.only(
+        left: textTheme.padding.left,
+        right: textTheme.padding.right,
+      ),
+    );
     final AnsiText emptyAnsiText = AnsiText.withTheme('', textTheme);
 
     if (theme.wrapText) {
       ansiText = AnsiText.withTheme(
-          ansiText.text
-              .wrapText(
-                wrapOptions: theme.wrapOptions,
-                fixedWidth:
-                    theme.wrapOptions.lineLength ?? textTheme.fixedWidth,
-              )
-              .map((String s) => s.trim())
-              .join(AnsiEscapeCodes.newLine),
-          textTheme);
+        ansiText.text
+            .wrapText(
+              wrapOptions: theme.wrapOptions,
+              fixedWidth: theme.wrapOptions.lineLength ?? textTheme.fixedWidth,
+            )
+            .map((String s) => s.trim())
+            .join(AnsiEscapeCodes.newLine),
+        textTheme,
+      );
     }
 
     if (!ansiText.isMultiline) {
@@ -198,7 +217,7 @@ extension on AnsiGridCellType {
     return switch (this) {
       AnsiGridCellType.header => theme.headerTextTheme ?? theme.cellTextTheme,
       AnsiGridCellType.cell => theme.cellTextTheme,
-      AnsiGridCellType.footer => theme.footerTextTheme ?? theme.cellTextTheme
+      AnsiGridCellType.footer => theme.footerTextTheme ?? theme.cellTextTheme,
     };
   }
 }

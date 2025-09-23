@@ -96,8 +96,9 @@ void main() {
               style: AnsiBorderStyle.square,
             ),
           ),
-          valueTheme:
-              AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
+          valueTheme: AnsiTreeNodeValueTheme(
+            alignment: AnsiTextAlignment.center,
+          ),
         ),
       ).toString();
       expect(actual.unformatted, treeViewMockExpanded);
@@ -119,8 +120,10 @@ void main() {
         ],
       );
 
-      final String actual =
-          AnsiTreeView(node3, theme: AnsiTreeViewTheme.$default()).toString();
+      final String actual = AnsiTreeView(
+        node3,
+        theme: AnsiTreeViewTheme.$default(),
+      ).toString();
       expect(actual.unformatted, treeviewNestedMock);
     });
 
@@ -143,10 +146,10 @@ void main() {
       final String actual = AnsiTreeView(
         node3,
         theme: AnsiTreeViewTheme.$default().copyWith.headerTheme.textTheme(
-              AnsiTextTheme(
-                padding: AnsiPadding.vertical(1),
-              ),
-            ),
+          AnsiTextTheme(
+            padding: AnsiPadding.vertical(1),
+          ),
+        ),
       ).toString();
       expect(actual.toString(), treeviewWithVerticalPaddedHeaderMock);
     });
@@ -168,9 +171,10 @@ void main() {
       });
 
       test("don't include empty", () {
-        final String actual = AnsiTreeView(map,
-                theme: theme.copyWith.valueTheme.hideIfEmpty(true))
-            .toString();
+        final String actual = AnsiTreeView(
+          map,
+          theme: theme.copyWith.valueTheme.hideIfEmpty(true),
+        ).toString();
         expect(actual.unformatted, treeviewEmptyNotIncludedMock);
       });
     });
@@ -194,8 +198,9 @@ void main() {
             border: AnsiBorder(type: AnsiBorderType.all),
           ),
           anchorTheme: AnsiTreeAnchorTheme(style: AnsiBorderStyle.ascii),
-          valueTheme:
-              AnsiTreeNodeValueTheme(alignment: AnsiTextAlignment.center),
+          valueTheme: AnsiTreeNodeValueTheme(
+            alignment: AnsiTextAlignment.center,
+          ),
         ),
       ).toString();
       expect(actual.unformatted, treeviewMixedBordersMock);
@@ -206,7 +211,8 @@ void main() {
         final Map<String, dynamic> map = <String, dynamic>{
           'id': 123,
           'title': 'Lorem ipsum dolor sit amet',
-          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+          'description':
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
               'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
               'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
               'nisi ut aliquip ex ea commodo consequat.'
@@ -243,7 +249,8 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         final Map<String, dynamic> map = <String, dynamic>{
           'id': 123,
           'title': 'Lorem ipsum dolor sit amet',
-          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+          'description':
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
               'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
               'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
               'nisi ut aliquip ex ea commodo consequat.'
@@ -285,7 +292,8 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         final Map<String, dynamic> map = <String, dynamic>{
           'id': 123,
           'title': 'Lorem ipsum dolor sit amet',
-          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+          'description':
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
               'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
               'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
               'nisi ut aliquip ex ea commodo consequat.'
@@ -328,7 +336,8 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         final Map<String, dynamic> map = <String, dynamic>{
           'id': 123,
           'title': 'Lorem ipsum dolor sit amet',
-          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+          'description':
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
               'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
               'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
               'nisi ut aliquip ex ea commodo consequat.'
@@ -372,7 +381,8 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
         final Map<String, dynamic> map = <String, dynamic>{
           'id': 123,
           'title': 'Lorem ipsum dolor sit amet',
-          'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+          'description':
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
               'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
               'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
               'nisi ut aliquip ex ea commodo consequat.'
@@ -425,30 +435,43 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
           'bool': false,
           'String': 'this is a test message',
           'record': myRecord,
-          'objectWithToString':
-              const MockClassWithToString(id: 1, text: 'MockClassWithToString'),
-          'objectWithToJson':
-              const MockClassWithToJson(id: 1, text: 'MockClassWithToJson'),
-          'objectWithToMap':
-              const MockClassWithToMap(id: 1, text: 'MockClassWithToMap'),
+          'objectWithToString': const MockClassWithToString(
+            id: 1,
+            text: 'MockClassWithToString',
+          ),
+          'objectWithToJson': const MockClassWithToJson(
+            id: 1,
+            text: 'MockClassWithToJson',
+          ),
+          'objectWithToMap': const MockClassWithToMap(
+            id: 1,
+            text: 'MockClassWithToMap',
+          ),
           'map': <String, dynamic>{'id': 44, 'email': 'test@email.com'},
           'list': <int>[1, 2, 3, 4, 5],
           'enum': MockEnum.value1,
         },
         123: 'this is a test message',
-        'long-text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
+        'long-text':
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
             'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
             'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris '
             'nisi ut aliquip ex ea commodo consequat.'
             'Excepteur sint occaecat cupidatat non proident, '
             'sunt in culpa qui officia deserunt mollit anim id est laborum.',
         'enum': MockEnum.value2,
-        'objectWithToString':
-            const MockClassWithToString(id: 2, text: 'MockClassWithToString'),
-        'objectWithToJson':
-            const MockClassWithToJson(id: 2, text: 'MockClassWithToJson'),
-        'objectWithToMap':
-            const MockClassWithToMap(id: 2, text: 'MockClassWithToMap'),
+        'objectWithToString': const MockClassWithToString(
+          id: 2,
+          text: 'MockClassWithToString',
+        ),
+        'objectWithToJson': const MockClassWithToJson(
+          id: 2,
+          text: 'MockClassWithToJson',
+        ),
+        'objectWithToMap': const MockClassWithToMap(
+          id: 2,
+          text: 'MockClassWithToMap',
+        ),
         'list': <dynamic>[
           true,
           false,
@@ -459,15 +482,21 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
           myRecord,
           <String, dynamic>{
             'objectWithToString': const MockClassWithToString(
-                id: 3, text: 'MockClassWithToString')
+              id: 3,
+              text: 'MockClassWithToString',
+            ),
           },
           <String, dynamic>{
-            'objectWithToJson':
-                const MockClassWithToJson(id: 3, text: 'MockClassWithToJson')
+            'objectWithToJson': const MockClassWithToJson(
+              id: 3,
+              text: 'MockClassWithToJson',
+            ),
           },
           <String, dynamic>{
-            'objectWithToMap':
-                const MockClassWithToMap(id: 3, text: 'MockClassWithToMap')
+            'objectWithToMap': const MockClassWithToMap(
+              id: 3,
+              text: 'MockClassWithToMap',
+            ),
           },
           <String, dynamic>{'id': 44, 'email': 'test@email.com'},
           <int>[1, 2, 3, 4, 5],
@@ -477,8 +506,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
           MockEnum.value3,
         ],
       };
-      final AnsiTreeViewTheme compactTheme =
-          AnsiTreeViewTheme.$default().copyWith.headerTheme.showHash(false);
+      final AnsiTreeViewTheme compactTheme = AnsiTreeViewTheme.$default()
+          .copyWith
+          .headerTheme
+          .showHash(false);
 
       group('compact', () {
         for (final AnsiTextAlignment alignment in AnsiTextAlignment.values) {
@@ -501,8 +532,9 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
           });
         }
       });
-      final AnsiTreeViewTheme expandedTheme =
-          compactTheme.copyWith.compact(false);
+      final AnsiTreeViewTheme expandedTheme = compactTheme.copyWith.compact(
+        false,
+      );
 
       group('expanded', () {
         for (final AnsiTextAlignment alignment in AnsiTextAlignment.values) {
@@ -529,8 +561,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
     });
 
     group('no header', () {
-      final AnsiTreeViewTheme theme = AnsiTreeViewTheme.$default()
-          .copyWith
+      final AnsiTreeViewTheme theme = AnsiTreeViewTheme.$default().copyWith
           .showListItemIndex(false)
           .copyWith(
             headerTheme: const AnsiTreeHeaderTheme(
@@ -572,8 +603,10 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
       test('map with no header', () {
         expect(
-          AnsiTreeView(<String, Object>{'UUID': 1, 'user': user}, theme: theme)
-              .toString(),
+          AnsiTreeView(<String, Object>{
+            'UUID': 1,
+            'user': user,
+          }, theme: theme).toString(),
           noHeaderMap,
         );
       });
@@ -704,9 +737,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
       group('map top level', () {
         test('compact', () {
           expect(
-            AnsiTreeView(<String, int>{'1': 1, '2': 2, '3': 3},
-                    theme: getTheme(true))
-                .toString(),
+            AnsiTreeView(<String, int>{
+              '1': 1,
+              '2': 2,
+              '3': 3,
+            }, theme: getTheme(true)).toString(),
             '''AnsiX
  ├── 1: 1
  ├── 2: 2
@@ -717,9 +752,11 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
         test('expanded', () {
           expect(
-            AnsiTreeView(<String, int>{'1': 1, '2': 2, '3': 3},
-                    theme: getTheme(false))
-                .toString(),
+            AnsiTreeView(<String, int>{
+              '1': 1,
+              '2': 2,
+              '3': 3,
+            }, theme: getTheme(false)).toString(),
             '''AnsiX
  │
  ├──── 1: 1

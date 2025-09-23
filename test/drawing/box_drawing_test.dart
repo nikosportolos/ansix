@@ -13,13 +13,13 @@ void main() {
   };
   final Map<BoxDrawingSet, AnsiBorderStyle> styles =
       <BoxDrawingSet, AnsiBorderStyle>{
-    BoxDrawingSet.ascii: AnsiBorderStyle.ascii,
-    BoxDrawingSet.bold: AnsiBorderStyle.bold,
-    BoxDrawingSet.double: AnsiBorderStyle.double,
-    BoxDrawingSet.none: AnsiBorderStyle.none,
-    BoxDrawingSet.rounded: AnsiBorderStyle.rounded,
-    BoxDrawingSet.square: AnsiBorderStyle.square,
-  };
+        BoxDrawingSet.ascii: AnsiBorderStyle.ascii,
+        BoxDrawingSet.bold: AnsiBorderStyle.bold,
+        BoxDrawingSet.double: AnsiBorderStyle.double,
+        BoxDrawingSet.none: AnsiBorderStyle.none,
+        BoxDrawingSet.rounded: AnsiBorderStyle.rounded,
+        BoxDrawingSet.square: AnsiBorderStyle.square,
+      };
 
   group('description', () {
     for (final BoxDrawingSet set in BoxDrawingSet.values) {

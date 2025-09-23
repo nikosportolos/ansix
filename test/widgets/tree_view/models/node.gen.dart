@@ -75,7 +75,9 @@ class _NodeCopyWithProxyImpl implements _NodeCopyWithProxy {
   $NodeCopyWithProxyChain<Node>? get child => _value.child == null
       ? null
       : $NodeCopyWithProxyChain<Node>(
-          _value.child!, (Node? update) => this(child: update));
+          _value.child!,
+          (Node? update) => this(child: update),
+        );
 
   @pragma('vm:prefer-inline')
   @override
@@ -98,8 +100,9 @@ class _NodeCopyWithProxyImpl implements _NodeCopyWithProxy {
 
 sealed class $NodeCopyWithProxyChain<$Result> {
   factory $NodeCopyWithProxyChain(
-          final Node value, final $Result Function(Node update) chain) =
-      _NodeCopyWithProxyChainImpl<$Result>;
+    final Node value,
+    final $Result Function(Node update) chain,
+  ) = _NodeCopyWithProxyChainImpl<$Result>;
 
   $Result id(String newValue);
 
@@ -140,11 +143,15 @@ class _NodeCopyWithProxyChainImpl<$Result>
     final Object? child = const Object(),
     final List<Node>? nodes,
   }) {
-    return _chain(_$NodeImpl(
-      id: id ?? _value.id,
-      child: identical(child, const Object()) ? _value.child : (child as Node?),
-      nodes: nodes ?? _value.nodes,
-    ));
+    return _chain(
+      _$NodeImpl(
+        id: id ?? _value.id,
+        child: identical(child, const Object())
+            ? _value.child
+            : (child as Node?),
+        nodes: nodes ?? _value.nodes,
+      ),
+    );
   }
 }
 

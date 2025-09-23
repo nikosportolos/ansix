@@ -153,9 +153,10 @@ class _AnsiTextThemeCopyWithProxyImpl implements _AnsiTextThemeCopyWithProxy {
 }
 
 sealed class $AnsiTextThemeCopyWithProxyChain<$Result> {
-  factory $AnsiTextThemeCopyWithProxyChain(final AnsiTextTheme value,
-          final $Result Function(AnsiTextTheme update) chain) =
-      _AnsiTextThemeCopyWithProxyChainImpl<$Result>;
+  factory $AnsiTextThemeCopyWithProxyChain(
+    final AnsiTextTheme value,
+    final $Result Function(AnsiTextTheme update) chain,
+  ) = _AnsiTextThemeCopyWithProxyChainImpl<$Result>;
 
   $Result foregroundColor(AnsiColor newValue);
 
@@ -222,16 +223,18 @@ class _AnsiTextThemeCopyWithProxyChainImpl<$Result>
     final AnsiTextAlignment? alignment,
     final Object? fixedWidth = const Object(),
   }) {
-    return _chain(_$AnsiTextThemeImpl(
-      foregroundColor: foregroundColor ?? _value.foregroundColor,
-      backgroundColor: backgroundColor ?? _value.backgroundColor,
-      style: style ?? _value.style,
-      padding: padding ?? _value.padding,
-      alignment: alignment ?? _value.alignment,
-      fixedWidth: identical(fixedWidth, const Object())
-          ? _value.fixedWidth
-          : (fixedWidth as int?),
-    ));
+    return _chain(
+      _$AnsiTextThemeImpl(
+        foregroundColor: foregroundColor ?? _value.foregroundColor,
+        backgroundColor: backgroundColor ?? _value.backgroundColor,
+        style: style ?? _value.style,
+        padding: padding ?? _value.padding,
+        alignment: alignment ?? _value.alignment,
+        fixedWidth: identical(fixedWidth, const Object())
+            ? _value.fixedWidth
+            : (fixedWidth as int?),
+      ),
+    );
   }
 }
 

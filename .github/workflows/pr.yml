@@ -20,5 +20,5 @@ jobs:
       - uses: actions/checkout@v5.0.0
       - uses: nikosportolos/dart_package@v0.2.3
         with:
-          dart_sdk: "3.5.3"
+          dart_sdk: "3.9.0"
           line_length: 80

@@ -9,11 +9,13 @@ void main() {
   for (final AnsiTextAlignment alignment in AnsiTextAlignment.values) {
     buffer
       ..write('|')
-      ..write(AnsiText(
-        'This is a text with [${alignment.name}] alignment',
-        alignment: alignment,
-        fixedWidth: width,
-      ))
+      ..write(
+        AnsiText(
+          'This is a text with [${alignment.name}] alignment',
+          alignment: alignment,
+          fixedWidth: width,
+        ),
+      )
       ..write('|')
       ..writeln();
   }

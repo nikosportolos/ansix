@@ -9,31 +9,34 @@ void main() {
         <Object?>[
           '#',
           ...movies.mapIndexed((int i, Movie m) => i + 1),
-          'Average'
+          'Average',
         ],
         <Object?>[
           'Title',
-          ...movies.map((Movie m) =>
-              AnsiText(m.title, alignment: AnsiTextAlignment.center))
+          ...movies.map(
+            (Movie m) => AnsiText(m.title, alignment: AnsiTextAlignment.center),
+          ),
         ],
         <Object?>['Release Year', ...movies.map((Movie m) => m.releaseYear)],
         <Object?>[
           'IMDb Rate',
           ...movies.map((Movie m) => m.rate),
-          movies.map((Movie m) => m.rate).toList(growable: false).average
+          movies.map((Movie m) => m.rate).toList(growable: false).average,
         ],
       ];
 
       test('vertical', () {
         expect(
-            AnsiGrid.fromColumns(columns, theme: verticalTheme).formattedText,
-            fromColumnsVertical);
+          AnsiGrid.fromColumns(columns, theme: verticalTheme).formattedText,
+          fromColumnsVertical,
+        );
       });
 
       test('horizontal', () {
         expect(
-            AnsiGrid.fromColumns(columns, theme: horizontalTheme).formattedText,
-            fromColumnsHorizontal);
+          AnsiGrid.fromColumns(columns, theme: horizontalTheme).formattedText,
+          fromColumnsHorizontal,
+        );
       });
     });
 
@@ -47,18 +50,22 @@ void main() {
           'Average',
           '',
           '',
-          movies.map((Movie m) => m.rate).toList(growable: false).average
+          movies.map((Movie m) => m.rate).toList(growable: false).average,
         ],
       ];
 
       test('vertical', () {
-        expect(AnsiGrid.fromRows(rows, theme: verticalTheme).formattedText,
-            fromRowsVertical);
+        expect(
+          AnsiGrid.fromRows(rows, theme: verticalTheme).formattedText,
+          fromRowsVertical,
+        );
       });
 
       test('horizontal', () {
-        expect(AnsiGrid.fromRows(rows, theme: horizontalTheme).formattedText,
-            fromRowsHorizontal);
+        expect(
+          AnsiGrid.fromRows(rows, theme: horizontalTheme).formattedText,
+          fromRowsHorizontal,
+        );
       });
     });
   });
@@ -112,14 +119,16 @@ const List<Movie> movies = <Movie>[
   Movie(title: '12 Angry Men', releaseYear: 1957, rate: 9.0),
   Movie(title: 'Schindler\'s List', releaseYear: 1993, rate: 9.0),
   Movie(
-      title: 'The Lord of the Rings: The Return of the King',
-      releaseYear: 2003,
-      rate: 9.0),
+    title: 'The Lord of the Rings: The Return of the King',
+    releaseYear: 2003,
+    rate: 9.0,
+  ),
   Movie(title: 'Pulp Fiction', releaseYear: 1994, rate: 8.9),
   Movie(
-      title: 'The Lord of the Rings: The Fellowship of the Ring',
-      releaseYear: 2001,
-      rate: 8.8),
+    title: 'The Lord of the Rings: The Fellowship of the Ring',
+    releaseYear: 2001,
+    rate: 8.8,
+  ),
   Movie(title: 'The Good, the Bad and the Ugly', releaseYear: 1966, rate: 8.8),
 ];
 

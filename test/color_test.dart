@@ -75,8 +75,10 @@ void main() {
       expect(AnsiColor.white.hsl!.lightness, greaterThan(50));
       expect(AnsiColor.black.hsl!.lightness, lessThan(50));
 
-      expect(AnsiColor.fromRgb(const Rgb(255, 255, 255)).lightness,
-          greaterThan(50));
+      expect(
+        AnsiColor.fromRgb(const Rgb(255, 255, 255)).lightness,
+        greaterThan(50),
+      );
       expect(AnsiColor.fromRgb(const Rgb(0, 0, 0)).lightness, lessThan(50));
     });
   });

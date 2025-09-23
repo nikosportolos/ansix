@@ -137,7 +137,9 @@ class _UserCopyWithProxyImpl implements _UserCopyWithProxy {
   @pragma('vm:prefer-inline')
   @override
   $EmailCopyWithProxyChain<User> get email => $EmailCopyWithProxyChain<User>(
-      _value.email, (Email update) => this(email: update));
+    _value.email,
+    (Email update) => this(email: update),
+  );
 
   @pragma('vm:prefer-inline')
   @override
@@ -180,8 +182,9 @@ class _UserCopyWithProxyImpl implements _UserCopyWithProxy {
 
 sealed class $UserCopyWithProxyChain<$Result> {
   factory $UserCopyWithProxyChain(
-          final User value, final $Result Function(User update) chain) =
-      _UserCopyWithProxyChainImpl<$Result>;
+    final User value,
+    final $Result Function(User update) chain,
+  ) = _UserCopyWithProxyChainImpl<$Result>;
 
   $Result id(String newValue);
 
@@ -254,15 +257,17 @@ class _UserCopyWithProxyChainImpl<$Result>
     final List<Address>? addresses,
     final List<String>? groups,
   }) {
-    return _chain(_$UserImpl(
-      id: id ?? _value.id,
-      name: name ?? _value.name,
-      email: email ?? _value.email,
-      age: age ?? _value.age,
-      phone: phone ?? _value.phone,
-      addresses: addresses ?? _value.addresses,
-      groups: groups ?? _value.groups,
-    ));
+    return _chain(
+      _$UserImpl(
+        id: id ?? _value.id,
+        name: name ?? _value.name,
+        email: email ?? _value.email,
+        age: age ?? _value.age,
+        phone: phone ?? _value.phone,
+        addresses: addresses ?? _value.addresses,
+        groups: groups ?? _value.groups,
+      ),
+    );
   }
 }
 
@@ -378,8 +383,9 @@ class _AddressCopyWithProxyImpl implements _AddressCopyWithProxy {
 
 sealed class $AddressCopyWithProxyChain<$Result> {
   factory $AddressCopyWithProxyChain(
-          final Address value, final $Result Function(Address update) chain) =
-      _AddressCopyWithProxyChainImpl<$Result>;
+    final Address value,
+    final $Result Function(Address update) chain,
+  ) = _AddressCopyWithProxyChainImpl<$Result>;
 
   $Result street(String newValue);
 
@@ -420,11 +426,13 @@ class _AddressCopyWithProxyChainImpl<$Result>
     final String? city,
     final String? state,
   }) {
-    return _chain(_$AddressImpl(
-      street: street ?? _value.street,
-      city: city ?? _value.city,
-      state: state ?? _value.state,
-    ));
+    return _chain(
+      _$AddressImpl(
+        street: street ?? _value.street,
+        city: city ?? _value.city,
+        state: state ?? _value.state,
+      ),
+    );
   }
 }
 
@@ -544,8 +552,9 @@ class _EmailCopyWithProxyImpl implements _EmailCopyWithProxy {
 
 sealed class $EmailCopyWithProxyChain<$Result> {
   factory $EmailCopyWithProxyChain(
-          final Email value, final $Result Function(Email update) chain) =
-      _EmailCopyWithProxyChainImpl<$Result>;
+    final Email value,
+    final $Result Function(Email update) chain,
+  ) = _EmailCopyWithProxyChainImpl<$Result>;
 
   $Result primary(String newValue);
 
@@ -586,15 +595,17 @@ class _EmailCopyWithProxyChainImpl<$Result>
     final Object? secondary = const Object(),
     final Object? personal = const Object(),
   }) {
-    return _chain(_$EmailImpl(
-      primary: primary ?? _value.primary,
-      secondary: identical(secondary, const Object())
-          ? _value.secondary
-          : (secondary as String?),
-      personal: identical(personal, const Object())
-          ? _value.personal
-          : (personal as String?),
-    ));
+    return _chain(
+      _$EmailImpl(
+        primary: primary ?? _value.primary,
+        secondary: identical(secondary, const Object())
+            ? _value.secondary
+            : (secondary as String?),
+        personal: identical(personal, const Object())
+            ? _value.personal
+            : (personal as String?),
+      ),
+    );
   }
 }
 

@@ -39,9 +39,11 @@ abstract class AnsiTreeViewTheme {
   AnsiTreeAnchorTheme get anchorTheme;
 
   /// Defines the selected theme for the tree node keys.
-  @DefaultValue(AnsiTreeNodeKeyTheme(
-    textStyle: AnsiTextStyle(bold: true),
-  ))
+  @DefaultValue(
+    AnsiTreeNodeKeyTheme(
+      textStyle: AnsiTextStyle(bold: true),
+    ),
+  )
   AnsiTreeNodeKeyTheme get keyTheme;
 
   /// Defines the selected theme for the tree node values.

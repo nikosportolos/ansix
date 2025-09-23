@@ -6,17 +6,20 @@ void main() {
   group('AnsiGridCell', () {
     test('isMultiline', () {
       expect(
-          const AnsiGridCell(width: 5, lines: <AnsiText>[]).isMultiline, false);
+        const AnsiGridCell(width: 5, lines: <AnsiText>[]).isMultiline,
+        false,
+      );
       expect(
-          AnsiGridCell(width: 5, lines: <AnsiText>[AnsiText('demo')])
-              .isMultiline,
-          false);
+        AnsiGridCell(width: 5, lines: <AnsiText>[AnsiText('demo')]).isMultiline,
+        false,
+      );
       expect(
-          AnsiGridCell(
-                  width: 5,
-                  lines: <AnsiText>[AnsiText('demo'), AnsiText('demo')])
-              .isMultiline,
-          true);
+        AnsiGridCell(
+          width: 5,
+          lines: <AnsiText>[AnsiText('demo'), AnsiText('demo')],
+        ).isMultiline,
+        true,
+      );
     });
   });
 }

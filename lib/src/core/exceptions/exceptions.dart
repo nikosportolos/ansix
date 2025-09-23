@@ -20,7 +20,7 @@ abstract class AnsiXException implements Exception {
 
 /// This method is used to handle [AnsiXException]s that are thrown while using AnsiX.
 void handleException(final AnsiXException exception) {
-// ignore: avoid_print
+  // ignore: avoid_print
   print(buildExceptionMessage(exception));
 }
 

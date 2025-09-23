@@ -21,7 +21,7 @@ dev_dependencies:
   lints: ^6.0.0
   mocktail: ^1.0.3
   tachyon: ^0.3.1
-  test: ^1.25.12
+  test: ^1.26.3
 
 screenshots:
   - description: 'This is an AnsiTreeView usage example'

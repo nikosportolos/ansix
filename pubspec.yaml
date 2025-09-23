@@ -13,7 +13,7 @@ environment:
 dependencies:
   collection: ^1.19.1
   data_class_plugin: ^1.5.1
-  meta: ^1.16.0
+  meta: ^1.17.0
   path: ^1.9.1
   web: ^1.1.1
 

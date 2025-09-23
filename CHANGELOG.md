@@ -1,3 +1,8 @@
+## v0.3.5
+
+- Bump to Dart SDK `>=3.9.0`
+- Dependency updates
+
 ## v0.3.4
 
 Dependency updates and source code maintenance.

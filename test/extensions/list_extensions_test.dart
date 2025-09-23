@@ -19,7 +19,7 @@ void main() {
       final List<List<int>> listHorizontal = <List<int>>[
         <int>[0, 1, 2, 3, 4],
         <int>[5, 6, 7, 8, 9],
-        <int>[10, 11, 12, 13, 14]
+        <int>[10, 11, 12, 13, 14],
       ];
 
       final List<List<int>> listVertical = <List<int>>[

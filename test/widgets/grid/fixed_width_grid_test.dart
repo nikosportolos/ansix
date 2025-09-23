@@ -7,19 +7,19 @@ void main() {
       'Name',
       AnsiColor.red.name,
       AnsiColor.green.name,
-      AnsiColor.blue.name
+      AnsiColor.blue.name,
     ],
     <dynamic>[
       'Hex',
       AnsiColor.red.hex,
       AnsiColor.green.hex,
-      AnsiColor.blue.hex
+      AnsiColor.blue.hex,
     ],
     <dynamic>[
       'RGB',
       AnsiColor.red.rgb,
       AnsiColor.green.rgb,
-      AnsiColor.blue.rgb
+      AnsiColor.blue.rgb,
     ],
   ];
 
@@ -61,8 +61,10 @@ void main() {
     );
 
     final String actual = 'this is a grid\n${grid.formattedText}';
-    expect(actual.withForegroundColor(AnsiColor.indianRed),
-        nonTransparentGridMock);
+    expect(
+      actual.withForegroundColor(AnsiColor.indianRed),
+      nonTransparentGridMock,
+    );
   });
 
   test('non-transparent with colored borders', () {

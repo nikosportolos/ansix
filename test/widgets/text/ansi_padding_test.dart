@@ -78,9 +78,14 @@ void main() {
       });
       test('verticalPadding ', () {
         expect(
-            AnsiPadding.only(left: 1, right: 5, top: 1, bottom: 5)
-                .verticalPadding,
-            6);
+          AnsiPadding.only(
+            left: 1,
+            right: 5,
+            top: 1,
+            bottom: 5,
+          ).verticalPadding,
+          6,
+        );
         expect(AnsiPadding.horizontal(2).verticalPadding, 0);
         expect(AnsiPadding.vertical(2).verticalPadding, 4);
       });
@@ -89,8 +94,10 @@ void main() {
     group('operators', () {
       test('+ operator', () {
         expect(AnsiPadding.none + AnsiPadding.none, AnsiPadding.none);
-        expect(AnsiPadding.vertical(3) + AnsiPadding.vertical(3),
-            AnsiPadding.vertical(6));
+        expect(
+          AnsiPadding.vertical(3) + AnsiPadding.vertical(3),
+          AnsiPadding.vertical(6),
+        );
         expect(
           AnsiPadding.vertical(2) + AnsiPadding.horizontal(3),
           AnsiPadding.only(top: 2, bottom: 2, right: 3, left: 3),

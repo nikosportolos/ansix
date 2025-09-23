@@ -105,9 +105,10 @@ class _WrapOptionsCopyWithProxyImpl implements _WrapOptionsCopyWithProxy {
 }
 
 sealed class $WrapOptionsCopyWithProxyChain<$Result> {
-  factory $WrapOptionsCopyWithProxyChain(final WrapOptions value,
-          final $Result Function(WrapOptions update) chain) =
-      _WrapOptionsCopyWithProxyChainImpl<$Result>;
+  factory $WrapOptionsCopyWithProxyChain(
+    final WrapOptions value,
+    final $Result Function(WrapOptions update) chain,
+  ) = _WrapOptionsCopyWithProxyChainImpl<$Result>;
 
   $Result lineLength(int? newValue);
 
@@ -148,13 +149,15 @@ class _WrapOptionsCopyWithProxyChainImpl<$Result>
     final bool? splitWords,
     final bool? lineBreak,
   }) {
-    return _chain(_$WrapOptionsImpl(
-      lineLength: identical(lineLength, const Object())
-          ? _value.lineLength
-          : (lineLength as int?),
-      splitWords: splitWords ?? _value.splitWords,
-      lineBreak: lineBreak ?? _value.lineBreak,
-    ));
+    return _chain(
+      _$WrapOptionsImpl(
+        lineLength: identical(lineLength, const Object())
+            ? _value.lineLength
+            : (lineLength as int?),
+        splitWords: splitWords ?? _value.splitWords,
+        lineBreak: lineBreak ?? _value.lineBreak,
+      ),
+    );
   }
 }
 

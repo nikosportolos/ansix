@@ -3,9 +3,12 @@ import 'package:ansix/ansix.dart';
 import 'models/node.dart';
 
 void main() {
-  final Node node1 = Node(id: '1231231231', nodes: <Node>[
-    Node(id: '34454354453'),
-  ]);
+  final Node node1 = Node(
+    id: '1231231231',
+    nodes: <Node>[
+      Node(id: '34454354453'),
+    ],
+  );
   final Node node2 = Node(id: '5463456343');
   final Node node3 = Node(id: '7845445335', nodes: <Node>[node1]);
 

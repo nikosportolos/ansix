@@ -8,13 +8,14 @@ documentation: https://github.com/nikosportolos/ansix
 issue_tracker: https://github.com/nikosportolos/ansix/issues
 
 environment:
-  sdk: ">=3.5.0 <4.0.0"
+  sdk: ">=3.9.0 <4.0.0"
 
 dependencies:
   collection: ^1.19.1
   data_class_plugin: ^1.5.1
   meta: ^1.16.0
   path: ^1.9.1
+  web: ^1.1.1
 
 dev_dependencies:
   lints: ^5.0.0

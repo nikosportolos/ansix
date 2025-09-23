@@ -15,8 +15,8 @@ class AnsiX {
   AnsiX._({
     final ProcessManager? processManager,
     final AnsiTerminal? terminal,
-  })  : _processManager = processManager ?? ProcessManager(),
-        _terminal = terminal ?? AnsiTerminal.create() {
+  }) : _processManager = processManager ?? ProcessManager(),
+       _terminal = terminal ?? AnsiTerminal.create() {
     _instance = this;
   }
 
@@ -39,8 +39,8 @@ class AnsiX {
     _ansix._allowPrint = value;
     _ansix._printer = value
         ? _ansix._isEnabled
-            ? AnsiPrinter()
-            : StandardPrinter()
+              ? AnsiPrinter()
+              : StandardPrinter()
         : NoOpPrinter();
   }
 
@@ -131,7 +131,8 @@ class AnsiX {
     final ColorFormat? colorFormat,
   }) {
     _ansix._allowPrint = allowPrint ?? isDebugMode;
-    _ansix._colorFormat = colorFormat ??
+    _ansix._colorFormat =
+        colorFormat ??
         (_ansix._terminal.runsOnWeb ? ColorFormat.rgb : ColorFormat.ansi);
 
     if (force) {
@@ -170,11 +171,13 @@ class AnsiX {
     final AnsiColor foreground = AnsiColor.none,
     final AnsiColor background = AnsiColor.none,
   }) {
-    printer.print('$object'.styled(
-      textStyle,
-      foreground,
-      background,
-    ));
+    printer.print(
+      '$object'.styled(
+        textStyle,
+        foreground,
+        background,
+      ),
+    );
   }
 
   /// Prints an indented string representation of the JSON
@@ -198,10 +201,12 @@ class AnsiX {
     final dynamic data, {
     final AnsiTreeViewTheme theme = const AnsiTreeViewTheme(),
   }) {
-    printer.print(AnsiTreeView(
-      data,
-      theme: theme,
-    ));
+    printer.print(
+      AnsiTreeView(
+        data,
+        theme: theme,
+      ),
+    );
   }
 
   /// Prints a grid representation of the given data to console.

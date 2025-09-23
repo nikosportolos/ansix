@@ -158,7 +158,9 @@ class _ArticleCopyWithProxyImpl implements _ArticleCopyWithProxy {
   @override
   $UserCopyWithProxyChain<Article> get author =>
       $UserCopyWithProxyChain<Article>(
-          _value.author, (User update) => this(author: update));
+        _value.author,
+        (User update) => this(author: update),
+      );
 
   @pragma('vm:prefer-inline')
   @override
@@ -195,8 +197,9 @@ class _ArticleCopyWithProxyImpl implements _ArticleCopyWithProxy {
 
 sealed class $ArticleCopyWithProxyChain<$Result> {
   factory $ArticleCopyWithProxyChain(
-          final Article value, final $Result Function(Article update) chain) =
-      _ArticleCopyWithProxyChainImpl<$Result>;
+    final Article value,
+    final $Result Function(Article update) chain,
+  ) = _ArticleCopyWithProxyChainImpl<$Result>;
 
   $Result id(int newValue);
 
@@ -277,16 +280,18 @@ class _ArticleCopyWithProxyChainImpl<$Result>
     final List<String>? tags,
     final String? notes,
   }) {
-    return _chain(_$ArticleImpl(
-      id: id ?? _value.id,
-      title: title ?? _value.title,
-      description: description ?? _value.description,
-      body: body ?? _value.body,
-      postedOn: postedOn ?? _value.postedOn,
-      author: author ?? _value.author,
-      tags: tags ?? _value.tags,
-      notes: notes ?? _value.notes,
-    ));
+    return _chain(
+      _$ArticleImpl(
+        id: id ?? _value.id,
+        title: title ?? _value.title,
+        description: description ?? _value.description,
+        body: body ?? _value.body,
+        postedOn: postedOn ?? _value.postedOn,
+        author: author ?? _value.author,
+        tags: tags ?? _value.tags,
+        notes: notes ?? _value.notes,
+      ),
+    );
   }
 }
 

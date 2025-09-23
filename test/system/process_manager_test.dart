@@ -16,20 +16,24 @@ void main() {
   group('Detect ANSI support', () {
     test('throws', () {
       when(() {
-        return mockShell
-            .runCommand(ProcessManager.detectLegacyConsoleModeCommand);
+        return mockShell.runCommand(
+          ProcessManager.detectLegacyConsoleModeCommand,
+        );
       }).thenThrow(Exception(''));
       when(() {
         return mockShell.runCommand(ProcessManager.detectTerminalColorsCommand);
       }).thenThrow(Exception(''));
-      expect(() => manager.detectWindowsAnsiSupport(),
-          throwsA(isA<AnsiXException>()));
+      expect(
+        () => manager.detectWindowsAnsiSupport(),
+        throwsA(isA<AnsiXException>()),
+      );
     });
 
     test('supported', () {
       when(() {
-        return mockShell
-            .runCommand(ProcessManager.detectLegacyConsoleModeCommand);
+        return mockShell.runCommand(
+          ProcessManager.detectLegacyConsoleModeCommand,
+        );
       }).thenReturn(disabledResult);
       expect(manager.determineLegacyConsoleMode(), LegacyConsoleMode.disabled);
       expect(manager.detectWindowsAnsiSupport(), true);
@@ -37,45 +41,54 @@ void main() {
 
     test('not supported', () {
       when(() {
-        return mockShell
-            .runCommand(ProcessManager.detectLegacyConsoleModeCommand);
+        return mockShell.runCommand(
+          ProcessManager.detectLegacyConsoleModeCommand,
+        );
       }).thenReturn(enabledResult);
       expect(manager.determineLegacyConsoleMode(), LegacyConsoleMode.enabled);
-      expect(() => manager.detectWindowsAnsiSupport(),
-          throwsA(isA<AnsiXException>()));
+      expect(
+        () => manager.detectWindowsAnsiSupport(),
+        throwsA(isA<AnsiXException>()),
+      );
     });
   });
 
   group('Detect Windows Legacy Console Mode', () {
     test('throws', () {
       when(() {
-        return mockShell
-            .runCommand(ProcessManager.detectLegacyConsoleModeCommand);
+        return mockShell.runCommand(
+          ProcessManager.detectLegacyConsoleModeCommand,
+        );
       }).thenThrow(Exception(''));
-      expect(() => manager.detectWindowsAnsiSupport(),
-          throwsA(isA<AnsiXException>()));
+      expect(
+        () => manager.detectWindowsAnsiSupport(),
+        throwsA(isA<AnsiXException>()),
+      );
     });
 
     test('unknown', () {
       when(() {
-        return mockShell
-            .runCommand(ProcessManager.detectLegacyConsoleModeCommand);
+        return mockShell.runCommand(
+          ProcessManager.detectLegacyConsoleModeCommand,
+        );
       }).thenReturn('');
       expect(manager.determineLegacyConsoleMode(), LegacyConsoleMode.unknown);
     });
 
     test('enabled', () {
       when(() {
-        return mockShell
-            .runCommand(ProcessManager.detectLegacyConsoleModeCommand);
+        return mockShell.runCommand(
+          ProcessManager.detectLegacyConsoleModeCommand,
+        );
       }).thenReturn(enabledResult);
       expect(manager.determineLegacyConsoleMode(), LegacyConsoleMode.enabled);
     });
 
     test('disabled', () {
       when(() {
-        return mockShell
-            .runCommand(ProcessManager.detectLegacyConsoleModeCommand);
+        return mockShell.runCommand(
+          ProcessManager.detectLegacyConsoleModeCommand,
+        );
       }).thenReturn(disabledResult);
       expect(manager.determineLegacyConsoleMode(), LegacyConsoleMode.disabled);
     });
@@ -85,24 +98,27 @@ void main() {
     group('bash', () {
       test('return unknown on exception', () {
         when(() {
-          return mockShell
-              .runCommand(ProcessManager.detectTerminalColorsCommand);
+          return mockShell.runCommand(
+            ProcessManager.detectTerminalColorsCommand,
+          );
         }).thenThrow(Exception(''));
         expect(manager.determineTerminalType(), TerminalType.unknown);
       });
 
       test('bash', () {
         when(() {
-          return mockShell
-              .runCommand(ProcessManager.detectTerminalColorsCommand);
+          return mockShell.runCommand(
+            ProcessManager.detectTerminalColorsCommand,
+          );
         }).thenReturn('256');
         expect(manager.determineTerminalType(), TerminalType.bash);
       });
 
       test('unknown', () {
         when(() {
-          return mockShell
-              .runCommand(ProcessManager.detectTerminalColorsCommand);
+          return mockShell.runCommand(
+            ProcessManager.detectTerminalColorsCommand,
+          );
         }).thenReturn('');
         expect(manager.determineTerminalType(), TerminalType.unknown);
       });
@@ -111,32 +127,36 @@ void main() {
     group('windows', () {
       test('return unknown on exception', () {
         when(() {
-          return mockShell
-              .runCommand(ProcessManager.detectWindowsTerminalCommand);
+          return mockShell.runCommand(
+            ProcessManager.detectWindowsTerminalCommand,
+          );
         }).thenThrow(Exception(''));
         expect(manager.determineTerminalType(), TerminalType.unknown);
       });
 
       test('cmd', () {
         when(() {
-          return mockShell
-              .runCommand(ProcessManager.detectWindowsTerminalCommand);
+          return mockShell.runCommand(
+            ProcessManager.detectWindowsTerminalCommand,
+          );
         }).thenReturn('CMD');
         expect(manager.determineTerminalType(), TerminalType.cmd);
       });
 
       test('powershell', () {
         when(() {
-          return mockShell
-              .runCommand(ProcessManager.detectWindowsTerminalCommand);
+          return mockShell.runCommand(
+            ProcessManager.detectWindowsTerminalCommand,
+          );
         }).thenReturn('PowerShell');
         expect(manager.determineTerminalType(), TerminalType.powershell);
       });
 
       test('unknown', () {
         when(() {
-          return mockShell
-              .runCommand(ProcessManager.detectWindowsTerminalCommand);
+          return mockShell.runCommand(
+            ProcessManager.detectWindowsTerminalCommand,
+          );
         }).thenReturn('');
         expect(manager.determineTerminalType(), TerminalType.unknown);
       });
@@ -144,18 +164,22 @@ void main() {
 
     test('cmd throws', () {
       when(() {
-        return mockShell
-            .runCommand(ProcessManager.detectLegacyConsoleModeCommand);
+        return mockShell.runCommand(
+          ProcessManager.detectLegacyConsoleModeCommand,
+        );
       }).thenReturn(enabledResult);
 
       when(() {
-        return mockShell
-            .runCommand(ProcessManager.detectWindowsTerminalCommand);
+        return mockShell.runCommand(
+          ProcessManager.detectWindowsTerminalCommand,
+        );
       }).thenReturn('CMD');
 
       expect(manager.determineLegacyConsoleMode(), LegacyConsoleMode.enabled);
-      expect(() => manager.detectWindowsAnsiSupport(),
-          throwsA(isA<AnsiXException>()));
+      expect(
+        () => manager.detectWindowsAnsiSupport(),
+        throwsA(isA<AnsiXException>()),
+      );
     });
   });
 }

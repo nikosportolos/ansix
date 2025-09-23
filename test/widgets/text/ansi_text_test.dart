@@ -17,7 +17,7 @@ void main() {
   ];
   final List<AnsiColor> colors = <AnsiColor>[
     AnsiColor.none,
-    AnsiColor.darkBlue
+    AnsiColor.darkBlue,
   ];
 
   group('AnsiText', () {
@@ -45,46 +45,52 @@ void main() {
                               );
 
                               expect(
-                                  ansiText.toString(), ansiText.formattedText);
+                                ansiText.toString(),
+                                ansiText.formattedText,
+                              );
 
                               // Validate width
                               expect(
                                 ansiText.width,
                                 (width ?? 0) <= testMessage.length
                                     ? testMessage.length +
-                                        padding.left +
-                                        padding.right
+                                          padding.left +
+                                          padding.right
                                     : width,
                               );
 
                               final StringBuffer buffer = StringBuffer()
                                 ..writeLines(padding.top)
-                                ..write(backgroundColor != AnsiColor.none
-                                    ? backgroundColor.background
-                                    : '')
+                                ..write(
+                                  backgroundColor != AnsiColor.none
+                                      ? backgroundColor.background
+                                      : '',
+                                )
                                 ..writeSpaces(padding.left)
                                 ..write(
                                   ' ' *
                                       (alignment == AnsiTextAlignment.right
                                           ? (width ?? 0) -
-                                              testMessage.length -
-                                              padding.left -
-                                              padding.right
+                                                testMessage.length -
+                                                padding.left -
+                                                padding.right
                                           : 0),
                                 )
                                 ..write(
                                   ' ' *
                                       (alignment == AnsiTextAlignment.center
                                           ? (width ?? 0) ~/ 2 -
-                                              testMessage.length ~/ 2 -
-                                              padding.left -
-                                              padding.right
+                                                testMessage.length ~/ 2 -
+                                                padding.left -
+                                                padding.right
                                           : 0),
                                 )
                                 ..write(style.startEscapeCode)
-                                ..write(foregroundColor == AnsiColor.none
-                                    ? ''
-                                    : foregroundColor.foreground)
+                                ..write(
+                                  foregroundColor == AnsiColor.none
+                                      ? ''
+                                      : foregroundColor.foreground,
+                                )
                                 ..write(testMessage)
                                 ..write(style.endEscapeCode)
                                 ..writeSpaces(padding.right)
@@ -92,18 +98,18 @@ void main() {
                                   ' ' *
                                       (alignment == AnsiTextAlignment.left
                                           ? (width ?? 0) -
-                                              testMessage.length -
-                                              padding.right -
-                                              padding.left
+                                                testMessage.length -
+                                                padding.right -
+                                                padding.left
                                           : 0),
                                 )
                                 ..write(
                                   ' ' *
                                       (alignment == AnsiTextAlignment.center
                                           ? (width ?? 0) ~/ 2 -
-                                              testMessage.length ~/ 2 -
-                                              padding.left -
-                                              padding.right
+                                                testMessage.length ~/ 2 -
+                                                padding.left -
+                                                padding.right
                                           : 0),
                                 )
                                 ..write(

@@ -103,9 +103,10 @@ class _AnsiBorderCopyWithProxyImpl implements _AnsiBorderCopyWithProxy {
 }
 
 sealed class $AnsiBorderCopyWithProxyChain<$Result> {
-  factory $AnsiBorderCopyWithProxyChain(final AnsiBorder value,
-          final $Result Function(AnsiBorder update) chain) =
-      _AnsiBorderCopyWithProxyChainImpl<$Result>;
+  factory $AnsiBorderCopyWithProxyChain(
+    final AnsiBorder value,
+    final $Result Function(AnsiBorder update) chain,
+  ) = _AnsiBorderCopyWithProxyChainImpl<$Result>;
 
   $Result type(AnsiBorderType newValue);
 
@@ -146,11 +147,13 @@ class _AnsiBorderCopyWithProxyChainImpl<$Result>
     final AnsiBorderStyle? style,
     final AnsiColor? color,
   }) {
-    return _chain(_$AnsiBorderImpl(
-      type: type ?? _value.type,
-      style: style ?? _value.style,
-      color: color ?? _value.color,
-    ));
+    return _chain(
+      _$AnsiBorderImpl(
+        type: type ?? _value.type,
+        style: style ?? _value.style,
+        color: color ?? _value.color,
+      ),
+    );
   }
 }
 

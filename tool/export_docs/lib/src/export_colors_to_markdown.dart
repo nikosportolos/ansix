@@ -26,8 +26,10 @@ abstract class ExportColorsToMarkdown {
     final List<AnsiColor> colors,
     final String colorSetName,
   ) {
-    final String markdownContent =
-        ColorTableForGithub.markdown(colors, colorSetName);
+    final String markdownContent = ColorTableForGithub.markdown(
+      colors,
+      colorSetName,
+    );
     final File markdownFile = File(
       join(colorDocsPath, '${colorSetName.toLowerCase()}.md'),
     );
@@ -35,9 +37,6 @@ abstract class ExportColorsToMarkdown {
     if (!markdownFile.existsSync()) {
       markdownFile.createSync(recursive: true);
     }
-    markdownFile.writeAsStringSync(
-      markdownContent,
-      flush: true,
-    );
+    markdownFile.writeAsStringSync(markdownContent, flush: true);
   }
 }

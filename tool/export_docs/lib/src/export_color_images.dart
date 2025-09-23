@@ -16,24 +16,23 @@ abstract class ExportColorImages {
   }
 
   static Future<void> _generateColorImage(
-      final int index, final AnsiColor color) async {
+    final int index,
+    final AnsiColor color,
+  ) async {
     if (color.rgb == null) {
       return;
     }
 
     // ignore: avoid_print
     print(
-        '$index - Generating ${color.pngFilename.colored(foreground: color)}');
+      '$index - Generating ${color.pngFilename.colored(foreground: color)}',
+    );
 
     const int imageSize = 48;
     const int radius = (imageSize - 1) ~/ 2;
 
     await (Command()
-          ..createImage(
-            width: imageSize,
-            height: imageSize,
-            numChannels: 4,
-          )
+          ..createImage(width: imageSize, height: imageSize, numChannels: 4)
           ..fillCircle(
             x: radius,
             y: radius,
@@ -45,10 +44,7 @@ abstract class ExportColorImages {
               255,
             ),
           )
-          ..writeToFile(join(
-            colorImageExportPath,
-            color.pngFilename,
-          )))
+          ..writeToFile(join(colorImageExportPath, color.pngFilename)))
         .execute();
   }
 }

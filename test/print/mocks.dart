@@ -12,7 +12,7 @@ const Map<String, dynamic> jsonMap = <String, dynamic>{
 };
 
 final List<List<Object?>> gridData = <List<Object?>>[
-  <Object?>[1, 2, 3, 4, 5]
+  <Object?>[1, 2, 3, 4, 5],
 ];
 
 const String mockStyledText = '[1mThis is a test message.[22m';

@@ -35,7 +35,7 @@ extension StringX on String {
             lineLength,
             splitWords: wrapOptions.splitWords,
             lineBreak: wrapOptions.lineBreak,
-          )
+          ),
       ];
     }
 

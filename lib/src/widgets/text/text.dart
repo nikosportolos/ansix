@@ -43,8 +43,8 @@ class AnsiText extends AnsiWidget {
 
       case AnsiTextAlignment.center:
         final int paddedWidth = width + padding.horizontalPadding;
-        leftPadding =
-            (paddedWidth / 2 - this.text.length / 2 - padding.left).floor();
+        leftPadding = (paddedWidth / 2 - this.text.length / 2 - padding.left)
+            .floor();
         rightPadding = width - this.text.length - leftPadding;
         break;
 
@@ -58,9 +58,11 @@ class AnsiText extends AnsiWidget {
 
     buffer.writeLines(topPadding);
     if (backgroundColor != AnsiColor.none) {
-      buffer.write(AnsiX.colorFormat == ColorFormat.ansi
-          ? backgroundColor.background
-          : backgroundColor.backgroundRgb);
+      buffer.write(
+        AnsiX.colorFormat == ColorFormat.ansi
+            ? backgroundColor.background
+            : backgroundColor.backgroundRgb,
+      );
     }
 
     buffer
@@ -68,9 +70,11 @@ class AnsiText extends AnsiWidget {
       ..writeAll(style.styles.map((AnsiStyle s) => s.startEscapeCode));
 
     if (foregroundColor != AnsiColor.none && text.isNotEmpty) {
-      buffer.write(AnsiX.colorFormat == ColorFormat.ansi
-          ? foregroundColor.foreground
-          : foregroundColor.foregroundRgb);
+      buffer.write(
+        AnsiX.colorFormat == ColorFormat.ansi
+            ? foregroundColor.foreground
+            : foregroundColor.foregroundRgb,
+      );
     }
 
     buffer
@@ -105,13 +109,13 @@ class AnsiText extends AnsiWidget {
   bool get isMultiline => formattedText.contains('\n');
 
   AnsiTextTheme get theme => AnsiTextTheme(
-        alignment: alignment,
-        style: style,
-        padding: padding,
-        foregroundColor: foregroundColor,
-        backgroundColor: backgroundColor,
-        fixedWidth: fixedWidth,
-      );
+    alignment: alignment,
+    style: style,
+    padding: padding,
+    foregroundColor: foregroundColor,
+    backgroundColor: backgroundColor,
+    fixedWidth: fixedWidth,
+  );
 
   factory AnsiText.withTheme(final String text, final AnsiTextTheme theme) {
     return AnsiText(

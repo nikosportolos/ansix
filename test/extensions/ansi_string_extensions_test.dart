@@ -14,9 +14,10 @@ void main() {
         expect(text.bold().unformattedLength, text.length);
         expect(text.red().unformattedLength, text.length);
         expect(
-            '[38;5;209mThis is a text with vertical padding[0m'
-                .unformattedLength,
-            36);
+          '[38;5;209mThis is a text with vertical padding[0m'
+              .unformattedLength,
+          36,
+        );
       });
     });
 

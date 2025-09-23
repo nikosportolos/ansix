@@ -13,18 +13,22 @@ void main() {
     <Object?>[
       'IMDb Rate',
       ...movies.map((Movie m) => m.rate),
-      movies.map((Movie m) => m.rate).toList(growable: false).average
+      movies.map((Movie m) => m.rate).toList(growable: false).average,
     ],
   ];
 
   print('vertical'.underline());
-  final AnsiGrid verticalGrid =
-      AnsiGrid.fromColumns(columns, theme: verticalTheme);
+  final AnsiGrid verticalGrid = AnsiGrid.fromColumns(
+    columns,
+    theme: verticalTheme,
+  );
   print(verticalGrid);
   print('');
 
   print('horizontal'.underline());
-  final AnsiGrid horizontalGrid =
-      AnsiGrid.fromColumns(columns, theme: horizontalTheme);
+  final AnsiGrid horizontalGrid = AnsiGrid.fromColumns(
+    columns,
+    theme: horizontalTheme,
+  );
   print(horizontalGrid);
 }

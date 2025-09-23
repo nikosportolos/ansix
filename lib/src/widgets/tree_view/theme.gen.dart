@@ -11,8 +11,9 @@ class _$AnsiTreeViewThemeImpl extends AnsiTreeViewTheme {
     this.sorted = false,
     this.showListItemIndex = false,
     this.anchorTheme = const AnsiTreeAnchorTheme(),
-    this.keyTheme =
-        const AnsiTreeNodeKeyTheme(textStyle: AnsiTextStyle(bold: true)),
+    this.keyTheme = const AnsiTreeNodeKeyTheme(
+      textStyle: AnsiTextStyle(bold: true),
+    ),
     this.valueTheme = const AnsiTreeNodeValueTheme(),
     this.headerTheme = const AnsiTreeHeaderTheme(),
     this.alignment = AnsiTextAlignment.center,
@@ -139,29 +140,33 @@ class _AnsiTreeViewThemeCopyWithProxyImpl
   @override
   $AnsiTreeAnchorThemeCopyWithProxyChain<AnsiTreeViewTheme> get anchorTheme =>
       $AnsiTreeAnchorThemeCopyWithProxyChain<AnsiTreeViewTheme>(
-          _value.anchorTheme,
-          (AnsiTreeAnchorTheme update) => this(anchorTheme: update));
+        _value.anchorTheme,
+        (AnsiTreeAnchorTheme update) => this(anchorTheme: update),
+      );
 
   @pragma('vm:prefer-inline')
   @override
   $AnsiTreeNodeKeyThemeCopyWithProxyChain<AnsiTreeViewTheme> get keyTheme =>
       $AnsiTreeNodeKeyThemeCopyWithProxyChain<AnsiTreeViewTheme>(
-          _value.keyTheme,
-          (AnsiTreeNodeKeyTheme update) => this(keyTheme: update));
+        _value.keyTheme,
+        (AnsiTreeNodeKeyTheme update) => this(keyTheme: update),
+      );
 
   @pragma('vm:prefer-inline')
   @override
   $AnsiTreeNodeValueThemeCopyWithProxyChain<AnsiTreeViewTheme> get valueTheme =>
       $AnsiTreeNodeValueThemeCopyWithProxyChain<AnsiTreeViewTheme>(
-          _value.valueTheme,
-          (AnsiTreeNodeValueTheme update) => this(valueTheme: update));
+        _value.valueTheme,
+        (AnsiTreeNodeValueTheme update) => this(valueTheme: update),
+      );
 
   @pragma('vm:prefer-inline')
   @override
   $AnsiTreeHeaderThemeCopyWithProxyChain<AnsiTreeViewTheme> get headerTheme =>
       $AnsiTreeHeaderThemeCopyWithProxyChain<AnsiTreeViewTheme>(
-          _value.headerTheme,
-          (AnsiTreeHeaderTheme update) => this(headerTheme: update));
+        _value.headerTheme,
+        (AnsiTreeHeaderTheme update) => this(headerTheme: update),
+      );
 
   @pragma('vm:prefer-inline')
   @override
@@ -194,9 +199,10 @@ class _AnsiTreeViewThemeCopyWithProxyImpl
 }
 
 sealed class $AnsiTreeViewThemeCopyWithProxyChain<$Result> {
-  factory $AnsiTreeViewThemeCopyWithProxyChain(final AnsiTreeViewTheme value,
-          final $Result Function(AnsiTreeViewTheme update) chain) =
-      _AnsiTreeViewThemeCopyWithProxyChainImpl<$Result>;
+  factory $AnsiTreeViewThemeCopyWithProxyChain(
+    final AnsiTreeViewTheme value,
+    final $Result Function(AnsiTreeViewTheme update) chain,
+  ) = _AnsiTreeViewThemeCopyWithProxyChainImpl<$Result>;
 
   $Result compact(bool newValue);
 
@@ -280,16 +286,18 @@ class _AnsiTreeViewThemeCopyWithProxyChainImpl<$Result>
     final AnsiTreeHeaderTheme? headerTheme,
     final AnsiTextAlignment? alignment,
   }) {
-    return _chain(_$AnsiTreeViewThemeImpl(
-      compact: compact ?? _value.compact,
-      sorted: sorted ?? _value.sorted,
-      showListItemIndex: showListItemIndex ?? _value.showListItemIndex,
-      anchorTheme: anchorTheme ?? _value.anchorTheme,
-      keyTheme: keyTheme ?? _value.keyTheme,
-      valueTheme: valueTheme ?? _value.valueTheme,
-      headerTheme: headerTheme ?? _value.headerTheme,
-      alignment: alignment ?? _value.alignment,
-    ));
+    return _chain(
+      _$AnsiTreeViewThemeImpl(
+        compact: compact ?? _value.compact,
+        sorted: sorted ?? _value.sorted,
+        showListItemIndex: showListItemIndex ?? _value.showListItemIndex,
+        anchorTheme: anchorTheme ?? _value.anchorTheme,
+        keyTheme: keyTheme ?? _value.keyTheme,
+        valueTheme: valueTheme ?? _value.valueTheme,
+        headerTheme: headerTheme ?? _value.headerTheme,
+        alignment: alignment ?? _value.alignment,
+      ),
+    );
   }
 }
 
@@ -383,9 +391,9 @@ class _AnsiTreeAnchorThemeCopyWithProxyImpl
 
 sealed class $AnsiTreeAnchorThemeCopyWithProxyChain<$Result> {
   factory $AnsiTreeAnchorThemeCopyWithProxyChain(
-          final AnsiTreeAnchorTheme value,
-          final $Result Function(AnsiTreeAnchorTheme update) chain) =
-      _AnsiTreeAnchorThemeCopyWithProxyChainImpl<$Result>;
+    final AnsiTreeAnchorTheme value,
+    final $Result Function(AnsiTreeAnchorTheme update) chain,
+  ) = _AnsiTreeAnchorThemeCopyWithProxyChainImpl<$Result>;
 
   $Result style(AnsiBorderStyle newValue);
 
@@ -418,10 +426,12 @@ class _AnsiTreeAnchorThemeCopyWithProxyChainImpl<$Result>
     final AnsiBorderStyle? style,
     final AnsiColor? color,
   }) {
-    return _chain(_$AnsiTreeAnchorThemeImpl(
-      style: style ?? _value.style,
-      color: color ?? _value.color,
-    ));
+    return _chain(
+      _$AnsiTreeAnchorThemeImpl(
+        style: style ?? _value.style,
+        color: color ?? _value.color,
+      ),
+    );
   }
 }
 
@@ -523,13 +533,17 @@ class _AnsiTreeHeaderThemeCopyWithProxyImpl
   @override
   $AnsiBorderCopyWithProxyChain<AnsiTreeHeaderTheme> get border =>
       $AnsiBorderCopyWithProxyChain<AnsiTreeHeaderTheme>(
-          _value.border, (AnsiBorder update) => this(border: update));
+        _value.border,
+        (AnsiBorder update) => this(border: update),
+      );
 
   @pragma('vm:prefer-inline')
   @override
   $AnsiTextThemeCopyWithProxyChain<AnsiTreeHeaderTheme> get textTheme =>
       $AnsiTextThemeCopyWithProxyChain<AnsiTreeHeaderTheme>(
-          _value.textTheme, (AnsiTextTheme update) => this(textTheme: update));
+        _value.textTheme,
+        (AnsiTextTheme update) => this(textTheme: update),
+      );
 
   @pragma('vm:prefer-inline')
   @override
@@ -567,9 +581,9 @@ class _AnsiTreeHeaderThemeCopyWithProxyImpl
 
 sealed class $AnsiTreeHeaderThemeCopyWithProxyChain<$Result> {
   factory $AnsiTreeHeaderThemeCopyWithProxyChain(
-          final AnsiTreeHeaderTheme value,
-          final $Result Function(AnsiTreeHeaderTheme update) chain) =
-      _AnsiTreeHeaderThemeCopyWithProxyChainImpl<$Result>;
+    final AnsiTreeHeaderTheme value,
+    final $Result Function(AnsiTreeHeaderTheme update) chain,
+  ) = _AnsiTreeHeaderThemeCopyWithProxyChainImpl<$Result>;
 
   $Result border(AnsiBorder newValue);
 
@@ -626,15 +640,17 @@ class _AnsiTreeHeaderThemeCopyWithProxyChainImpl<$Result>
     final bool? hideHeader,
     final bool? showHash,
   }) {
-    return _chain(_$AnsiTreeHeaderThemeImpl(
-      border: border ?? _value.border,
-      textTheme: textTheme ?? _value.textTheme,
-      customHeader: identical(customHeader, const Object())
-          ? _value.customHeader
-          : (customHeader as String?),
-      hideHeader: hideHeader ?? _value.hideHeader,
-      showHash: showHash ?? _value.showHash,
-    ));
+    return _chain(
+      _$AnsiTreeHeaderThemeImpl(
+        border: border ?? _value.border,
+        textTheme: textTheme ?? _value.textTheme,
+        customHeader: identical(customHeader, const Object())
+            ? _value.customHeader
+            : (customHeader as String?),
+        hideHeader: hideHeader ?? _value.hideHeader,
+        showHash: showHash ?? _value.showHash,
+      ),
+    );
   }
 }
 
@@ -728,9 +744,10 @@ class _AnsiTreeNodeThemeCopyWithProxyImpl
 }
 
 sealed class $AnsiTreeNodeThemeCopyWithProxyChain<$Result> {
-  factory $AnsiTreeNodeThemeCopyWithProxyChain(final AnsiTreeNodeTheme value,
-          final $Result Function(AnsiTreeNodeTheme update) chain) =
-      _AnsiTreeNodeThemeCopyWithProxyChainImpl<$Result>;
+  factory $AnsiTreeNodeThemeCopyWithProxyChain(
+    final AnsiTreeNodeTheme value,
+    final $Result Function(AnsiTreeNodeTheme update) chain,
+  ) = _AnsiTreeNodeThemeCopyWithProxyChainImpl<$Result>;
 
   $Result textStyle(AnsiTextStyle newValue);
 
@@ -763,10 +780,12 @@ class _AnsiTreeNodeThemeCopyWithProxyChainImpl<$Result>
     final AnsiTextStyle? textStyle,
     final AnsiColor? color,
   }) {
-    return _chain(_$AnsiTreeNodeThemeImpl(
-      textStyle: textStyle ?? _value.textStyle,
-      color: color ?? _value.color,
-    ));
+    return _chain(
+      _$AnsiTreeNodeThemeImpl(
+        textStyle: textStyle ?? _value.textStyle,
+        color: color ?? _value.color,
+      ),
+    );
   }
 }
 
@@ -861,9 +880,9 @@ class _AnsiTreeNodeKeyThemeCopyWithProxyImpl
 
 sealed class $AnsiTreeNodeKeyThemeCopyWithProxyChain<$Result> {
   factory $AnsiTreeNodeKeyThemeCopyWithProxyChain(
-          final AnsiTreeNodeKeyTheme value,
-          final $Result Function(AnsiTreeNodeKeyTheme update) chain) =
-      _AnsiTreeNodeKeyThemeCopyWithProxyChainImpl<$Result>;
+    final AnsiTreeNodeKeyTheme value,
+    final $Result Function(AnsiTreeNodeKeyTheme update) chain,
+  ) = _AnsiTreeNodeKeyThemeCopyWithProxyChainImpl<$Result>;
 
   $Result textStyle(AnsiTextStyle newValue);
 
@@ -896,10 +915,12 @@ class _AnsiTreeNodeKeyThemeCopyWithProxyChainImpl<$Result>
     final AnsiTextStyle? textStyle,
     final AnsiColor? color,
   }) {
-    return _chain(_$AnsiTreeNodeKeyThemeImpl(
-      textStyle: textStyle ?? _value.textStyle,
-      color: color ?? _value.color,
-    ));
+    return _chain(
+      _$AnsiTreeNodeKeyThemeImpl(
+        textStyle: textStyle ?? _value.textStyle,
+        color: color ?? _value.color,
+      ),
+    );
   }
 }
 
@@ -1036,8 +1057,10 @@ class _AnsiTreeNodeValueThemeCopyWithProxyImpl
   @pragma('vm:prefer-inline')
   @override
   $WrapOptionsCopyWithProxyChain<AnsiTreeNodeValueTheme> get wrapOptions =>
-      $WrapOptionsCopyWithProxyChain<AnsiTreeNodeValueTheme>(_value.wrapOptions,
-          (WrapOptions update) => this(wrapOptions: update));
+      $WrapOptionsCopyWithProxyChain<AnsiTreeNodeValueTheme>(
+        _value.wrapOptions,
+        (WrapOptions update) => this(wrapOptions: update),
+      );
 
   @pragma('vm:prefer-inline')
   @override
@@ -1078,9 +1101,9 @@ class _AnsiTreeNodeValueThemeCopyWithProxyImpl
 
 sealed class $AnsiTreeNodeValueThemeCopyWithProxyChain<$Result> {
   factory $AnsiTreeNodeValueThemeCopyWithProxyChain(
-          final AnsiTreeNodeValueTheme value,
-          final $Result Function(AnsiTreeNodeValueTheme update) chain) =
-      _AnsiTreeNodeValueThemeCopyWithProxyChainImpl<$Result>;
+    final AnsiTreeNodeValueTheme value,
+    final $Result Function(AnsiTreeNodeValueTheme update) chain,
+  ) = _AnsiTreeNodeValueThemeCopyWithProxyChainImpl<$Result>;
 
   $Result textStyle(AnsiTextStyle newValue);
 
@@ -1153,19 +1176,21 @@ class _AnsiTreeNodeValueThemeCopyWithProxyChainImpl<$Result>
     final Object? alignment = const Object(),
     final bool? hideIfEmpty,
   }) {
-    return _chain(_$AnsiTreeNodeValueThemeImpl(
-      textStyle: textStyle ?? _value.textStyle,
-      color: color ?? _value.color,
-      wrapText: wrapText ?? _value.wrapText,
-      fixedWidth: identical(fixedWidth, const Object())
-          ? _value.fixedWidth
-          : (fixedWidth as int?),
-      wrapOptions: wrapOptions ?? _value.wrapOptions,
-      alignment: identical(alignment, const Object())
-          ? _value.alignment
-          : (alignment as AnsiTextAlignment?),
-      hideIfEmpty: hideIfEmpty ?? _value.hideIfEmpty,
-    ));
+    return _chain(
+      _$AnsiTreeNodeValueThemeImpl(
+        textStyle: textStyle ?? _value.textStyle,
+        color: color ?? _value.color,
+        wrapText: wrapText ?? _value.wrapText,
+        fixedWidth: identical(fixedWidth, const Object())
+            ? _value.fixedWidth
+            : (fixedWidth as int?),
+        wrapOptions: wrapOptions ?? _value.wrapOptions,
+        alignment: identical(alignment, const Object())
+            ? _value.alignment
+            : (alignment as AnsiTextAlignment?),
+        hideIfEmpty: hideIfEmpty ?? _value.hideIfEmpty,
+      ),
+    );
   }
 }
 

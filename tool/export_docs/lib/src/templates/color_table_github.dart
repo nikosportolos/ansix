@@ -27,8 +27,8 @@ abstract class ColorTableForGithub {
   }
 
   static String _getImageUrl(final AnsiColor color) {
-    final String imageUrl =
-        '$colorImageGithubPath/${color.pngFilename}'.replaceAll(r'\', '/');
+    final String imageUrl = '$colorImageGithubPath/${color.pngFilename}'
+        .replaceAll(r'\', '/');
     return '<img src="$imageUrl" width="48">';
   }
 }

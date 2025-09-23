@@ -24,8 +24,12 @@ void main() {
         '\nAnsiX Exception: error\n',
       );
       expect(
-        buildExceptionMessage(AnsiXException.windowsLegacyModeError(
-            'error', Exception('exception'))),
+        buildExceptionMessage(
+          AnsiXException.windowsLegacyModeError(
+            'error',
+            Exception('exception'),
+          ),
+        ),
         '\nAnsiX Exception: errorException: exception\n\n',
       );
     });

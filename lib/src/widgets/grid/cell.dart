@@ -65,6 +65,8 @@ abstract class AnsiGridCellPosition {
 
   int get row;
 
-  static const AnsiGridCellPosition $default =
-      AnsiGridCellPosition(column: 0, row: 0);
+  static const AnsiGridCellPosition $default = AnsiGridCellPosition(
+    column: 0,
+    row: 0,
+  );
 }

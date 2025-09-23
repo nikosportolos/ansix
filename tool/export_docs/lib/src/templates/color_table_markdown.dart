@@ -2,10 +2,7 @@ import 'package:ansix/ansix.dart';
 
 const String _separator = '|';
 
-String printColorSet(
-  final List<AnsiColor> colors,
-  final String colorSetName,
-) {
+String printColorSet(final List<AnsiColor> colors, final String colorSetName) {
   final StringBuffer buffer = StringBuffer();
 
   buffer.writeln('## $colorSetName color set');

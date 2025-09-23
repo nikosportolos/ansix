@@ -46,7 +46,7 @@ void main() {
       test('Map<String, dynamic>', () {
         const Map<String, dynamic> map = <String, dynamic>{
           'id': 123,
-          'name': 'mock'
+          'name': 'mock',
         };
         expect(TreeNodeType.getType(map), TreeNodeType.map);
       });
@@ -54,7 +54,7 @@ void main() {
       test('Map<dynamic, dynamic>', () {
         const Map<dynamic, dynamic> map = <dynamic, dynamic>{
           123: 123,
-          'name': 'mock'
+          'name': 'mock',
         };
         expect(TreeNodeType.getType(map), TreeNodeType.map);
       });

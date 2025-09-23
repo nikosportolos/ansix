@@ -118,9 +118,10 @@ class _AnsiBorderSetCopyWithProxyImpl implements _AnsiBorderSetCopyWithProxy {
 }
 
 sealed class $AnsiBorderSetCopyWithProxyChain<$Result> {
-  factory $AnsiBorderSetCopyWithProxyChain(final AnsiBorderSet value,
-          final $Result Function(AnsiBorderSet update) chain) =
-      _AnsiBorderSetCopyWithProxyChainImpl<$Result>;
+  factory $AnsiBorderSetCopyWithProxyChain(
+    final AnsiBorderSet value,
+    final $Result Function(AnsiBorderSet update) chain,
+  ) = _AnsiBorderSetCopyWithProxyChainImpl<$Result>;
 
   $Result start(String newValue);
 
@@ -169,12 +170,14 @@ class _AnsiBorderSetCopyWithProxyChainImpl<$Result>
     final String? separator,
     final String? end,
   }) {
-    return _chain(_$AnsiBorderSetImpl(
-      start: start ?? _value.start,
-      line: line ?? _value.line,
-      separator: separator ?? _value.separator,
-      end: end ?? _value.end,
-    ));
+    return _chain(
+      _$AnsiBorderSetImpl(
+        start: start ?? _value.start,
+        line: line ?? _value.line,
+        separator: separator ?? _value.separator,
+        end: end ?? _value.end,
+      ),
+    );
   }
 }
 

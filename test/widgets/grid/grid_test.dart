@@ -12,7 +12,7 @@ void main() {
           'test2',
           'test342423423',
           AnsiText('test4'),
-          'test5'
+          'test5',
         ],
       ];
 
@@ -63,22 +63,24 @@ void main() {
           AnsiText('row 2'),
           'this is a long text',
           '',
-          'row 5'
+          'row 5',
         ],
       ];
 
       test('auto', () {
         expect(
-          AnsiGrid.fromColumns(verticalData,
-              theme: const AnsiGridTheme(
-                border: AnsiBorder(
-                  type: AnsiBorderType.all,
-                  style: AnsiBorderStyle.square,
-                ),
-                transparent: true,
-                keepSameWidth: false,
-                orientation: AnsiOrientation.vertical,
-              )).toString(),
+          AnsiGrid.fromColumns(
+            verticalData,
+            theme: const AnsiGridTheme(
+              border: AnsiBorder(
+                type: AnsiBorderType.all,
+                style: AnsiBorderStyle.square,
+              ),
+              transparent: true,
+              keepSameWidth: false,
+              orientation: AnsiOrientation.vertical,
+            ),
+          ).toString(),
           verticalGridMock,
         );
       });

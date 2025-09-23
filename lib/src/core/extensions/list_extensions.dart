@@ -13,8 +13,9 @@ extension ObjectListX on List<List<Object?>> {
       return row.length > max ? row.length : max;
     });
 
-    final List<List<Object?>> result =
-        List<List<Object?>>.generate(numCols, (int index) {
+    final List<List<Object?>> result = List<List<Object?>>.generate(numCols, (
+      int index,
+    ) {
       return List<Object?>.filled(numRows, '');
     });
 

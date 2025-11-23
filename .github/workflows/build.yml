@@ -18,7 +18,7 @@ jobs:
     runs-on: "ubuntu-latest"
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@v6.0.0
       - uses: nikosportolos/dart_package@v0.2.3
         with:
           dart_sdk: "3.9.0"

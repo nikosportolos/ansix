@@ -13,7 +13,8 @@ enum LegacyConsoleMode {
   disabled,
 
   /// Unknown status of legacy console mode.
-  unknown;
+  unknown
+  ;
 
   /// Returns true if the legacy console mode is enabled.
   bool get isEnabled => this == LegacyConsoleMode.enabled;

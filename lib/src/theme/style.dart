@@ -55,7 +55,8 @@ enum AnsiStyle {
   underline(
     AnsiEscapeCodes.underlineStartCode,
     AnsiEscapeCodes.underlineEndCode,
-  );
+  )
+  ;
 
   const AnsiStyle(
     this.startEscapeCode,

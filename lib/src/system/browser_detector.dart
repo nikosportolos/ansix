@@ -4,7 +4,8 @@ enum Browser {
   edge('Microsoft Edge', true),
   firefox('Mozilla Firefox', false),
   safari('Apple Safari', false),
-  unknown('Unknown web browser', false);
+  unknown('Unknown web browser', false)
+  ;
 
   const Browser(
     this.name,

@@ -19,7 +19,8 @@ enum GraphicDrawingSet {
   top('▀'),
 
   /// Black square (■)
-  square('■');
+  square('■')
+  ;
 
   /// Default [GraphicDrawingSet] constructor.
   const GraphicDrawingSet(this.value);

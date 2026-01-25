@@ -1,7 +1,8 @@
 /// **AnsiOrientation**
 enum AnsiOrientation {
   vertical,
-  horizontal;
+  horizontal
+  ;
 
   bool get isVertical => this == vertical;
 

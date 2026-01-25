@@ -10,7 +10,8 @@ enum TriangleSet {
   left('◄'),
 
   /// Black **right**-pointing pointer (►)
-  right('►');
+  right('►')
+  ;
 
   /// Default [TriangleSet] constructor.
   const TriangleSet(this.value);

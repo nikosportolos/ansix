@@ -13,7 +13,8 @@ enum AnsiBorderStyle {
   double(BoxDrawingSet.double),
   none(BoxDrawingSet.none),
   rounded(BoxDrawingSet.rounded),
-  square(BoxDrawingSet.square);
+  square(BoxDrawingSet.square)
+  ;
 
   /// Default [AnsiBorderStyle] constructor.
   const AnsiBorderStyle(this.boxDrawingSet);

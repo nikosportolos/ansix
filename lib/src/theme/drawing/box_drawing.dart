@@ -90,7 +90,8 @@ enum BoxDrawingSet {
     middleTopEdge: '┬',
     middleRightEdge: '┤',
     middleLeftEdge: '├',
-  );
+  )
+  ;
 
   const BoxDrawingSet({
     this.horizontalLine = '',

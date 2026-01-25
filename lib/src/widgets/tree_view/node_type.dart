@@ -5,7 +5,8 @@ enum TreeNodeType {
   primary,
   map,
   iterable,
-  object;
+  object
+  ;
 
   static TreeNodeType getType(final dynamic object) {
     if (object == null || //

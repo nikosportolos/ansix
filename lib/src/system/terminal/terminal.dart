@@ -1,7 +1,5 @@
-import 'dart:io' if (dart.library.html) 'dart:html';
-
 import 'package:ansix/src/system/terminal/io.dart'
-    if (dart.library.html) 'package:ansix/src/system/terminal/web.dart';
+    if (dart.library.js_interop) 'package:ansix/src/system/terminal/web.dart';
 import 'package:ansix/src/system/terminal/size.dart';
 
 export 'size.dart';
